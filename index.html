@@ -248,6 +248,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/01/hosts/" itemprop="url">
+                  hosts使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-01T18:36:53+08:00" content="2016-08-01">
+              2016-08-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##关于hosts二三事</p>
+<blockquote>
+<p>没有任何的意思，方便程序员查资料！</p>
+<p>###原理<br>总的来说，Google配合baidu可以发挥出中文搜索的功力了。百度的优点，常见问题搜索比较全面，一般能找到心仪答案，但是对于较为生僻的问题，一般主要是不准。<br><br>使用google一般比较准确，前面的搜索项能代表基本问题。一般配合baidu中文搜索的能力补全。平时不可能一直开着vpn或者shadowsocks。<br><br><strong>p.s.</strong>发现了个好玩的：国外IP访问国内网页，竟然有地域限制，蛤蛤！<br></p>
+<p>DNS污染（域名污染），将网址解析为不正确的IP地址，使得访问不到正确的IP。但是计算机，实际上是先在本地hosts文件中查看，如果解析出正确的IP，则可以直接访问，不需要访问DNS服务器了。<br><br><strong>p.s.</strong>hosts需要不定期更新（当你上不去的时候）。</p>
+<p>###关于修改hosts<br><strong>windows:</strong>C:\Windows\System32\drivers\etc <br><br>目录下的hosts文件，权限问的话，先拷出来，改完后，覆盖回去。最后<strong>cmd</strong>下<strong>ipconfig /flushdns</strong><br></p>
+</blockquote>
+<p><strong>ubuntu:</strong>/etc<br></p>
+<blockquote>
+<p>目录下hosts修改。<br></p>
+</blockquote>
+<p>###经常去的源<br><a href="https://laod.org/hosts/2016-google-hosts.html" target="_blank" rel="external">laod</a><br><br><a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">奶齿</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/14/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -370,13 +475,20 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
