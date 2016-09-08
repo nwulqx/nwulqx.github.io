@@ -104,7 +104,7 @@ http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5
 &amp;lt;img onerror=&amp;quot;alert(document.domain);&amp;quot; src= /&amp;gt; 
 or
 &amp;lt;script&amp;gt;aler">
-<meta property="og:updated_time" content="2016-09-08T06:58:57.364Z">
+<meta property="og:updated_time" content="2016-09-08T07:02:25.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS过关小游戏~">
 <meta name="twitter:description" content="这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
@@ -473,13 +473,13 @@ Conditional comments(IE)
 <font color="red">http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988</font>
 
 </blockquote>
-<p>发现，&lt;&gt;””单独使用并未过滤，但是\<script>、”alert”是被过滤了</p>
+<p>发现，<code>&lt;&gt;``&quot;&quot;</code>单独使用并未过滤，但是<code>&lt;script&gt;</code>、<code>alert</code>是被过滤了</p>
 <p>再看Hint：</p>
 <pre><code>&quot;s/[\x00-\x20\&lt;\&gt;\&quot;\&apos;]//g;&quot; 
 </code></pre><p>x00~x20都被过滤，制表符无法使用了！，同样，&lt;&gt; “  ‘都被滤了！</p>
 <h2 id="利用IE-的漏洞"><a href="#利用IE-的漏洞" class="headerlink" title="利用IE ``的漏洞"></a>利用IE ``的漏洞</h2><p>IE对于反单引号没有很好的过滤，使用  ``  可以很轻松的截断输入，但是在google下测试，发现 `` 被过滤了。<br>&gt;</p>
 <blockquote>
-<p><font color='red'><strong>`</strong></font>:反单引号，上排数字键1的前面，其上档符号是“~ ”</p>
+<p><font color="red"><strong>`</strong></font>:反单引号，上排数字键1的前面，其上档符号是“~ ”</p>
 </blockquote>
 <p>可以截断输入，那就好办了！</p>
 <pre><code>`` onfocus=&quot;alert(document.domain);&quot;  //IE下可行
@@ -537,7 +537,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 </code></pre><p>能成功的原因在于使用：</p>
 <pre><code>document.write();
 </code></pre><p>执行了js，将字符串编译了！</p>
-<h2 id="JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><a href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt" class="headerlink" title="JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;参见&gt;"></a>JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html">参见</a>&gt;</h2><blockquote>
+<h2 id="JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><a href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt" class="headerlink" title="JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;参见&gt;"></a>JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html" target="_blank" rel="external">参见</a>&gt;</h2><blockquote>
 <p><strong>所有的ASCII码都可以用“\”加数字（一般是8进制数字）来表示。\x表示后面的字符是十六进制数，\表示后面的字符是八进制数。</strong><br> </p>
 </blockquote>
 <p>八进制（+八进制）</p>
@@ -555,7 +555,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 </blockquote>
 <pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
 </code></pre><h1 id="十六关"><a href="#十六关" class="headerlink" title="十六关"></a>十六关</h1><blockquote>
-<font color="red"><a href="http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d">http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d</a></font>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d</a></font>
 
 </blockquote>
 <p>过滤了十六进制，我们还有八进制和unicode</p>
@@ -565,7 +565,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 </code></pre><h2 id="第十七十八（UNSOLVED）"><a href="#第十七十八（UNSOLVED）" class="headerlink" title="第十七十八（UNSOLVED）"></a>第十七十八（UNSOLVED）</h2><blockquote>
 <p>需要配合IE6即以下浏览器解决！</p>
 </blockquote>
-</script></p>
+
       
     </div>
 
@@ -738,7 +738,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一关："><span class="nav-number">1.</span> <span class="nav-text">第一关：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二关"><span class="nav-number">2.</span> <span class="nav-text">第二关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三关"><span class="nav-number">3.</span> <span class="nav-text">第三关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四关"><span class="nav-number">4.</span> <span class="nav-text">第四关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五关"><span class="nav-number">5.</span> <span class="nav-text">第五关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六关"><span class="nav-number">6.</span> <span class="nav-text">第六关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第七关"><span class="nav-number">7.</span> <span class="nav-text">第七关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八关"><span class="nav-number">8.</span> <span class="nav-text">第八关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第九关"><span class="nav-number">9.</span> <span class="nav-text">第九关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-7"><span class="nav-number">9.1.</span> <span class="nav-text">UTF-7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十关"><span class="nav-number">9.2.</span> <span class="nav-text">第十关</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十一关："><span class="nav-number">10.</span> <span class="nav-text">第十一关：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#制表符越过"><span class="nav-number">10.1.</span> <span class="nav-text">制表符越过</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二关"><span class="nav-number">11.</span> <span class="nav-text">第十二关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一关："><span class="nav-number">1.</span> <span class="nav-text">第一关：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二关"><span class="nav-number">2.</span> <span class="nav-text">第二关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三关"><span class="nav-number">3.</span> <span class="nav-text">第三关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四关"><span class="nav-number">4.</span> <span class="nav-text">第四关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五关"><span class="nav-number">5.</span> <span class="nav-text">第五关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六关"><span class="nav-number">6.</span> <span class="nav-text">第六关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第七关"><span class="nav-number">7.</span> <span class="nav-text">第七关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八关"><span class="nav-number">8.</span> <span class="nav-text">第八关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第九关"><span class="nav-number">9.</span> <span class="nav-text">第九关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-7"><span class="nav-number">9.1.</span> <span class="nav-text">UTF-7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十关"><span class="nav-number">9.2.</span> <span class="nav-text">第十关</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十一关："><span class="nav-number">10.</span> <span class="nav-text">第十一关：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#制表符越过"><span class="nav-number">10.1.</span> <span class="nav-text">制表符越过</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二关"><span class="nav-number">11.</span> <span class="nav-text">第十二关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用IE-的漏洞"><span class="nav-number">11.1.</span> <span class="nav-text">利用IE ``的漏洞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十三关"><span class="nav-number">12.</span> <span class="nav-text">第十三关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十四关"><span class="nav-number">13.</span> <span class="nav-text">第十四关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十五关"><span class="nav-number">14.</span> <span class="nav-text">第十五关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><span class="nav-number">14.1.</span> <span class="nav-text">JS编码（\转义字符+八进制 || 十六进制 || unicode）<参见></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十六关"><span class="nav-number">15.</span> <span class="nav-text">十六关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十七十八（UNSOLVED）"><span class="nav-number">15.1.</span> <span class="nav-text">第十七十八（UNSOLVED）</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
