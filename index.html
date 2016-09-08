@@ -461,7 +461,7 @@ Conditional comments(IE)
 <p>发现，<code>&lt;&gt;``&quot;&quot;</code>单独使用并未过滤，但是<code>&lt;script&gt;</code>、<code>alert</code>是被过滤了</p>
 <p>再看Hint：</p>
 <pre><code>&quot;s/[\x00-\x20\&lt;\&gt;\&quot;\&apos;]//g;&quot; 
-</code></pre><p>x00~x20都被过滤，制表符无法使用了！，同样，&lt;&gt; “  ‘都被滤了！</p>
+</code></pre><p><code>x00~x20</code>都被过滤，制表符无法使用了！，同样，<code>&lt;&gt; &quot;  &#39;</code>都被滤了！</p>
 <h2 id="利用IE-的漏洞"><a href="#利用IE-的漏洞" class="headerlink" title="利用IE ``的漏洞"></a>利用IE ``的漏洞</h2><p>IE对于反单引号没有很好的过滤，使用  ``  可以很轻松的截断输入，但是在google下测试，发现 `` 被过滤了。<br>&gt;</p>
 <blockquote>
 <p><font color="red"><strong>`</strong></font>:反单引号，上排数字键1的前面，其上档符号是“~ ”</p>
