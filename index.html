@@ -248,6 +248,218 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/09/编程语言分类/" itemprop="url">
+                  编程语言分类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T11:19:13+08:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript语言精粹"><a href="#JavaScript语言精粹" class="headerlink" title="JavaScript语言精粹"></a>JavaScript语言精粹</h1><p>这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。</p>
+<h1 id="静态语言和动态语言"><a href="#静态语言和动态语言" class="headerlink" title="静态语言和动态语言"></a>静态语言和动态语言</h1><p>先举个例子，C语言：</p>
+<pre><code>float pi = 3.14159265;
+</code></pre><p>JavaScript：</p>
+<pre><code>var str = &quot;hello&quot;;
+alert(str);//第一行之后，str就是是一个String类型了
+</code></pre><p>比较这两个方式。在C语言中，我们用<code>float</code>关键字定义了变量 <code>pi</code>，而JS并未使用这样的方式。<br><br>C语言是一种<code>静态类型</code>，在声明期 | 编译期就给定了变量的类型；在<code>静态类型</code>语言中，<strong>类型是从属于变量（变量改变类型需要类型声明改变）</strong>。从声明那一刻开始，变量只能被分配声明类型的数据（给定的数据类型 | 类型转换后的data）。那既然有这样的需求，静态语言会有一个<code>编译期</code>用于类型检测，这样就会产生<code>编译期</code>和<code>运行期</code>两个时期。<br><br>一些常见的静态类型语言： C++, C#, Java, Basic, Pascal, Ada 和 Fortran。<br></p>
+<p>JavaScript语言是一种<code>动态类型</code>，变量类型可以在运行期间改变；在<code>动态类型</code>语言中，<strong>类型是从属于数据（数据类型改变影响了类型改变）</strong>。变量名只是指向了数据，他们可以在任何时刻指向任何类型的数据。既然不需要类型检测，那么，也就不需要区分<code>编译期</code>和<code>运行期</code>。<br><br>一些常见的动态类型语言： 大部分脚本语言和快速原型开发语言，例如，Javascript, Lisp, PHP, Python, Ruby, Scheme 等等。</p>
+<h1 id="强类型与弱类型"><a href="#强类型与弱类型" class="headerlink" title="强类型与弱类型"></a>强类型与弱类型</h1><p><code>强弱类型</code>的概念没有<code>动态和静态类型</code>语言的区分那么清晰。一个最常见的定义方式：<strong>是否允许不相同类型之间的操作。</strong><br>例如，JS操作：</p>
+<pre><code>var num = 123;
+num = num + &apos;str&apos;;//结果123str，JS可以不用在意不同类型的变量之间进行操作
+</code></pre><p>Java操作</p>
+<pre><code>int num = 123;
+num = num +&apos;str&apos;;//异常，Java不允许不同类型之间的变量进行操作
+</code></pre><p>JS会隐式转换数字num为字符串，然后得出字符串结果。而Java不允许这样的转换（ClassCastException），因为这是一种过于灵活的表现。</p>
+<p><code>弱类型</code>允许这样的快速开发，而<code>强类型</code>会在编译期捕获这种隐含的错误。<code>强类型</code>需要程序员关注类型转换，而<code>弱类型</code>更多的是通过大量的隐式（自动）转换完成了这些操作。</p>
+<p><strong>P.S.</strong><br>一般来说，静态类型由于需要<code>编译期</code>进行类型检测。正常来讲，静态类型应该都是强类型，即不允许不同类型之间可以进行操作。<strong>而C和Basic语言却是特殊的不是强类型的静态类型语言。</strong><br><br>因为，C语言中，对于<code>Char</code>字符的操作，实际隐式转化为<code>int</code>进行操作，那么，这样的话，打破了强类型的规则。</p>
+<h1 id="安全类型和不安全类型"><a href="#安全类型和不安全类型" class="headerlink" title="安全类型和不安全类型"></a>安全类型和不安全类型</h1><p>如何定义<code>安全</code>这个概念？对于异常进行捕获，将会导致程序停止，但是，如果不捕获异常，就会出现各种奇怪的行为。所以，安全类型会让语言在<code>编译期</code>捕获隐藏的异常，对于动态语言，将会在<code>运行期</code>捕获这些异常。<br><br>这里有一个误区：弱类型的语言缺乏安全性。这个概念是<strong>不对的</strong>，相反的，由于弱类型会把检测操作放在运行期，运行期检测有一个好处，所有的信息都处于待运行状态并且都可被获取，使得安全检测可以被更彻底的执行。<br><br>例如：C语言中的指针被认为是一种不安全的类型，而索引则被认为是一种安全的类型。</p>
+<h1 id="各语言分类"><a href="#各语言分类" class="headerlink" title="各语言分类"></a>各语言分类</h1><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Static / Dynamic</th>
+<th>Strong / Weak</th>
+<th>Safety</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ada</td>
+<td>static</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>C</td>
+<td>static</td>
+<td>weak</td>
+<td>unsafe</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>static</td>
+<td>strong</td>
+<td>unsafe</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>static</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Javascript</td>
+<td>dynamic</td>
+<td>weak</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Lisp</td>
+<td>dynamic</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Pascal</td>
+<td>static</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Perl</td>
+<td>dynamic</td>
+<td>weak</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>dynamic</td>
+<td>weak</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>dynamic</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>dynamic</td>
+<td>strong</td>
+<td>safe</td>
+</tr>
+</tbody>
+</table>
+<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><h3 id="强弱类型-和-动静态语言区别："><a href="#强弱类型-和-动静态语言区别：" class="headerlink" title="强弱类型 和 动静态语言区别："></a><code>强弱类型</code> 和 <code>动静态语言</code>区别：</h3><p>这两个概念是有区别的，<code>强弱类型</code>的本质是<strong>是否允许不同类型之间进行操作</strong>，例如：</p>
+<pre><code>//JavaScript
+var i = 1;//i 是number类型，数字
+i = i + &quot;abc&quot;//不会报异常，结果为&quot;1abc&quot;
+</code></pre><p><code>弱类型</code>隐式转换了变量类型。</p>
+<p>再如：</p>
+<pre><code>//Python
+a = 1;//a是一个数字类型
+a = a+&quot;abc&quot;//异常，不允许数字和字符串进行 &quot;+&quot;操作
+</code></pre><p>python是一个<code>强类型</code>语言，不允许不同类型的变量之间的操作。</p>
+<blockquote>
+<p>这里强调一下，我一直以为，Python是动态的语言，所以一定是弱类型语言，但是其实Python是动态的强类型语言。所以说这两个概念是有区别的：强类型不允许不同类型之间的变量有操作。动态型使得变量的类型是由数据的类型所决定，而不是由关键字。</p>
+</blockquote>
+<p><code>动静态语言</code>是由变量的初始化方式所决定。</p>
+<pre><code>//Java
+int a = 1;//整型
+float b = 1.0;//浮点型
+</code></pre><p>变量的定义是关键字定义的。</p>
+<pre><code>//JavaScript
+var str = &apos;abc&apos;;//字符串类型
+str = 123;//number类型
+</code></pre><p>变量的类型是由数据的类型所定义的。</p>
+<p>参考：<a href="http://eli.thegreenplace.net/2006/11/25/a-taxonomy-of-typing-systems" target="_blank" rel="external">http://eli.thegreenplace.net/2006/11/25/a-taxonomy-of-typing-systems</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/08/前后端数据流导向/" itemprop="url">
                   前后端数据流导向
                 </a>
@@ -974,7 +1186,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
