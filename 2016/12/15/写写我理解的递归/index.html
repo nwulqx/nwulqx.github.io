@@ -84,22 +84,65 @@
 
 
 
-<meta name="description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。
-模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
+<meta name="description" content="递归阶乘先用一个例子说明：
+function factorial(n){
+  var result = n;
+  for(var i = n-1;i&amp;gt;0;i--){
+    result *= i;
+  }
+  return result;
+}
+上面使用循环实现了一个阶乘计算。如何换成递归呢？
+如何求3的阶乘？
+
+答：需要求2的阶乘，再乘3。
+
+如何求2的阶乘？
+
+答：需要求1的阶乘，再乘2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前后端数据流导向">
-<meta property="og:url" content="https://war3cdota.github.io/2016/12/08/前后端数据流导向/index.html">
+<meta property="og:title" content="写写我理解的递归">
+<meta property="og:url" content="https://war3cdota.github.io/2016/12/15/写写我理解的递归/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。
-模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
-<meta property="og:image" content="http://i.imgur.com/bupRErJ.png">
-<meta property="og:image" content="http://i.imgur.com/O4dnoPP.png">
-<meta property="og:updated_time" content="2016-12-08T12:16:52.534Z">
+<meta property="og:description" content="递归阶乘先用一个例子说明：
+function factorial(n){
+  var result = n;
+  for(var i = n-1;i&amp;gt;0;i--){
+    result *= i;
+  }
+  return result;
+}
+上面使用循环实现了一个阶乘计算。如何换成递归呢？
+如何求3的阶乘？
+
+答：需要求2的阶乘，再乘3。
+
+如何求2的阶乘？
+
+答：需要求1的阶乘，再乘2">
+<meta property="og:image" content="http://i.imgur.com/AZoEtiC.jpg">
+<meta property="og:image" content="http://i.imgur.com/Id8S7Y5.gif">
+<meta property="og:image" content="http://i.imgur.com/g87rGYm.png">
+<meta property="og:updated_time" content="2016-12-15T10:26:39.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前后端数据流导向">
-<meta name="twitter:description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。
-模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
-<meta name="twitter:image" content="http://i.imgur.com/bupRErJ.png">
+<meta name="twitter:title" content="写写我理解的递归">
+<meta name="twitter:description" content="递归阶乘先用一个例子说明：
+function factorial(n){
+  var result = n;
+  for(var i = n-1;i&amp;gt;0;i--){
+    result *= i;
+  }
+  return result;
+}
+上面使用循环实现了一个阶乘计算。如何换成递归呢？
+如何求3的阶乘？
+
+答：需要求2的阶乘，再乘3。
+
+如何求2的阶乘？
+
+答：需要求1的阶乘，再乘2">
+<meta name="twitter:image" content="http://i.imgur.com/AZoEtiC.jpg">
 
 
 
@@ -120,9 +163,9 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2016/12/08/前后端数据流导向/"/>
+  <link rel="canonical" href="https://war3cdota.github.io/2016/12/15/写写我理解的递归/"/>
 
-  <title> 前后端数据流导向 | 庆轩的博客 </title>
+  <title> 写写我理解的递归 | 庆轩的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +295,7 @@
             
             
               
-                前后端数据流导向
+                写写我理解的递归
               
             
           </h1>
@@ -264,8 +307,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-08T19:45:56+08:00" content="2016-12-08">
-              2016-12-08
+            <time itemprop="dateCreated" datetime="2016-12-15T18:25:57+08:00" content="2016-12-15">
+              2016-12-15
             </time>
           </span>
 
@@ -292,52 +335,165 @@
       
 
       
-        <h1 id="前后端数据流导向"><a href="#前后端数据流导向" class="headerlink" title="前后端数据流导向"></a>前后端数据流导向</h1><p>这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。</p>
-<h2 id="模板与ajax"><a href="#模板与ajax" class="headerlink" title="模板与ajax"></a>模板与ajax</h2><p>我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。<br><br>在我的理解中，模板分为两种：<code>Js模板（前端JavaScript开发的）</code>和<code>Jsp模板（后端Java开发的）</code>；这些模板的出现简化了<code>数据绑定</code>。</p>
-<ol>
-<li>后端模版的使用，例如Jsp，主要是在后端动态生成前端Html代码，数据绑定在生成Html的时候由Java拼接好，然后发送给用户，由浏览器解析。</li>
-<li>而前端”模板”（姑且这么称呼），主要利用了JavaScript来实现。实际使用中，需要Js向服务端请求数据，然后操作Dom树实现数据绑定。例如，最常见的Ajax请求服务器接口，返回给Json数据，实现数据绑定。而一些前端框架，也借鉴了一些后端标签模板的绑定方式，自定义了一些标签来简化绑定操作。<br></li>
-</ol>
-<p>JSP模板：</p>
-<p><img src="http://i.imgur.com/bupRErJ.png" alt=""></p>
-<p>JS操作：</p>
-<p><img src="http://i.imgur.com/O4dnoPP.png" alt=""></p>
-<p>例如：</p>
-<pre><code>JSP中最常见的一种语法：
-&lt;%=java代码%&gt;，就是一种很常见的模板写法。
-</code></pre><p>而前端去操作的话，会使用JavaScript：</p>
-<pre><code>&lt;div id=&apos;title&apos;&gt;&lt;/div&gt;
-&lt;script&gt;
-    $.ajax({
-        type: &quot;get&quot;,
-        url: &quot;data.json&quot;,
-        async: false,
-        success: function (data) {
-            $(&quot;#title&quot;).html(data.title);
-        },
-        error: function () {
-        }
-    });
-&lt;/script&gt;
-</code></pre><p>可能都会基于此种方式。</p>
-<p><strong>区别：</strong></p>
-<ol>
-<li>从思路上的区别，JSP更想用标签去替代一些AJax请求，直接生成静态页面返回给用户。</li>
-<li>而使用JS去请求数据，使得前后端分工明确，前端开发可以不用去理解后端如何运作，而只需要获取数据，专心于界面美观等UI设计。而后端，也减少了界面上开发的痛苦。</li>
-</ol>
-<h3 id="如何使用模板和Ajax，什么时候用哪个？"><a href="#如何使用模板和Ajax，什么时候用哪个？" class="headerlink" title="如何使用模板和Ajax，什么时候用哪个？"></a>如何使用模板和Ajax，什么时候用哪个？</h3><blockquote>
-<p>基于总体，一切从简。</p>
+        <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><p>先用一个例子说明：</p>
+<pre><code>function factorial(n){
+  var result = n;
+  for(var i = n-1;i&gt;0;i--){
+    result *= i;
+  }
+  return result;
+}
+</code></pre><p>上面使用循环实现了一个阶乘计算。如何换成递归呢？</p>
+<p>如何求<code>3</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>2</code>的阶乘，再乘<code>3</code>。</p>
 </blockquote>
-<p>要符合整体设计，不能局限于局部的简单，而忽略整体的设计。过度的批判某一种技术都不是一种好的心态。</p>
-<p>我做了一个非常简单的小Demo刚好展示了Ajax和模板的使用。</p>
-<h2 id="get和post"><a href="#get和post" class="headerlink" title="get和post"></a>get和post</h2><p>我也经常混淆这两个的使用，直到一天看到有人说，为什么不从字面上理解呢？确实，get给人一种从服务器获取的感觉，而post是一种给出的意思。<br><br>为什么不用post呢，他完全可以替代get？我说，get和post区别？答：get是url请求，最大1kB；而post是能传输很大的。<br><br>字面上，get是获取，只是想从服务器上获取数据。那么，就像你去图书馆借书，你只需要给出书名就可以找到你想借的书了。而post更像是你去考试，你不可能只把姓名学号告诉老师就走了，你还要提交你写的试卷，那么此时，如果数据大于1kB，选择post才是你的唯一手段。而对于，简单的获取请求，使用post显得过于繁琐，而使用get却可以轻松地实现。</p>
-<h2 id="Json与IO流"><a href="#Json与IO流" class="headerlink" title="Json与IO流"></a>Json与IO流</h2><p>IO流是我在学习Java时学习到的，这个操作是对数据的传输以流（可以理解为移动一壶水需要水的流动）的形式进行，有字节流和字符流两种形式。<br><br>而Json对象，在我眼里就是键值对（Map）数据结构，那为什么用Json和IO对比？<br>因为，在我所接触的开发中，这两种最常用，<strong>但是他俩却没有对比性</strong>，Json对象在传输时也是IO流，只是在源头增加了解析或者封装Json对象与流之间转换的方法。<br><br>但是这两个概念却经常被混淆，引用大神以前说的一句话<strong>“一切都是流”</strong>。<br><br>为什么有了Json？我用Json对象的感觉就是方便，尤其是Js的操作，更是简单易用，而Java虽然也有类似的数据结构HashMap，但是操作起来真的不是很方便。</p>
-<p>所以，我认为：<strong>IO是传输的方式，而Json是为了应用而建立起来的规则，有点类似于TCP和HTTP之间的关系。</strong></p>
-<p>IO在我使用中，有两次深刻的理解：</p>
-<p>第一次是Servlet开发时，获取Post请求时，<code>request.getInputStream()</code>获取Post数据流，我知道了客户端服务器的交互就是数据流的交互。而对于Json，可以理解为对于收到的<strong>数据</strong>所封装的一种数据形式规则。<br></p>
-<p>第二次是使用Java进行Socket编程，其中客户端与服务器之间的交互是IO流。我意识到，客户端与服务器之间的交互，都是IO或者说数据流之间的交互。而协议，例如Http，则是对于获取到的<strong>IO流</strong>转换为人们可理解的数据后形成的规则。<strong>流是数据传输的形式，而协议是构建应用的基础。</strong></p>
-<p>所以我只想说一句话：<strong>一切都是流</strong>。</p>
+<p>如何求<code>2</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>1</code>的阶乘，再乘<code>2</code>。</p>
+</blockquote>
+<p>如何求<code>1</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>1</code>的阶乘，<code>1</code>的阶乘就是1。</p>
+</blockquote>
+<p>这上面的都是重复的，让我们来考虑复杂点的：</p>
+<p>如何求<code>n</code>的阶乘？</p>
+<blockquote>
+<p>如果值不是<code>1</code>，你就必须让<code>n</code>和<code>n-1</code>的阶乘相乘，可以简写成<code>n! = n(n − 1)!</code> 或者<code>n * f(n-1)</code>，f(n-1)就是n-1的阶乘的数学写法。</p>
+</blockquote>
+<pre><code>function factorial(n){
+  if(n==1)
+    return 1;
+  return n*factorial(n-1);
+}
+</code></pre><p>当然，这两种方法求阶乘对于我们都能理解，可以理解为局部循环和函数循环，但都达到了一目的。</p>
+<p>引自wiki百科(<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" target="_blank" rel="external">递归</a>)：</p>
+<blockquote>
+<p>计算理论可以证明递归的作用可以完全替换循环。</p>
+</blockquote>
+<h2 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h2><p>不太清楚怎么做的，可以先玩下游戏，然后再去实现。</p>
+<p><img src="http://i.imgur.com/AZoEtiC.jpg" alt=""></p>
+<p>假设有3个盘子，如何把这些盘子从左边柱子上，借助中间柱子移动到最右边？</p>
+<blockquote>
+<p>需要将最上层两个盘子移动到中间柱子，然后将最下面的盘子移动到最右边，再将中间的两个盘子移动到最右边。</p>
+</blockquote>
+<p>如何移动两个盘子？</p>
+<blockquote>
+<p>需要将上面的盘子移动到中间的柱子，将第二个（底下的）盘子移动到目标盘子。</p>
+</blockquote>
+<p>如果只有一个盘子？</p>
+<blockquote>
+<p>直接移动盘子到目标柱子。</p>
+</blockquote>
+<p><img src="http://i.imgur.com/Id8S7Y5.gif" alt=""></p>
+<pre><code>function hanoi(disc , src , mid , dst){
+    if(disc &gt; 0){
+        hanoi(disc-1 , src , dst , mid);
+        console.log(&quot;Move the &quot;+disc+&quot; from &quot;+src+&quot; to &quot;+dst);
+        hanoi(disc-1 , mid , src ,dst);
+    }
+}
 
+hanoi(3,a,b,c)
+
+//Move the 1 from src to dst
+//Move the 2 from src to mid
+//Move the 1 from dst to mid
+//Move the 3 from src to dst
+//Move the 1 from mid to src
+//Move the 2 from mid to dst
+//Move the 1 from src to dst
+</code></pre><p><strong>分析：</strong></p>
+<p>盘子数不能小于1。</p>
+<ol>
+<li>想要移动n个盘子，需要把上面的n-1个盘子移动到辅助柱子上，然后移动最底下的盘子到目标，最后，把辅助柱子上的盘子移动到目标柱子。</li>
+<li><p>如果递归想不通，那么思考下循环，谁是第一个被移动的盘子（假设最底下是3号盘子）？</p>
+<ul>
+<li><p>想移动3号盘子，需要移动2号盘子，想移动2号，盘子，需要移动1号盘子。所以在递归中，1号盘子先被移动。</p>
+</li>
+<li><p>1号盘子先被移动到那个柱子上呢？玩游戏我发现，单数盘子想要移动到目标柱子上，需要最顶层的盘子（1号盘子）先移动到目标柱子上；如果是双数盘子，则需要最顶层的盘子先移动到辅助柱子上。所以，到底1号盘子被先移动到那个柱子上，和盘子数有关。</p>
+</li>
+<li><p>从算法中我们亦可以看到，hanoi(disc-1 , src , dst , mid);交换了目标柱子和辅助柱子，如果disc为偶数，则1号（最顶层的）移动到了中间柱子(mid)；如果disc为奇数，则1号盘子移动到了目标柱子(dst)。</p>
+</li>
+</ul>
+</li>
+<li><p>画出移动盘子的树形图</p>
+</li>
+</ol>
+<p><img src="http://i.imgur.com/g87rGYm.png" alt=""></p>
+<p>这不就是中序遍历。</p>
+<pre><code> //Definition for a binary tree node.
+ function TreeNode(val) {
+     this.val = val;
+     this.left = this.right = null;
+ }
+//中序遍历
+var inorderTraversal = function(root) {
+    var result = [];
+    var help = function(root){
+        if(root===null) return;
+        help(root.left);
+        result.push(root.val);
+        help(root.right);
+    }
+    help(root);
+    return result;
+};
+
+//对于这样一个二叉树(nu 是null)
+
+           1
+       /       \
+      2          3
+    /   \      /   \
+   4    nu3    5     nu6
+  / \         / \   
+ nu1 nu2     nu4 nu5 
+</code></pre><p>分析：</p>
+<pre><code>help(值为1的节点);
+help(值为2的节点)
+help(值为4的节点);
+help(值为nu1的节点);return;
+result.add(4);
+help(值为nu2的节点);return;
+result.add(2);
+help(值为nu3的节点);return;
+result.add(1);
+help(值为3的节点);
+help(值为5的节点);
+help(值为nu4的节点);return;
+result.add(5);
+help(值为nu5的节点);return;
+result.add(3);
+help(值为nu6的节点);return;
+函数运行完毕。
+</code></pre><p>这里，我们通过一个result变量来维持结果集，所有的子问题都返回结果给result变量。</p>
+<p>我们想要得到这棵树的中序遍历，我们并没有上来就获取root的值，而是：</p>
+<ol>
+<li>不停地访问他的左节点，直到null为止，然后获取最近的父节点的值。</li>
+<li>然后再按照步骤1访问它的右节点。</li>
+</ol>
+<p>这就是递归的力量：要想做整体的事情，只需要知道整体中一部分的解决办法就可以了（要知道何时停止）。</p>
+<h2 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h2><p>再补充最后一个点，刚好还是一个尾递归。</p>
+<p>像之前的递归阶乘就是一种尾递归。</p>
+<p>摘自wiki：</p>
+<blockquote>
+<p>尾调用的重要性在于它可以不在调用栈上面添加一个新的堆栈帧——而是更新它，如同迭代一般。尾递归因而具有两个特征：<br></p>
+<ol>
+<li>调用自身函数(Self-called)；<br><br>2.计算仅占用常量栈空间(Stack Space)。</li>
+</ol>
+</blockquote>
+<pre><code> //Definition for a binary tree node.
+ function TreeNode(val) {
+     this.val = val;
+     this.left = this.right = null;
+ }
+//二叉树求和
+var sumNode = function(root) {
+    if(root===null) return 0;
+    return root.val + sumNode(root.left) + sumNode(root.right);
+};
+</code></pre>
       
     </div>
 
@@ -362,17 +518,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/08/XSS过关小游戏/" rel="next" title="XSS过关小游戏~">
-                <i class="fa fa-chevron-left"></i> XSS过关小游戏~
+              <a href="/2016/12/09/编程语言分类/" rel="next" title="编程语言分类">
+                <i class="fa fa-chevron-left"></i> 编程语言分类
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/09/编程语言分类/" rel="prev" title="编程语言分类">
-                编程语言分类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +660,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前后端数据流导向"><span class="nav-number">1.</span> <span class="nav-text">前后端数据流导向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模板与ajax"><span class="nav-number">1.1.</span> <span class="nav-text">模板与ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用模板和Ajax，什么时候用哪个？"><span class="nav-number">1.1.1.</span> <span class="nav-text">如何使用模板和Ajax，什么时候用哪个？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get和post"><span class="nav-number">1.2.</span> <span class="nav-text">get和post</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Json与IO流"><span class="nav-number">1.3.</span> <span class="nav-text">Json与IO流</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阶乘"><span class="nav-number">1.1.</span> <span class="nav-text">阶乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汉诺塔"><span class="nav-number">1.2.</span> <span class="nav-text">汉诺塔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾递归"><span class="nav-number">1.3.</span> <span class="nav-text">尾递归</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

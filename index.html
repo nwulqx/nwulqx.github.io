@@ -248,6 +248,257 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/15/写写我理解的递归/" itemprop="url">
+                  写写我理解的递归
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-15T18:25:57+08:00" content="2016-12-15">
+              2016-12-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><p>先用一个例子说明：</p>
+<pre><code>function factorial(n){
+  var result = n;
+  for(var i = n-1;i&gt;0;i--){
+    result *= i;
+  }
+  return result;
+}
+</code></pre><p>上面使用循环实现了一个阶乘计算。如何换成递归呢？</p>
+<p>如何求<code>3</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>2</code>的阶乘，再乘<code>3</code>。</p>
+</blockquote>
+<p>如何求<code>2</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>1</code>的阶乘，再乘<code>2</code>。</p>
+</blockquote>
+<p>如何求<code>1</code>的阶乘？</p>
+<blockquote>
+<p>答：需要求<code>1</code>的阶乘，<code>1</code>的阶乘就是1。</p>
+</blockquote>
+<p>这上面的都是重复的，让我们来考虑复杂点的：</p>
+<p>如何求<code>n</code>的阶乘？</p>
+<blockquote>
+<p>如果值不是<code>1</code>，你就必须让<code>n</code>和<code>n-1</code>的阶乘相乘，可以简写成<code>n! = n(n − 1)!</code> 或者<code>n * f(n-1)</code>，f(n-1)就是n-1的阶乘的数学写法。</p>
+</blockquote>
+<pre><code>function factorial(n){
+  if(n==1)
+    return 1;
+  return n*factorial(n-1);
+}
+</code></pre><p>当然，这两种方法求阶乘对于我们都能理解，可以理解为局部循环和函数循环，但都达到了一目的。</p>
+<p>引自wiki百科(<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" target="_blank" rel="external">递归</a>)：</p>
+<blockquote>
+<p>计算理论可以证明递归的作用可以完全替换循环。</p>
+</blockquote>
+<h2 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h2><p>不太清楚怎么做的，可以先玩下游戏，然后再去实现。</p>
+<p><img src="http://i.imgur.com/AZoEtiC.jpg" alt=""></p>
+<p>假设有3个盘子，如何把这些盘子从左边柱子上，借助中间柱子移动到最右边？</p>
+<blockquote>
+<p>需要将最上层两个盘子移动到中间柱子，然后将最下面的盘子移动到最右边，再将中间的两个盘子移动到最右边。</p>
+</blockquote>
+<p>如何移动两个盘子？</p>
+<blockquote>
+<p>需要将上面的盘子移动到中间的柱子，将第二个（底下的）盘子移动到目标盘子。</p>
+</blockquote>
+<p>如果只有一个盘子？</p>
+<blockquote>
+<p>直接移动盘子到目标柱子。</p>
+</blockquote>
+<p><img src="http://i.imgur.com/Id8S7Y5.gif" alt=""></p>
+<pre><code>function hanoi(disc , src , mid , dst){
+    if(disc &gt; 0){
+        hanoi(disc-1 , src , dst , mid);
+        console.log(&quot;Move the &quot;+disc+&quot; from &quot;+src+&quot; to &quot;+dst);
+        hanoi(disc-1 , mid , src ,dst);
+    }
+}
+
+hanoi(3,a,b,c)
+
+//Move the 1 from src to dst
+//Move the 2 from src to mid
+//Move the 1 from dst to mid
+//Move the 3 from src to dst
+//Move the 1 from mid to src
+//Move the 2 from mid to dst
+//Move the 1 from src to dst
+</code></pre><p><strong>分析：</strong></p>
+<p>盘子数不能小于1。</p>
+<ol>
+<li>想要移动n个盘子，需要把上面的n-1个盘子移动到辅助柱子上，然后移动最底下的盘子到目标，最后，把辅助柱子上的盘子移动到目标柱子。</li>
+<li><p>如果递归想不通，那么思考下循环，谁是第一个被移动的盘子（假设最底下是3号盘子）？</p>
+<ul>
+<li><p>想移动3号盘子，需要移动2号盘子，想移动2号，盘子，需要移动1号盘子。所以在递归中，1号盘子先被移动。</p>
+</li>
+<li><p>1号盘子先被移动到那个柱子上呢？玩游戏我发现，单数盘子想要移动到目标柱子上，需要最顶层的盘子（1号盘子）先移动到目标柱子上；如果是双数盘子，则需要最顶层的盘子先移动到辅助柱子上。所以，到底1号盘子被先移动到那个柱子上，和盘子数有关。</p>
+</li>
+<li><p>从算法中我们亦可以看到，hanoi(disc-1 , src , dst , mid);交换了目标柱子和辅助柱子，如果disc为偶数，则1号（最顶层的）移动到了中间柱子(mid)；如果disc为奇数，则1号盘子移动到了目标柱子(dst)。</p>
+</li>
+</ul>
+</li>
+<li><p>画出移动盘子的树形图</p>
+</li>
+</ol>
+<p><img src="http://i.imgur.com/g87rGYm.png" alt=""></p>
+<p>这不就是中序遍历。</p>
+<pre><code> //Definition for a binary tree node.
+ function TreeNode(val) {
+     this.val = val;
+     this.left = this.right = null;
+ }
+//中序遍历
+var inorderTraversal = function(root) {
+    var result = [];
+    var help = function(root){
+        if(root===null) return;
+        help(root.left);
+        result.push(root.val);
+        help(root.right);
+    }
+    help(root);
+    return result;
+};
+
+//对于这样一个二叉树(nu 是null)
+
+           1
+       /       \
+      2          3
+    /   \      /   \
+   4    nu3    5     nu6
+  / \         / \   
+ nu1 nu2     nu4 nu5 
+</code></pre><p>分析：</p>
+<pre><code>help(值为1的节点);
+help(值为2的节点)
+help(值为4的节点);
+help(值为nu1的节点);return;
+result.add(4);
+help(值为nu2的节点);return;
+result.add(2);
+help(值为nu3的节点);return;
+result.add(1);
+help(值为3的节点);
+help(值为5的节点);
+help(值为nu4的节点);return;
+result.add(5);
+help(值为nu5的节点);return;
+result.add(3);
+help(值为nu6的节点);return;
+函数运行完毕。
+</code></pre><p>这里，我们通过一个result变量来维持结果集，所有的子问题都返回结果给result变量。</p>
+<p>我们想要得到这棵树的中序遍历，我们并没有上来就获取root的值，而是：</p>
+<ol>
+<li>不停地访问他的左节点，直到null为止，然后获取最近的父节点的值。</li>
+<li>然后再按照步骤1访问它的右节点。</li>
+</ol>
+<p>这就是递归的力量：要想做整体的事情，只需要知道整体中一部分的解决办法就可以了（要知道何时停止）。</p>
+<h2 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h2><p>再补充最后一个点，刚好还是一个尾递归。</p>
+<p>像之前的递归阶乘就是一种尾递归。</p>
+<p>摘自wiki：</p>
+<blockquote>
+<p>尾调用的重要性在于它可以不在调用栈上面添加一个新的堆栈帧——而是更新它，如同迭代一般。尾递归因而具有两个特征：<br></p>
+<ol>
+<li>调用自身函数(Self-called)；<br><br>2.计算仅占用常量栈空间(Stack Space)。</li>
+</ol>
+</blockquote>
+<pre><code> //Definition for a binary tree node.
+ function TreeNode(val) {
+     this.val = val;
+     this.left = this.right = null;
+ }
+//二叉树求和
+var sumNode = function(root) {
+    if(root===null) return 0;
+    return root.val + sumNode(root.left) + sumNode(root.right);
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/09/编程语言分类/" itemprop="url">
                   编程语言分类
                 </a>
@@ -1186,7 +1437,7 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
