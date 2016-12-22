@@ -1,0 +1,804 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一、this关键字作为函数被调用
+函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。
+
+function makeNoSense(x) { 
+this.x = x; 
+} 
+
+makeNoSense(5); 
+x;//">
+<meta property="og:type" content="article">
+<meta property="og:title" content="、constructor">
+<meta property="og:url" content="https://war3cdota.github.io/2016/12/22/、constructor/index.html">
+<meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="一、this关键字作为函数被调用
+函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。
+
+function makeNoSense(x) { 
+this.x = x; 
+} 
+
+makeNoSense(5); 
+x;//">
+<meta property="og:updated_time" content="2016-12-22T02:54:43.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="、constructor">
+<meta name="twitter:description" content="一、this关键字作为函数被调用
+函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。
+
+function makeNoSense(x) { 
+this.x = x; 
+} 
+
+makeNoSense(5); 
+x;//">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://war3cdota.github.io/2016/12/22/、constructor/"/>
+
+  <title> 、constructor | 庆轩的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">庆轩的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                、constructor
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T10:54:10+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、this关键字"><a href="#一、this关键字" class="headerlink" title="一、this关键字"></a>一、this关键字</h2><h3 id="作为函数被调用"><a href="#作为函数被调用" class="headerlink" title="作为函数被调用"></a>作为函数被调用</h3><blockquote>
+<p>函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。</p>
+</blockquote>
+<pre><code>function makeNoSense(x) { 
+this.x = x; 
+} 
+
+makeNoSense(5); 
+x;// x 已经成为一个值为 5 的全局变量
+</code></pre><h3 id="作为对象方法调用"><a href="#作为对象方法调用" class="headerlink" title="作为对象方法调用"></a>作为对象方法调用</h3><blockquote>
+<p>在 JavaScript 中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方式时，this 被自然绑定到该对象。</p>
+</blockquote>
+<pre><code>var point = { 
+x : 0, 
+y : 0, 
+moveTo : function(x, y) { 
+    this.x = this.x + x; 
+    this.y = this.y + y; 
+    } 
+}; 
+
+point.moveTo(1, 1)//this 绑定到当前对象，即 point 对象
+</code></pre><p><strong>内部函数再定义内部函数</strong></p>
+<p>上述的moveTo()函数已经是point的内部函数了，如果，我还想在moveTo中再加入一个函数：</p>
+<pre><code>var point = { 
+ x : 0, 
+ y : 0, 
+ moveTo : function(x, y) {
+    console.log(this); //point对象
+     // 内部函数
+     var moveX = function(x) {
+        console.log(this); //window对象
+        this.x = x;//this 绑定到了哪里？
+    }; 
+    // 内部函数
+    var moveY = function(y) { 
+        this.y = y;//this 绑定到了哪里？
+    }; 
+
+    moveX(x); 
+    moveY(y); 
+    } 
+ }; 
+ point.moveTo(1, 1); 
+ point.x; //==&gt;0
+ point.y; //==&gt;0
+ x; //==&gt;1
+ y; //==&gt;1
+</code></pre><p>这里出现了一个错误，第一个this显示出是point对象，但是第二个this却显示出是window对象。</p>
+<blockquote>
+<p>这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>
+</blockquote>
+<pre><code>var point = { 
+x : 0, 
+y : 0, 
+moveTo : function(x, y) { 
+     var that = this; 
+    // 内部函数
+    var moveX = function(x) { 
+    that.x = x; 
+    }; 
+    // 内部函数
+    var moveY = function(y) { 
+    that.y = y; 
+    } 
+    moveX(x); 
+    moveY(y); 
+    } 
+}; 
+point.moveTo(1, 1); 
+point.x; //==&gt;1 
+point.y; //==&gt;1
+</code></pre><p>当内部函数嵌套只有一层，那么还是符合<code>内部函数this绑定在外层函数对应的对象上</code>，但是，如果超过了1层嵌套，那么在高于1层的内部函数中，this对象如果不借助that，那么this将会指向window对象。</p>
+<h3 id="apply或call调用"><a href="#apply或call调用" class="headerlink" title="apply或call调用"></a>apply或call调用</h3><p>﻿</p>
+<pre><code>function Point(x, y){ 
+    this.x = x; 
+    this.y = y; 
+    this.moveTo = function(x, y){ 
+        this.x = x; 
+        this.y = y; 
+    } 
+}
+
+ var p1 = new Point(0, 0); 
+ var p2 = {x: 0, y: 0}; 
+ p1.moveTo(1, 1); 
+ p1.moveTo.apply(p2, [10, 10]);
+</code></pre><p>这里p1是一个<code>Point {x: 1, y: 1}</code>对象，而p2则是一个<code>Object {x: 10, y: 10}</code>对象。</p>
+<h3 id="eval调用"><a href="#eval调用" class="headerlink" title="eval调用"></a>eval调用</h3><blockquote>
+<p>JavaScript 中的 eval 方法可以将字符串转换为 JavaScript 代码，使用 eval 方法时，this 指向哪里呢？答案很简单，看谁在调用 eval 方法，调用者的执行环境（ExecutionContext）中的 this 就被 eval 方法继承下来了。</p>
+</blockquote>
+<h2 id="二、proto-和-prototype"><a href="#二、proto-和-prototype" class="headerlink" title="二、proto 和. prototype"></a>二、<strong>proto</strong> 和. prototype</h2><blockquote>
+<p>p.<strong>proto</strong> === p.constructor.prototype === Person.prototype;</p>
+</blockquote>
+<p><strong>一、 所有构造器/函数的<strong>proto</strong>都指向Function.prototype，它是一个空函数（Empty function）</strong></p>
+<pre><code>function A(){}
+A.__proto__ === Function.prototype; //true
+//内置对象
+Number.__proto__ === Function.prototype  // true
+</code></pre><p>特殊的，如Math对象的<em>proto</em>是Object.prototype</p>
+<pre><code>Math.__proto__ === Object.prototype  // true
+</code></pre><blockquote>
+<p>知道了所有构造器（含内置及自定义）的<strong>proto</strong>都是Function.prototype，那Function.prototype的<strong>proto</strong>是谁呢？</p>
+</blockquote>
+<pre><code>Function.prototype.__proto__ === Object.prototype;//true
+</code></pre><blockquote>
+<p>这说明所有的构造器也都是一个普通JS对象，可以给构造器添加/删除属性等。同时它也继承了Object.prototype上的所有方法：toString、valueOf、hasOwnProperty等。</p>
+</blockquote>
+<p>最后Object.prototype的<strong>proto</strong>是谁？</p>
+<pre><code>Object.prototype.__proto__ === null  // true
+</code></pre><p><strong>二、所有对象的<strong>proto</strong>都指向其构造器的prototype</strong></p>
+<p><code>__proto__</code>指向了，我不知道怎么说，用java的话来说就是class类。</p>
+<pre><code>var obj = {name: &apos;jack&apos;}
+var arr = [1,2,3]
+var reg = /hello/g
+var date = new Date
+var err = new Error(&apos;exception&apos;)
+
+console.log(obj.__proto__ === Object.prototype) // true
+console.log(arr.__proto__ === Array.prototype)  // true
+console.log(reg.__proto__ === RegExp.prototype) // true
+console.log(date.__proto__ === Date.prototype)  // true
+console.log(err.__proto__ === Error.prototype)  // true
+</code></pre><p>再看看自定义的构造器，这里定义了一个Person</p>
+<pre><code>function Person(name) {
+    this.name = name
+}
+var p = new Person(&apos;jack&apos;)
+console.log(p.__proto__ === Person.prototype) // true
+</code></pre><blockquote>
+<p>p是Person的实例对象，p的内部原型总是指向其构造器Person的prototype。</p>
+</blockquote>
+<p>每个对象都有一个constructor属性，可以获取它的构造器，因此以下打印结果也是恒等的</p>
+<pre><code>function Person(name) {
+    this.name = name
+}
+var p = new Person(&apos;jack&apos;)
+p.__proto__ === p.constructor.prototype
+</code></pre><h3 id="修改原型"><a href="#修改原型" class="headerlink" title="修改原型"></a>修改原型</h3><pre><code>function Person(name) {
+    this.name = name
+}
+var p = new Person(&apos;jack&apos;)
+Person.prototype = {
+    getName: function() {}
+}
+</code></pre><p>又由于</p>
+<pre><code>p.__proto__ === p.constructor.prototype === Person.prototype;
+</code></pre><p>所以，我觉得有三种写法。</p>
+<pre><code>Person.prototype.getName = function(){};
+var per = new Person(&apos;jack&apos;);
+per.__proto__.getName = function(){};
+per.constructor.prototype.getName = function(){};
+</code></pre><h2 id="三、constructor属性"><a href="#三、constructor属性" class="headerlink" title="三、constructor属性"></a>三、constructor属性</h2><blockquote>
+<p>返回一个指向创建了该对象原型的函数引用。</p>
+</blockquote>
+<pre><code>var a,b;
+(function(){
+  function A (arg1,arg2) {
+    this.a = 1;
+    this.b=2; 
+  }
+
+  A.prototype.log = function () {
+    console.log(this.a);
+  }
+  a = new A();
+  b = new A();
+})()
+a.log();
+// 1
+b.log();
+// 1
+</code></pre><blockquote>
+<p>通过以上代码我们可以得到两个对象，a,b，他们同为类A的实例。因为A在闭包里，所以现在我们是不能直接访问A的，那如果我想给类A增加新方法怎么办？</p>
+</blockquote>
+<pre><code>// a.constructor.prototype 在chrome,firefox中可以通过 a.__proto__ 直接访问
+a.constructor.prototype.log2 = function () {
+  console.log(this.b)
+}
+
+a.log2();
+// 2
+b.log2();
+// 2
+</code></pre><p>由于闭包的特性，我们只能借助<code>a.constructor.prototype</code>来更改原型。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/</a><br><a href="http://www.cnblogs.com/snandy/archive/2012/09/01/2664134.html" target="_blank" rel="external">http://www.cnblogs.com/snandy/archive/2012/09/01/2664134.html</a><br><a href="http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript" target="_blank" rel="external">http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/15/写写我理解的递归/" rel="next" title="写写我理解的递归">
+                <i class="fa fa-chevron-left"></i> 写写我理解的递归
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.png"
+               alt="LQX" />
+          <p class="site-author-name" itemprop="name">LQX</p>
+          <p class="site-description motion-element" itemprop="description">仰望星空，脚踏实地！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/War3cdota" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5608458/unclexuan?tab=profile" target="_blank" title="stack-overflow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  stack-overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:nwulqx@foxmail.com" target="_blank" title="nwulqx@foxmail.com">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  nwulqx@foxmail.com
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、this关键字"><span class="nav-number">1.</span> <span class="nav-text">一、this关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作为函数被调用"><span class="nav-number">1.1.</span> <span class="nav-text">作为函数被调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为对象方法调用"><span class="nav-number">1.2.</span> <span class="nav-text">作为对象方法调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply或call调用"><span class="nav-number">1.3.</span> <span class="nav-text">apply或call调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eval调用"><span class="nav-number">1.4.</span> <span class="nav-text">eval调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、proto-和-prototype"><span class="nav-number">2.</span> <span class="nav-text">二、proto 和. prototype</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改原型"><span class="nav-number">2.1.</span> <span class="nav-text">修改原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、constructor属性"><span class="nav-number">3.</span> <span class="nav-text">三、constructor属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LQX</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
