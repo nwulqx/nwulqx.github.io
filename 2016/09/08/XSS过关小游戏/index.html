@@ -1,90 +1,11 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="XSS," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
+  <title>XSS过关小游戏~ | 庆轩的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
 
 第一关：
 http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5
@@ -106,7 +27,7 @@ http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5
 &amp;lt;img onerror=&amp;quot;alert(document.domain);&amp;quot; src= /&amp;gt; 
 or
 &amp;lt;script&amp;gt;ale">
-<meta property="og:updated_time" content="2016-09-08T08:04:51.283Z">
+<meta property="og:updated_time" content="2016-12-31T07:25:47.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS过关小游戏~">
 <meta name="twitter:description" content="这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
@@ -118,197 +39,83 @@ http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5
 &amp;lt;img onerror=&amp;quot;alert(document.domain);&amp;quot; src= /&amp;gt; 
 or
 &amp;lt;script&amp;gt;ale">
+  
+    <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="https://war3cdota.github.io/2016/09/08/XSS过关小游戏/"/>
-
-  <title> XSS过关小游戏~ | 庆轩的博客 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">庆轩的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">庆轩的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/tools">Works</a>
+        
+          <a class="main-nav-link" href="/blogrolls">Blogrolls</a>
+        
+          <a class="main-nav-link" href="/comics">Comics</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
+      </div>
+    </div>
   </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-XSS过关小游戏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/08/XSS过关小游戏/" class="article-date">
+  <time datetime="2016-09-08T06:00:33.000Z" itemprop="datePublished">2016-09-08</time>
+</a>
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+  </div>
+  <div class="article-inner">
     
-      <header class="post-header">
-
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                XSS过关小游戏~
-              
-            
-          </h1>
-        
+  
+    <h1 class="article-title article-title-stick" itemprop="name">
+      XSS过关小游戏~
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T14:00:33+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
       </header>
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
+    <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
 <p>这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！</p>
@@ -320,7 +127,8 @@ or
 <pre><code>&lt;img onerror=&quot;alert(document.domain);&quot; src= /&gt; 
 </code></pre><p>or</p>
 <pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
+</code></pre><a id="more"></a>
+<h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
 <p><font color="red"><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="external">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></font><br></p>
 </blockquote>
 <p>先用</p>
@@ -572,316 +380,144 @@ body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))}
 
       
     </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2016/09/08/XSS过关小游戏/" data-id="cixcwoyoq000100mw7f1ya8tk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS/">XSS</a></li></ul>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/XSS/" rel="tag">#XSS</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/08/01/hosts/" rel="next" title="hosts使用">
-                <i class="fa fa-chevron-left"></i> hosts使用
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/08/前后端数据流导向/" rel="prev" title="前后端数据流导向">
-                前后端数据流导向 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+  
     
-  </div>
-
-
-        </div>
-        
-          
+<nav id="article-nav">
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/head.png"
-               alt="LQX" />
-          <p class="site-author-name" itemprop="name">LQX</p>
-          <p class="site-description motion-element" itemprop="description">仰望星空，脚踏实地！</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
+    <a href="/2016/12/08/前后端数据流导向/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/War3cdota" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://stackoverflow.com/users/5608458/unclexuan?tab=profile" target="_blank" title="stack-overflow">
-                  
-                    <i class="fa fa-fw fa-stack-overflow"></i>
-                  
-                  stack-overflow
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="mailto:nwulqx@foxmail.com" target="_blank" title="nwulqx@foxmail.com">
-                  
-                    <i class="fa fa-fw fa-envelope"></i>
-                  
-                  nwulqx@foxmail.com
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一关："><span class="nav-number">1.</span> <span class="nav-text">第一关：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二关"><span class="nav-number">2.</span> <span class="nav-text">第二关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三关"><span class="nav-number">3.</span> <span class="nav-text">第三关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四关"><span class="nav-number">4.</span> <span class="nav-text">第四关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五关"><span class="nav-number">5.</span> <span class="nav-text">第五关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六关"><span class="nav-number">6.</span> <span class="nav-text">第六关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第七关"><span class="nav-number">7.</span> <span class="nav-text">第七关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八关"><span class="nav-number">8.</span> <span class="nav-text">第八关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第九关"><span class="nav-number">9.</span> <span class="nav-text">第九关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-7"><span class="nav-number">9.1.</span> <span class="nav-text">UTF-7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十关"><span class="nav-number">9.2.</span> <span class="nav-text">第十关</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十一关："><span class="nav-number">10.</span> <span class="nav-text">第十一关：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#制表符越过"><span class="nav-number">10.1.</span> <span class="nav-text">制表符越过</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二关"><span class="nav-number">11.</span> <span class="nav-text">第十二关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用IE-的漏洞"><span class="nav-number">11.1.</span> <span class="nav-text">利用IE ``的漏洞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十三关"><span class="nav-number">12.</span> <span class="nav-text">第十三关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十四关"><span class="nav-number">13.</span> <span class="nav-text">第十四关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十五关"><span class="nav-number">14.</span> <span class="nav-text">第十五关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><span class="nav-number">14.1.</span> <span class="nav-text">JS编码（\转义字符+八进制 || 十六进制 || unicode）<参见></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十六关"><span class="nav-number">15.</span> <span class="nav-text">十六关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十七十八（UNSOLVED）"><span class="nav-number">15.1.</span> <span class="nav-text">第十七十八（UNSOLVED）</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
+          前后端数据流导向
         
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
+    </a>
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">LQX</span>
-</div>
+  
+    <a href="/2016/08/01/hosts/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hosts使用</div>
+    </a>
+  
+</nav>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+  
+</article>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
+</section>
         
+          <aside id="sidebar">
+  
+    
 
-        
-      </div>
-    </footer>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li></ul>
+    </div>
+  </div>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a>
     </div>
   </div>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
 
 
   
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/">JS的this、__proto__ 和. prototype 、constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/15/写写我理解的递归/">写写我理解的递归</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/09/编程语言分类/">编程语言分类</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/08/前后端数据流导向/">前后端数据流导向</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/08/XSS过关小游戏/">XSS过关小游戏~</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
+</aside>
+        
+      </div>
+      <footer id="footer">
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 LQX<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
   
-
-
-
+    <a href="/" class="mobile-nav-link">Home</a>
   
-
-
-
-
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
+    <a href="/about" class="mobile-nav-link">About</a>
   
-
+    <a href="/tools" class="mobile-nav-link">Works</a>
   
-
+    <a href="/blogrolls" class="mobile-nav-link">Blogrolls</a>
   
-
+    <a href="/comics" class="mobile-nav-link">Comics</a>
   
+</nav>
+    
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

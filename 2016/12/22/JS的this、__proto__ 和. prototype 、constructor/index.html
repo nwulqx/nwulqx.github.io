@@ -1,90 +1,11 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="一、this关键字作为函数被调用
+  <title>JS的this、__proto__ 和. prototype 、constructor | 庆轩的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、this关键字作为函数被调用
 函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。
 
 function makeNoSense(x) { 
@@ -106,7 +27,7 @@ this.x = x;
 
 makeNoSense(5); 
 x;//">
-<meta property="og:updated_time" content="2016-12-22T02:57:17.765Z">
+<meta property="og:updated_time" content="2016-12-31T07:05:55.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS的this、__proto__ 和. prototype 、constructor">
 <meta name="twitter:description" content="一、this关键字作为函数被调用
@@ -118,197 +39,83 @@ this.x = x;
 
 makeNoSense(5); 
 x;//">
+  
+    <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/"/>
-
-  <title> JS的this、__proto__ 和. prototype 、constructor | 庆轩的博客 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">庆轩的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">庆轩的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/tools">Works</a>
+        
+          <a class="main-nav-link" href="/blogrolls">Blogrolls</a>
+        
+          <a class="main-nav-link" href="/comics">Comics</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
+      </div>
+    </div>
   </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+</header>
+      <div class="outer">
+        <section id="main"><article id="js的this、__proto__-JS的this、__proto__ 和. prototype 、constructor" class="article article-type-js的this、__proto__" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" class="article-date">
+  <time datetime="2016-12-22T02:54:10.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+  </div>
+  <div class="article-inner">
     
-      <header class="post-header">
-
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                JS的this、__proto__ 和. prototype 、constructor
-              
-            
-          </h1>
-        
+  
+    <h1 class="article-title article-title-stick" itemprop="name">
+      JS的this、__proto__ 和. prototype 、constructor
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-22T10:54:10+08:00" content="2016-12-22">
-              2016-12-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
       </header>
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
+    <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、this关键字"><a href="#一、this关键字" class="headerlink" title="一、this关键字"></a>一、this关键字</h2><h3 id="作为函数被调用"><a href="#作为函数被调用" class="headerlink" title="作为函数被调用"></a>作为函数被调用</h3><blockquote>
 <p>函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。</p>
@@ -319,7 +126,8 @@ this.x = x;
 
 makeNoSense(5); 
 x;// x 已经成为一个值为 5 的全局变量
-</code></pre><h3 id="作为对象方法调用"><a href="#作为对象方法调用" class="headerlink" title="作为对象方法调用"></a>作为对象方法调用</h3><blockquote>
+</code></pre><a id="more"></a>
+<h3 id="作为对象方法调用"><a href="#作为对象方法调用" class="headerlink" title="作为对象方法调用"></a>作为对象方法调用</h3><blockquote>
 <p>在 JavaScript 中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方式时，this 被自然绑定到该对象。</p>
 </blockquote>
 <pre><code>var point = { 
@@ -499,306 +307,133 @@ b.log2();
 
       
     </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/12/15/写写我理解的递归/" rel="next" title="写写我理解的递归">
-                <i class="fa fa-chevron-left"></i> 写写我理解的递归
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixcwoyok000000mwdufxfij6" class="article-share-link">Share</a>
       
       
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+  
     
-  </div>
-
-
-        </div>
-        
-          
+<nav id="article-nav">
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  
+    <a href="/2016/12/15/写写我理解的递归/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">写写我理解的递归</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li></ul>
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/head.png"
-               alt="LQX" />
-          <p class="site-author-name" itemprop="name">LQX</p>
-          <p class="site-description motion-element" itemprop="description">仰望星空，脚踏实地！</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/War3cdota" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://stackoverflow.com/users/5608458/unclexuan?tab=profile" target="_blank" title="stack-overflow">
-                  
-                    <i class="fa fa-fw fa-stack-overflow"></i>
-                  
-                  stack-overflow
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="mailto:nwulqx@foxmail.com" target="_blank" title="nwulqx@foxmail.com">
-                  
-                    <i class="fa fa-fw fa-envelope"></i>
-                  
-                  nwulqx@foxmail.com
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、this关键字"><span class="nav-number">1.</span> <span class="nav-text">一、this关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作为函数被调用"><span class="nav-number">1.1.</span> <span class="nav-text">作为函数被调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为对象方法调用"><span class="nav-number">1.2.</span> <span class="nav-text">作为对象方法调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply或call调用"><span class="nav-number">1.3.</span> <span class="nav-text">apply或call调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eval调用"><span class="nav-number">1.4.</span> <span class="nav-text">eval调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、proto-和-prototype"><span class="nav-number">2.</span> <span class="nav-text">二、proto 和. prototype</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改原型"><span class="nav-number">2.1.</span> <span class="nav-text">修改原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、constructor属性"><span class="nav-number">3.</span> <span class="nav-text">三、constructor属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
-
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a>
     </div>
-  </aside>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
 
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/">JS的this、__proto__ 和. prototype 、constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/15/写写我理解的递归/">写写我理解的递归</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/09/编程语言分类/">编程语言分类</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/08/前后端数据流导向/">前后端数据流导向</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/08/XSS过关小游戏/">XSS过关小游戏~</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
         
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
+      <footer id="footer">
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">LQX</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 LQX<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
-
+</footer>
+    </div>
+    <nav id="mobile-nav">
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <a href="/" class="mobile-nav-link">Home</a>
   
-
-
-
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
+    <a href="/about" class="mobile-nav-link">About</a>
   
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
+    <a href="/tools" class="mobile-nav-link">Works</a>
   
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
+    <a href="/blogrolls" class="mobile-nav-link">Blogrolls</a>
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
+    <a href="/comics" class="mobile-nav-link">Comics</a>
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+</nav>
+    
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-  
-  
+<script src="/js/script.js"></script>
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-
+  </div>
 </body>
 </html>
