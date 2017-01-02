@@ -540,7 +540,7 @@ body {
 .article-title,
 .article-title-stick {
   text-decoration: none;
-  font-size: 2em;
+  font-size: 1.5em;
   color: #fff;
   line-height: 1.1em;
   -webkit-transition: color 0.2s;
@@ -553,8 +553,8 @@ body {
   width: fit-content;
   width: -moz-fit-content;
   width: -webkit-fit-content;
-  padding: 10px 20px 10px 985px;
-  margin-left: -1000px;
+  padding: 10px 30px 14px 45px;
+  margin-left: -51px;
   overflow: hidden;
 }
 .article-title-stick:hover {
