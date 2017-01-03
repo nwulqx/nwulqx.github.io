@@ -6,41 +6,23 @@
   <title>写写我理解的递归 | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="递归阶乘先用一个例子说明：
-function factorial(n){
-  var result = n;
-  for(var i = n-1;i&amp;gt;0;i--){
-    result *= i;
-  }
-  return result;
-}
+1234567function factorial(n)&amp;#123;	var result = n;	for(var i = n-1;i&amp;gt;0;i--)&amp;#123;	result *= i;&amp;#125;return result;&amp;#125;
 上面使用循环实现了一个阶乘计算。如何换成递归呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写写我理解的递归">
 <meta property="og:url" content="https://war3cdota.github.io/2016/12/15/写写我理解的递归/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="递归阶乘先用一个例子说明：
-function factorial(n){
-  var result = n;
-  for(var i = n-1;i&amp;gt;0;i--){
-    result *= i;
-  }
-  return result;
-}
+1234567function factorial(n)&amp;#123;	var result = n;	for(var i = n-1;i&amp;gt;0;i--)&amp;#123;	result *= i;&amp;#125;return result;&amp;#125;
 上面使用循环实现了一个阶乘计算。如何换成递归呢？">
 <meta property="og:image" content="http://i.imgur.com/AZoEtiC.jpg">
 <meta property="og:image" content="http://i.imgur.com/Id8S7Y5.gif">
 <meta property="og:image" content="http://i.imgur.com/g87rGYm.png">
-<meta property="og:updated_time" content="2016-12-31T07:25:15.547Z">
+<meta property="og:updated_time" content="2017-01-03T04:58:20.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写写我理解的递归">
 <meta name="twitter:description" content="递归阶乘先用一个例子说明：
-function factorial(n){
-  var result = n;
-  for(var i = n-1;i&amp;gt;0;i--){
-    result *= i;
-  }
-  return result;
-}
+1234567function factorial(n)&amp;#123;	var result = n;	for(var i = n-1;i&amp;gt;0;i--)&amp;#123;	result *= i;&amp;#125;return result;&amp;#125;
 上面使用循环实现了一个阶乘计算。如何换成递归呢？">
 <meta name="twitter:image" content="http://i.imgur.com/AZoEtiC.jpg">
   
@@ -92,9 +74,9 @@ function factorial(n){
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -126,14 +108,8 @@ function factorial(n){
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><p>先用一个例子说明：</p>
-<pre><code>function factorial(n){
-  var result = n;
-  for(var i = n-1;i&gt;0;i--){
-    result *= i;
-  }
-  return result;
-}
-</code></pre><p>上面使用循环实现了一个阶乘计算。如何换成递归呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> result = n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = n<span class="number">-1</span>;i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">	result *= i;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面使用循环实现了一个阶乘计算。如何换成递归呢？</p>
 <a id="more"></a>
 <p>如何求<code>3</code>的阶乘？</p>
 <blockquote>
@@ -150,14 +126,9 @@ function factorial(n){
 <p>这上面的都是重复的，让我们来考虑复杂点的：</p>
 <p>如何求<code>n</code>的阶乘？</p>
 <blockquote>
-<p>如果值不是<code>1</code>，你就必须让<code>n</code>和<code>n-1</code>的阶乘相乘，可以简写成<code>n! = n(n − 1)!</code> 或者<code>n * f(n-1)</code>，f(n-1)就是n-1的阶乘的数学写法。</p>
+<p>如果值不是<code>1</code>，你就必须让<code>n</code>和<code>n-1</code>的阶乘相乘，可以简写成<code>n! = n(n − 1)!</code> 或者<code>n * f(n-1)</code>，f(n-1)就是n-1的阶乘的数学写法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> n*factorial(n<span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<pre><code>function factorial(n){
-  if(n==1)
-    return 1;
-  return n*factorial(n-1);
-}
-</code></pre><p>当然，这两种方法求阶乘对于我们都能理解，可以理解为局部循环和函数循环，但都达到了一目的。</p>
+<p>当然，这两种方法求阶乘对于我们都能理解，可以理解为局部循环和函数循环，但都达到了一目的。</p>
 <p>引自wiki百科(<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" target="_blank" rel="external">递归</a>)：</p>
 <blockquote>
 <p>计算理论可以证明递归的作用可以完全替换循环。</p>
@@ -176,25 +147,8 @@ function factorial(n){
 <blockquote>
 <p>直接移动盘子到目标柱子。</p>
 </blockquote>
-<p><img src="http://i.imgur.com/Id8S7Y5.gif" alt=""></p>
-<pre><code>function hanoi(disc , src , mid , dst){
-    if(disc &gt; 0){
-        hanoi(disc-1 , src , dst , mid);
-        console.log(&quot;Move the &quot;+disc+&quot; from &quot;+src+&quot; to &quot;+dst);
-        hanoi(disc-1 , mid , src ,dst);
-    }
-}
-
-hanoi(3,a,b,c)
-
-//Move the 1 from src to dst
-//Move the 2 from src to mid
-//Move the 1 from dst to mid
-//Move the 3 from src to dst
-//Move the 1 from mid to src
-//Move the 2 from mid to dst
-//Move the 1 from src to dst
-</code></pre><p><strong>分析：</strong></p>
+<p><img src="http://i.imgur.com/Id8S7Y5.gif" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hanoi</span>(<span class="params">disc , src , mid , dst</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(disc &gt; <span class="number">0</span>)&#123;</div><div class="line">		hanoi(disc<span class="number">-1</span> , src , dst , mid);</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Move the "</span>+disc+<span class="string">" from "</span>+src+<span class="string">" to "</span>+dst);</div><div class="line">		hanoi(disc<span class="number">-1</span> , mid , src ,dst);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">	</div><div class="line">hanoi(<span class="number">3</span>,a,b,c)</div><div class="line"></div><div class="line"><span class="comment">//Move the 1 from src to dst</span></div><div class="line"><span class="comment">//Move the 2 from src to mid</span></div><div class="line"><span class="comment">//Move the 1 from dst to mid</span></div><div class="line"><span class="comment">//Move the 3 from src to dst</span></div><div class="line"><span class="comment">//Move the 1 from mid to src</span></div><div class="line"><span class="comment">//Move the 2 from mid to dst</span></div><div class="line"><span class="comment">//Move the 1 from src to dst</span></div></pre></td></tr></table></figure></p>
+<p><strong>分析：</strong></p>
 <p>盘子数不能小于1。</p>
 <ol>
 <li>想要移动n个盘子，需要把上面的n-1个盘子移动到辅助柱子上，然后移动最底下的盘子到目标，最后，把辅助柱子上的盘子移动到目标柱子。</li>
@@ -213,34 +167,8 @@ hanoi(3,a,b,c)
 </ol>
 <p><img src="http://i.imgur.com/g87rGYm.png" alt=""></p>
 <p>这不就是中序遍历。</p>
-<pre><code> //Definition for a binary tree node.
- function TreeNode(val) {
-     this.val = val;
-     this.left = this.right = null;
- }
-//中序遍历
-var inorderTraversal = function(root) {
-    var result = [];
-    var help = function(root){
-        if(root===null) return;
-        help(root.left);
-        result.push(root.val);
-        help(root.right);
-    }
-    help(root);
-    return result;
-};
-
-//对于这样一个二叉树(nu 是null)
-
-           1
-       /       \
-      2          3
-    /   \      /   \
-   4    nu3    5     nu6
-  / \         / \   
- nu1 nu2     nu4 nu5 
-</code></pre><p>分析：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//Definition for a binary tree node.</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">TreeNode</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">     <span class="keyword">this</span>.val = val;</div><div class="line">     <span class="keyword">this</span>.left = <span class="keyword">this</span>.right = <span class="literal">null</span>;</div><div class="line"> &#125;</div><div class="line"><span class="comment">//中序遍历</span></div><div class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">var</span> help = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(root===<span class="literal">null</span>) <span class="keyword">return</span>;</div><div class="line">        help(root.left);</div><div class="line">        result.push(root.val);</div><div class="line">        help(root.right);</div><div class="line">    &#125;</div><div class="line">    help(root);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">	<span class="comment">//对于这样一个二叉树(nu 是null)</span></div><div class="line"></div><div class="line">		       <span class="number">1</span></div><div class="line">		   /       \</div><div class="line">		  <span class="number">2</span>          <span class="number">3</span></div><div class="line">		/   \      /   \</div><div class="line">	   <span class="number">4</span>    nu3    <span class="number">5</span>     nu6</div><div class="line">	  / \         / \   </div><div class="line">	 nu1 nu2     nu4 nu5</div></pre></td></tr></table></figure>
+<p>分析：</p>
 <pre><code>help(值为1的节点);
 help(值为2的节点)
 help(值为4的节点);
@@ -271,26 +199,18 @@ help(值为nu6的节点);return;
 <blockquote>
 <p>尾调用的重要性在于它可以不在调用栈上面添加一个新的堆栈帧——而是更新它，如同迭代一般。尾递归因而具有两个特征：<br></p>
 <ol>
-<li>调用自身函数(Self-called)；<br><br>2.计算仅占用常量栈空间(Stack Space)。</li>
+<li>调用自身函数(Self-called)；<br><br>2.计算仅占用常量栈空间(Stack Space)。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Definition for a binary tree node.</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">TreeNode</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">	 <span class="keyword">this</span>.val = val;</div><div class="line">	 <span class="keyword">this</span>.left = <span class="keyword">this</span>.right = <span class="literal">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//二叉树求和</span></div><div class="line"><span class="keyword">var</span> sumNode = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(root===<span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> root.val + sumNode(root.left) + sumNode(root.right);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></li>
 </ol>
 </blockquote>
-<pre><code> //Definition for a binary tree node.
- function TreeNode(val) {
-     this.val = val;
-     this.left = this.right = null;
- }
-//二叉树求和
-var sumNode = function(root) {
-    if(root===null) return 0;
-    return root.val + sumNode(root.left) + sumNode(root.right);
-};
-</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixfygccb00060cmwsxef3lae" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixh1ospq0004w0mw3wrb08xe" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion/">recursion</a></li></ul>
+
     </footer>
   </div>
   
@@ -298,7 +218,7 @@ var sumNode = function(root) {
 <nav id="article-nav">
   
     <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           JS的this、__proto__ 和. prototype 、constructor
@@ -308,7 +228,7 @@ var sumNode = function(root) {
   
   
     <a href="/2016/12/09/编程语言分类/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">编程语言分类</div>
     </a>
   
@@ -326,9 +246,9 @@ var sumNode = function(root) {
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2016/">2016</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web开发/">Web开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a></li></ul>
     </div>
   </div>
 
@@ -336,9 +256,9 @@ var sumNode = function(root) {
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a>
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a>
     </div>
   </div>
 
@@ -355,7 +275,7 @@ var sumNode = function(root) {
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -392,7 +312,7 @@ var sumNode = function(root) {
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

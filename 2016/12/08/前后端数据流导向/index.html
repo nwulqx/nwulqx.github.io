@@ -15,7 +15,7 @@
 模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
 <meta property="og:image" content="http://i.imgur.com/bupRErJ.png">
 <meta property="og:image" content="http://i.imgur.com/O4dnoPP.png">
-<meta property="og:updated_time" content="2016-12-31T07:25:27.049Z">
+<meta property="og:updated_time" content="2017-01-03T04:57:48.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前后端数据流导向">
 <meta name="twitter:description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。
@@ -70,9 +70,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -115,23 +115,9 @@
 <p>JS操作：</p>
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt=""></p>
 <p>例如：</p>
-<pre><code>JSP中最常见的一种语法：
-&lt;%=java代码%&gt;，就是一种很常见的模板写法。
-</code></pre><p>而前端去操作的话，会使用JavaScript：</p>
-<pre><code>&lt;div id=&apos;title&apos;&gt;&lt;/div&gt;
-&lt;script&gt;
-    $.ajax({
-        type: &quot;get&quot;,
-        url: &quot;data.json&quot;,
-        async: false,
-        success: function (data) {
-            $(&quot;#title&quot;).html(data.title);
-        },
-        error: function () {
-        }
-    });
-&lt;/script&gt;
-</code></pre><p>可能都会基于此种方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">JSP中最常见的一种语法：</div><div class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</div></pre></td></tr></table></figure>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	$.ajax(&#123;</div><div class="line">        type: <span class="string">"get"</span>,</div><div class="line">        url: <span class="string">"data.json"</span>,</div><div class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</div><div class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">            $(<span class="string">"#title"</span>).html(data.title);</div><div class="line">        &#125;,</div><div class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
 <li>从思路上的区别，JSP更想用标签去替代一些AJax请求，直接生成静态页面返回给用户。</li>
@@ -153,9 +139,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/08/前后端数据流导向/" data-id="cixfygccg000a0cmwhq5dy1gq" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2016/12/08/前后端数据流导向/" data-id="cixh1ospz0008w0mwi1pnxeok" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web开发/">Web开发</a></li></ul>
+
     </footer>
   </div>
   
@@ -163,7 +151,7 @@
 <nav id="article-nav">
   
     <a href="/2016/12/09/编程语言分类/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           编程语言分类
@@ -173,7 +161,7 @@
   
   
     <a href="/2016/09/08/XSS过关小游戏/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">XSS过关小游戏~</div>
     </a>
   
@@ -191,9 +179,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2016/">2016</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web开发/">Web开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a></li></ul>
     </div>
   </div>
 
@@ -201,9 +189,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a>
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a>
     </div>
   </div>
 
@@ -220,7 +208,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -257,7 +245,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
