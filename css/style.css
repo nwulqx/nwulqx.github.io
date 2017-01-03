@@ -1367,6 +1367,14 @@ pre .javascript .function {
 .widget ol ol {
   list-style: decimal;
 }
+.widget-head {
+  width: 100px;
+  height: 130px;
+  -webkit-border-radius: 60px;
+  border-radius: 60px;
+  float: left;
+}
+.widget-link,
 .category-list-count,
 .tag-list-count,
 .archive-list-count {
@@ -1374,11 +1382,13 @@ pre .javascript .function {
   color: #999;
   font-size: 0.85em;
 }
+.widget-link:before,
 .category-list-count:before,
 .tag-list-count:before,
 .archive-list-count:before {
   content: "(";
 }
+.widget-link:after,
 .category-list-count:after,
 .tag-list-count:after,
 .archive-list-count:after {
