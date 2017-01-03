@@ -1114,7 +1114,7 @@ body {
   margin: 0px 10px;
   font-size: 14px;
   overflow: auto;
-  color: #666;
+  color: #fff;
   line-height: 24px;
 }
 .article-entry .highlight .gutter pre,
@@ -1152,7 +1152,7 @@ body {
 }
 .article-entry .highlight figcaption {
   font-size: 0.85em;
-  color: #999;
+  color: #75715e;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -1209,7 +1209,7 @@ body {
 }
 .article-entry .gist .gist-file .gist-meta {
   background: #272822;
-  color: #999;
+  color: #75715e;
   font: 0.85em "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
@@ -1225,7 +1225,7 @@ body {
 }
 pre .comment,
 pre .title {
-  color: #999;
+  color: #fff;
 }
 pre .variable,
 pre .attribute,
@@ -1239,7 +1239,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #f2777a;
+  color: #f92672;
 }
 pre .number,
 pre .preprocessor,
@@ -1277,7 +1277,7 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #66d9ef;
 }
 @media screen and (max-width: 479px) {
   #mobile-nav {

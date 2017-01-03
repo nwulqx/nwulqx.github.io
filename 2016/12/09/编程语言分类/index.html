@@ -8,8 +8,8 @@
   <meta name="description" content="JavaScript语言精粹这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。
 静态语言和动态语言先举个例子，C语言：1float pi = 3.14159265;
 JavaScript：
-123functionvar str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
-比较这两个方式。在C语言中，我们用float关键字定义了变">
+12var str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
+比较这两个方式。在C语言中，我们用float关键字定义了变量 pi，而JS并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程语言分类">
 <meta property="og:url" content="https://war3cdota.github.io/2016/12/09/编程语言分类/index.html">
@@ -17,16 +17,16 @@ JavaScript：
 <meta property="og:description" content="JavaScript语言精粹这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。
 静态语言和动态语言先举个例子，C语言：1float pi = 3.14159265;
 JavaScript：
-123functionvar str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
-比较这两个方式。在C语言中，我们用float关键字定义了变">
-<meta property="og:updated_time" content="2017-01-03T04:56:41.391Z">
+12var str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
+比较这两个方式。在C语言中，我们用float关键字定义了变量 pi，而JS并">
+<meta property="og:updated_time" content="2017-01-03T07:10:03.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程语言分类">
 <meta name="twitter:description" content="JavaScript语言精粹这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。
 静态语言和动态语言先举个例子，C语言：1float pi = 3.14159265;
 JavaScript：
-123functionvar str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
-比较这两个方式。在C语言中，我们用float关键字定义了变">
+12var str = &quot;hello&quot;;alert(str);//第一行之后，str就是是一个String类型了
+比较这两个方式。在C语言中，我们用float关键字定义了变量 pi，而JS并">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -112,7 +112,7 @@ JavaScript：
         <h1 id="JavaScript语言精粹"><a href="#JavaScript语言精粹" class="headerlink" title="JavaScript语言精粹"></a>JavaScript语言精粹</h1><p>这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。</p>
 <h1 id="静态语言和动态语言"><a href="#静态语言和动态语言" class="headerlink" title="静态语言和动态语言"></a>静态语言和动态语言</h1><p>先举个例子，C语言：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span> pi = <span class="number">3.14159265</span>;</div></pre></td></tr></table></figure></p>
 <p>JavaScript：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span></span></div><div class="line"><span class="title">var</span> <span class="title">str</span> = "<span class="title">hello</span>";</div><div class="line"><span class="title">alert</span>(<span class="params">str</span>);//第一行之后，<span class="title">str</span>就是是一个<span class="title">String</span>类型了</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"hello"</span>;</div><div class="line">alert(str);<span class="comment">//第一行之后，str就是是一个String类型了</span></div></pre></td></tr></table></figure>
 <p>比较这两个方式。在C语言中，我们用<code>float</code>关键字定义了变量 <code>pi</code>，而JS并未使用这样的方式。<br></p>
 <a id="more"></a>
 <p>C语言是一种<code>静态类型</code>，在声明期 | 编译期就给定了变量的类型；在<code>静态类型</code>语言中，<strong>类型是从属于变量（变量改变类型需要类型声明改变）</strong>。从声明那一刻开始，变量只能被分配声明类型的数据（给定的数据类型 | 类型转换后的data）。那既然有这样的需求，静态语言会有一个<code>编译期</code>用于类型检测，这样就会产生<code>编译期</code>和<code>运行期</code>两个时期。<br><br>一些常见的静态类型语言： C++, C#, Java, Basic, Pascal, Ada 和 Fortran。<br></p>
@@ -203,11 +203,8 @@ JavaScript：
 </table>
 <h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><h3 id="强弱类型-和-动静态语言区别："><a href="#强弱类型-和-动静态语言区别：" class="headerlink" title="强弱类型 和 动静态语言区别："></a><code>强弱类型</code> 和 <code>动静态语言</code>区别：</h3><p>这两个概念是有区别的，<code>强弱类型</code>的本质是<strong>是否允许不同类型之间进行操作</strong>，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//JavaScript</span></div><div class="line"><span class="keyword">var</span> i = <span class="number">1</span>;<span class="comment">//i 是number类型，数字</span></div><div class="line">i = i + <span class="string">"abc"</span><span class="comment">//不会报异常，结果为"1abc"</span></div></pre></td></tr></table></figure></p>
 <p><code>弱类型</code>隐式转换了变量类型。</p>
-<p>再如：</p>
-<pre><code>//Python
-a = 1;//a是一个数字类型
-a = a+&quot;abc&quot;//异常，不允许数字和字符串进行 &quot;+&quot;操作
-</code></pre><p>python是一个<code>强类型</code>语言，不允许不同类型的变量之间的操作。</p>
+<p>再如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//Python</div><div class="line">a = <span class="number">1</span>;//a是一个数字类型</div><div class="line">a = a+<span class="string">"abc"</span>//异常，不允许数字和字符串进行 <span class="string">"+"</span>操作</div></pre></td></tr></table></figure></p>
+<p>python是一个<code>强类型</code>语言，不允许不同类型的变量之间的操作。</p>
 <blockquote>
 <p>这里强调一下，我一直以为，Python是动态的语言，所以一定是弱类型语言，但是其实Python是动态的强类型语言。所以说这两个概念是有区别的：强类型不允许不同类型之间的变量有操作。动态型使得变量的类型是由数据的类型所决定，而不是由关键字。</p>
 </blockquote>
@@ -219,7 +216,7 @@ a = a+&quot;abc&quot;//异常，不允许数字和字符串进行 &quot;+&quot;�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/09/编程语言分类/" data-id="cixh1ospv0006w0mwhstdz06o" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/09/编程语言分类/" data-id="cixhcing5000c50mwwzhxlg3i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
