@@ -71,6 +71,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-6-ZigZag-Conversion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/06/6-ZigZag-Conversion/" class="article-date">
+  <time datetime="2017-01-06T08:51:28.000Z" itemprop="datePublished">2017-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/06/6-ZigZag-Conversion/"><div class="article-title-stick">6. ZigZag Conversion</div></a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The string <font color="rgb(199,37,78)">“PAYPALISHIRING”</font> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<pre><code>P   A   H   N
+A P L S I I G
+Y   I   R
+</code></pre><p>And then read line by line: <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font></p>
+<p>Write the code that will take a string and make this conversion given a number of rows:</p>
+<pre><code>string convert(string text, int nRows);
+</code></pre><p><font color="rgb(199,37,78)">convert(“PAYPALISHIRING”, 3)</font> should return <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font>.</p>
+<h1 id="Brute-Force："><a href="#Brute-Force：" class="headerlink" title="Brute Force："></a>Brute Force：</h1><blockquote>
+<p>生成numRows个StringBuffer对象;<br><br>从0~n-1循环添加元素共n个，再从n-2到1循环添加元素共n-2个；<br><br>外层使用while循环，自增通过索引内 i++。</p>
+</blockquote>
+<pre><code>while(i&lt;str.length){
+    for(int j=0;j&lt;numRows&amp;&amp;i&lt;str.length;j++)
+        sb[j].append(str[i++]);
+
+    for(int k=numRows-2;k&gt;0&amp;&amp;i&lt;str.length;k--)
+        sb[k].append(str[i++]);
+}
+</code></pre><p>时间复杂度是O(n)。</p>
+<h1 id="嵌套指针法："><a href="#嵌套指针法：" class="headerlink" title="嵌套指针法："></a>嵌套指针法：</h1><blockquote>
+<p>该方法的精髓在于：建立新的数组存储每一个元素对应的新数组的索引（需要先建立numRows个StringBuffer对象）</p>
+</blockquote>
+<pre><code>/*n=numRows
+Δ=2n-2    0                           2n-2                       4n-4
+Δ=        1                     2n-3  2n-1                4n-5   4n-3
+Δ=        2               2n-4        2n              4n-4       .
+Δ=        .           .               .               .            .
+Δ=        .       n+1                 .           3n+1              .
+Δ=        n-2 n                       3n-4    3n                 5n-6
+Δ=2n-2    n-1                         3n-3                       5n-5
+*/
+</code></pre><p>其时间复杂度为O(n)。</p>
+<p>核心算法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index[i] = i%(<span class="number">2</span>*numRows-<span class="number">2</span>);</div><div class="line"><span class="keyword">if</span>(index[i]&gt;(numRows-<span class="number">1</span>))</div><div class="line">	index[i] = (<span class="number">2</span>*numRows-<span class="number">2</span>)-index[i];</div><div class="line"></div><div class="line"><span class="number">0</span>     <span class="number">6</span></div><div class="line"><span class="number">1</span>  <span class="number">5</span>  <span class="number">7</span></div><div class="line"><span class="number">2</span>  <span class="number">4</span>  <span class="number">8</span></div><div class="line"><span class="number">3</span>     <span class="number">9</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>每6个数为一个循环，可知模数<code>2n-2</code><br><br>但是，斜着上去的那一行算出了<code>补数</code>，需要用模数去减它才可以得到正确的行数。</p>
+</blockquote>
+<p>找规律：2*n-2，n指一列的长度。 </p>
+<h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><blockquote>
+<p>嵌套指针会遇到一个异常，除零异常。那么，应该检测<code>numRows</code>值是否为<code>1</code>，如果为<code>1</code>，则应该直接返回字符串<code>s</code>。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixlkclar00020cmwgk05nn4h" class="article-share-link">Share</a>
+      
+        <a href="/2017/01/06/6-ZigZag-Conversion/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌套指针/">嵌套指针</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1-TwoSum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/06/1-TwoSum/" class="article-date">
@@ -109,7 +190,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixlc82ot0000jsmwqr7u82x3" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixlkclaj00000cmwu27mtxol" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/1-TwoSum/#comments" class="article-comment-link">留言</a>
       
@@ -156,7 +237,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixlc82pb0005jsmwdrtjx27x" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixlkclb100050cmwh8u2131b" class="article-share-link">Share</a>
       
         <a href="/2017/01/02/2016总结/#comments" class="article-comment-link">留言</a>
       
@@ -204,7 +285,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixlc82p10002jsmwl3h4x0je" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixlkclb600060cmw7l3531qp" class="article-share-link">Share</a>
       
         <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/#comments" class="article-comment-link">留言</a>
       
@@ -251,61 +332,12 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixlc82po000ajsmwpng97jqm" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixlkclbm000d0cmw12evjpo1" class="article-share-link">Share</a>
       
         <a href="/2016/12/15/写写我理解的递归/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion/">recursion</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-编程语言分类" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/09/编程语言分类/" class="article-date">
-  <time datetime="2016-12-09T03:19:13.000Z" itemprop="datePublished">2016-12-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/09/编程语言分类/"><div class="article-title-stick">编程语言分类</div></a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JavaScript语言精粹"><a href="#JavaScript语言精粹" class="headerlink" title="JavaScript语言精粹"></a>JavaScript语言精粹</h1><p>这本书买了很久，一是因为它薄，二是仔细看这本书，他确实涵盖了很多东西。</p>
-<h1 id="静态语言和动态语言"><a href="#静态语言和动态语言" class="headerlink" title="静态语言和动态语言"></a>静态语言和动态语言</h1><p>先举个例子，C语言：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span> pi = <span class="number">3.14159265</span>;</div></pre></td></tr></table></figure></p>
-<p>JavaScript：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"hello"</span>;</div><div class="line">alert(str);<span class="comment">//第一行之后，str就是是一个String类型了</span></div></pre></td></tr></table></figure>
-<p>比较这两个方式。在C语言中，我们用<code>float</code>关键字定义了变量 <code>pi</code>，而JS并未使用这样的方式。<br></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/12/09/编程语言分类/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/09/编程语言分类/" data-id="cixlc82pt000fjsmwg5uepygz" class="article-share-link">Share</a>
-      
-        <a href="/2016/12/09/编程语言分类/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -348,7 +380,7 @@ return [0, 1].
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 10px;">LeetCode-easy</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a>
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 15px;">LeetCode-easy</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a> <a href="/tags/嵌套指针/" style="font-size: 10px;">嵌套指针</a>
     </div>
   </div>
 
@@ -370,6 +402,10 @@ return [0, 1].
       <ul>
         
           <li>
+            <a href="/2017/01/06/6-ZigZag-Conversion/">6. ZigZag Conversion</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/06/1-TwoSum/">1.TwoSum</a>
           </li>
         
@@ -383,10 +419,6 @@ return [0, 1].
         
           <li>
             <a href="/2016/12/15/写写我理解的递归/">写写我理解的递归</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/09/编程语言分类/">编程语言分类</a>
           </li>
         
       </ul>

@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017 | 庆轩的博客</title>
+  <title>6. ZigZag Conversion | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/archives/2017/index.html">
+  <meta name="description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L S I I G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6. ZigZag Conversion">
+<meta property="og:url" content="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L S I I G">
+<meta property="og:updated_time" content="2017-01-06T08:52:12.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="6. ZigZag Conversion">
+<meta name="twitter:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L S I I G">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,78 +79,116 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/06/6-ZigZag-Conversion/" class="archive-article-date">
-  <time datetime="2017-01-06T08:51:28.000Z" itemprop="datePublished">Jan 6</time>
+        <section id="main"><article id="post-6-ZigZag-Conversion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/06/6-ZigZag-Conversion/" class="article-date">
+  <time datetime="2017-01-06T08:51:28.000Z" itemprop="datePublished">2017-01-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/06/6-ZigZag-Conversion/"><div class="article-title-stick">6. ZigZag Conversion</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">6. ZigZag Conversion</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/06/1-TwoSum/" class="archive-article-date">
-  <time datetime="2017-01-06T02:59:38.000Z" itemprop="datePublished">Jan 6</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/06/1-TwoSum/"><div class="article-title-stick">1.TwoSum</div></a>
-    </h1>
-  
+        <p>The string <font color="rgb(199,37,78)">“PAYPALISHIRING”</font> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<pre><code>P   A   H   N
+A P L S I I G
+Y   I   R
+</code></pre><p>And then read line by line: <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font></p>
+<p>Write the code that will take a string and make this conversion given a number of rows:</p>
+<pre><code>string convert(string text, int nRows);
+</code></pre><p><font color="rgb(199,37,78)">convert(“PAYPALISHIRING”, 3)</font> should return <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font>.</p>
+<h1 id="Brute-Force："><a href="#Brute-Force：" class="headerlink" title="Brute Force："></a>Brute Force：</h1><blockquote>
+<p>生成numRows个StringBuffer对象;<br><br>从0~n-1循环添加元素共n个，再从n-2到1循环添加元素共n-2个；<br><br>外层使用while循环，自增通过索引内 i++。</p>
+</blockquote>
+<pre><code>while(i&lt;str.length){
+    for(int j=0;j&lt;numRows&amp;&amp;i&lt;str.length;j++)
+        sb[j].append(str[i++]);
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/02/2016总结/" class="archive-article-date">
-  <time datetime="2017-01-02T09:49:29.000Z" itemprop="datePublished">Jan 2</time>
-</a>
+    for(int k=numRows-2;k&gt;0&amp;&amp;i&lt;str.length;k--)
+        sb[k].append(str[i++]);
+}
+</code></pre><p>时间复杂度是O(n)。</p>
+<h1 id="嵌套指针法："><a href="#嵌套指针法：" class="headerlink" title="嵌套指针法："></a>嵌套指针法：</h1><blockquote>
+<p>该方法的精髓在于：建立新的数组存储每一个元素对应的新数组的索引（需要先建立numRows个StringBuffer对象）</p>
+</blockquote>
+<pre><code>/*n=numRows
+Δ=2n-2    0                           2n-2                       4n-4
+Δ=        1                     2n-3  2n-1                4n-5   4n-3
+Δ=        2               2n-4        2n              4n-4       .
+Δ=        .           .               .               .            .
+Δ=        .       n+1                 .           3n+1              .
+Δ=        n-2 n                       3n-4    3n                 5n-6
+Δ=2n-2    n-1                         3n-3                       5n-5
+*/
+</code></pre><p>其时间复杂度为O(n)。</p>
+<p>核心算法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index[i] = i%(<span class="number">2</span>*numRows-<span class="number">2</span>);</div><div class="line"><span class="keyword">if</span>(index[i]&gt;(numRows-<span class="number">1</span>))</div><div class="line">	index[i] = (<span class="number">2</span>*numRows-<span class="number">2</span>)-index[i];</div><div class="line"></div><div class="line"><span class="number">0</span>     <span class="number">6</span></div><div class="line"><span class="number">1</span>  <span class="number">5</span>  <span class="number">7</span></div><div class="line"><span class="number">2</span>  <span class="number">4</span>  <span class="number">8</span></div><div class="line"><span class="number">3</span>     <span class="number">9</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>每6个数为一个循环，可知模数<code>2n-2</code><br><br>但是，斜着上去的那一行算出了<code>补数</code>，需要用模数去减它才可以得到正确的行数。</p>
+</blockquote>
+<p>找规律：2*n-2，n指一列的长度。 </p>
+<h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><blockquote>
+<p>嵌套指针会遇到一个异常，除零异常。那么，应该检测<code>numRows</code>值是否为<code>1</code>，如果为<code>1</code>，则应该直接返回字符串<code>s</code>。</p>
+</blockquote>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/02/2016总结/"><div class="article-title-stick">2016总结</div></a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixlkclar00020cmwgk05nn4h" class="article-share-link">Share</a>
+      
+        <a href="/2017/01/06/6-ZigZag-Conversion/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌套指针/">嵌套指针</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/01/06/1-TwoSum/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">1.TwoSum</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-6-ZigZag-Conversion" data-title="6. ZigZag Conversion" data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
