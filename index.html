@@ -93,54 +93,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>The string <font color="rgb(199,37,78)">“PAYPALISHIRING”</font> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+        <p>The string <font color='rgb(199,37,78)'>“PAYPALISHIRING”</font> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
 <pre><code>P   A   H   N
 A P L S I I G
 Y   I   R
-</code></pre><p>And then read line by line: <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font></p>
+</code></pre><p>And then read line by line: <font color='rgb(199,37,78)'>“PAHNAPLSIIGYIR”</font></p>
 <p>Write the code that will take a string and make this conversion given a number of rows:</p>
 <pre><code>string convert(string text, int nRows);
-</code></pre><p><font color="rgb(199,37,78)">convert(“PAYPALISHIRING”, 3)</font> should return <font color="rgb(199,37,78)">“PAHNAPLSIIGYIR”</font>.</p>
-<h1 id="Brute-Force："><a href="#Brute-Force：" class="headerlink" title="Brute Force："></a>Brute Force：</h1><blockquote>
-<p>生成numRows个StringBuffer对象;<br><br>从0~n-1循环添加元素共n个，再从n-2到1循环添加元素共n-2个；<br><br>外层使用while循环，自增通过索引内 i++。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(i&lt;str.length)&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;numRows&amp;&amp;i&lt;str.length;j++)</div><div class="line">		sb[j].append(str[i++]);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=numRows-<span class="number">2</span>;k&gt;<span class="number">0</span>&amp;&amp;i&lt;str.length;k--)</div><div class="line">		sb[k].append(str[i++]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>时间复杂度是O(n)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span> c[] = s.toCharArray();</div><div class="line">        StringBuffer sb[] = <span class="keyword">new</span> StringBuffer[numRows];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;sb.length;j++)</div><div class="line">            sb[j] = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(low &lt; c.length)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numRows &amp;&amp; low&lt;c.length;i++)</div><div class="line">                sb[i].append(c[low++]);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=numRows-<span class="number">2</span>;j&gt;<span class="number">0</span> &amp;&amp; low&lt;c.length;j--)</div><div class="line">                sb[j].append(c[low++]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;sb.length;i++)</div><div class="line">            sb[<span class="number">0</span>].append(sb[i]);</div><div class="line">        <span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="嵌套指针法："><a href="#嵌套指针法：" class="headerlink" title="嵌套指针法："></a>嵌套指针法：</h1><blockquote>
-<p>该方法的精髓在于：建立新的数组存储每一个元素对应的新数组的索引（需要先建立numRows个StringBuffer对象）</p>
-</blockquote>
-<pre><code>/*n=numRows
-Δ=2n-2    0                           2n-2                       4n-4
-Δ=        1                     2n-3  2n-1                4n-5   4n-3
-Δ=        2               2n-4        2n              4n-4       .
-Δ=        .           .               .               .            .
-Δ=        .       n+1                 .           3n+1              .
-Δ=        n-2 n                       3n-4    3n                 5n-6
-Δ=2n-2    n-1                         3n-3                       5n-5
-*/
-</code></pre><p>其时间复杂度为O(n)。</p>
-<p>核心算法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index[i] = i%(<span class="number">2</span>*numRows-<span class="number">2</span>);</div><div class="line"><span class="keyword">if</span>(index[i]&gt;(numRows-<span class="number">1</span>))</div><div class="line">	index[i] = (<span class="number">2</span>*numRows-<span class="number">2</span>)-index[i];</div><div class="line"></div><div class="line"><span class="number">0</span>     <span class="number">6</span></div><div class="line"><span class="number">1</span>  <span class="number">5</span>  <span class="number">7</span></div><div class="line"><span class="number">2</span>  <span class="number">4</span>  <span class="number">8</span></div><div class="line"><span class="number">3</span>     <span class="number">9</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>每6个数为一个循环，可知模数<code>2n-2</code><br><br>但是，斜着上去的那一行算出了<code>补数</code>，需要用模数去减它才可以得到正确的行数。</p>
-</blockquote>
-<p>找规律：2*n-2，n指一列的长度。 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(numRows == <span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        <span class="keyword">char</span> c[] = s.toCharArray();</div><div class="line">        StringBuffer sb[] = <span class="keyword">new</span> StringBuffer[numRows];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sb.length;i++)</div><div class="line">            sb[i] = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">int</span> index[] = <span class="keyword">new</span> <span class="keyword">int</span>[c.length];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;c.length;i++)&#123;</div><div class="line">            index[i] = i % (<span class="number">2</span>*numRows-<span class="number">2</span>);</div><div class="line">            <span class="keyword">if</span>(index[i]&gt;numRows-<span class="number">1</span>)</div><div class="line">                index[i] = <span class="number">2</span>*numRows-<span class="number">2</span> - index[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;c.length;j++)</div><div class="line">            sb[index[j]].append(c[j]);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;sb.length;k++)</div><div class="line">            sb[<span class="number">0</span>].append(sb[k]);</div><div class="line">        <span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><blockquote>
-<p>嵌套指针会遇到一个异常，除零异常。那么，应该检测<code>numRows</code>值是否为<code>1</code>，如果为<code>1</code>，则应该直接返回字符串<code>s</code>。</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<ol>
-<li>这道题直接去解，是一个好方法，但是明显是一个索引递增的循环。</li>
-<li>嵌套指针的使用可以更巧妙的解决这道题目，至于巧在哪里？比直接循环好在，封装了每行的索引生成，通过列高可以计算出每个元素相应的行索引。</li>
-</ol>
-</blockquote>
-
+</code></pre><p><font color='rgb(199,37,78)'>convert(“PAYPALISHIRING”, 3)</font> should return <font color='rgb(199,37,78)'>“PAHNAPLSIIGYIR”</font>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/06/6-ZigZag-Conversion/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixlkr9ns0002o0mwo107xovb" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixll42ly000510mwmixbltvh" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/6-ZigZag-Conversion/#comments" class="article-comment-link">留言</a>
       
@@ -192,7 +161,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixlkr9nk0000o0mwwajxeoly" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixll42lg000010mw67ydkwuj" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/1-TwoSum/#comments" class="article-comment-link">留言</a>
       
@@ -239,7 +208,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixlkr9o20005o0mwuooofrau" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixll42lo000210mw1oem8wyn" class="article-share-link">Share</a>
       
         <a href="/2017/01/02/2016总结/#comments" class="article-comment-link">留言</a>
       
@@ -287,7 +256,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixlkr9o70006o0mwhi5yyrq0" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixll42m5000810mwufz39txs" class="article-share-link">Share</a>
       
         <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/#comments" class="article-comment-link">留言</a>
       
@@ -334,7 +303,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixlkr9on000do0mww9clu3gj" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cixll42mh000d10mwoq6o2nph" class="article-share-link">Share</a>
       
         <a href="/2016/12/15/写写我理解的递归/#comments" class="article-comment-link">留言</a>
       
