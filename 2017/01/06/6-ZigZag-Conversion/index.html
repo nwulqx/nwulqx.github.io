@@ -15,7 +15,7 @@ A P L S I I G">
 <meta property="og:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 P   A   H   N
 A P L S I I G">
-<meta property="og:updated_time" content="2017-01-06T08:56:08.617Z">
+<meta property="og:updated_time" content="2017-01-06T09:03:32.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6. ZigZag Conversion">
 <meta name="twitter:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -138,11 +138,17 @@ Y   I   R
 <h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><blockquote>
 <p>嵌套指针会遇到一个异常，除零异常。那么，应该检测<code>numRows</code>值是否为<code>1</code>，如果为<code>1</code>，则应该直接返回字符串<code>s</code>。</p>
 </blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<ol>
+<li>这道题直接去解，是一个好方法，但是明显是一个索引递增的循环。</li>
+<li>嵌套指针的使用可以更巧妙的解决这道题目，至于巧在哪里？比直接循环好在，封装了每行的索引生成，通过列高可以计算出每个元素相应的行索引。</li>
+</ol>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixlkho2b000250mwgr98n3xm" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixlkr9ns0002o0mwo107xovb" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/6-ZigZag-Conversion/#comments" class="article-comment-link">留言</a>
       
