@@ -17,7 +17,7 @@ Given nums = [2, 7, 1">
 You may assume that each input would have exactly one solution.
 Example:
 Given nums = [2, 7, 1">
-<meta property="og:updated_time" content="2017-01-06T03:03:02.019Z">
+<meta property="og:updated_time" content="2017-01-06T03:03:55.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.TwoSum">
 <meta name="twitter:description" content="Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -71,9 +71,9 @@ Given nums = [2, 7, 1">
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -112,8 +112,7 @@ Given nums = [2, 7, 1">
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 </code></pre><a id="more"></a>
-<p>#爆破法：</p>
-<blockquote>
+<h1 id="爆破法："><a href="#爆破法：" class="headerlink" title="爆破法："></a>爆破法：</h1><blockquote>
 <p>通过两次遍历数组，找出所有两个数的组合，将结果与target比较，返回满足要求的索引，这种方法简单易懂，但是如果寻找三个数或者以上的多位相加，他的时间复杂度是指数增长的。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">	Standard Brute Forced method to solve;</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum2</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(target-nums[i] == nums[j])</div><div class="line">					<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i,j&#125;;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -121,17 +120,14 @@ return [0, 1].
 <p>上面这是一种标准的暴力破解方法，简单易懂，但是如果是找三个或者4个，这种多层的嵌套不利于。应该借助下面这种封装的方式来避免多层（3层以上的）嵌套。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">This method is a Brute Forced method.</div><div class="line"></div><div class="line">time completicity is O(n2);</div><div class="line">space complicity is O(1);</div><div class="line">beats: 25%;</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">    	<span class="keyword">int</span> []ret = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=i;i&lt;nums.length;i++)&#123;</div><div class="line">    			<span class="keyword">int</span> tmp = target-nums[i];</div><div class="line">    			<span class="keyword">if</span>(ret[<span class="number">1</span>]==<span class="number">0</span>)&#123;</div><div class="line">    				ret[<span class="number">0</span>] = i; </div><div class="line">					ret[<span class="number">1</span>] = <span class="keyword">this</span>.find(nums,tmp,++j);</div><div class="line">    			&#125;<span class="keyword">else</span></div><div class="line">    				<span class="keyword">break</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> target,<span class="keyword">int</span> lo)</span></span>&#123;</div><div class="line">    	<span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=lo;i&lt;nums.length;i++)&#123;</div><div class="line">    		<span class="keyword">if</span>(target&lt;nums[i]) <span class="keyword">continue</span>;</div><div class="line">    		<span class="keyword">if</span>(target == nums[i])&#123;</div><div class="line">    			ret = i;</div><div class="line">    			<span class="keyword">break</span>;</div><div class="line">    		&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#Hash法：</p>
-<blockquote>
+<h1 id="Hash法："><a href="#Hash法：" class="headerlink" title="Hash法："></a>Hash法：</h1><blockquote>
 <p>HashMap的数据结构是树，使用HashMap，它的查询时的时间复杂度是O(n+logn)。<br></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">Beats : 45%;</div><div class="line">Time complicity is O(n);</div><div class="line">Space complicity is O(n);</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum3</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</div><div class="line">		Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap();</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">			map.put(nums[i],i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;nums.length;j++)&#123;</div><div class="line">			 <span class="comment">// We don't need two same elements!</span></div><div class="line">			<span class="keyword">if</span>(map.containsKey(target-nums[j])&amp;&amp;(map.get(target-nums[j])!=j))&#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;j,map.get(target-nums[j])&#125;;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>##疑惑</p>
-<blockquote>
+<h2 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h2><blockquote>
 <p>[{0,-2,0,0},0],对于这样的查询，HashMap中存放了相同的key的情况，是覆盖了前面<br>两个0的索引，所以答案是(0,3);</p>
 </blockquote>
-<p>#逼近法</p>
-<blockquote>
+<h1 id="逼近法"><a href="#逼近法" class="headerlink" title="逼近法"></a>逼近法</h1><blockquote>
 <p>1.将数组排序，使用快排或者归并排序，时间复杂度为O（nlogn）。<br><br>2.使用两个索引，分别从头和尾部逼近，如果相加小于target，那么头部索引++；如果大于，则尾部索引–，直到找到。<br><br>3.时间复杂度总共为O（nlogn+n）。<br></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">This method is found the 2 nums sum is target ,but the return isn't the index!</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum4</span></span>&#123;</div><div class="line">	<span class="comment">/*the return isn't index,it is a array of values*/</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</div><div class="line">		Arrays.sort(nums);</div><div class="line">		<span class="keyword">int</span> lo = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> hi = nums.length-<span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span>(lo&lt;hi)&#123;</div><div class="line">			<span class="keyword">if</span>(nums[lo]+nums[hi]==target) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;nums[lo],nums[hi]&#125;;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(nums[lo]+nums[hi] &gt; target) hi--;</div><div class="line">			<span class="keyword">else</span> lo++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -144,7 +140,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixl7vkx10000dkmwjp9mbgsv" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixl7wzdh0000momwtprxpq5j" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/1-TwoSum/#comments" class="article-comment-link">留言</a>
       
@@ -159,7 +155,7 @@ return [0, 1].
   
   
     <a href="/2017/01/02/2016总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">2016总结</div>
     </a>
   
@@ -280,7 +276,7 @@ return [0, 1].
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
