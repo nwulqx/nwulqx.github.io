@@ -95,25 +95,15 @@
       
         <p>Reverse digits of an integer.</p>
 <p><strong>Example1</strong>: x = 123, return 321<br><br><strong>Example2</strong>: x = -123, return -321</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="int转换成字符串解决"><a href="#int转换成字符串解决" class="headerlink" title="int转换成字符串解决"></a>int转换成字符串解决</h2><blockquote>
-<p>时间复杂度 :O(n) ；空间复杂度: O(n)<br><br>要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试图将字符串转换成一种数值类型，但该字符串不能转换为适当格式时，抛出该异常。<br><br>可以使用异常捕获，将这种错误出现时：return 0;也即就是出现数字越界，返回0。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReverseInteger</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    	<span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(tmp+<span class="string">""</span>);</div><div class="line">			sb.reverse();</div><div class="line">			<span class="keyword">try</span>&#123;</div><div class="line">				<span class="keyword">return</span> (x&gt;<span class="number">0</span>?Integer.parseInt(sb.toString()):-Integer.parseInt(sb.toString()));</div><div class="line">			&#125;<span class="keyword">catch</span>(NumberFormatException e)&#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="取模法"><a href="#取模法" class="headerlink" title="取模法"></a>取模法</h2><blockquote>
-<p>一个字符占了8位，一个10位数的int值转为String类型占了80位，在空间上开销就很大了。<br><br>直接对int数值取模并获取模值，并拼接是一个好办法。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(x == Integer.MIN_VALUE)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">        <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(tmp!=<span class="number">0</span>)&#123;</div><div class="line">            result *= <span class="number">10</span>;</div><div class="line">            result += tmp%<span class="number">10</span>;</div><div class="line">            <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE)</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            tmp /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> x&gt;<span class="number">0</span>?(<span class="keyword">int</span>)result:-(<span class="keyword">int</span>)result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="考察点："><a href="#考察点：" class="headerlink" title="考察点："></a>考察点：<br></h2><blockquote>
-<ol>
-<li>负数的取模，应该将负数转为正数，并在返回前将符号加上。<br></li>
-<li>边界检测：<br><br>a. 使用long类型作为倒叙存储，如果用int类型作为倒叙存储，转换后数字大于int最大值，将会强制抛弃高位。<br><br>b. 对于输入数字检测，当为最小值Integer.MIN_VALUE，Math.abs()函不会去掉负号，应该直接返回0。</li>
-</ol>
-</blockquote>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/01/08/7-Reverse-Integer/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="cixo95qoz0000rgmwdttkq6t9" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="cixo986kc0006ocmwu6j9xwsu" class="article-share-link">Share</a>
       
         <a href="/2017/01/08/7-Reverse-Integer/#comments" class="article-comment-link">留言</a>
       
@@ -165,7 +155,7 @@ Y   I   R
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixo95qpd0004rgmwn4poratz" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/6-ZigZag-Conversion/" data-id="cixo986jy0002ocmwya4z7oua" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/6-ZigZag-Conversion/#comments" class="article-comment-link">留言</a>
       
@@ -217,7 +207,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixo95qp70002rgmwatu2fck4" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixo986jq0000ocmwf9t4zb3y" class="article-share-link">Share</a>
       
         <a href="/2017/01/06/1-TwoSum/#comments" class="article-comment-link">留言</a>
       
@@ -264,7 +254,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixo95qph0005rgmw5y3qm3vo" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/02/2016总结/" data-id="cixo986k90005ocmw153nw44a" class="article-share-link">Share</a>
       
         <a href="/2017/01/02/2016总结/#comments" class="article-comment-link">留言</a>
       
@@ -312,7 +302,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixo95qq5000jrgmwn4s1klng" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" data-id="cixo986kf0008ocmw20l0qy5m" class="article-share-link">Share</a>
       
         <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/#comments" class="article-comment-link">留言</a>
       
