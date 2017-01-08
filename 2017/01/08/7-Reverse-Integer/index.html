@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>网络收藏 | 庆轩的博客</title>
+  <title>7. Reverse Integer | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Quora">
-<meta property="og:type" content="website">
-<meta property="og:title" content="网络收藏">
-<meta property="og:url" content="https://war3cdota.github.io/collections/index.html">
+  <meta name="description" content="Reverse digits of an integer.
+Example1: x = 123, return 321Example2: x = -123, return -321
+Solutionint转换成字符串解决
+时间复杂度 :O(n) ；空间复杂度: O(n)要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7. Reverse Integer">
+<meta property="og:url" content="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Quora">
-<meta property="og:updated_time" content="2017-01-03T18:23:35.597Z">
+<meta property="og:description" content="Reverse digits of an integer.
+Example1: x = 123, return 321Example2: x = -123, return -321
+Solutionint转换成字符串解决
+时间复杂度 :O(n) ；空间复杂度: O(n)要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试">
+<meta property="og:updated_time" content="2017-01-08T06:02:08.458Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络收藏">
-<meta name="twitter:description" content="Quora">
+<meta name="twitter:title" content="7. Reverse Integer">
+<meta name="twitter:description" content="Reverse digits of an integer.
+Example1: x = 123, return 321Example2: x = -123, return -321
+Solutionint转换成字符串解决
+时间复杂度 :O(n) ；空间复杂度: O(n)要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -73,10 +82,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-7-Reverse-Integer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/collections/index.html" class="article-date">
-  <time datetime="2017-01-03T18:04:24.000Z" itemprop="datePublished">2017-01-04</time>
+    <a href="/2017/01/08/7-Reverse-Integer/" class="article-date">
+  <time datetime="2017-01-08T06:01:22.000Z" itemprop="datePublished">2017-01-08</time>
 </a>
     
   </div>
@@ -87,7 +96,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      <div class="article-title-stick">网络收藏</div>
+      <div class="article-title-stick">7. Reverse Integer</div>
     </h1>
   
 
@@ -95,26 +104,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Quora"><a href="#Quora" class="headerlink" title="Quora"></a>Quora</h2>
+        <p>Reverse digits of an integer.</p>
+<p><strong>Example1</strong>: x = 123, return 321<br><br><strong>Example2</strong>: x = -123, return -321</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="int转换成字符串解决"><a href="#int转换成字符串解决" class="headerlink" title="int转换成字符串解决"></a>int转换成字符串解决</h2><blockquote>
+<p>时间复杂度 :O(n) ；空间复杂度: O(n)<br><br>要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试图将字符串转换成一种数值类型，但该字符串不能转换为适当格式时，抛出该异常。<br><br>可以使用异常捕获，将这种错误出现时：return 0;也即就是出现数字越界，返回0。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReverseInteger</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    	<span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(tmp+<span class="string">""</span>);</div><div class="line">			sb.reverse();</div><div class="line">			<span class="keyword">try</span>&#123;</div><div class="line">				<span class="keyword">return</span> (x&gt;<span class="number">0</span>?Integer.parseInt(sb.toString()):-Integer.parseInt(sb.toString()));</div><div class="line">			&#125;<span class="keyword">catch</span>(NumberFormatException e)&#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="取模法"><a href="#取模法" class="headerlink" title="取模法"></a>取模法</h2><blockquote>
+<p>一个字符占了8位，一个10位数的int值转为String类型占了80位，在空间上开销就很大了。<br><br>直接对int数值取模并获取模值，并拼接是一个好办法。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(x == Integer.MIN_VALUE)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">        <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(tmp!=<span class="number">0</span>)&#123;</div><div class="line">            result *= <span class="number">10</span>;</div><div class="line">            result += tmp%<span class="number">10</span>;</div><div class="line">            <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE)</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            tmp /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> x&gt;<span class="number">0</span>?(<span class="keyword">int</span>)result:-(<span class="keyword">int</span>)result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="考察点："><a href="#考察点：" class="headerlink" title="考察点："></a>考察点：<br></h2><blockquote>
+<ol>
+<li>负数的取模，应该将负数转为正数，并在返回前将符号加上。<br></li>
+<li>边界检测：<br><br>a. 使用long类型作为倒叙存储，如果用int类型作为倒叙存储，转换后数字大于int最大值，将会强制抛弃高位。<br><br>b. 对于输入数字检测，当为最小值Integer.MIN_VALUE，Math.abs()函不会去掉负号，应该直接返回0。</li>
+</ol>
+</blockquote>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/collections/index.html" data-id="cixo95qq9000krgmwumqug610" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="cixo95qoz0000rgmwdttkq6t9" class="article-share-link">Share</a>
       
-        <a href="/collections/index.html#comments" class="article-comment-link">留言</a>
+        <a href="/2017/01/08/7-Reverse-Integer/#comments" class="article-comment-link">留言</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check/">Boundary Check</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/位运算/">位运算</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/06/6-ZigZag-Conversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">6. ZigZag Conversion</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="page-undefined" data-title="网络收藏" data-url="https://war3cdota.github.io/collections/index.html"></div>
+  <div class="ds-thread" data-thread-key="post-7-Reverse-Integer" data-title="7. Reverse Integer" data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
