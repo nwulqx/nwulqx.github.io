@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>7. Reverse Integer | 庆轩的博客</title>
+  <title>9. Palindrome Number | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Reverse digits of an integer.
-Example1: x = 123, return 321Example2: x = -123, return -321">
+  <meta name="description" content="Determine whether an integer is a palindrome. Do this without extra space.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="7. Reverse Integer">
-<meta property="og:url" content="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/index.html">
+<meta property="og:title" content="9. Palindrome Number">
+<meta property="og:url" content="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Reverse digits of an integer.
-Example1: x = 123, return 321Example2: x = -123, return -321">
-<meta property="og:updated_time" content="2017-01-10T10:38:51.253Z">
+<meta property="og:description" content="Determine whether an integer is a palindrome. Do this without extra space.">
+<meta property="og:updated_time" content="2017-01-10T11:15:54.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="7. Reverse Integer">
-<meta name="twitter:description" content="Reverse digits of an integer.
-Example1: x = 123, return 321Example2: x = -123, return -321">
+<meta name="twitter:title" content="9. Palindrome Number">
+<meta name="twitter:description" content="Determine whether an integer is a palindrome. Do this without extra space.">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -76,10 +73,10 @@ Example1: x = 123, return 321Example2: x = -123, return -321">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-7-Reverse-Integer" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-9-Palindrome-Number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/08/7-Reverse-Integer/" class="article-date">
-  <time datetime="2017-01-08T06:01:22.000Z" itemprop="datePublished">2017-01-08</time>
+    <a href="/2017/01/10/9-Palindrome-Number/" class="article-date">
+  <time datetime="2017-01-10T11:14:09.000Z" itemprop="datePublished">2017-01-10</time>
 </a>
     
   </div>
@@ -90,7 +87,7 @@ Example1: x = 123, return 321Example2: x = -123, return -321">
         
   
     <h1 class="article-title" itemprop="name">
-      <div class="article-title-stick">7. Reverse Integer</div>
+      <div class="article-title-stick">9. Palindrome Number</div>
     </h1>
   
 
@@ -98,33 +95,50 @@ Example1: x = 123, return 321Example2: x = -123, return -321">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Reverse digits of an integer.</p>
-<p><strong>Example1</strong>: x = 123, return 321<br><br><strong>Example2</strong>: x = -123, return -321</p>
+        <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
 <a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="int转换成字符串解决"><a href="#int转换成字符串解决" class="headerlink" title="int转换成字符串解决"></a>int转换成字符串解决</h2><blockquote>
-<p>时间复杂度 :O(n) ；空间复杂度: O(n)<br><br>要点在于String转换为int时，如果此时大于int的最大或最小值，会报NumberFormatException：当应用程序试图将字符串转换成一种数值类型，但该字符串不能转换为适当格式时，抛出该异常。<br><br>可以使用异常捕获，将这种错误出现时：return 0;也即就是出现数字越界，返回0。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="简单的字符串比较"><a href="#简单的字符串比较" class="headerlink" title="简单的字符串比较"></a>简单的字符串比较</h2><blockquote>
+<p>借助StringBuffer函数的reverse()方法，可以轻松的对字符串反转，在对翻转后的数字和原数字比较，相等则为回文数。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReverseInteger</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">		StringBuffer sb = <span class="keyword">new</span> StringBuffer(tmp+<span class="string">""</span>);</div><div class="line">		sb.reverse();</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			<span class="keyword">return</span> (x&gt;<span class="number">0</span>?Integer.parseInt(sb.toString()):-Integer.parseInt(sb.toString()));</div><div class="line">		&#125;<span class="keyword">catch</span>(NumberFormatException e)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="取模法"><a href="#取模法" class="headerlink" title="取模法"></a>取模法</h2><blockquote>
-<p>一个字符占了8位，一个10位数的int值转为String类型占了80位，在空间上开销就很大了。<br><br>直接对int数值取模并获取模值，并拼接是一个好办法。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(x == Integer.MIN_VALUE)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> tmp = Math.abs(x);</div><div class="line">        <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(tmp!=<span class="number">0</span>)&#123;</div><div class="line">            result *= <span class="number">10</span>;</div><div class="line">            result += tmp%<span class="number">10</span>;</div><div class="line">            <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE)</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            tmp /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> x&gt;<span class="number">0</span>?(<span class="keyword">int</span>)result:-(<span class="keyword">int</span>)result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="考察点："><a href="#考察点：" class="headerlink" title="考察点："></a>考察点：<br></h2><blockquote>
+<h3 id="出现的问题："><a href="#出现的问题：" class="headerlink" title="出现的问题："></a>出现的问题：</h3><blockquote>
 <ol>
-<li>负数的取模，应该将负数转为正数，并在返回前将符号加上。<br></li>
-<li>边界检测：<br><br>a. 使用long类型作为倒叙存储，如果用int类型作为倒叙存储，转换后数字大于int最大值，将会强制抛弃高位。<br><br>b. 对于输入数字检测，当为最小值Integer.MIN_VALUE，Math.abs()函不会去掉负号，应该直接返回0。</li>
+<li>数字越界问题，通过stringbuffer转换后，可能出现转化后的数字超越了int的范围。</li>
+<li>这样做的时间复杂度和空间复杂度是很浪费的，一个字符是占8位，10位数将占到80位，大于int的32位。</li>
 </ol>
+</blockquote>
+<h2 id="直接操作int"><a href="#直接操作int" class="headerlink" title="直接操作int"></a>直接操作int</h2><blockquote>
+<p>使用取模操作直接操作int数字，相等即为回文数。</p>
+</blockquote>
+<h3 id="Optimized"><a href="#Optimized" class="headerlink" title="Optimized"></a>Optimized</h3><blockquote>
+<p>不需要全部转化，只需要转化一半数字即可。但是，由于位数的奇偶性质，可能会出现：</p>
+<ol>
+<li>左右相等；</li>
+<li>左右不相等。</li>
+</ol>
+</blockquote>
+<pre><code>12321转化一般得到12 和 123；
+1221 转化则得到12 和 12。
+</code></pre><blockquote>
+<p><strong>解决办法</strong>：同时检查，（左==右） || （左/10 == 右）。</p>
+</blockquote>
+<h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><ol>
+<li>负数都不是回文数</li>
+<li>0是回文数，但是<code>int%0 == 0</code> 的数不是回文数，但如果采用优化的方案。例如1000，得到的对应的判断是0 和 10，会被误判断为true。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PalindromeNumber</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">		System.out.println(isPalindrome(<span class="number">20</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(x&lt;<span class="number">0</span>||(x!=<span class="number">0</span> &amp;&amp; x%<span class="number">10</span>==<span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(x&gt;result)&#123;</div><div class="line">			result*=<span class="number">10</span>;</div><div class="line">			result+=(x%<span class="number">10</span>);</div><div class="line">			x/=<span class="number">10</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> (x==result || x==result/<span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这个题从优化和边界检测两个地方考察。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="cixrf8umi000618mw0s0prd1c" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/" data-id="cixrf8ums000918mwtic3gs29" class="article-share-link">Share</a>
       
-        <a href="/2017/01/08/7-Reverse-Integer/#comments" class="article-comment-link">留言</a>
+        <a href="/2017/01/10/9-Palindrome-Number/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check/">Boundary Check</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/位运算/">位运算</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check/">Boundary Check</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Optimize/">Optimize</a></li></ul>
 
     </footer>
   </div>
@@ -132,19 +146,10 @@ Example1: x = 123, return 321Example2: x = -123, return -321">
     
 <nav id="article-nav">
   
-    <a href="/2017/01/10/8-String2Integer/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          8. String2Integer
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/06/6-ZigZag-Conversion/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/10/8-String2Integer/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">6. ZigZag Conversion</div>
+      <div class="article-nav-title">8. String2Integer</div>
     </a>
   
 </nav>
@@ -155,7 +160,7 @@ Example1: x = 123, return 321Example2: x = -123, return -321">
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-7-Reverse-Integer" data-title="7. Reverse Integer" data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/"></div>
+  <div class="ds-thread" data-thread-key="post-9-Palindrome-Number" data-title="9. Palindrome Number" data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
