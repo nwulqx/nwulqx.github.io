@@ -17,7 +17,7 @@ Given nums = [2, 7, 1">
 You may assume that each input would have exactly one solution.
 Example:
 Given nums = [2, 7, 1">
-<meta property="og:updated_time" content="2017-01-06T05:04:09.534Z">
+<meta property="og:updated_time" content="2017-01-09T02:55:30.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.TwoSum">
 <meta name="twitter:description" content="Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -71,9 +71,9 @@ Given nums = [2, 7, 1">
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -115,7 +115,7 @@ return [0, 1].
 <h1 id="爆破法："><a href="#爆破法：" class="headerlink" title="爆破法："></a>爆破法：</h1><blockquote>
 <p>通过两次遍历数组，找出所有两个数的组合，将结果与target比较，返回满足要求的索引，这种方法简单易懂，但是如果寻找三个数或者以上的多位相加，他的时间复杂度是指数增长的。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">	Standard Brute Forced method to solve;</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum2</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(target-nums[i] == nums[j])</div><div class="line">					<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i,j&#125;;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">	Standard Brute Forced method to solve;</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(target-nums[i] == nums[j])</div><div class="line">					<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i,j&#125;;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>上面这是一种标准的暴力破解方法，简单易懂，但是如果是找三个或者4个，这种多层的嵌套不利于。应该借助下面这种封装的方式来避免多层（3层以上的）嵌套。</p>
 </blockquote>
@@ -144,7 +144,7 @@ return [0, 1].
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixo986jq0000ocmwf9t4zb3y" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/06/1-TwoSum/" data-id="cixrdxily0002jomw92jsrxdk" class="article-share-link">Поделиться</a>
       
         <a href="/2017/01/06/1-TwoSum/#comments" class="article-comment-link">留言</a>
       
@@ -158,7 +158,7 @@ return [0, 1].
 <nav id="article-nav">
   
     <a href="/2017/01/06/6-ZigZag-Conversion/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Следующий</strong>
       <div class="article-nav-title">
         
           6. ZigZag Conversion
@@ -168,7 +168,7 @@ return [0, 1].
   
   
     <a href="/2017/01/02/2016总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Предыдущий</strong>
       <div class="article-nav-title">2016总结</div>
     </a>
   
@@ -225,7 +225,7 @@ return [0, 1].
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/Boundary-Check/" style="font-size: 10px;">Boundary Check</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 15px;">LeetCode-easy</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a> <a href="/tags/嵌套指针/" style="font-size: 10px;">嵌套指针</a>
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/Boundary-Check/" style="font-size: 13.33px;">Boundary Check</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 20px;">LeetCode-easy</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a> <a href="/tags/嵌套指针/" style="font-size: 10px;">嵌套指针</a>
     </div>
   </div>
 
@@ -247,6 +247,10 @@ return [0, 1].
       <ul>
         
           <li>
+            <a href="/2017/01/10/8-String2Integer/">8. String2Integer</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/08/7-Reverse-Integer/">7. Reverse Integer</a>
           </li>
         
@@ -260,10 +264,6 @@ return [0, 1].
         
           <li>
             <a href="/2017/01/02/2016总结/">2016总结</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/">JS的this、__proto__ 和. prototype 、constructor</a>
           </li>
         
       </ul>
@@ -289,7 +289,7 @@ return [0, 1].
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
