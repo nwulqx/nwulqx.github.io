@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>9. Palindrome Number | 庆轩的博客</title>
+  <title>14. Longest Common Prefix | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Determine whether an integer is a palindrome. Do this without extra space.">
+  <meta name="description" content="Write a function to find the longest common prefix string amongst an array of strings.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="9. Palindrome Number">
-<meta property="og:url" content="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/index.html">
+<meta property="og:title" content="14. Longest Common Prefix">
+<meta property="og:url" content="https://war3cdota.github.io/2017/01/19/14-Longest-Common-Prefix/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Determine whether an integer is a palindrome. Do this without extra space.">
-<meta property="og:updated_time" content="2017-01-10T11:15:54.753Z">
+<meta property="og:description" content="Write a function to find the longest common prefix string amongst an array of strings.">
+<meta property="og:updated_time" content="2017-01-19T07:55:38.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="9. Palindrome Number">
-<meta name="twitter:description" content="Determine whether an integer is a palindrome. Do this without extra space.">
+<meta name="twitter:title" content="14. Longest Common Prefix">
+<meta name="twitter:description" content="Write a function to find the longest common prefix string amongst an array of strings.">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -73,10 +73,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-9-Palindrome-Number" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-14-Longest-Common-Prefix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/9-Palindrome-Number/" class="article-date">
-  <time datetime="2017-01-10T11:14:09.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/01/19/14-Longest-Common-Prefix/" class="article-date">
+  <time datetime="2017-01-19T07:54:15.000Z" itemprop="datePublished">2017-01-19</time>
 </a>
     
   </div>
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      <div class="article-title-stick">9. Palindrome Number</div>
+      <div class="article-title-stick">14. Longest Common Prefix</div>
     </h1>
   
 
@@ -95,50 +95,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+        <p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 <a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="简单的字符串比较"><a href="#简单的字符串比较" class="headerlink" title="简单的字符串比较"></a>简单的字符串比较</h2><blockquote>
-<p>借助StringBuffer函数的reverse()方法，可以轻松的对字符串反转，在对翻转后的数字和原数字比较，相等则为回文数。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Brute-Forced"><a href="#Brute-Forced" class="headerlink" title="Brute Forced"></a>Brute Forced</h2><blockquote>
+<p>我的思路是做加法，每遍历一次字符串数组，就把最长前缀索引+1，直到某一个字符串不存在最长前缀为止。<br><br>这个太费时了，不做这种笨方法。<br><br>需要一个最长前缀索引，然后再遍历所有字符串，如果所有都存在相同的子字符串，则最长前缀索引+1，直到有字符串不包含这个最长前缀字符串，则返回。<br><br>那这个时间复杂度最坏情况下O(n*str.length)</p>
 </blockquote>
-<h3 id="出现的问题："><a href="#出现的问题：" class="headerlink" title="出现的问题："></a>出现的问题：</h3><blockquote>
+<h2 id="Optimized（优化）"><a href="#Optimized（优化）" class="headerlink" title="Optimized（优化）"></a>Optimized（优化）</h2><blockquote>
+<p>讲真的，我还真没什么想法，看了解答，恍然大悟。<br>最好的思路是做减法：<br></p>
 <ol>
-<li>数字越界问题，通过stringbuffer转换后，可能出现转化后的数字超越了int的范围。</li>
-<li>这样做的时间复杂度和空间复杂度是很浪费的，一个字符是占8位，10位数将占到80位，大于int的32位。</li>
+<li>假设第一个字符串就是最长前缀，那么遍历字符串数组；</li>
+<li>如果，后续的字符串长度小于最长前缀，那么这个最长前缀应该减1；</li>
+<li>如果，字符串存在最小前缀，则应该继续检查字符串数组。这里有个很大的优势，如果，后续的字符串不符合最长前缀了，那么，不会影响到前面的判断，因为做的是减法（也就是b∈c的问题，最长前缀总是满足最短的原则）。</li>
+<li>那么，如果不存在，则只需要对最长前缀字符串做减法即可。<br></li>
+<li>已经得到最长前缀索引，返回即可。</li>
+</ol>
+<p>这个题很巧妙的利用了减法的思想。<br><br>如果正着查找，那么需要知道每一个字串是否都存在于每一个字符串，如果存在，则在向后加一个字符，在比较。如果用这种减法的思路：先假设一个最长的前缀，如果不存在，应该减小这个最长前缀；如果存在，则应该对后面的字符串继续判断。好处很直观：</p>
+<ol>
+<li>只需要遍历一次字符串数组；</li>
+<li>时间复杂度O(n+strs[0].length)。</li>
 </ol>
 </blockquote>
-<h2 id="直接操作int"><a href="#直接操作int" class="headerlink" title="直接操作int"></a>直接操作int</h2><blockquote>
-<p>使用取模操作直接操作int数字，相等即为回文数。</p>
-</blockquote>
-<h3 id="Optimized"><a href="#Optimized" class="headerlink" title="Optimized"></a>Optimized</h3><blockquote>
-<p>不需要全部转化，只需要转化一半数字即可。但是，由于位数的奇偶性质，可能会出现：</p>
-<ol>
-<li>左右相等；</li>
-<li>左右不相等。</li>
-</ol>
-</blockquote>
-<pre><code>12321转化一般得到12 和 123；
-1221 转化则得到12 和 12。
-</code></pre><blockquote>
-<p><strong>解决办法</strong>：同时检查，（左==右） || （左/10 == 右）。</p>
-</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(strs.length == <span class="number">0</span> || strs[<span class="number">0</span>].length()==<span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        String  pre = strs[<span class="number">0</span>];</div><div class="line">        <span class="keyword">int</span> hi = pre.length();</div><div class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(i&lt;strs.length &amp;&amp; hi&gt;<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(strs[i].length()&lt;hi)</div><div class="line">                hi--;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(strs[i].substring(<span class="number">0</span>,hi).equals(pre.substring(<span class="number">0</span>,hi)))</div><div class="line">                i++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                hi--;</div><div class="line">        &#125;</div><div class="line">        System.out.println(hi);</div><div class="line">        <span class="keyword">return</span> pre.substring(<span class="number">0</span>,hi);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>利用indexOf方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(strs.length == <span class="number">0</span> || strs[<span class="number">0</span>].length()==<span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        String  pre = strs[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;strs.length;i++)</div><div class="line">            <span class="keyword">while</span>(strs[i].indexOf(pre.substring(<span class="number">0</span>,pre.length()))!=<span class="number">0</span>)</div><div class="line">                pre = pre.substring(<span class="number">0</span>,pre.length()-<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> pre;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><ol>
-<li>负数都不是回文数</li>
-<li>0是回文数，但是<code>int%0 == 0</code> 的数不是回文数，但如果采用优化的方案。例如1000，得到的对应的判断是0 和 10，会被误判断为true。</li>
+<li>字符串数组为0或者第一个字符串为0，应该返回空字符串。</li>
+<li>最长前缀为空或者遍历完字符串数组时结束。</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PalindromeNumber</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">		System.out.println(isPalindrome(<span class="number">20</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(x&lt;<span class="number">0</span>||(x!=<span class="number">0</span> &amp;&amp; x%<span class="number">10</span>==<span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(x&gt;result)&#123;</div><div class="line">			result*=<span class="number">10</span>;</div><div class="line">			result+=(x%<span class="number">10</span>);</div><div class="line">			x/=<span class="number">10</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> (x==result || x==result/<span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这个题从优化和边界检测两个地方考察。</p>
-</blockquote>
-
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>利用了减法的思想来解决最长前缀问题。</p>
+<p>P.S.</p>
+<h1 id="Longest-Common-Substring"><a href="#Longest-Common-Substring" class="headerlink" title="Longest Common Substring"></a><a href="">Longest Common Substring</a></h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/" data-id="ciy4324fl0006ssmwnnmeuj86" class="article-share-link">Delen</a>
+      <a data-url="https://war3cdota.github.io/2017/01/19/14-Longest-Common-Prefix/" data-id="ciy4324f20001ssmwfnk32t6f" class="article-share-link">Delen</a>
       
-        <a href="/2017/01/10/9-Palindrome-Number/#comments" class="article-comment-link">留言</a>
+        <a href="/2017/01/19/14-Longest-Common-Prefix/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check/">Boundary Check</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Optimize/">Optimize</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Optimize/">Optimize</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/减法思维/">减法思维</a></li></ul>
 
     </footer>
   </div>
@@ -146,19 +141,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/01/19/14-Longest-Common-Prefix/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
-      <div class="article-nav-title">
-        
-          14. Longest Common Prefix
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/10/8-String2Integer/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/10/9-Palindrome-Number/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ouder</strong>
-      <div class="article-nav-title">8. String2Integer</div>
+      <div class="article-nav-title">9. Palindrome Number</div>
     </a>
   
 </nav>
@@ -169,7 +155,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-9-Palindrome-Number" data-title="9. Palindrome Number" data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/"></div>
+  <div class="ds-thread" data-thread-key="post-14-Longest-Common-Prefix" data-title="14. Longest Common Prefix" data-url="https://war3cdota.github.io/2017/01/19/14-Longest-Common-Prefix/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
