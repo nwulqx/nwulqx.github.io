@@ -94,29 +94,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Write a function to find the longest common substring amongst two strings.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="循环查找"><a href="#循环查找" class="headerlink" title="循环查找"></a>循环查找</h2><blockquote>
-<p>思路：</p>
-<ol>
-<li>双循环嵌套，对两个字符串每一个字符进行对比；</li>
-<li>如果相同，则应该继续比较，找到当前索引开始的最长相同字符串长度；</li>
-<li>每次找到的相同字符串并不一定是最长的，所以需要再做一次比较，保存最长的子串的索引。</li>
-</ol>
-</blockquote>
-<p>时间复杂度：O(n2)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestCommonSubstring</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longestCommonSubstring</span><span class="params">(String str1,String str2)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> len1 = str1.length();</div><div class="line">		<span class="keyword">int</span> len2 = str2.length();</div><div class="line">		<span class="keyword">int</span> start = <span class="number">0</span>, len = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len1;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len2;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(str1.charAt(i)!=str2.charAt(j))</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				<span class="keyword">int</span> start1 = i+<span class="number">1</span>,start2 = j+<span class="number">1</span>,length = <span class="number">1</span>;</div><div class="line">				<span class="keyword">while</span>(start1&lt;len1 &amp;&amp; start2&lt;len2)&#123;</div><div class="line">					<span class="keyword">if</span>(str1.charAt(start1)==str2.charAt(start2))&#123;</div><div class="line">						start1++;</div><div class="line">						start2++;</div><div class="line">						length++;</div><div class="line">					&#125;<span class="keyword">else</span></div><div class="line">						<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">if</span>(length&gt;len)&#123;</div><div class="line">					start = start1-length;</div><div class="line">					len = length;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> str1.substring(start,start+len);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="DP问题"><a href="#DP问题" class="headerlink" title="DP问题"></a>DP问题</h1><blockquote>
-<p>转换成DP问题，当前字串满足最长子串的前提是字串(n-1)满足最长子串&amp;&amp;当前字符相等。<br><br>  动态转移方程为：</p>
-</blockquote>
-<pre><code>如果xi == yj， 则 c[i][j] = c[i-1][j-1]+1
-
-如果xi ! = yj,  那么c[i][j] = 0
-</code></pre><p>时间复杂度：O(n2)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestCommonSubstring3</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</div><div class="line">		System.out.println(</div><div class="line">			longestCommonSubstring(<span class="string">""</span>,<span class="string">"saabcs"</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longestCommonSubstring</span><span class="params">(String str1,String str2)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> len1 = str1.length()+<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> len2 = str2.length()+<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> r[][] = <span class="keyword">new</span> <span class="keyword">int</span>[len1][len2];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;len1;m++)</div><div class="line">			r[m][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;len2;n++)</div><div class="line">			r[<span class="number">0</span>][n] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> start = <span class="number">0</span>,length = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len1;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;len2;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(str1.charAt(i-<span class="number">1</span>)==(str2.charAt(j-<span class="number">1</span>)))</div><div class="line">					r[i][j] = r[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>;</div><div class="line">				<span class="keyword">if</span>(r[i][j] &gt; length)&#123;</div><div class="line">					start = i-length-<span class="number">1</span>;</div><div class="line">					length = r[i][j];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> str1.substring(start,start+length);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>练习下动态规划的思路！</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/01/22/Longest-Common-Substring/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/22/Longest-Common-Substring/" data-id="ciy8hdr8h0008k8mwno9iu5xe" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/22/Longest-Common-Substring/" data-id="ciy8hfod8000fgwmwbaek112b" class="article-share-link">Share</a>
       
         <a href="/2017/01/22/Longest-Common-Substring/#comments" class="article-comment-link">留言</a>
       
@@ -161,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/19/14-Longest-Common-Prefix/" data-id="ciy8hdr810003k8mw527o4wo6" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/19/14-Longest-Common-Prefix/" data-id="ciy8hfoce0002gwmwdr50gk8i" class="article-share-link">Share</a>
       
         <a href="/2017/01/19/14-Longest-Common-Prefix/#comments" class="article-comment-link">留言</a>
       
@@ -206,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/" data-id="ciy8hdr8o0009k8mwmgpmtmfv" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/10/9-Palindrome-Number/" data-id="ciy8hfod4000agwmwf2rgwmvr" class="article-share-link">Share</a>
       
         <a href="/2017/01/10/9-Palindrome-Number/#comments" class="article-comment-link">留言</a>
       
@@ -253,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/10/8-String2Integer/" data-id="ciy8hdr8r000ak8mwcm51zmbn" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/10/8-String2Integer/" data-id="ciy8hfod10009gwmwe1hl9nac" class="article-share-link">Share</a>
       
         <a href="/2017/01/10/8-String2Integer/#comments" class="article-comment-link">留言</a>
       
@@ -299,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="ciy8hdr8d0006k8mwvpcgcy1i" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/01/08/7-Reverse-Integer/" data-id="ciy8hfocu0008gwmwsy6r3rdn" class="article-share-link">Share</a>
       
         <a href="/2017/01/08/7-Reverse-Integer/#comments" class="article-comment-link">留言</a>
       
