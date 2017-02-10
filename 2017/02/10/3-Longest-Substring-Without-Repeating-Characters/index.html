@@ -17,15 +17,15 @@ Given &amp;quot;bbbbb&amp;quo">
 Examples:
 Given &amp;quot;abcabcbb&amp;quot;, the answer is &amp;quot;abc&amp;quot;, which the length is 3.
 Given &amp;quot;bbbbb&amp;quo">
-<meta property="og:image" content="http://i.imgur.com/8ADJVmF.png">
-<meta property="og:updated_time" content="2017-02-10T03:15:49.341Z">
+<meta property="og:image" content="http://i.imgur.com/aZO47aN.png">
+<meta property="og:updated_time" content="2017-02-10T03:27:44.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3. Longest Substring Without Repeating Characters">
 <meta name="twitter:description" content="Given a string, find the length of the longest substring without repeating characters.
 Examples:
 Given &amp;quot;abcabcbb&amp;quot;, the answer is &amp;quot;abc&amp;quot;, which the length is 3.
 Given &amp;quot;bbbbb&amp;quo">
-<meta name="twitter:image" content="http://i.imgur.com/8ADJVmF.png">
+<meta name="twitter:image" content="http://i.imgur.com/aZO47aN.png">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -73,9 +73,9 @@ Given &amp;quot;bbbbb&amp;quo">
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -134,7 +134,7 @@ color:rgb(199,37,78)
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestSubstringWithoutRepeatingCharacters</span></span>&#123;</div><div class="line">	<span class="comment">//HashMap   This method is very obscure!</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    	<span class="keyword">if</span>(s.length()==<span class="number">0</span>)</div><div class="line">    		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    	<span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    	Map&lt;Character,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">    		<span class="keyword">if</span>(map.containsKey(s.charAt(i)))&#123;</div><div class="line">    			<span class="comment">//Note that the two pointers can only move forward.</span></div><div class="line">    			j = Math.max(j,map.get(s.charAt(i))+<span class="number">1</span>);</div><div class="line">    			<span class="comment">// j = map.get(s.charAt(i))+1;</span></div><div class="line">    			System.out.println(<span class="string">"j="</span>+j);</div><div class="line">    		&#125;</div><div class="line">    		map.put(s.charAt(i),i);</div><div class="line">    		max = Math.max(max,i-j+<span class="number">1</span>);</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>分析：</strong></p>
-<p><img src="http://i.imgur.com/8ADJVmF.png" alt=""></p>
+<p><img src="http://i.imgur.com/aZO47aN.png" alt=""></p>
 <h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p><strong>快慢指针法</strong></p>
 <blockquote>
 <p>使用快慢指针来解决这个问题，快指针用来添加不存在的字符；而当存在重复字符时，慢指针的作用是用来从字符串的头部删除字符，直到重复的字符被删除为止。</p>
@@ -151,7 +151,7 @@ color:rgb(199,37,78)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/" data-id="ciyz8r7uz0000fcmwmi7qjtl4" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/" data-id="ciyz96a500008fkmwbv5796n2" class="article-share-link">Share</a>
       
         <a href="/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/#comments" class="article-comment-link">留言</a>
       
@@ -166,7 +166,7 @@ color:rgb(199,37,78)
   
   
     <a href="/2017/02/08/2-Add-Two-Numbers/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">2. Add Two Numbers</div>
     </a>
   
@@ -287,7 +287,7 @@ color:rgb(199,37,78)
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
