@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/12 | 庆轩的博客</title>
+  <title>27. Remove Element | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/archives/2016/12/index.html">
+  <meta name="description" content="Given an array and a value, remove all instances of that value in place and return the new length.
+Do not allocate extra space for another array, you must do this in place with constant memory.
+The or">
+<meta property="og:type" content="article">
+<meta property="og:title" content="27. Remove Element">
+<meta property="og:url" content="https://war3cdota.github.io/2017/03/16/27-Remove-Element/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Given an array and a value, remove all instances of that value in place and return the new length.
+Do not allocate extra space for another array, you must do this in place with constant memory.
+The or">
+<meta property="og:updated_time" content="2017-03-16T08:32:07.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="27. Remove Element">
+<meta name="twitter:description" content="Given an array and a value, remove all instances of that value in place and return the new length.
+Do not allocate extra space for another array, you must do this in place with constant memory.
+The or">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,97 +79,87 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-js的this、__proto__">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" class="archive-article-date">
-  <time datetime="2016-12-22T02:54:10.000Z" itemprop="datePublished">Dec 22</time>
+        <section id="main"><article id="post-27-Remove-Element" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/27-Remove-Element/" class="article-date">
+  <time datetime="2017-03-16T08:31:05.000Z" itemprop="datePublished">2017-03-16</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/"><div class="article-title-stick">JS的this、__proto__ 和. prototype 、constructor</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">27. Remove Element</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/15/写写我理解的递归/" class="archive-article-date">
-  <time datetime="2016-12-15T10:25:57.000Z" itemprop="datePublished">Dec 15</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/15/写写我理解的递归/"><div class="article-title-stick">写写我理解的递归</div></a>
-    </h1>
-  
+        <p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+<p>Example:<br>Given input array nums = <font color="rgb(199,37,78)"><code>[3,2,2,3]</code></font>, val = <font color="rgb(199,37,78)"><code>3</code></font></p>
+<p>Your function should return length = 2, with the first two elements of nums being 2.<br><a id="more"></a></p>
+<h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><blockquote>
+<p>利用了和<a href="https://war3cdota.github.io/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/">RemoveDuplicatesfromSortedArray</a>相同的思想，时间复杂度O(n)<br><br>利用length既可以该值既可以表示索引，也可以表示索引长度，将比较重复的逻辑换成比较数组元素和val即可！</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">    <span class="comment">// length is the return array's length</span></div><div class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">    	<span class="keyword">if</span>(nums[i] == val) </div><div class="line">    		<span class="keyword">continue</span>;</div><div class="line">        <span class="comment">//we can also use length as index to cover val</span></div><div class="line">    	nums[length] = nums[i];</div><div class="line">    	length++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> length;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><blockquote>
+<p>这道题目我隐约记得，以前在解决JavaScript中的数组删除指定或者相同元素时，使用过这种类似的方法，虽然数组大小不改变，但是使用了一个值来记录所需要的数组长度，并把该长度内不需要的元素删除并替换。</p>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/09/编程语言分类/" class="archive-article-date">
-  <time datetime="2016-12-09T03:19:13.000Z" itemprop="datePublished">Dec 9</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/09/编程语言分类/"><div class="article-title-stick">编程语言分类</div></a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/08/前后端数据流导向/" class="archive-article-date">
-  <time datetime="2016-12-08T11:45:56.000Z" itemprop="datePublished">Dec 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/03/16/27-Remove-Element/" data-id="cj0c50xko000a5smw5jkyqikv" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/08/前后端数据流导向/"><div class="article-title-stick">前后端数据流导向</div></a>
-    </h1>
-  
+        <a href="/2017/03/16/27-Remove-Element/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">26. Remove Duplicates from Sorted Array</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-27-Remove-Element" data-title="27. Remove Element" data-url="https://war3cdota.github.io/2017/03/16/27-Remove-Element/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
