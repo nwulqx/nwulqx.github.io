@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 位运算 | 庆轩的博客</title>
+  <title>26. Remove Duplicates from Sorted Array | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/tags/位运算/index.html">
+  <meta name="description" content="Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+Do not allocate extra space for another array, you must do this in place with co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="26. Remove Duplicates from Sorted Array">
+<meta property="og:url" content="https://war3cdota.github.io/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+Do not allocate extra space for another array, you must do this in place with co">
+<meta property="og:updated_time" content="2017-03-16T08:21:22.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="26. Remove Duplicates from Sorted Array">
+<meta name="twitter:description" content="Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+Do not allocate extra space for another array, you must do this in place with co">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,59 +76,85 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/02/08/2-Add-Two-Numbers/" class="archive-article-date">
-  <time datetime="2017-02-08T03:17:16.000Z" itemprop="datePublished">Feb 8</time>
+        <section id="main"><article id="post-26-Remove-Duplicates-from-Sorted-Array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/" class="article-date">
+  <time datetime="2017-03-16T08:19:33.000Z" itemprop="datePublished">2017-03-16</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/08/2-Add-Two-Numbers/"><div class="article-title-stick">2. Add Two Numbers</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">26. Remove Duplicates from Sorted Array</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/08/7-Reverse-Integer/" class="archive-article-date">
-  <time datetime="2017-01-08T06:01:22.000Z" itemprop="datePublished">Jan 8</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/08/7-Reverse-Integer/"><div class="article-title-stick">7. Reverse Integer</div></a>
-    </h1>
-  
+        <p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p>For example,<br>Given input array nums = <font color="rgb(199,37,78)"><code>[1,1,2]</code></font>,</p>
+<p>Your function should return length = <font color="rgb(199,37,78)"><code>2</code></font>, with the first two elements of nums being <font color="rgb(199,37,78)"><code>1</code></font> and <font color="rgb(199,37,78)"><code>2</code></font> respectively. It doesn’t matter what you leave beyond the new length.</p>
+<a id="more"></a>
+<h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><blockquote>
+<p>去除重复元素，并返回数组长度。<br><br>注意：这题并不是真正的让你删除重复元素，因为那么做浪费了空间，需要重新再定义一个数组。<br><br>需要设置一个长度length（该值既可以表示索引，也可以表示索引长度），遍历数组，当数组相邻元素重复时，将当前索引处的值赋给length为索引处，同时length++；<br><br>遍历完成后，返回length</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> index = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.length;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(nums[i]==nums[i-<span class="number">1</span>])&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        nums[index++] = nums[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> index;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个题和js上操作数组相似，不需要求得一个新的数组，而只是想得到某一区间上的数组元素。</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/" data-id="cj0c4mq4l0009pgmw0mnxdusn" class="article-share-link">Share</a>
+      
+        <a href="/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/03/07/24-Swap-Nodes-in-Pairs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">24. Swap Nodes in Pairs</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-26-Remove-Duplicates-from-Sorted-Array" data-title="26. Remove Duplicates from Sorted Array" data-url="https://war3cdota.github.io/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
