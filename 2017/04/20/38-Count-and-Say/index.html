@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mot-clé: 快慢指针 | 庆轩的博客</title>
+  <title>38. Count and Say | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/tags/快慢指针/index.html">
+  <meta name="description" content="The count-and-say sequence is the sequence of integers beginning as follows: 1, 11, 21, 1211, 111221, ...  1 is read off as &amp;quot;one 1&amp;quot; or 11. 11 is read off as &amp;quot;two 1s&amp;quot; or 21. 21 is r">
+<meta name="keywords" content="LeetCode-easy,recursion,连续性判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="38. Count and Say">
+<meta property="og:url" content="https://war3cdota.github.io/2017/04/20/38-Count-and-Say/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="The count-and-say sequence is the sequence of integers beginning as follows: 1, 11, 21, 1211, 111221, ...  1 is read off as &amp;quot;one 1&amp;quot; or 11. 11 is read off as &amp;quot;two 1s&amp;quot; or 21. 21 is r">
+<meta property="og:updated_time" content="2017-04-20T09:15:27.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="38. Count and Say">
+<meta name="twitter:description" content="The count-and-say sequence is the sequence of integers beginning as follows: 1, 11, 21, 1211, 111221, ...  1 is read off as &amp;quot;one 1&amp;quot; or 11. 11 is read off as &amp;quot;two 1s&amp;quot; or 21. 21 is r">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,40 +74,108 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/" class="archive-article-date">
-  <time datetime="2017-02-10T03:14:13.000Z" itemprop="datePublished">Feb 10</time>
+        <section id="main"><article id="post-38-Count-and-Say" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/20/38-Count-and-Say/" class="article-date">
+  <time datetime="2017-04-20T09:13:38.000Z" itemprop="datePublished">2017-04-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/"><div class="article-title-stick">3. Longest Substring Without Repeating Characters</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">38. Count and Say</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The count-and-say sequence is the sequence of integers beginning as follows:</p>
+<font><code>1, 11, 21, 1211, 111221, ...</code></font>
 
+<p><font><code>1</code></font> is read off as <font><code>&quot;one 1&quot;</code></font> or <font><code>11</code></font>.<br></p>
+<p><font><code>11</code></font> is read off as <font><code>&quot;two 1s&quot;</code></font> or <font><code>21</code></font>.<br></p>
+<p><font><code>21</code></font> is read off as <font><code>&quot;one 2</code></font>, then <font><code>one 1&quot;</code></font> or <font><code>1211</code></font>.<br><br>Given an integer n, generate the nth sequence.<br></p>
+<p>Note: The sequence of integers will be represented as a string.</p>
+<style type="text/css">
+font{
+color:rgb(199,37,78)
+}
+</style>
+
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><blockquote>
+<p>递归思想，要想知道3层，需要知道2层，需要知道1层，了解了按照递归的思路来实现即可！</p>
+</blockquote>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>这题思路很简单，但是实际操作的时候还是遇到了一点问题。在于生成新的字符串时，对于连续的相同的字符进行判断记录。</p>
+<ul>
+<li><p>如果当前字符和前一个字符不相等，则应该将当前字符的数量和当前字符添加到新字符串中。</p>
+</li>
+<li><p>如果当前字符和前一个字符相等，则应该将对该字符的计数加一。</p>
+</li>
+<li><p>对于循环的起始应该是从1开始比较好，结束应该是上一次返回的字符串长度加一。</p>
+</li>
+</ul>
+<p>附：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"><span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</div><div class="line"><span class="keyword">return</span> <span class="string">"1"</span>;</div><div class="line">&#125;</div><div class="line">String preStr = countAndSay(n-<span class="number">1</span>);</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;preStr.length()+<span class="number">1</span>;i++)&#123;</div><div class="line"><span class="keyword">if</span>(i==preStr.length() || preStr.charAt(i)!=preStr.charAt(i-<span class="number">1</span>))&#123;</div><div class="line">sb.append(count).append(preStr.charAt(i-<span class="number">1</span>));</div><div class="line">count = <span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">count++;</div><div class="line"><span class="keyword">continue</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> sb.toString();</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这类题需要快速定位到递归的思路，这种层层相扣的，当前结果需要上次的结果作为输入的问题。在一定程度上使用递归效果很不错。另外对于连续性问题的判断，这种循环的解决技巧也应该谨记！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/04/20/38-Count-and-Say/" data-id="cj1q719bk000f34lm33s17rcb" class="article-share-link">Partager</a>
+      
+        <a href="/2017/04/20/38-Count-and-Say/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion/">recursion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/连续性判断/">连续性判断</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/16/27-Remove-Element/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          27. Remove Element
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-38-Count-and-Say" data-title="38. Count and Say" data-url="https://war3cdota.github.io/2017/04/20/38-Count-and-Say/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
