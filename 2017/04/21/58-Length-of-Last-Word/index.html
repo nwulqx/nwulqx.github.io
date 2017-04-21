@@ -3,22 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>24. Swap Nodes in Pairs | 庆轩的博客</title>
+  <title>58. Length of Last Word | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Given a linked list, swap every two adjacent nodes and return its head. For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3. Your algorithm should use only constan">
-<meta name="keywords" content="LeetCode-easy,recursion,链表">
+  <meta name="description" content="Given a string s consists of upper/lower-case alphabets and empty space characters &amp;#39; &amp;#39;, return the length of last word in the string. If the last word does not exist, return 0. Note: A word is">
+<meta name="keywords" content="LeetCode-easy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="24. Swap Nodes in Pairs">
-<meta property="og:url" content="https://war3cdota.github.io/2017/03/07/24-Swap-Nodes-in-Pairs/index.html">
+<meta property="og:title" content="58. Length of Last Word">
+<meta property="og:url" content="https://war3cdota.github.io/2017/04/21/58-Length-of-Last-Word/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Given a linked list, swap every two adjacent nodes and return its head. For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3. Your algorithm should use only constan">
-<meta property="og:image" content="http://i.imgur.com/Yxya3WY.png">
-<meta property="og:image" content="http://i.imgur.com/O2rttX2.png">
-<meta property="og:updated_time" content="2017-03-07T02:56:02.066Z">
+<meta property="og:description" content="Given a string s consists of upper/lower-case alphabets and empty space characters &amp;#39; &amp;#39;, return the length of last word in the string. If the last word does not exist, return 0. Note: A word is">
+<meta property="og:updated_time" content="2017-04-21T09:21:30.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="24. Swap Nodes in Pairs">
-<meta name="twitter:description" content="Given a linked list, swap every two adjacent nodes and return its head. For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3. Your algorithm should use only constan">
-<meta name="twitter:image" content="http://i.imgur.com/Yxya3WY.png">
+<meta name="twitter:title" content="58. Length of Last Word">
+<meta name="twitter:description" content="Given a string s consists of upper/lower-case alphabets and empty space characters &amp;#39; &amp;#39;, return the length of last word in the string. If the last word does not exist, return 0. Note: A word is">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -77,10 +74,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-24-Swap-Nodes-in-Pairs" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-58-Length-of-Last-Word" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/07/24-Swap-Nodes-in-Pairs/" class="article-date">
-  <time datetime="2017-03-07T02:52:56.000Z" itemprop="datePublished">2017-03-07</time>
+    <a href="/2017/04/21/58-Length-of-Last-Word/" class="article-date">
+  <time datetime="2017-04-21T09:16:37.000Z" itemprop="datePublished">2017-04-21</time>
 </a>
     
   </div>
@@ -91,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      <div class="article-title-stick">24. Swap Nodes in Pairs</div>
+      <div class="article-title-stick">58. Length of Last Word</div>
     </h1>
   
 
@@ -99,36 +96,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Given a linked list, swap every two adjacent nodes and return its head.</p>
-<p>For example,<br>Given <font color="rgb(199,37,78)"><code>1-&gt;2-&gt;3-&gt;4</code></font>, you should return the list as <font color="rgb(199,37,78)"><code>2-&gt;1-&gt;4-&gt;3</code></font>.</p>
-<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
+        <p>Given a string s consists of upper/lower-case alphabets and empty space characters <code>&#39; &#39;</code>, return the length of last word in the string.</p>
+<p>If the last word does not exist, return 0.</p>
+<p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
+<p>For example,<br>Given s = <code>&quot;Hello World&quot;</code>,<br>return <code>5</code>.</p>
 <a id="more"></a>
-<h1 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h1><h2 id="循环解决"><a href="#循环解决" class="headerlink" title="循环解决"></a>循环解决</h2><blockquote>
-<p>先明确链表元素交换，这样就好做了！</p>
-</blockquote>
-<p><img src="http://i.imgur.com/Yxya3WY.png" alt=""></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><blockquote>
-<ol>
-<li>通过temp节点获取first和second的索引，并且交换两个元素；</li>
-<li>重新获取temp元素，并重复步骤1。</li>
-</ol>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">	ListNode node = <span class="keyword">new</span> ListNode(<span class="number">9527</span>);</div><div class="line">	node.next = head;</div><div class="line">	ListNode temp = node;</div><div class="line">	<span class="keyword">while</span>(temp.next!=<span class="keyword">null</span> &amp;&amp; temp.next.next!=<span class="keyword">null</span>)&#123;</div><div class="line">		ListNode first = temp.next;</div><div class="line">		ListNode second = temp.next.next;</div><div class="line">		first.next = second.next;</div><div class="line">		second.next = first;</div><div class="line">		temp.next = second;</div><div class="line">		temp = first;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> node;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</div><div class="line">     <span class="keyword">int</span> val;</div><div class="line">     ListNode next;</div><div class="line">     ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="递归解决"><a href="#递归解决" class="headerlink" title="递归解决"></a>递归解决</h2><p><img src="http://i.imgur.com/O2rttX2.png" alt=""></p>
-<blockquote>
-<p>利用递归的思路解决，把一次操作封装成函数，借助递归实现。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//recursion: the recursive stack uses O(n) space</span></div><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</div><div class="line">		<span class="keyword">return</span> head;</div><div class="line">	ListNode node = head.next;</div><div class="line">	head.next = swapPairs(node.next);</div><div class="line">	node.next = head;</div><div class="line">	<span class="keyword">return</span> node;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</div><div class="line">     <span class="keyword">int</span> val;</div><div class="line">     ListNode next;</div><div class="line">     ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p><strong>伪码</strong></p>
+<pre><code>inputString &lt;-- 输入字符串消去前后多余的空白字符
+wordsArray[] &lt;-- inputString按照空格&quot; &quot;分割成字符串数组
+if wordsArray的长度 == 0
+return 0
+else
+return 数组最后元素的长度
+</code></pre><p><strong>Java源码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LengthofLastWord</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		String inString = s.trim();</div><div class="line">		String wordsArray[] = inString.split(<span class="string">" "</span>);</div><div class="line">		<span class="keyword">return</span> wordsArray.length==<span class="number">0</span>?<span class="number">0</span>:wordsArray[wordsArray.length-<span class="number">1</span>].length();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><p>方法一操作过于复杂，不如直接操作字符效率高。</p>
+<p><strong>伪码</strong></p>
+<pre><code>inputString &lt;-- 输入字符串消去前后多余的空白字符
+设置计数length &lt;-- 0
+for(i&lt;--inputString的长度;i&gt;=0;i--){
+    if(inputString在i处索引的字符不是空字符&apos; &apos;){
+        length++;
+    }else{
+        跳出循环
+    }
+}
+return length
+</code></pre><p><strong>Java源码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LengthofLastWord</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">	String inString = s.trim();</div><div class="line">	<span class="keyword">int</span> length = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=inString.length()-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">		<span class="keyword">if</span>(inString.charAt(i)!=<span class="string">' '</span>)&#123;</div><div class="line">			length++;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> length;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>easy题，过！先看下有没有叼一点其他解法。OK~~有个写法比我吊的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> s.trim().length()-s.trim().lastIndexOf(<span class="string">" "</span>)-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其他思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">	s = s.trim();</div><div class="line">	<span class="keyword">int</span> lastIndex = s.lastIndexOf(<span class="string">' '</span>) + <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> s.length() - lastIndex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了，不要讨论难易了，简单题更应该多看看多解性！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/03/07/24-Swap-Nodes-in-Pairs/" data-id="cj1rmmpgy0005rclm54huaptu" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/21/58-Length-of-Last-Word/" data-id="cj1rmmphj000frclmy6sw7kj1" class="article-share-link">Share</a>
       
-        <a href="/2017/03/07/24-Swap-Nodes-in-Pairs/#comments" class="article-comment-link">留言</a>
+        <a href="/2017/04/21/58-Length-of-Last-Word/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion/">recursion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li></ul>
 
     </footer>
   </div>
@@ -136,20 +146,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/02/10/3-Longest-Substring-Without-Repeating-Characters/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/20/38-Count-and-Say/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          3. Longest Substring Without Repeating Characters
+          38. Count and Say
         
       </div>
     </a>
   
-  
-    <a href="/2017/03/16/26-Remove-Duplicates-from-Sorted-Array/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">26. Remove Duplicates from Sorted Array</div>
-    </a>
   
 </nav>
 
@@ -159,7 +164,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-24-Swap-Nodes-in-Pairs" data-title="24. Swap Nodes in Pairs" data-url="https://war3cdota.github.io/2017/03/07/24-Swap-Nodes-in-Pairs/"></div>
+  <div class="ds-thread" data-thread-key="post-58-Length-of-Last-Word" data-title="58. Length of Last Word" data-url="https://war3cdota.github.io/2017/04/21/58-Length-of-Last-Word/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
