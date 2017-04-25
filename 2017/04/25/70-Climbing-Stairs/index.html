@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?">
-<meta property="og:updated_time" content="2017-04-25T09:40:49.582Z">
+<meta property="og:updated_time" content="2017-04-25T09:46:05.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="70. Climbing Stairs">
 <meta name="twitter:description" content="You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?">
@@ -103,45 +103,23 @@
 </blockquote>
 <p><strong>源码</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClimbingStairs</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">		<span class="keyword">return</span> climbStairs(n-<span class="number">1</span>)+climbStairs(n-<span class="number">2</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>OK，AC不过。</p>
-<p>Time Limit Exceeded<br>Last Input: 44</p>
-<p>由于递归的占用内存很大，所以这里当输入44时，出现了超时。</p>
+<pre><code>Time Limit Exceeded
+Last Input: 44
+</code></pre><p>由于递归的占用内存很大，所以这里当输入44时，出现了超时。</p>
 <p><strong>如何解决？</strong></p>
 <blockquote>
 <p>我记得，能用递归解决的问题，一定能用循环解决。那这道题换个思路，用循环。可以借用一下动态规划的方法。</p>
 </blockquote>
 <p><strong>源码</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClimbingStairs</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> arr[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">		arr[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">		arr[<span class="number">2</span>] = <span class="number">2</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;arr.length;i++)&#123;</div><div class="line">			arr[i] = arr[i-<span class="number">1</span>] + arr[i-<span class="number">2</span>];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> arr[n];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>至此，已经可以AC过了，但是。还是不够，因为它的空间复杂度是O(n)。仔细思考一下，其实它所需要的变量只要3个就够了，而不需要数组。<br><code>`java
-public class Solution {
-    public int climbStairs(int n) {
-        if(n&lt;=1){
-            return 1;
-        }
-        if(n == 2){
-            return 2;
-        }
-        int oneStepBefore = 2;
-        int twoStepBefore = 1;
-        int allWays = 0;
-        /*
-            1 2 3 5 8
-            t o a
-              t o a
-        */
-        for(int i=2;i&lt;n;i++){
-            allWays = oneStepBefore + twoStepBefore;
-            twoStepBefore = oneStepBefore;
-            oneStepBefore = allWays;
-        }
-        return allWays;
-    }
-}</code></p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>至此，已经可以AC过了，但是。还是不够，因为它的空间复杂度是O(n)。仔细思考一下，其实它所需要的变量只要3个就够了，而不需要数组。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(n&lt;=<span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> oneStepBefore = <span class="number">2</span>;</div><div class="line">		<span class="keyword">int</span> twoStepBefore = <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> allWays = <span class="number">0</span>;</div><div class="line">		<span class="comment">/*</span></div><div class="line">			1 2 3 5 8</div><div class="line">			t o a</div><div class="line">			  t o a</div><div class="line">		*/</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i++)&#123;</div><div class="line">			allWays = oneStepBefore + twoStepBefore;</div><div class="line">			twoStepBefore = oneStepBefore;</div><div class="line">			oneStepBefore = allWays;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> allWays;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>能用递归解决的问题，一定要考虑他的开销，递归虽然很快捷，但是他的开销也很大，如果需要很深的递归，那么不妨考虑下使用动态规划。或者如果可能的情况下，一定要考虑下使用循环。以减少递归带来的问题。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj1xd85zd000rh0lmvnckqjfb" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj1xd9s46000s4olm39ee86ab" class="article-share-link">Share</a>
       
         <a href="/2017/04/25/70-Climbing-Stairs/#comments" class="article-comment-link">留言</a>
       
