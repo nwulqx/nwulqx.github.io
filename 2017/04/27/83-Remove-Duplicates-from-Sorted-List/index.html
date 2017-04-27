@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>83. Remove Duplicates from Sorted List | 庆轩的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Given a sorted linked list, delete all duplicates such that each element appear only once. For example,Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return 1-&amp;gt;2-&amp;gt;3.">
+<meta name="keywords" content="LeetCode-easy,Optimize(优化),LinkedList(链表),recursion(递归)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="83. Remove Duplicates from Sorted List">
+<meta property="og:url" content="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/index.html">
+<meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Given a sorted linked list, delete all duplicates such that each element appear only once. For example,Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return 1-&amp;gt;2-&amp;gt;3.">
+<meta property="og:updated_time" content="2017-04-27T09:09:34.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="83. Remove Duplicates from Sorted List">
+<meta name="twitter:description" content="Given a sorted linked list, delete all duplicates such that each element appear only once. For example,Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return 1-&amp;gt;2-&amp;gt;3.">
+  
+    <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script src="//cdn1.lncld.net/static/js/av-min-1.5.3.js"></script>
+  <script>AV.init({appId:"uAfD4ikMWPeXM7raGGN7rIbz-gzGzoHsz", appKey:"HrEv4r0QVo7PzC8k8Ltue8kE"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">庆轩的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">仰望星空，脚踏实地！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/collections">Collections</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-83-Remove-Duplicates-from-Sorted-List" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" class="article-date">
+  <time datetime="2017-04-27T09:00:05.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">83. Remove Duplicates from Sorted List</div>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
+<p>For example,<br><br>Given <code>1-&gt;1-&gt;2</code>, return <code>1-&gt;2</code>.<br><br>Given <code>1-&gt;1-&gt;2-&gt;3-&gt;3</code>, return <code>1-&gt;2-&gt;3</code>.</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p><strong>伪码</strong></p>
+<pre><code>while(head的下一个节点 != null){
+    second &lt;-- head的下一个节点
+    if(second的值 == head的值){
+        third &lt;-- second的下一个节点
+        if(third != null){
+            second的值 &lt;-- third的值
+            second的下一个节点 &lt;-- third的下一个节点
+        }else{
+            head的下一个节点 &lt;-- null
+        }
+    }else{
+        head &lt;-- head的下一个节点
+    }
+}
+</code></pre><p>这里用了最简单的思路：</p>
+<blockquote>
+<p>当前节点如果和下一个节点的值相等，则删除下一个节点（如何删除下一个节点，则应该判断下下一个节点的下一个节点是否为null），同时指针不向后遍历。<br>如果不等，则遍历下一个节点。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesfromSortedList</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates1</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> head;</div><div class="line">        &#125;</div><div class="line">        ListNode first = head;</div><div class="line">        <span class="keyword">while</span>(first.next!=<span class="keyword">null</span>)&#123;</div><div class="line">            ListNode second = first.next;</div><div class="line">            <span class="keyword">if</span>(second.val == first.val)&#123;</div><div class="line">                ListNode third = second.next;</div><div class="line">                <span class="keyword">if</span>(third!=<span class="keyword">null</span>)&#123;</div><div class="line">                    second.val = third.val;</div><div class="line">                    second.next = third.next;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">/*</span></div><div class="line">                    Err : second = null;//Only pont second is null;</div><div class="line">                    We need first.next = null;</div><div class="line">                    */</div><div class="line">                    first.next = <span class="keyword">null</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                first = first.next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优化</strong><br>上述的方法其实太过复杂了，应该是可以优化的。我从<code>first.next!=null</code>作为的循环判断条件。最好的话，其实使用head != null是最快捷的。</p>
+<h2 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h2><p><strong>源码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesfromSortedList</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates2</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> head;</div><div class="line">        &#125;</div><div class="line">        ListNode preNode = <span class="keyword">new</span> ListNode(<span class="number">9527</span>);</div><div class="line">        preNode.next = head;</div><div class="line">        <span class="keyword">while</span>(head!=<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(head.next!=<span class="keyword">null</span> &amp;&amp; head.val == head.next.val)&#123;</div><div class="line">                head.next = head.next.next;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                head = head.next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> preNode.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="更好的方法"><a href="#更好的方法" class="headerlink" title="更好的方法"></a>更好的方法</h2><p>采用递归，便于阅读以及理解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesfromSortedList</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span> || head.next==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> head;</div><div class="line">        &#125;</div><div class="line">        head.next = deleteDuplicates(head.next);</div><div class="line">        <span class="keyword">return</span> head.val == head.next.val?head.next:head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>代码感悟</strong></p>
+<blockquote>
+<p>其实挺想写一下这个递归思路的，看了这个递归，其实是尾递归的一种，一开始上去确实还不太会写。主要分为3步：</p>
+<ol>
+<li>边界判断，如果head为null或者head没有后面的节点，则直接返回head;<br></li>
+<li>head的下一个节点是递归调用这个函数的返回值。这里有说法，如果函数走到这里，倒数3个三个节点已经确定了！因为最后一个节点为null，倒数第一个节点只有一个，倒数第二个节点现在的下一个节点指向了倒数第一个节点;<br></li>
+<li>递归的核心，函数返回值，判断当前节点和下一个节点的值是否相等，以此来决定返回值。<br><br>这种尾递归的操作，感觉还是挺值得思考的！</li>
+</ol>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这道题使用各种方法都可以解决，关键是解决的思路有所不同。第一种是我最先想到的，虽然逻辑上没有问题，但其实，如果采用第二种逻辑上的判断，则代码上会更少，可读性更好。<br><br>至于最后一种递归方案，我觉得是我最值得去学习的，很好的思路和方法！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" data-id="cj206uok6000q70lm57vkv650" class="article-share-link">Share</a>
+      
+        <a href="/2017/04/27/83-Remove-Duplicates-from-Sorted-List/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LinkedList-链表/">LinkedList(链表)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Optimize-优化/">Optimize(优化)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion-递归/">recursion(递归)</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/25/70-Climbing-Stairs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          70. Climbing Stairs
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-83-Remove-Duplicates-from-Sorted-List" data-title="83. Remove Duplicates from Sorted List" data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+<div class="widget-wrap" style="height:160px;">
+  <h3 class="widget-title">关于我</h3>
+  <img class="widget-head" src="https://war3cdota.github.io/images/head.png"></img>
+  <div class="widget" style="margin-left:105px;">
+    <ul class="entry">
+    
+      
+      <li><a href="http://htmlpreview.github.io/?https://github.com/War3cdota/LQX-Wasu/blob/master/README.html" target="_blank">个人简历</a></li>
+    
+      
+      <li><a href="https://github.com/War3cdota" target="_blank">github</a></li>
+    
+      
+      <li><a href="http://blog.csdn.net/war3cdota" target="_blank">csdn</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/Boundary-Check-边界值检测/" style="font-size: 14px;">Boundary Check(边界值检测)</a> <a href="/tags/DP-动态规划/" style="font-size: 12px;">DP(动态规划)</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 20px;">LeetCode-easy</a> <a href="/tags/LeetCode-medium/" style="font-size: 12px;">LeetCode-medium</a> <a href="/tags/LinkedList-链表/" style="font-size: 14px;">LinkedList(链表)</a> <a href="/tags/Optimize-优化/" style="font-size: 18px;">Optimize(优化)</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/recursion-递归/" style="font-size: 16px;">recursion(递归)</a> <a href="/tags/位运算/" style="font-size: 14px;">位运算</a> <a href="/tags/减法思维/" style="font-size: 10px;">减法思维</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a> <a href="/tags/嵌套指针/" style="font-size: 10px;">嵌套指针</a> <a href="/tags/快慢指针/" style="font-size: 10px;">快慢指针</a> <a href="/tags/连续性判断/" style="font-size: 10px;">连续性判断</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">日期存档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/27/83-Remove-Duplicates-from-Sorted-List/">83. Remove Duplicates from Sorted List</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/25/70-Climbing-Stairs/">70. Climbing Stairs</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/24/66-Plus-One/">66. Plus One</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/58-Length-of-Last-Word/">58. Length of Last Word</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/38-Count-and-Say/">38. Count and Say</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">浏览数目</h3>
+    <div class="widget">
+      <ul class="popularlist">
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 LQX<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/collections" class="mobile-nav-link">Collections</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.fetchWhenSave(true); //get recent result
+                    counter.increment("time");
+                    counter.save();
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+$(function(){
+        var Counter=AV.Object.extend("Counter");
+        //only increse visit counting when intering a page
+        if ($('.article-title').length == 1)
+           addCount(Counter);
+        var query=new AV.Query(Counter);
+        query.descending("time");
+        // the sum of popular posts
+        query.limit(10); 
+        query.find({
+            success: function(results){
+                    for(var i=0;i<results.length;i++)    
+                    {
+                        var counter=results[i];
+                        title=counter.get("title");
+                        url=counter.get("url");
+                        time=counter.get("time");
+                        // add to the popularlist widget
+                        showcontent=title+" ("+time+")";
+                        //notice the "" in href
+                        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                    }
+                },
+            error: function(error){
+                alert("Error:"+error.code+" "+error.message);
+            }
+            }
+        )
+        });
+</script>
+  </div>
+</body>
+</html>
