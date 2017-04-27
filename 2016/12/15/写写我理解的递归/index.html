@@ -15,7 +15,7 @@
 <meta property="og:image" content="http://i.imgur.com/AZoEtiC.jpg">
 <meta property="og:image" content="http://i.imgur.com/Id8S7Y5.gif">
 <meta property="og:image" content="http://i.imgur.com/g87rGYm.png">
-<meta property="og:updated_time" content="2017-01-03T04:58:20.522Z">
+<meta property="og:updated_time" content="2017-04-27T09:20:48.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写写我理解的递归">
 <meta name="twitter:description" content="递归阶乘先用一个例子说明： 1234567function factorial(n)&amp;#123;	var result = n;	for(var i = n-1;i&amp;gt;0;i--)&amp;#123;	result *= i;&amp;#125;return result;&amp;#125; 上面使用循环实现了一个阶乘计算。如何换成递归呢？">
@@ -122,6 +122,10 @@
 <p>如果值不是<code>1</code>，你就必须让<code>n</code>和<code>n-1</code>的阶乘相乘，可以简写成<code>n! = n(n − 1)!</code> 或者<code>n * f(n-1)</code>，f(n-1)就是n-1的阶乘的数学写法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> n*factorial(n<span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>当然，这两种方法求阶乘对于我们都能理解，可以理解为局部循环和函数循环，但都达到了一目的。</p>
+<p><strong>2017-04-27</strong></p>
+<blockquote>
+<p>前两天看了代码大全，作者表示用递归来计算阶乘是一件sb的事情，不过我仔细思考了下，作为当时初次理解递归思路，这个例子还是可以接受的。不过他的开销确实不如循环。</p>
+</blockquote>
 <p>引自wiki百科(<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" target="_blank" rel="external">递归</a>)：</p>
 <blockquote>
 <p>计算理论可以证明递归的作用可以完全替换循环。</p>
@@ -199,7 +203,7 @@ help(值为nu6的节点);return;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cj206uokp001170lmjj1darfd" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2016/12/15/写写我理解的递归/" data-id="cj207958m001388lma8r9m5pb" class="article-share-link">Share</a>
       
         <a href="/2016/12/15/写写我理解的递归/#comments" class="article-comment-link">留言</a>
       
