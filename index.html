@@ -96,26 +96,15 @@
         <p>Given two sorted integer arrays <em>nums1</em> and <em>nums2</em>, merge <em>nums2</em> into <em>nums1</em> as one sorted array.</p>
 <p><strong>Note:</strong></p>
 <p>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><blockquote>
-<p>第一个想法，借助归并排序的思路。是一个中规中矩的做法。是可以通过的。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSortedArray2</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> mergeArray[] = <span class="keyword">new</span> <span class="keyword">int</span>[m+n];</div><div class="line">        <span class="keyword">int</span> index1 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> index2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;mergeArray.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(index1&gt;=m)&#123;</div><div class="line">                mergeArray[i] = nums2[index2++];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index2&gt;=n)&#123;</div><div class="line">                mergeArray[i] = nums1[index1++];</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[index1]&lt;nums2[index2])&#123;</div><div class="line">                    mergeArray[i] = nums1[index1++];</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    mergeArray[i] = nums2[index2++];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;mergeArray.length;j++)&#123;</div><div class="line">            nums1[j] = mergeArray[j];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mergeArray;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是，借助另一个空间，空间复杂度O(n)</p>
-<h2 id="Optimized"><a href="#Optimized" class="headerlink" title="Optimized"></a>Optimized</h2><p>其实这道题需求有点奇怪，m指前m个nums1元素，n指前n个nums2元素。<br>那之前为什么借助了一个数组作为临时数组，其实是为了解决最坏情况。<br>考虑一个情景：</p>
-<blockquote>
-<p>nums1 = [1,2,3,4] m=2;<br>nums2 = [5,6,7,8] n=2;</p>
-</blockquote>
-<p>按照要求，是[1,2]和[5,6]的排序，那如果不借助临时数组，在nums1中直接排序，则[5,6]会覆盖[1,2]的位置。</p>
-<p><strong>但是换一个思路，如果用倒序的顺序排序呢？</strong></p>
-<p>那就可以省去一个临时数组。</p>
-<p>[1,2]和[5,6]可以排下，并且由于题设nums1的大小是一定大于m+n的。所以倒序是可行的，并且节省了空间复杂度。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSortedArray</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = m-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> j = n-<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=m+n-<span class="number">1</span>;k&gt;=<span class="number">0</span>;k--)&#123;</div><div class="line">            <span class="keyword">if</span>(i&lt;<span class="number">0</span>&amp;&amp;j&gt;=<span class="number">0</span>)&#123;</div><div class="line">                nums1[k] = nums2[j--];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&lt;<span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[i]&gt;nums2[j])&#123;</div><div class="line">                    nums1[k] = nums1[i--];</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    nums1[k] = nums2[j--];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这题其实考的还是优化，由于之前学过归并排序，思路是有的，但是这个问题其实是可以不借助临时数组的。由于他的特殊性，倒序排序不会导致它的所需排序的元素被覆盖，这是应该注意的。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/04/27/88-Merge-Sorted-Array/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj27cv2cu000wu0lmqn50z3bo" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj28b1sb4001r2klmm8bjzc4t" class="article-share-link">Partager</a>
       
         <a href="/2017/04/27/88-Merge-Sorted-Array/#comments" class="article-comment-link">留言</a>
       
@@ -161,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" data-id="cj27cv2co000tu0lmmjfi8dms" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" data-id="cj28b1saq001l2klmihvmhixv" class="article-share-link">Partager</a>
       
         <a href="/2017/04/27/83-Remove-Duplicates-from-Sorted-List/#comments" class="article-comment-link">留言</a>
       
@@ -207,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj27cv2d60013u0lmu8c0uczf" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj28b1sbd001w2klmgd0898ry" class="article-share-link">Partager</a>
       
         <a href="/2017/04/25/70-Climbing-Stairs/#comments" class="article-comment-link">留言</a>
       
@@ -253,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/24/66-Plus-One/" data-id="cj27cv2ds001fu0lmoc7miw95" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/04/24/66-Plus-One/" data-id="cj28b1sbg001y2klmre529e3a" class="article-share-link">Partager</a>
       
         <a href="/2017/04/24/66-Plus-One/#comments" class="article-comment-link">留言</a>
       
@@ -301,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/21/58-Length-of-Last-Word/" data-id="cj27cv2df0018u0lmaiuues99" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/04/21/58-Length-of-Last-Word/" data-id="cj28b1s97000e2klmxvpeo730" class="article-share-link">Partager</a>
       
         <a href="/2017/04/21/58-Length-of-Last-Word/#comments" class="article-comment-link">留言</a>
       
