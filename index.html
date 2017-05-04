@@ -95,33 +95,15 @@
       
         <p>Given two binary trees, write a function to check if they are equal or not.</p>
 <p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><blockquote>
-<p>二叉树的操作，感觉从方便性的角度考虑，使用递归是一个好方法。但是递归代码不易于理解。</p>
-</blockquote>
-<p><strong>Boundary Check</strong></p>
-<ol>
-<li>同时为空:true</li>
-<li>左右子树不同:false。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SameTree</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(p==<span class="keyword">null</span>&amp;&amp;q==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> || q == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(p.val == q.val)&#123;</div><div class="line">            <span class="keyword">return</span> isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>具体的思路还是一个尾递归的思路，先判断尾部叶节点的元素，然后再向上递归。</p>
-<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><p><strong>使用BFS广度优先遍历</strong></p>
-<blockquote>
-<p>广度优先遍历借助了队列。<br>整体的思路是按层遍历，直到结束。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SameTree</span></span>&#123;</div><div class="line">    <span class="comment">//Using BFS</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(p==<span class="keyword">null</span>&amp;&amp;q==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        Queue&lt;TreeNode&gt; queue_p = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</div><div class="line">        Queue&lt;TreeNode&gt; queue_q = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</div><div class="line">        queue_p.add(p);</div><div class="line">        queue_q.add(q);</div><div class="line">        <span class="keyword">while</span>(!queue_p.isEmpty()&amp;&amp;!queue_q.isEmpty())&#123;</div><div class="line">            TreeNode pn = queue_p.poll();</div><div class="line">            TreeNode qn = queue_q.poll();</div><div class="line">            <span class="keyword">if</span>(pn.val!=qn.val)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(pn.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                queue_p.add(pn.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qn.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                queue_q.add(qn.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(queue_p.size()!=queue_q.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(pn.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                queue_p.add(pn.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qn.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                queue_q.add(qn.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(queue_p.size()!=queue_q.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> queue_p.size()==queue_q.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>使用DFS深度优先遍历</strong></p>
-<blockquote>
-<p>深度优先遍历借助了栈。<br>整体的思路由于栈的先进后出，后进先出的特点，所以，一定会先访问到某一个叶节点再返回。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SameTree</span></span>&#123;</div><div class="line">    <span class="comment">// Using DFS</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(p==<span class="keyword">null</span> &amp;&amp; q==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(p==<span class="keyword">null</span> || q==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Stack&lt;TreeNode&gt; stack_p = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">        Stack&lt;TreeNode&gt; stack_q = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">        stack_p.push(p);</div><div class="line">        stack_q.push(q);</div><div class="line">        <span class="keyword">while</span>(!stack_p.empty()&amp;&amp;!stack_q.empty())&#123;</div><div class="line">            TreeNode pn = stack_p.pop();</div><div class="line">            TreeNode qn = stack_q.pop();</div><div class="line">            <span class="keyword">if</span>(pn.val!=qn.val)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(pn.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_p.push(pn.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qn.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_q.push(qn.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(stack_p.size()!=stack_q.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(pn.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_p.push(pn.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qn.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_q.push(qn.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(stack_p.size()!=stack_q.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> stack_p.size()==stack_q.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>两种遍历二叉树的方式很不相同，但是归根结底只是使用数据结构的不通，方法和思路是一致的。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>二叉树的递归操作思路是一种很巧妙的方法，需要我去熟悉理解。而使用堆栈及队列的遍历操作则是一种常规思路，注重数据结构的使用，需要去记忆。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/05/04/100-Same-Tree/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/04/100-Same-Tree/" data-id="cj2a3ke9d0000gwlmwpq0divh" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/04/100-Same-Tree/" data-id="cj2a3l5cm0002gwlmyigw9yol" class="article-share-link">Share</a>
       
         <a href="/2017/05/04/100-Same-Tree/#comments" class="article-comment-link">留言</a>
       
@@ -168,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj2a3kecw001ugwlm5iflp2m6" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj2a3l5ea000ugwlm4bv2slj7" class="article-share-link">Share</a>
       
         <a href="/2017/04/27/88-Merge-Sorted-Array/#comments" class="article-comment-link">留言</a>
       
@@ -214,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" data-id="cj2a3kecr001rgwlm58w9u6m6" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/27/83-Remove-Duplicates-from-Sorted-List/" data-id="cj2a3l5e4000rgwlm12qxwavq" class="article-share-link">Share</a>
       
         <a href="/2017/04/27/83-Remove-Duplicates-from-Sorted-List/#comments" class="article-comment-link">留言</a>
       
@@ -260,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj2a3ked60020gwlmbdpitgdx" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/25/70-Climbing-Stairs/" data-id="cj2a3l5e1000qgwlm7jyfnnwu" class="article-share-link">Share</a>
       
         <a href="/2017/04/25/70-Climbing-Stairs/#comments" class="article-comment-link">留言</a>
       
@@ -306,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/24/66-Plus-One/" data-id="cj2a3kecm001pgwlm207o8oj9" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/24/66-Plus-One/" data-id="cj2a3l5dx000ngwlmz5uep9y2" class="article-share-link">Share</a>
       
         <a href="/2017/04/24/66-Plus-One/#comments" class="article-comment-link">留言</a>
       
