@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additiona">
-<meta property="og:updated_time" content="2017-05-03T01:29:07.521Z">
+<meta property="og:updated_time" content="2017-05-04T08:02:46.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="88. Merge Sorted Array">
 <meta name="twitter:description" content="Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additiona">
@@ -114,12 +114,14 @@
 <p>那就可以省去一个临时数组。</p>
 <p>[1,2]和[5,6]可以排下，并且由于题设nums1的大小是一定大于m+n的。所以倒序是可行的，并且节省了空间复杂度。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSortedArray</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = m-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> j = n-<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=m+n-<span class="number">1</span>;k&gt;=<span class="number">0</span>;k--)&#123;</div><div class="line">            <span class="keyword">if</span>(i&lt;<span class="number">0</span>&amp;&amp;j&gt;=<span class="number">0</span>)&#123;</div><div class="line">                nums1[k] = nums2[j--];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&lt;<span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[i]&gt;nums2[j])&#123;</div><div class="line">                    nums1[k] = nums1[i--];</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    nums1[k] = nums2[j--];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这题其实考的还是优化，由于之前学过归并排序，思路是有的，但是这个问题其实是可以不借助临时数组的。由于他的特殊性，倒序排序不会导致它的所需排序的元素被覆盖，这是应该注意的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这题其实考的还是优化，由于之前学过归并排序，思路是有的，但是这个问题其实是可以不借助临时数组的。由于他的特殊性，倒序排序不会导致它的所需排序的元素被覆盖，这是应该注意的。</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj2a4i807000xwklmx4w45x9s" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" data-id="cj2a4m1f2000w1glmauj83ogi" class="article-share-link">Share</a>
       
         <a href="/2017/04/27/88-Merge-Sorted-Array/#comments" class="article-comment-link">留言</a>
       
