@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric:     1    / \   2   2  / \ / \ 3  4 4  3 But t">
-<meta property="og:updated_time" content="2017-05-04T07:59:27.630Z">
+<meta property="og:updated_time" content="2017-05-04T08:01:44.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="101. Symmetric Tree">
 <meta name="twitter:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric:     1    / \   2   2  / \ / \ 3  4 4  3 But t">
@@ -63,9 +63,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -126,12 +126,14 @@
 <p><strong>DFS思路</strong></p>
 <p>深度优先遍历主要借助栈这一数据结构。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SymmetricTree2</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span> &amp;&amp; root.right==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span> || root.right==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Stack&lt;TreeNode&gt; stack_left = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">        Stack&lt;TreeNode&gt; stack_right = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</div><div class="line">        <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>)&#123;</div><div class="line">            stack_left.push(root.left);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.right!=<span class="keyword">null</span>)&#123;</div><div class="line">            stack_right.push(root.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(stack_right.size()!=stack_left.size())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left.val!=root.right.val)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(!stack_left.empty()&amp;&amp;!stack_right.empty())&#123;</div><div class="line">            TreeNode left = stack_left.pop();</div><div class="line">            TreeNode right = stack_right.pop();</div><div class="line">            <span class="keyword">if</span>(left.val!=right.val)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(left.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_left.push(left.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(right.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_right.push(right.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(stack_left.size()!=stack_right.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(left.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_left.push(left.right);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(right.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                stack_right.push(right.left);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(stack_left.size()!=stack_right.size())&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> stack_right.size()==stack_left.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>注意深度优先遍历和广度优先遍历，这里两处的代码基本可以说是一致的，但是由于使用的栈和队列的数据结构完全不相同，所以两种思路是完全不同的。不得不感慨数据结构的强大，虽然代码逻辑完全一样，但是由于使用了不同的数据结构，却出现了两种不同的解决思路。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>注意深度优先遍历和广度优先遍历，这里两处的代码基本可以说是一致的，但是由于使用的栈和队列的数据结构完全不相同，所以两种思路是完全不同的。不得不感慨数据结构的强大，虽然代码逻辑完全一样，但是由于使用了不同的数据结构，却出现了两种不同的解决思路。</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2a4fbji0000volmo9cn4o9l" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2a4i7yj0002wklmu8o9opsz" class="article-share-link">Share</a>
       
         <a href="/2017/05/04/101-Symmetric-Tree/#comments" class="article-comment-link">留言</a>
       
@@ -143,7 +145,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/04/100-Same-Tree/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           100. Same Tree
@@ -269,7 +271,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
