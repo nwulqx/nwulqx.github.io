@@ -5,17 +5,17 @@
   
   <title>101. Symmetric Tree | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 1/ \2 2/ \ / \3 4 4 3 But the following [1,2,">
+  <meta name="description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric:     1    / \   2   2  / \ / \ 3  4 4  3 But t">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="101. Symmetric Tree">
 <meta property="og:url" content="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 1/ \2 2/ \ / \3 4 4 3 But the following [1,2,">
-<meta property="og:updated_time" content="2017-05-04T07:55:51.707Z">
+<meta property="og:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric:     1    / \   2   2  / \ / \ 3  4 4  3 But t">
+<meta property="og:updated_time" content="2017-05-04T07:57:23.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="101. Symmetric Tree">
-<meta name="twitter:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 1/ \2 2/ \ / \3 4 4 3 But the following [1,2,">
+<meta name="twitter:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric:     1    / \   2   2  / \ / \ 3  4 4  3 But t">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -98,10 +98,18 @@
       
         <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
 <p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:</p>
-<p>1<br>/ \<br>2 2<br>/ \ / \<br>3 4 4 3</p>
-<p>But the following <code>[1,2,2,null,3,null,3]</code> is not:</p>
-<p>1<br>/ \<br>2 2<br>\ \<br>3 3</p>
-<a id="more"></a>
+<pre><code>    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+</code></pre><p>But the following <code>[1,2,2,null,3,null,3]</code> is not:</p>
+<pre><code>  1
+ / \
+2   2
+ \   \
+ 3    3
+</code></pre><a id="more"></a>
 <p>同类题目：</p>
 <h1 id="100-Same-Tree"><a href="#100-Same-Tree" class="headerlink" title="100. Same Tree"></a><a href="https://war3cdota.github.io/2017/05/04/100-Same-Tree/">100. Same Tree</a></h1><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><blockquote>
 <p>这种树的问题一般两种思路：递归和非递归。<br></p>
@@ -123,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2a4akz10005holm80voq2rr" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2a4cjkq00020slmbgogomq0" class="article-share-link">Share</a>
       
         <a href="/2017/05/04/101-Symmetric-Tree/#comments" class="article-comment-link">留言</a>
       
