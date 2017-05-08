@@ -106,21 +106,16 @@
   [9,20],
   [3]
 ]
-</code></pre><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p>一开始有点蒙，因为我一直在想，除了相同的思路，然后在添加的时候反向添加，难道还有什么神奇的方法？</p>
-<p><strong>思路相同：</strong><a href="https://war3cdota.github.io/2017/05/08/102-Binary-Tree-Level-Order-Traversal/">102. Binary Tree Level Order Traversal</a></p>
-<p>这题应该自信一点，相同的思路，反向添加，切记自信！</p>
-<p><strong>Using DFS</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreeLevelOrderTraversalII</span></span>&#123;</div><div class="line">    <span class="comment">//Using DFS</span></div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> res;</div><div class="line">        &#125;</div><div class="line">        levelOrderBottomHelp(res,root,<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">levelOrderBottomHelp</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, TreeNode node, <span class="keyword">int</span> level)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(res.size()&lt;level)&#123;</div><div class="line">            res.add(<span class="number">0</span>,<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</div><div class="line">        &#125;</div><div class="line">        res.get(res.size()-level).add(node.val);</div><div class="line">        <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</div><div class="line">            levelOrderBottomHelp(res,node.left,level+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</div><div class="line">            levelOrderBottomHelp(res,node.right,level+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><p><strong>Using BFS</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreeLevelOrderTraversalII2</span></span>&#123;</div><div class="line">    <span class="comment">// Using BFS</span></div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> res;</div><div class="line">        &#125;</div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</div><div class="line">        queue.add(root);</div><div class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</div><div class="line">            <span class="keyword">int</span> length = queue.size();</div><div class="line">            List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</div><div class="line">                <span class="keyword">if</span>(queue.peek().left!=<span class="keyword">null</span>)&#123;</div><div class="line">                    queue.add(queue.peek().left);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(queue.peek().right!=<span class="keyword">null</span>)&#123;</div><div class="line">                    queue.add(queue.peek().right);</div><div class="line">                &#125;</div><div class="line">                list.add(queue.poll().val);</div><div class="line">            &#125;</div><div class="line">            res.add(<span class="number">0</span>,list);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这种题目一定要自信的先把能想到的最好的方法做出来，然后再考虑是否还有另类的解法，关键是一定要自信！</p>
-</blockquote>
-
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/08/107-Binary-Tree-Level-Order-Traversal-II/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/08/107-Binary-Tree-Level-Order-Traversal-II/" data-id="cj2fyd9bo0007pglm0af46nn9" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/08/107-Binary-Tree-Level-Order-Traversal-II/" data-id="cj2fyhcd900078clm17nr3yk0" class="article-share-link">Share</a>
       
         <a href="/2017/05/08/107-Binary-Tree-Level-Order-Traversal-II/#comments" class="article-comment-link">留言</a>
       
@@ -169,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/08/104-Maximum-Depth-of-Binary-Tree/" data-id="cj2fyd9bx0009pglmf4yon7cz" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/08/104-Maximum-Depth-of-Binary-Tree/" data-id="cj2fyhcdf00098clmlzxzibg9" class="article-share-link">Share</a>
       
         <a href="/2017/05/08/104-Maximum-Depth-of-Binary-Tree/#comments" class="article-comment-link">留言</a>
       
@@ -228,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/08/102-Binary-Tree-Level-Order-Traversal/" data-id="cj2fyd9bj0006pglmw0742wel" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/08/102-Binary-Tree-Level-Order-Traversal/" data-id="cj2fyhcd600068clmmsubtqgz" class="article-share-link">Share</a>
       
         <a href="/2017/05/08/102-Binary-Tree-Level-Order-Traversal/#comments" class="article-comment-link">留言</a>
       
@@ -286,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2fyd9bc0005pglm6t91ucvh" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/04/101-Symmetric-Tree/" data-id="cj2fyhcd200058clmm64plrab" class="article-share-link">Share</a>
       
         <a href="/2017/05/04/101-Symmetric-Tree/#comments" class="article-comment-link">留言</a>
       
@@ -332,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/04/100-Same-Tree/" data-id="cj2fyd9ay0002pglmsosuujca" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/04/100-Same-Tree/" data-id="cj2fyhccr00028clm0wn5imx5" class="article-share-link">Share</a>
       
         <a href="/2017/05/04/100-Same-Tree/#comments" class="article-comment-link">留言</a>
       
