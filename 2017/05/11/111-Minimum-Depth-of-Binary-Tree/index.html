@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>8. String2Integer | 庆轩的博客</title>
+  <title>111. Minimum Depth of Binary Tree | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Implement atoi to convert a string to an integer. Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases">
-<meta name="keywords" content="LeetCode-easy,Boundary Check(边界值检测)">
+  <meta name="description" content="Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.">
+<meta name="keywords" content="LeetCode-easy,recursion(递归),Boundary Check(边界值检测),BFS(广度优先遍历),DFS(深度优先遍历),Optimize(优化)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="8. String2Integer">
-<meta property="og:url" content="https://war3cdota.github.io/2017/01/10/8-String2Integer/index.html">
+<meta property="og:title" content="111. Minimum Depth of Binary Tree">
+<meta property="og:url" content="https://war3cdota.github.io/2017/05/11/111-Minimum-Depth-of-Binary-Tree/index.html">
 <meta property="og:site_name" content="庆轩的博客">
-<meta property="og:description" content="Implement atoi to convert a string to an integer. Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases">
-<meta property="og:updated_time" content="2017-04-27T09:05:31.495Z">
+<meta property="og:description" content="Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.">
+<meta property="og:updated_time" content="2017-05-11T06:47:09.438Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8. String2Integer">
-<meta name="twitter:description" content="Implement atoi to convert a string to an integer. Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases">
+<meta name="twitter:title" content="111. Minimum Depth of Binary Tree">
+<meta name="twitter:description" content="Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -74,10 +74,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-8-String2Integer" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-111-Minimum-Depth-of-Binary-Tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/10/8-String2Integer/" class="article-date">
-  <time datetime="2017-01-10T10:35:13.000Z" itemprop="datePublished">2017-01-10</time>
+    <a href="/2017/05/11/111-Minimum-Depth-of-Binary-Tree/" class="article-date">
+  <time datetime="2017-05-11T06:42:37.000Z" itemprop="datePublished">2017-05-11</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      <div class="article-title-stick">8. String2Integer</div>
+      <div class="article-title-stick">111. Minimum Depth of Binary Tree</div>
     </h1>
   
 
@@ -96,94 +96,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Implement atoi to convert a string to an integer.</p>
-<p><strong>Hint</strong>: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p><strong>Notes</strong>: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+        <p>Given a binary tree, find its minimum depth.</p>
+<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
 <a id="more"></a>
-<h2 id="需要考虑："><a href="#需要考虑：" class="headerlink" title="需要考虑："></a>需要考虑：</h2><blockquote>
-<p>1.前面的空格需要去除，从第一个非空数字开始取，一直到第一个非数字字符为止。<br><br>2.int最大最小值的问题需要考虑。</p>
-</blockquote>
-<h2 id="Boundary-Check"><a href="#Boundary-Check" class="headerlink" title="Boundary Check"></a>Boundary Check</h2><ol>
-<li>当数字超过int范围所报的情况，可以使用比int范围更大的long来解决；</li>
-<li>当超过long的范围，应该使用异常检测来解决；</li>
-<li><strong>字符串应该被合理的截取，以便可以被正确的转化，即使出现异常，也应该是越界异常。</strong></li>
-</ol>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><h3 id="递归解决"><a href="#递归解决" class="headerlink" title="递归解决"></a>递归解决</h3><p><strong>Boundary Check(边界值检测)</strong></p>
 <blockquote>
-<p>这个题的特殊情况处理起来还是比较麻烦的：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>输入</th>
-<th>输出</th>
-<th>说明 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>“   -123abc”</td>
-<td>-123</td>
-<td>过滤空格和非数字</td>
-<td></td>
-</tr>
-<tr>
-<td>“+-123abc”</td>
-<td>0</td>
-<td>对于多符号数截取了空字符串</td>
-<td></td>
-</tr>
-<tr>
-<td>“+-“</td>
-<td>0</td>
-<td>同上，返回了空字符串</td>
-<td></td>
-</tr>
-<tr>
-<td>“2147483648”</td>
-<td>2147483647</td>
-<td>超过int最大值，返回int最大值</td>
-<td></td>
-</tr>
-<tr>
-<td>“-2147483649”</td>
-<td>-2147483648</td>
-<td>小于int最小值，返回int最小值</td>
-<td></td>
-</tr>
-<tr>
-<td>“9223372036854775808”</td>
-<td>“2147483647”</td>
-<td>超过了long的最大值，转换时应该try{}catch</td>
-<td></td>
-</tr>
-<tr>
-<td>“-9223372036854775809”</td>
-<td>-2147483648</td>
-<td>小于long最小值，同上</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span> []c = str.toCharArray();</div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(start&lt;c.length)&#123;</div><div class="line">            <span class="keyword">if</span>(c[start] == <span class="string">' '</span>)</div><div class="line">                start ++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> end = start;</div><div class="line">        <span class="keyword">while</span>(end&lt;c.length)&#123;</div><div class="line">            <span class="keyword">if</span>((c[end]==<span class="string">'+'</span> || c[end]==<span class="string">'-'</span>) &amp;&amp; (end&lt;c.length-<span class="number">1</span>&amp;&amp;(c[end+<span class="number">1</span>]&gt;=<span class="string">'0'</span> &amp;&amp; c[end+<span class="number">1</span>]&lt;=<span class="string">'9'</span>)))</div><div class="line">                end ++;</div><div class="line">            <span class="keyword">if</span>(c[end]&gt;=<span class="string">'0'</span> &amp;&amp; c[end]&lt;=<span class="string">'9'</span>)</div><div class="line">                end++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        String target = str.substring(start,end);</div><div class="line">        <span class="keyword">if</span>(target.length()==<span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="keyword">long</span> result = Long.parseLong(target);</div><div class="line">            <span class="keyword">if</span>(result&lt;Integer.MIN_VALUE)</div><div class="line">                <span class="keyword">return</span> Integer.MIN_VALUE;</div><div class="line">            <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE)</div><div class="line">                <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line">            <span class="keyword">return</span> (<span class="keyword">int</span>)result;</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">            <span class="keyword">if</span>(str.charAt(<span class="number">0</span>)==<span class="string">'-'</span>)</div><div class="line">                <span class="keyword">return</span> Integer.MIN_VALUE;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="遇到的困难"><a href="#遇到的困难" class="headerlink" title="遇到的困难"></a>遇到的困难</h2><blockquote>
+<p>从尾部向上递归：</p>
 <ol>
-<li>对于字符串字符的操作，应该尽可能的转化成char数组操作，效率上高于直接操作字符串；</li>
-<li>对于while的使用，以及判断是否存在连续的符号，或者正常的符号添加情况判断。</li>
+<li>当前节点为空，返回0；</li>
+<li>当前节点的左右节点均为空，返回1；</li>
+<li>当前节点的左右节点中有一个为空，则应该返回不为空的节点的子树最小深度。</li>
+<li>当前节点的左右节点均不为空，则应该返回深度小的节点。</li>
 </ol>
 </blockquote>
-<p>让我来看：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(end&lt;c.length)&#123;</div><div class="line">    <span class="keyword">if</span>((c[end]==<span class="string">'+'</span> || c[end]==<span class="string">'-'</span>) &amp;&amp; (end&lt;c.length-<span class="number">1</span>&amp;&amp;(c[end+<span class="number">1</span>]&gt;=<span class="string">'0'</span> &amp;&amp; c[end+<span class="number">1</span>]&lt;=<span class="string">'9'</span>)))</div><div class="line">        end ++;</div><div class="line">    <span class="keyword">if</span>(c[end]&gt;=<span class="string">'0'</span> &amp;&amp; c[end]&lt;=<span class="string">'9'</span>)</div><div class="line">        end++;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里是困扰我一会的判断代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinimumDepthofBinaryTree</span></span>&#123;</div><div class="line">    <span class="comment">// Using DFS</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span>||root.right==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> Math.max(minDepth(root.left),minDepth(root.right))+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Math.min(minDepth(root.left),minDepth(root.right))+<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Attention</strong></p>
+<pre><code>if(root.left==null||root.right==null){
+    return Math.max(minDepth(root.left),minDepth(root.right))+1;
+}
+</code></pre><blockquote>
+<p>注意返回值，如果一个节点只存在一个左或者右节点，那么不这么写的话，会返回空节点的深度。</p>
+</blockquote>
+<pre><code>    1
+   /
+  2
+ /
+3
+</code></pre><blockquote>
+<p>对于这样的树，可能会返回深度1，因为右子树深度为0。</p>
+</blockquote>
+<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><h3 id="非递归解决"><a href="#非递归解决" class="headerlink" title="非递归解决"></a>非递归解决</h3><p><strong>BFS方案</strong></p>
+<blockquote>
+<p>按照广度优先<code>按层</code>遍历节点：</p>
+<ol>
+<li>某一结点的左右子树均为空，则应该返回当前深度。</li>
+<li>其他情况则继续按照BFS遍历节点。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinimumDepthofBinaryTree</span></span>&#123;</div><div class="line">    <span class="comment">// Using BFS</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</div><div class="line">        queue.add(root);</div><div class="line">        <span class="keyword">int</span> level = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</div><div class="line">            <span class="keyword">int</span> size = queue.size();</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</div><div class="line">                TreeNode node = queue.poll();</div><div class="line">                <span class="keyword">if</span>(node.left==<span class="keyword">null</span>&amp;&amp;node.right==<span class="keyword">null</span>)&#123;</div><div class="line">                    <span class="keyword">return</span> level;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</div><div class="line">                    queue.add(node.left);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</div><div class="line">                    queue.add(node.right);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            level++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> level;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<ol>
+<li>注意leaf node的定义，即没有左右子树；</li>
+<li>注意此题中，对于一些边界检测的判断，只含有一个子树时，应该以存在的子树继续计算深度。</li>
+</ol>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/01/10/8-String2Integer/" data-id="cj2k1xd41001wiglmfl97l83y" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/11/111-Minimum-Depth-of-Binary-Tree/" data-id="cj2k1xd2c0010iglmq55eo3xj" class="article-share-link">Share</a>
       
-        <a href="/2017/01/10/8-String2Integer/#comments" class="article-comment-link">留言</a>
+        <a href="/2017/05/11/111-Minimum-Depth-of-Binary-Tree/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check-边界值检测/">Boundary Check(边界值检测)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS-广度优先遍历/">BFS(广度优先遍历)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Boundary-Check-边界值检测/">Boundary Check(边界值检测)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFS-深度优先遍历/">DFS(深度优先遍历)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Optimize-优化/">Optimize(优化)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recursion-递归/">recursion(递归)</a></li></ul>
 
     </footer>
   </div>
@@ -191,20 +157,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/01/08/7-Reverse-Integer/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/10/110-Balanced-Binary-Tree/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          7. Reverse Integer
+          110. Balanced Binary Tree
         
       </div>
     </a>
   
-  
-    <a href="/2017/01/10/9-Palindrome-Number/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">9. Palindrome Number</div>
-    </a>
   
 </nav>
 
@@ -214,7 +175,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-8-String2Integer" data-title="8. String2Integer" data-url="https://war3cdota.github.io/2017/01/10/8-String2Integer/"></div>
+  <div class="ds-thread" data-thread-key="post-111-Minimum-Depth-of-Binary-Tree" data-title="111. Minimum Depth of Binary Tree" data-url="https://war3cdota.github.io/2017/05/11/111-Minimum-Depth-of-Binary-Tree/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
