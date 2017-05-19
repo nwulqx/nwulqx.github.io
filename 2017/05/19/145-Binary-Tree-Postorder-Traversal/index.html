@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://war3cdota.github.io/2017/05/19/145-Binary-Tree-Postorder-Traversal/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="Given a binary tree, return the postorder traversal of its nodes’ values. For example:Given binary tree {1,#,2,3}, 1  \   2  / 3 return [3,2,1]. Note: Recursive solution is trivial, could you do it it">
-<meta property="og:updated_time" content="2017-05-19T10:23:39.915Z">
+<meta property="og:updated_time" content="2017-05-19T10:25:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="145. Binary Tree Postorder Traversal">
 <meta name="twitter:description" content="Given a binary tree, return the postorder traversal of its nodes’ values. For example:Given binary tree {1,#,2,3}, 1  \   2  / 3 return [3,2,1]. Note: Recursive solution is trivial, could you do it it">
@@ -105,6 +105,7 @@
 3
 </code></pre><p>return <code>[3,2,1]</code>.</p>
 <p><strong>Note</strong>: Recursive solution is trivial, could you do it iteratively?</p>
+<a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p><strong>使用递归(Recursion)</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreePostorderTraversal</span></span>&#123;</div><div class="line">    <span class="comment">// Using recursion！</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        postorderHelper(list,root);</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postorderHelper</span><span class="params">(ArrayList&lt;Integer&gt; list, TreeNode node)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        postorderHelper(list,node.left);</div><div class="line">        postorderHelper(list,node.right);</div><div class="line">        list.add(node.val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</div><div class="line"> <span class="keyword">int</span> val;</div><div class="line"> TreeNode left;</div><div class="line"> TreeNode right;</div><div class="line"> TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><p><strong>不使用递归(Without using recursion)</strong></p>
@@ -145,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/19/145-Binary-Tree-Postorder-Traversal/" data-id="cj2vp6rpb000nw0lm299bjrac" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/05/19/145-Binary-Tree-Postorder-Traversal/" data-id="cj2vp8k9h000jgglm23qy6zba" class="article-share-link">Share</a>
       
         <a href="/2017/05/19/145-Binary-Tree-Postorder-Traversal/#comments" class="article-comment-link">留言</a>
       
