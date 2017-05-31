@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
@@ -103,31 +103,16 @@
   [1,3,3,1],
  [1,4,6,4,1]
 ]
-</code></pre><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><blockquote>
-<p>笨方法，不需要知道规律，只要根据输入，得出输出即可。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalsTriangle</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">if</span>(numRows==<span class="number">0</span>) <span class="keyword">return</span> result;</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        list.add(<span class="number">1</span>);</div><div class="line">        result.add(list);</div><div class="line">        <span class="keyword">while</span>(numRows&gt;<span class="number">1</span>)&#123;</div><div class="line">            list = generate(list);</div><div class="line">            result.add(list);</div><div class="line">            numRows--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">generate</span><span class="params">(List&lt;Integer&gt; list)</span></span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span>)&#123;</div><div class="line">                result.add(list.get(i-<span class="number">1</span>)+list.get(i));</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                result.add(list.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result.add(<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><blockquote>
-<p>找规律，发现，每次比上层多一个元素。规律也很容易发现，需要循环解决。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalsTriangle</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            list.add(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;list.size()-<span class="number">1</span>;j++)&#123;</div><div class="line">                list.set(j,list.get(j+<span class="number">1</span>) + list.get(j));</div><div class="line">            &#125;</div><div class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<blockquote>
-<p>这里思路，很简单，但是其实是根据很多次尝试得出的，包括在list的前面加1，而不是最后加1，因为如果在后面加一，会导致每次获取当前值变得复杂。</p>
-<p><code>result.add(new ArrayList&lt;Integer&gt;(list));</code>这行犯了错误，是指针的问题，我觉得需要特别注意！</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这个题目其实找到规律就很简单了：</p>
-<ol>
-<li>规律，正确的写法。</li>
-<li>指针的注意。</li>
-</ol>
-</blockquote>
-
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/31/118-Pascal-s-Triangle/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/31/118-Pascal-s-Triangle/" data-id="cj3cbvf82000a3clmya7llh86" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/31/118-Pascal-s-Triangle/" data-id="cj3cbw89t000ih0lmhcgcbsr1" class="article-share-link">Share</a>
       
         <a href="/2017/05/31/118-Pascal-s-Triangle/#comments" class="article-comment-link">留言</a>
       
@@ -180,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/19/145-Binary-Tree-Postorder-Traversal/" data-id="cj3cbvf8f000i3clmy0vydbab" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/19/145-Binary-Tree-Postorder-Traversal/" data-id="cj3cbw8a6000nh0lm251tyhmn" class="article-share-link">Share</a>
       
         <a href="/2017/05/19/145-Binary-Tree-Postorder-Traversal/#comments" class="article-comment-link">留言</a>
       
@@ -233,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/19/94-Binary-Tree-Inorder-Traversal/" data-id="cj3cbvfce00533clmfuy0xbkk" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/19/94-Binary-Tree-Inorder-Traversal/" data-id="cj3cbw8b5001gh0lmyf5hcvhx" class="article-share-link">Share</a>
       
         <a href="/2017/05/19/94-Binary-Tree-Inorder-Traversal/#comments" class="article-comment-link">留言</a>
       
@@ -286,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/19/144-Binary-Tree-Preorder-Traversal/" data-id="cj3cbvf89000f3clmza6q5son" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/19/144-Binary-Tree-Preorder-Traversal/" data-id="cj3cbw8a2000lh0lmb6bilmnm" class="article-share-link">Share</a>
       
         <a href="/2017/05/19/144-Binary-Tree-Preorder-Traversal/#comments" class="article-comment-link">留言</a>
       
@@ -340,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/05/19/112-Path-Sum/" data-id="cj3cbvf7o00053clm6hlnp21s" class="article-share-link">Partager</a>
+      <a data-url="https://war3cdota.github.io/2017/05/19/112-Path-Sum/" data-id="cj3cbw89q000hh0lmy4g188g4" class="article-share-link">Share</a>
       
         <a href="/2017/05/19/112-Path-Sum/#comments" class="article-comment-link">留言</a>
       
@@ -452,7 +437,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 LQX<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
