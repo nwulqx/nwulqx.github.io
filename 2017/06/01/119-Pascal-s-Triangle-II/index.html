@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://war3cdota.github.io/2017/06/01/119-Pascal-s-Triangle-II/index.html">
 <meta property="og:site_name" content="庆轩的博客">
 <meta property="og:description" content="#  Pascal’s Triangle II  Given an index k, return the kth row of the Pascal’s triangle. For example, given k = 3,Return [1,3,3,1]. Note: Could you optimize your algorithm to use only O(k) extra space?">
-<meta property="og:updated_time" content="2017-06-01T09:29:52.180Z">
+<meta property="og:updated_time" content="2017-06-01T09:31:35.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="119. Pascal's Triangle II">
 <meta name="twitter:description" content="#  Pascal’s Triangle II  Given an index k, return the kth row of the Pascal’s triangle. For example, given k = 3,Return [1,3,3,1]. Note: Could you optimize your algorithm to use only O(k) extra space?">
@@ -104,6 +104,7 @@
 <p>For example, given k = 3,<br>Return <code>[1,3,3,1]</code>.</p>
 <p><strong>Note:</strong></p>
 <p>Could you optimize your algorithm to use only O(k) extra space?</p>
+<a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p><strong>通过上层来计算当前行</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalsTriangleII4</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;rowIndex;i++)&#123;</div><div class="line">            list.add(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;list.size()-<span class="number">1</span>;j++)&#123;</div><div class="line">                list.set(j,list.get(j)+list.get(j+<span class="number">1</span>));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><blockquote>
@@ -122,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://war3cdota.github.io/2017/06/01/119-Pascal-s-Triangle-II/" data-id="cj3e7zgcd000srwlmg8fqracf" class="article-share-link">Share</a>
+      <a data-url="https://war3cdota.github.io/2017/06/01/119-Pascal-s-Triangle-II/" data-id="cj3e81m6e000ijolmm3v9h8hh" class="article-share-link">Share</a>
       
         <a href="/2017/06/01/119-Pascal-s-Triangle-II/#comments" class="article-comment-link">留言</a>
       
