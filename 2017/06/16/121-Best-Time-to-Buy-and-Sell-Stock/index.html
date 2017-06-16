@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Label: Optimize(优化) | 庆轩的博客</title>
+  <title>121. Best Time to Buy and Sell Stock | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/tags/Optimize-优化/page/3/index.html">
+  <meta name="description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
+<meta name="keywords" content="LeetCode-easy,最长公共子序列（LCS）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="121. Best Time to Buy and Sell Stock">
+<meta property="og:url" content="https://war3cdota.github.io/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
+<meta property="og:updated_time" content="2017-06-16T09:20:38.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="121. Best Time to Buy and Sell Stock">
+<meta name="twitter:description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,82 +74,107 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/22/Longest-Common-Substring/" class="archive-article-date">
-  <time datetime="2017-01-22T09:45:25.000Z" itemprop="datePublished">Jan 22</time>
+        <section id="main"><article id="post-121-Best-Time-to-Buy-and-Sell-Stock" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/" class="article-date">
+  <time datetime="2017-06-16T09:19:11.000Z" itemprop="datePublished">2017-06-16</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/22/Longest-Common-Substring/"><div class="article-title-stick">Longest Common Substring</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">121. Best Time to Buy and Sell Stock</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/19/14-Longest-Common-Prefix/" class="archive-article-date">
-  <time datetime="2017-01-19T07:54:15.000Z" itemprop="datePublished">Jan 19</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/19/14-Longest-Common-Prefix/"><div class="article-title-stick">14. Longest Common Prefix</div></a>
-    </h1>
-  
+        <p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<p><strong>Example 1:</strong></p>
+<pre><code>Input: [7, 1, 5, 3, 6, 4]
+Output: 5
+max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)
+</code></pre><p><strong>Example 2:</strong></p>
+<pre><code>Input: [7, 6, 4, 3, 1]
+Output: 0
+In this case, no transaction is done, i.e. max profit = 0.
+</code></pre><a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h2><blockquote>
+<p>使用暴力方法解，怎么想怎么写，双层循环解决。<br>LeetCode: Time Limit Exceeded</p>
+</blockquote>
+<h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p>这道题，为什么会感觉很难做，因为逻辑没有搞清楚：</p>
+<ol>
+<li>什么时候卖出？只要当前利益比它最大收益大，就卖出（可惜不是预测。）</li>
+</ol>
+<p>什么时候买进？当前值小于上一次买进的值，就应该买进。</p>
+<ol>
+<li>什么时候买进？当前值小于上一次买进的值，就应该买进。</li>
+</ol>
+<p>总结：买进和卖出没有联系，卖出是买进前的最大利益，所以当输入[7, 6, 8, 3, 1]，虽然买进是1，但是获利最大是8-6=2，利润是2。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(prices[i]-buy&gt;profit)&#123;</div><div class="line">                profit = prices[i] - buy;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(prices[i]&lt;buy)&#123;</div><div class="line">                    buy = prices[i];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> profit;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97" target="_blank" rel="external">最长公共子序列</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</div><div class="line">            profit += (prices[i] - prices[i-<span class="number">1</span>]);</div><div class="line">            profit = Math.max(<span class="number">0</span>,profit);</div><div class="line">            max = Math.max(max,profit);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这道题目上栽了好几次了，其实把握第一个基本思路是基础。对于后提到的最长公共子序列算法应该格外注意。</p>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/01/10/9-Palindrome-Number/" class="archive-article-date">
-  <time datetime="2017-01-10T11:14:09.000Z" itemprop="datePublished">Jan 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/10/9-Palindrome-Number/"><div class="article-title-stick">9. Palindrome Number</div></a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/" data-id="cj3zn9d570012owlmbgv8xzai" class="article-share-link">Delen</a>
+      
+        <a href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最长公共子序列（LCS）/">最长公共子序列（LCS）</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/01/119-Pascal-s-Triangle-II/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          119. Pascal&#39;s Triangle II
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/tags/Optimize-优化/page/2/">上一页</a><a class="page-number" href="/tags/Optimize-优化/">1</a><a class="page-number" href="/tags/Optimize-优化/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-121-Best-Time-to-Buy-and-Sell-Stock" data-title="121. Best Time to Buy and Sell Stock" data-url="https://war3cdota.github.io/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
