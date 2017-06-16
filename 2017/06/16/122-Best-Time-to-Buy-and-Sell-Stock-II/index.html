@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 庆轩的博客</title>
+  <title>122. Best Time to Buy and Sell Stock II | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/archives/page/8/index.html">
+  <meta name="description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
+<meta name="keywords" content="LeetCode-easy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="122. Best Time to Buy and Sell Stock II">
+<meta property="og:url" content="https://war3cdota.github.io/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
+<meta property="og:updated_time" content="2017-06-16T09:34:54.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="122. Best Time to Buy and Sell Stock II">
+<meta name="twitter:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,120 +74,89 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-js的this、__proto__">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/" class="archive-article-date">
-  <time datetime="2016-12-22T02:54:10.000Z" itemprop="datePublished">Dec 22</time>
+        <section id="main"><article id="post-122-Best-Time-to-Buy-and-Sell-Stock-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/" class="article-date">
+  <time datetime="2017-06-16T09:34:12.000Z" itemprop="datePublished">2017-06-16</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/22/JS的this、__proto__ 和. prototype 、constructor/"><div class="article-title-stick">JS的this、__proto__ 和. prototype 、constructor</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">122. Best Time to Buy and Sell Stock II</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/15/写写我理解的递归/" class="archive-article-date">
-  <time datetime="2016-12-15T10:25:57.000Z" itemprop="datePublished">Dec 15</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/15/写写我理解的递归/"><div class="article-title-stick">写写我理解的递归</div></a>
-    </h1>
-  
+        <p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><blockquote>
+<p>这道题比较有争议，仔细思考，很简单，只要把赚钱的段取出，相加即可，那这道题这样想的话其实没有可做性了。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(prices[i]&gt;prices[i-<span class="number">1</span>])&#123;</div><div class="line">                profit += (prices[i]-prices[i-<span class="number">1</span>]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> profit;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这种题目应该是，想起来有问题，而做起来是很简单的问题。我觉得还是应该仔细想想出题人的目的。</p>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/09/编程语言分类/" class="archive-article-date">
-  <time datetime="2016-12-09T03:19:13.000Z" itemprop="datePublished">Dec 9</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/09/编程语言分类/"><div class="article-title-stick">编程语言分类</div></a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/08/前后端数据流导向/" class="archive-article-date">
-  <time datetime="2016-12-08T11:45:56.000Z" itemprop="datePublished">Dec 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/" data-id="cj3znt9uc000lmclmwg7oe7r2" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/08/前后端数据流导向/"><div class="article-title-stick">前后端数据流导向</div></a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/08/XSS过关小游戏/" class="archive-article-date">
-  <time datetime="2016-09-08T06:00:33.000Z" itemprop="datePublished">Sep 8</time>
-</a>
+        <a href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/#comments" class="article-comment-link">留言</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/08/XSS过关小游戏/"><div class="article-title-stick">XSS过关小游戏~</div></a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          121. Best Time to Buy and Sell Stock
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/page/7/">上一页</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/9/">下一页</a>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-122-Best-Time-to-Buy-and-Sell-Stock-II" data-title="122. Best Time to Buy and Sell Stock II" data-url="https://war3cdota.github.io/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
