@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 庆轩的博客</title>
+  <title>125. Valid Palindrome | 庆轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="庆轩的博客">
-<meta property="og:url" content="https://war3cdota.github.io/archives/index.html">
+  <meta name="description" content="Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. For example, &amp;quot;A man, a plan, a canal: Panama&amp;quot; is a palindrome.&amp;quot;race a car&amp;q">
+<meta name="keywords" content="LeetCode-easy,双指针">
+<meta property="og:type" content="article">
+<meta property="og:title" content="125. Valid Palindrome">
+<meta property="og:url" content="https://war3cdota.github.io/2017/06/19/125-Valid-Palindrome/index.html">
 <meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. For example, &amp;quot;A man, a plan, a canal: Panama&amp;quot; is a palindrome.&amp;quot;race a car&amp;q">
+<meta property="og:updated_time" content="2017-06-19T02:41:28.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="庆轩的博客">
+<meta name="twitter:title" content="125. Valid Palindrome">
+<meta name="twitter:description" content="Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. For example, &amp;quot;A man, a plan, a canal: Panama&amp;quot; is a palindrome.&amp;quot;race a car&amp;q">
   
     <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
   
@@ -69,120 +74,96 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/19/125-Valid-Palindrome/" class="archive-article-date">
-  <time datetime="2017-06-19T02:38:47.000Z" itemprop="datePublished">Jun 19</time>
+        <section id="main"><article id="post-125-Valid-Palindrome" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/19/125-Valid-Palindrome/" class="article-date">
+  <time datetime="2017-06-19T02:38:47.000Z" itemprop="datePublished">2017-06-19</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/19/125-Valid-Palindrome/"><div class="article-title-stick">125. Valid Palindrome</div></a>
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">125. Valid Palindrome</div>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/" class="archive-article-date">
-  <time datetime="2017-06-16T09:34:12.000Z" itemprop="datePublished">Jun 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/"><div class="article-title-stick">122. Best Time to Buy and Sell Stock II</div></a>
-    </h1>
-  
+        <p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p><strong>For example,</strong></p>
+<p><code>&quot;A man, a plan, a canal: Panama&quot;</code> is a palindrome.<br><br><code>&quot;race a car&quot;</code> is not a palindrome.</p>
+<p><strong>Note:</strong></p>
+<p>Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1"></a>Solution 1</h2><blockquote>
+<p>使用正则表达式过滤。<code>[^a-zA-Z0-9]</code>，过滤非字符数字。</p>
+<p>这样做的效率比较低，因为正则表达式创建了一个新的空间，空间复杂度为O(n)。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        s = s.replaceAll(<span class="string">"[^a-zA-Z0-9]"</span>,<span class="string">""</span>);</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>,j=s.length()-<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(i&lt;=j)&#123;</div><div class="line">            <span class="keyword">if</span>(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j)))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            i++;</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Optimized"><a href="#Optimized" class="headerlink" title="Optimized"></a>Optimized</h1><h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><p>减少空间复杂度，直接判断，使用双指针和Character.isLetterOrDigit()方法，可以很方便的判断是否对称。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> high = s.length()-<span class="number">1</span>;</div><div class="line">        <span class="keyword">char</span> arr[] = s.toLowerCase().toCharArray();</div><div class="line">        <span class="keyword">while</span>(low&lt;=high)&#123;</div><div class="line">            <span class="keyword">if</span>(Character.isLetterOrDigit(arr[low]) &amp;&amp; Character.isLetterOrDigit(arr[high]))&#123;</div><div class="line">                <span class="keyword">if</span>(arr[low] != arr[high])&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                low++;</div><div class="line">                high--;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(!Character.isLetterOrDigit(arr[low]))&#123;</div><div class="line">                    low++;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!Character.isLetterOrDigit(arr[high]))&#123;</div><div class="line">                    high--;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这个题主要考察了对字符串中字符的操作，使用双指针方法是很不错的思路！</p>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/" class="archive-article-date">
-  <time datetime="2017-06-16T09:19:11.000Z" itemprop="datePublished">Jun 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/"><div class="article-title-stick">121. Best Time to Buy and Sell Stock</div></a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/01/119-Pascal-s-Triangle-II/" class="archive-article-date">
-  <time datetime="2017-06-01T09:28:36.000Z" itemprop="datePublished">Jun 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2017/06/19/125-Valid-Palindrome/" data-id="cj43jbk26000fa4lmlbvd52zr" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/01/119-Pascal-s-Triangle-II/"><div class="article-title-stick">119. Pascal&#39;s Triangle II</div></a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/31/118-Pascal-s-Triangle/" class="archive-article-date">
-  <time datetime="2017-05-31T01:40:13.000Z" itemprop="datePublished">May 31</time>
-</a>
+        <a href="/2017/06/19/125-Valid-Palindrome/#comments" class="article-comment-link">留言</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/31/118-Pascal-s-Triangle/"><div class="article-title-stick">118. Pascal&#39;s Triangle</div></a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-easy/">LeetCode-easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双指针/">双指针</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          122. Best Time to Buy and Sell Stock II
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">下一页</a>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-125-Valid-Palindrome" data-title="125. Valid Palindrome" data-url="https://war3cdota.github.io/2017/06/19/125-Valid-Palindrome/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
