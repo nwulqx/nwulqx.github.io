@@ -1,0 +1,49 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  About: /about  #介绍一下你自己
+  Collections: /collections  #自己添加
+
+rss: /atom.xml
+
+# Content
+excerpt_link: 阅读全文
+fancybox: true
+
+About_Me: #关于我
+  - 个人简历: http://htmlpreview.github.io/?https://github.com/War3cdota/LQX-Wasu/blob/master/README.html
+  - github: https://github.com/War3cdota
+  - csdn: http://blog.csdn.net/war3cdota
+
+#duoshuo
+duoshuo_shortname: war3cdota
+
+# Sidebar
+sidebar: right
+widgets:
+# - category
+# - tag
+- About_Me
+- tagcloud
+- archive
+- recent_posts
+- popular_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:

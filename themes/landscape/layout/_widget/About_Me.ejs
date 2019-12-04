@@ -1,0 +1,21 @@
+<% if (theme.About_Me && theme.About_Me.length > 0) { %>
+<div class="widget-wrap" style="height:160px;">
+  <h3 class="widget-title"><%= __('关于我') %></h3>
+  <img class="widget-head" src="https://war3cdota.github.io/images/head.png"></img>
+  <div class="widget" style="margin-left:105px;">
+    <ul class="entry">
+    <% theme.About_Me.forEach(function(item){ %>
+      <%
+        var description, linkURL
+        for (var tmp in item) {
+
+          description = tmp;
+          linkURL = item[tmp];
+        }
+      %>
+      <li><a href="<%- linkURL %>" target="_blank"><%= description %></a></li>
+    <% }); %>
+    </ul>
+  </div>
+</div>
+<% } %>
