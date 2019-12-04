@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 庆轩的博客
+title: War3cdota
 subtitle: 胜兵先胜而后求战，败兵先战而后求胜。
 description: 
 author: LQX
@@ -74,3 +74,10 @@ deploy:
   type: git
   repository: https://github.com/War3cdota/War3cdota.github.io.git
   branch: master
+
+# search功能
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
