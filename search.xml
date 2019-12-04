@@ -498,8 +498,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -653,9 +653,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -694,9 +694,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -1060,8 +1060,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>快慢指针</tag>
+        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
