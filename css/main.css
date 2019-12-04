@@ -1835,7 +1835,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6c62ee;
+  background: #fbf5ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2674,7 +2674,7 @@ embed {
   display: inline-block;
 }
 .header {
-  background: url("https://cdn.yangbingdong.com/img/header/header_background.jpg");
+  background-image: url("/images/header-background.jpg");
 }
 #days {
   display: block;

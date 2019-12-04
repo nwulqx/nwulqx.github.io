@@ -340,8 +340,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -429,10 +429,10 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Optimize(优化)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
   <entry>
@@ -470,8 +470,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>DFS(深度优先遍历)</tag>
         <tag>Optimize(优化)</tag>
+        <tag>DFS(深度优先遍历)</tag>
         <tag>AVL树(平衡二叉树)</tag>
       </tags>
   </entry>
@@ -499,9 +499,9 @@ In this case, no transaction is done, i.e. max profit = 0.
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -608,9 +608,9 @@ In this case, no transaction is done, i.e. max profit = 0.
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -654,10 +654,10 @@ In this case, no transaction is done, i.e. max profit = 0.
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
       </tags>
   </entry>
   <entry>
@@ -695,10 +695,10 @@ In this case, no transaction is done, i.e. max profit = 0.
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
       </tags>
   </entry>
   <entry>
@@ -1207,8 +1207,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>Optimize(优化)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
   <entry>
