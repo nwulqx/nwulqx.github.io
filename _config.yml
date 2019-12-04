@@ -19,7 +19,7 @@ permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 #duoshuo
-duoshuo_shortname: war3cdota
+duoshuo_shortname: 
 # Directory
 source_dir: source
 public_dir: public
