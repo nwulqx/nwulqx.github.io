@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>前后端数据流导向 | 庆轩的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。 模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
+<meta name="keywords" content="Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端数据流导向">
+<meta property="og:url" content="https://war3cdota.github.io/2016/12/08/前后端数据流导向/index.html">
+<meta property="og:site_name" content="庆轩的博客">
+<meta property="og:description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。 模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/bupRErJ.png">
+<meta property="og:image" content="http://i.imgur.com/O4dnoPP.png">
+<meta property="og:updated_time" content="2017-01-03T04:57:48.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前后端数据流导向">
+<meta name="twitter:description" content="前后端数据流导向这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。 模板与ajax我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。在我的理解中，模板分为两种：Js模板（前端JavaS">
+<meta name="twitter:image" content="http://i.imgur.com/bupRErJ.png">
+  
+    <link rel="alternate" href="/atom.xml" title="庆轩的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script src="//cdn1.lncld.net/static/js/av-min-1.5.3.js"></script>
+  <script>AV.init({appId:"uAfD4ikMWPeXM7raGGN7rIbz-gzGzoHsz", appKey:"HrEv4r0QVo7PzC8k8Ltue8kE"});</script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">庆轩的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">胜兵先胜而后求战，败兵先战而后求胜。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/collections">Collections</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://war3cdota.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前后端数据流导向" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/08/前后端数据流导向/" class="article-date">
+  <time datetime="2016-12-08T11:45:56.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <div class="article-title-stick">前后端数据流导向</div>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前后端数据流导向"><a href="#前后端数据流导向" class="headerlink" title="前后端数据流导向"></a>前后端数据流导向</h1><p>这只是我的一点个人总结，描述了一些前后端的数据走向，用于初学者对于Web端开发的理解。</p>
+<h2 id="模板与ajax"><a href="#模板与ajax" class="headerlink" title="模板与ajax"></a>模板与ajax</h2><p>我初学JavaWeb接触到是Servlet | JSP开发；而我的朋友是从前端界面开始学起，经常听到他抱怨，后端一点都不懂，每次都是开发完毕以后由他人改模板；直到某一次，大神给我俩上了一堂课，我才明白了所谓的模板与前后端分离开发。<br><br>在我的理解中，模板分为两种：<code>Js模板（前端JavaScript开发的）</code>和<code>Jsp模板（后端Java开发的）</code>；这些模板的出现简化了<code>数据绑定</code>。</p>
+<a id="more"></a>
+<ol>
+<li>后端模版的使用，例如Jsp，主要是在后端动态生成前端Html代码，数据绑定在生成Html的时候由Java拼接好，然后发送给用户，由浏览器解析。</li>
+<li>而前端”模板”（姑且这么称呼），主要利用了JavaScript来实现。实际使用中，需要Js向服务端请求数据，然后操作Dom树实现数据绑定。例如，最常见的Ajax请求服务器接口，返回给Json数据，实现数据绑定。而一些前端框架，也借鉴了一些后端标签模板的绑定方式，自定义了一些标签来简化绑定操作。<br></li>
+</ol>
+<p>JSP模板：</p>
+<p><img src="http://i.imgur.com/bupRErJ.png" alt></p>
+<p>JS操作：</p>
+<p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>可能都会基于此种方式。</p>
+<p><strong>区别：</strong></p>
+<ol>
+<li>从思路上的区别，JSP更想用标签去替代一些AJax请求，直接生成静态页面返回给用户。</li>
+<li>而使用JS去请求数据，使得前后端分工明确，前端开发可以不用去理解后端如何运作，而只需要获取数据，专心于界面美观等UI设计。而后端，也减少了界面上开发的痛苦。</li>
+</ol>
+<h3 id="如何使用模板和Ajax，什么时候用哪个？"><a href="#如何使用模板和Ajax，什么时候用哪个？" class="headerlink" title="如何使用模板和Ajax，什么时候用哪个？"></a>如何使用模板和Ajax，什么时候用哪个？</h3><blockquote>
+<p>基于总体，一切从简。</p>
+</blockquote>
+<p>要符合整体设计，不能局限于局部的简单，而忽略整体的设计。过度的批判某一种技术都不是一种好的心态。</p>
+<p>我做了一个非常简单的小Demo刚好展示了Ajax和模板的使用。</p>
+<h2 id="get和post"><a href="#get和post" class="headerlink" title="get和post"></a>get和post</h2><p>我也经常混淆这两个的使用，直到一天看到有人说，为什么不从字面上理解呢？确实，get给人一种从服务器获取的感觉，而post是一种给出的意思。<br><br>为什么不用post呢，他完全可以替代get？我说，get和post区别？答：get是url请求，最大1kB；而post是能传输很大的。<br><br>字面上，get是获取，只是想从服务器上获取数据。那么，就像你去图书馆借书，你只需要给出书名就可以找到你想借的书了。而post更像是你去考试，你不可能只把姓名学号告诉老师就走了，你还要提交你写的试卷，那么此时，如果数据大于1kB，选择post才是你的唯一手段。而对于，简单的获取请求，使用post显得过于繁琐，而使用get却可以轻松地实现。</p>
+<h2 id="Json与IO流"><a href="#Json与IO流" class="headerlink" title="Json与IO流"></a>Json与IO流</h2><p>IO流是我在学习Java时学习到的，这个操作是对数据的传输以流（可以理解为移动一壶水需要水的流动）的形式进行，有字节流和字符流两种形式。<br><br>而Json对象，在我眼里就是键值对（Map）数据结构，那为什么用Json和IO对比？<br>因为，在我所接触的开发中，这两种最常用，<strong>但是他俩却没有对比性</strong>，Json对象在传输时也是IO流，只是在源头增加了解析或者封装Json对象与流之间转换的方法。<br><br>但是这两个概念却经常被混淆，引用大神以前说的一句话<strong>“一切都是流”</strong>。<br><br>为什么有了Json？我用Json对象的感觉就是方便，尤其是Js的操作，更是简单易用，而Java虽然也有类似的数据结构HashMap，但是操作起来真的不是很方便。</p>
+<p>所以，我认为：<strong>IO是传输的方式，而Json是为了应用而建立起来的规则，有点类似于TCP和HTTP之间的关系。</strong></p>
+<p>IO在我使用中，有两次深刻的理解：</p>
+<p>第一次是Servlet开发时，获取Post请求时，<code>request.getInputStream()</code>获取Post数据流，我知道了客户端服务器的交互就是数据流的交互。而对于Json，可以理解为对于收到的<strong>数据</strong>所封装的一种数据形式规则。<br></p>
+<p>第二次是使用Java进行Socket编程，其中客户端与服务器之间的交互是IO流。我意识到，客户端与服务器之间的交互，都是IO或者说数据流之间的交互。而协议，例如Http，则是对于获取到的<strong>IO流</strong>转换为人们可理解的数据后形成的规则。<strong>流是数据传输的形式，而协议是构建应用的基础。</strong></p>
+<p>所以我只想说一句话：<strong>一切都是流</strong>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://war3cdota.github.io/2016/12/08/前后端数据流导向/" data-id="ck3qtemhw00182cj4nyjsdn9v" class="article-share-link">Share</a>
+      
+        <a href="/2016/12/08/前后端数据流导向/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web开发/">Web开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/09/编程语言分类/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          编程语言分类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/08/XSS过关小游戏/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">XSS过关小游戏~</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-前后端数据流导向" data-title="前后端数据流导向" data-url="https://war3cdota.github.io/2016/12/08/前后端数据流导向/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'war3cdota'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+<div class="widget-wrap" style="height:160px;">
+  <h3 class="widget-title">关于我</h3>
+  <img class="widget-head" src="https://war3cdota.github.io/images/head.png"></img>
+  <div class="widget" style="margin-left:105px;">
+    <ul class="entry">
+    
+      
+      <li><a href="http://htmlpreview.github.io/?https://github.com/War3cdota/LQX-Wasu/blob/master/README.html" target="_blank">个人简历</a></li>
+    
+      
+      <li><a href="https://github.com/War3cdota" target="_blank">github</a></li>
+    
+      
+      <li><a href="http://blog.csdn.net/war3cdota" target="_blank">csdn</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2016/" style="font-size: 10px;">2016</a> <a href="/tags/AVL树-平衡二叉树/" style="font-size: 10px;">AVL树(平衡二叉树)</a> <a href="/tags/BFS-广度优先遍历/" style="font-size: 15px;">BFS(广度优先遍历)</a> <a href="/tags/Boundary-Check-边界值检测/" style="font-size: 16.25px;">Boundary Check(边界值检测)</a> <a href="/tags/DFS-深度优先遍历/" style="font-size: 16.25px;">DFS(深度优先遍历)</a> <a href="/tags/DP-动态规划/" style="font-size: 11.25px;">DP(动态规划)</a> <a href="/tags/In-Order-Traversal-中序遍历/" style="font-size: 10px;">In-Order Traversal(中序遍历)</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/LeetCode-easy/" style="font-size: 20px;">LeetCode-easy</a> <a href="/tags/LeetCode-medium/" style="font-size: 13.75px;">LeetCode-medium</a> <a href="/tags/LinkedList-链表/" style="font-size: 12.5px;">LinkedList(链表)</a> <a href="/tags/Morris-Traversal/" style="font-size: 12.5px;">Morris Traversal</a> <a href="/tags/Optimize-优化/" style="font-size: 17.5px;">Optimize(优化)</a> <a href="/tags/Pascal-s-Triangle-杨辉三角形/" style="font-size: 11.25px;">Pascal's Triangle(杨辉三角形)</a> <a href="/tags/Post-Order-Traversal-后序遍历/" style="font-size: 11.25px;">Post-Order Traversal(后序遍历)</a> <a href="/tags/Pre-Order-Traversal-先序遍历/" style="font-size: 10px;">Pre-Order Traversal(先序遍历)</a> <a href="/tags/Queue-队列/" style="font-size: 13.75px;">Queue(队列)</a> <a href="/tags/Stack-栈/" style="font-size: 12.5px;">Stack(栈)</a> <a href="/tags/Web开发/" style="font-size: 10px;">Web开发</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/recursion-递归/" style="font-size: 18.75px;">recursion(递归)</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/位运算/" style="font-size: 12.5px;">位运算</a> <a href="/tags/减法思维/" style="font-size: 10px;">减法思维</a> <a href="/tags/双指针/" style="font-size: 10px;">双指针</a> <a href="/tags/双指针-逼近法/" style="font-size: 10px;">双指针+逼近法</a> <a href="/tags/嵌套指针/" style="font-size: 10px;">嵌套指针</a> <a href="/tags/快慢指针/" style="font-size: 11.25px;">快慢指针</a> <a href="/tags/最长公共子序列（LCS）/" style="font-size: 10px;">最长公共子序列（LCS）</a> <a href="/tags/连续性判断/" style="font-size: 10px;">连续性判断</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">日期存档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/19/141-Linked-List-Cycle/">141. Linked List Cycle</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/136-Single-Number/">136. Single Number</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/125-Valid-Palindrome/">125. Valid Palindrome</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/">122. Best Time to Buy and Sell Stock II</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/16/121-Best-Time-to-Buy-and-Sell-Stock/">121. Best Time to Buy and Sell Stock</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">浏览数目</h3>
+    <div class="widget">
+      <ul class="popularlist">
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LQX<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/collections" class="mobile-nav-link">Collections</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.fetchWhenSave(true); //get recent result
+                    counter.increment("time");
+                    counter.save();
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+$(function(){
+        var Counter=AV.Object.extend("Counter");
+        //only increse visit counting when intering a page
+        if ($('.article-title').length == 1)
+           addCount(Counter);
+        var query=new AV.Query(Counter);
+        query.descending("time");
+        // the sum of popular posts
+        query.limit(10); 
+        query.find({
+            success: function(results){
+                    for(var i=0;i<results.length;i++)    
+                    {
+                        var counter=results[i];
+                        title=counter.get("title");
+                        url=counter.get("url");
+                        time=counter.get("time");
+                        // add to the popularlist widget
+                        showcontent=title+" ("+time+")";
+                        //notice the "" in href
+                        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                    }
+                },
+            error: function(error){
+                alert("Error:"+error.code+" "+error.message);
+            }
+            }
+        )
+        });
+</script>
+  </div>
+</body>
+</html>
