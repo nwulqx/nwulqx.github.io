@@ -104,16 +104,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/L.svg?v=5.1.4" color="#222">
 
 
 
@@ -138,7 +138,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="一、this关键字作为函数被调用 函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。  123456function makeNoSense(x) &amp;#123; 	this.x = x; &amp;#125; makeNoSen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-03T04:58:38.274Z">
+<meta property="og:updated_time" content="2019-12-05T06:50:45.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS的this、__proto__ 和. prototype 、constructor">
 <meta name="twitter:description" content="一、this关键字作为函数被调用 函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。  123456function makeNoSense(x) &amp;#123; 	this.x = x; &amp;#125; makeNoSen">
@@ -452,7 +452,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">	x : <span class="number">0</span>, </span><br><span class="line">	y : <span class="number">0</span>, </span><br><span class="line">	moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>; </span><br><span class="line">		<span class="comment">// 内部函数</span></span><br><span class="line">		<span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">			that.x = x; </span><br><span class="line">		&#125;; </span><br><span class="line">		<span class="comment">// 内部函数</span></span><br><span class="line">		<span class="keyword">var</span> moveY = <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123; </span><br><span class="line">			that.y = y; </span><br><span class="line">		&#125; </span><br><span class="line">		moveX(x); </span><br><span class="line">		moveY(y); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;; </span><br><span class="line">point.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">point.x; <span class="comment">//==&gt;1 </span></span><br><span class="line">point.y; <span class="comment">//==&gt;1</span></span><br></pre></td></tr></table></figure>
 <p>当内部函数嵌套只有一层，那么还是符合<code>内部函数this绑定在外层函数对应的对象上</code>，但是，如果超过了1层嵌套，那么在高于1层的内部函数中，this对象如果不借助that，那么this将会指向window对象。</p>
-<h3 id="apply或call调用"><a href="#apply或call调用" class="headerlink" title="apply或call调用"></a>apply或call调用</h3><p>﻿<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">this</span>.x = x; </span><br><span class="line">	<span class="keyword">this</span>.y = y; </span><br><span class="line">	<span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	    <span class="keyword">this</span>.x = x; </span><br><span class="line">	    <span class="keyword">this</span>.y = y; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line"><span class="keyword">var</span> p2 = &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);</span><br></pre></td></tr></table></figure></p>
+<h3 id="apply或call调用"><a href="#apply或call调用" class="headerlink" title="apply或call调用"></a>apply或call调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">this</span>.x = x; </span><br><span class="line">	<span class="keyword">this</span>.y = y; </span><br><span class="line">	<span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">	    <span class="keyword">this</span>.x = x; </span><br><span class="line">	    <span class="keyword">this</span>.y = y; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line"><span class="keyword">var</span> p2 = &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);</span><br></pre></td></tr></table></figure>
 <p>这里p1是一个<code>Point {x: 1, y: 1}</code>对象，而p2则是一个<code>Object {x: 10, y: 10}</code>对象。</p>
 <h3 id="eval调用"><a href="#eval调用" class="headerlink" title="eval调用"></a>eval调用</h3><blockquote>
 <p>JavaScript 中的 eval 方法可以将字符串转换为 JavaScript 代码，使用 eval 方法时，this 指向哪里呢？答案很简单，看谁在调用 eval 方法，调用者的执行环境（ExecutionContext）中的 this 就被 eval 方法继承下来了。</p>
@@ -759,7 +759,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.4k</span>
+    <span title="Site words total count">28.9k</span>
   
 </div>
 
