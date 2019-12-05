@@ -1,3 +1,4 @@
+---
 layout: js的this、__proto__
 title: JS的this、__proto__ 和. prototype 、constructor
 date: 2016-12-22 10:54:10
@@ -100,7 +101,7 @@ point.y; //==>1
 当内部函数嵌套只有一层，那么还是符合`内部函数this绑定在外层函数对应的对象上`，但是，如果超过了1层嵌套，那么在高于1层的内部函数中，this对象如果不借助that，那么this将会指向window对象。
 
 ### apply或call调用
-﻿
+
 ```javascript
 function Point(x, y){ 
 	this.x = x; 
