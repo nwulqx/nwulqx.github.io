@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT B1011 A+B 和 C (15分)</title>
+    <url>/2019/12/05/PAT-B1011-A-B-%E5%92%8C-C-15%E5%88%86/</url>
+    <content><![CDATA[<p>给定区间 $[−2^{31},2^{31}]$ 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
+<a id="more"></a>
+<p><strong>输入格式：</strong></p>
+<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
+<p><strong>输出格式：</strong></p>
+<p>对每组测试用例，在一行中输出 <code>Case #X: true</code> 如果 A+B&gt;C，否则输出 <code>Case #X: false</code>，其中 <code>X</code>是测试用例的编号（从 1 开始）。</p>
+<p><strong>输入样例：</strong></p>
+<pre><code>4
+1 2 3
+2 3 4
+2147483647 0 2147483646
+0 -2147483648 -2147483647
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>Case #1: false
+Case #2: true
+Case #3: true
+Case #4: false
+</code></pre><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<li>因为在给定区间 $[-2^{31},2^{31}]$判断，该区间右端点在int范围已经溢出，且$−2^{31}+(−2^{31}) = −2^{32}$也在<code>int</code>范围是溢出的，说明加数，和均会溢出。所以不能使用<code>int</code>类型存储输入数据，需要用<code>long long</code>类型来保证计算不会溢出。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805312417021952</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> A, B, C,sum;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;A,&amp;B,&amp;C);</span><br><span class="line">        sum = A + B;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; C)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: true\n"</span>,i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: false\n"</span>, i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>PAT</tag>
+        <tag>PAT-Basic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT B1014-福尔摩斯的约会 (20分)</title>
+    <url>/2019/12/05/PAT-B1014-%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A-20%E5%88%86/</url>
+    <content><![CDATA[<p>大侦探福尔摩斯接到一张奇怪的字条：<code>我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm</code>。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间<code>星期四 14:04</code>，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 <code>D</code>，代表星期四；第 2 对相同的字符是 <code>E</code> ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 <code>A</code> 到 <code>N</code> 表示）；后面两字符串第 1 对相同的英文字母 <code>s</code> 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<a id="more"></a>
+<p><strong>输入格式：</strong></p>
+<p>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
+<p><strong>输出格式：</strong><br>在一行中输出约会的时间，格式为 <code>DAY HH:MM</code>，其中 <code>DAY</code> 是某星期的 3 字符缩写，即 <code>MON</code> 表示星期一，<code>TUE</code> 表示星期二，<code>WED</code> 表示星期三，<code>THU</code> 表示星期四，<code>FRI</code> 表示星期五，<code>SAT</code> 表示星期六，<code>SUN</code> 表示星期日。题目输入保证每个测试存在唯一解。</p>
+<p><strong>输入样例：</strong></p>
+<pre><code>3485djDkxh4hhGE
+
+2984akDfkkkkggEdsb
+
+s&amp;hgsfdk
+
+d&amp;Hyscvnm
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>THU 14:04
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>星期，小时和分钟都是<strong>有界限的</strong>，需要进行边界判断。星期是A-G大写字母，小时是：0-9、A-N大写字母，分钟是：0-60数字。对这些字母处理的同时需要做好边界检测。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805308755394560</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">string</span> week[<span class="number">7</span>] = &#123;<span class="string">"MON"</span>,<span class="string">"TUE"</span>,<span class="string">"WED"</span>,<span class="string">"THU"</span>,<span class="string">"FRI"</span>,<span class="string">"SAT"</span>,<span class="string">"SUN"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isUpperLetter</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'A'</span> &amp;&amp; c &lt;= <span class="string">'Z'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isWeek</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'H'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isHour</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'O'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isNum</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameLetter</span><span class="params">(<span class="keyword">char</span> a,<span class="keyword">char</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (a &gt;= <span class="string">'a'</span>&amp;&amp; a &lt;= <span class="string">'z'</span>) || (a &gt;= <span class="string">'A'</span>&amp;&amp; a &lt;= <span class="string">'Z'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2, s3, s4;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; s3 &gt;&gt; s4;</span><br><span class="line">    <span class="keyword">int</span> minLen1 = s1.length() &lt; s2.length() ? s1.length() : s2.length();</span><br><span class="line">    <span class="keyword">int</span> minLen2 = s3.length() &lt; s4.length() ? s3.length() : s4.length();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; minLen1; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i] &amp;&amp; isWeek(s1[i]))&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; week[s1[i]-<span class="string">'A'</span>];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = i+<span class="number">1</span>; i &lt; minLen1;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i])&#123;</span><br><span class="line">            <span class="keyword">if</span> (isHour(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>,<span class="number">10</span>+s1[i]-<span class="string">'A'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isNum(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>, s1[i] - <span class="string">'0'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">61</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (isSameLetter(s3[j], s4[j])&amp;&amp;j &lt; <span class="number">61</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">":%02d\n"</span>,j);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+]]></content>
+      <tags>
+        <tag>PAT</tag>
+        <tag>PAT-Basic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>141. Linked List Cycle</title>
     <url>/2017/06/19/141-Linked-List-Cycle/</url>
     <content><![CDATA[<p>Given a linked list, determine if it has a cycle in it.</p>
@@ -498,8 +554,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -653,9 +709,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -694,9 +750,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -1060,8 +1116,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>快慢指针</tag>
         <tag>LeetCode-medium</tag>
+        <tag>快慢指针</tag>
       </tags>
   </entry>
   <entry>
