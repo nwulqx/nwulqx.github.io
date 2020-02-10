@@ -60,26 +60,6 @@ d&amp;Hyscvnm
       </tags>
   </entry>
   <entry>
-    <title>2017年终总结</title>
-    <url>/2018/01/09/2017%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>各位领导、同事们：</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;大家下午好!</p>
-<p>&nbsp;&nbsp;很荣幸有这次发言机会，同时感谢各位同事对我个人工作的鼎力支持。</p>
-<p>&nbsp;&nbsp;2017年是我工作的第二年，2017年我主要从某项目的开发、维护、以及故障处理展开。</p>
-<p>&nbsp;&nbsp;新增开发方面：对于一般的页面需求，现在已经开发出几套样式模板，可以提供给用户选择；另外，对于有特殊要求的用户，也可以按照用户要求的样式进行开发，让它既可通用，也可个性。另外，对于三方厂家开发方面，我们是对其开发的模板进行查错和功能检查后，才上线，尽量减少上线后故障，做到早发现早处理。</p>
-<p>&nbsp;&nbsp;日常维护方面：主要是日常针对用户后续需求、页面及视频进行修改。</p>
-<p>&nbsp;&nbsp;故障处理是商业电视的难点，主要处理运维接到的商业电视故障。涉及的问题比较广泛而且不确定性比较大，有些问题能够彻底解决，比如模板问题，排序问题，页面跳转问题等，这些问题占了大部分。而有些问题由于设备、环境等因素，也只能做好规避，力求少出现甚至不出现，这里有终端问题、网络问题等，比如6月份遇到的香格里拉酒店首页开机偶发性黑屏问题，虽然配合运维进行了多项查证，最后也只能做到尽可能的兼容，这类问题占少数。</p>
-<p>&nbsp;&nbsp;此外，也协助遇到的一些技术问题。包含一些常规的bug检查和指导修复。</p>
-<p>&nbsp;&nbsp;存在不足：一是工作纷繁复杂，需要时间学习，二是工作中不够大胆，要在不断的学习过程中改变工作方法，不断创新完善。</p>
-<p>&nbsp;&nbsp;明年打算：主要还是努力做好并完善本职工作，对于新需求，应该做到又好又快完成，对于故障处理，仍应该做到尽快响应，及时与运维交流，共同处理问题。</p>
-<p>&nbsp;&nbsp;以上就是我今年的工作总结。</p>
-<p>&nbsp;&nbsp;最后，春节临近，祝各位身体健康，万事如意！</p>
-]]></content>
-      <tags>
-        <tag>2017</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>141. Linked List Cycle</title>
     <url>/2017/06/19/141-Linked-List-Cycle/</url>
     <content><![CDATA[<p>Given a linked list, determine if it has a cycle in it.</p>
@@ -1139,8 +1119,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>快慢指针</tag>
+        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -1505,43 +1485,6 @@ return [0, 1].
       </tags>
   </entry>
   <entry>
-    <title>2016总结</title>
-    <url>/2017/01/02/2016%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;我觉得，总结这种事情，不是通过总结来展示自己过去做了什么。而是应该是通过总结，得知自己和目标之间又近了多少，未来应该如何走。<br><img src="\images\九寨沟.jpg" alt><br><a id="more"></a></p>
-<h2 id="毕业"><a href="#毕业" class="headerlink" title="毕业"></a>毕业</h2><p>&nbsp;&nbsp;2016年的一二月随着春节将近而逝去了。期间看到一条很有意思的新闻，Alphago要在3月挑战人类围棋，深受感触，上一次人机大战是深蓝在1997年国际象棋中成功战胜人类。CS在这19年里又进步了~！</p>
-<p>&nbsp;&nbsp;三月份去了杭州实习，见识到了很多人。一个月很快就过去了，期间见证了这场人机大战，深感”大人，时代变了！”。</p>
-<p>&nbsp;&nbsp;四五月份忙着毕业设计了，了解了Spring框架和Hibernate框架，对框架有了初步的认识。</p>
-<p>&nbsp;&nbsp;六月份忙着答辩，毕业旅行去了九寨沟，真是蓝天白云，波光粼粼！</p>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>&nbsp;&nbsp;七月份正式开始了职业生涯，实习期先学习了一个月，公司缺乏相应的技术人员，大部分人都是产品，但三人行必有我师。被安排开发前端页面，我觉得，语言并不是问题，问题的关键是逻辑。</p>
-<p>&nbsp;&nbsp;八月份，去厂家学习，虽然技术人员比较精简，但是每个人职责都很明确。习得了很多开发业务上的东西。期间初步掌握了HTML+CSS和基本的JavaScript语言开发。</p>
-<p>&nbsp;&nbsp;九月份，经历了G20峰会，维护期间暂停了相应业务，也休息了一周。这期间：</p>
-<ul>
-<li>连同七八月份的零星时间，用Hexo建了一个博客；</li>
-<li>搭建了一台VPS，了解了基本的Linux操作系统；</li>
-<li>开始刷LeetCode编程题目，感觉这些问题其实很有意思。</li>
-</ul>
-<p>&nbsp;&nbsp;一直到九月底，我已经在厂家学习了两个月，做了六个小项目，使用了fw框架一款焦点移动框架。</p>
-<p>&nbsp;&nbsp;十月份回了原单位，开始接手某模板业务，对模板进行开发和维护。</p>
-<p>&nbsp;&nbsp;10月26日，到湖州开发云梯4.0项目，主要与另一位前端开发配合，负责页面焦点逻辑的开发，完成4套功能页面开发，期间利用了爬虫技术，感觉这个技术值得研究。期间：</p>
-<ul>
-<li>习得流式布局和简单的CSS特效；</li>
-<li>JQuery的入门使用，AJAX；</li>
-<li>JSON数据格式在前后端中的重要作用；</li>
-<li>对于fw这个框架有了更深刻的理解。</li>
-</ul>
-<p>&nbsp;&nbsp;11月4号完成页面测试和展示后，回杭，又投入到了另一个页面开发，告知我没有数据库，只有数据，仅要求做个页面展示，数据动态即可。ok，利用JSON搞定。</p>
-<p>&nbsp;&nbsp;一直到12月10号左右开始交接业务维护工作时，我才发现这是个对我来说是个挑战，交流中总是处于被动使得工作量和效率受到影响，经过一段时间的交流，总结了几点：</p>
-<ul>
-<li>不卑不亢，与人交流要有礼貌，先礼后兵作为中国传统成语是有他道理的；</li>
-<li>该强硬时不能带有妇人之仁；</li>
-<li>顺其自然，当问题无法推进时，应该适时放弃。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>2016</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS的this、__proto__ 和. prototype 、constructor</title>
     <url>/2016/12/22/JS%E7%9A%84this%E3%80%81__proto__%20%E5%92%8C.%20prototype%20%E3%80%81constructor/</url>
     <content><![CDATA[<h2 id="一、this关键字"><a href="#一、this关键字" class="headerlink" title="一、this关键字"></a>一、this关键字</h2><h3 id="作为函数被调用"><a href="#作为函数被调用" class="headerlink" title="作为函数被调用"></a>作为函数被调用</h3><blockquote>
@@ -1844,7 +1787,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
