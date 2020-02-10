@@ -399,8 +399,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -557,8 +557,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -712,9 +712,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -753,9 +753,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -1119,8 +1119,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>快慢指针</tag>
         <tag>LeetCode-medium</tag>
+        <tag>快慢指针</tag>
       </tags>
   </entry>
   <entry>
@@ -1150,8 +1150,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>LinkedList(链表)</tag>
+        <tag>LeetCode-medium</tag>
         <tag>位运算</tag>
       </tags>
   </entry>
@@ -1787,7 +1787,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
