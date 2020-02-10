@@ -1835,7 +1835,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8be759;
+  background: #40ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2704,6 +2704,56 @@ embed {
   border-radius: initial;
   -webkit-box-shadow: 0 0 15px #590016;
 }
+@media (max-width: 767px) {
+  .menu {
+    width: auto;
+  }
+}
+@media (max-width: 767px) {
+  .site-nav {
+    position: absolute;
+    left: 0;
+    top: 52px;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 1030;
+  }
+}
+@media (max-width: 767px) {
+  .menu {
+    margin: 20px 0 0 0;
+    padding: 0;
+  }
+}
+@media (max-width: 767px) {
+  .menu .menu-item {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .menu .menu-item .badge {
+    float: right;
+    margin: 0.35em 0 0 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .menu .menu-item {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .menu .menu-item a {
+    text-align: left;
+  }
+}
+@media (max-width: 767px) {
+  .menu .menu-item a a::before {
+    display: block;
+  }
+}
 a {
   color: rgba(0,0,0,0.8);
 }
@@ -2729,7 +2779,7 @@ a:hover {
 }
 .header-inner {
   padding: 45px 0 25px;
-  width: 700px;
+/**width: 700px;**/
 }
 .site-author-name {
   font-family: 'Comic Sans MS', sans-serif;
