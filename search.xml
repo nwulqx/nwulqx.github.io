@@ -3,7 +3,7 @@
   <entry>
     <title>PAT乙级95题总结</title>
     <url>/2019/12/28/PAT%E4%B9%99%E7%BA%A790%E9%A2%98%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上<a href="/images/PAT乙级总结.pdf" download="PAT乙级前95题总结.pdf" style="color:#027EF2">PDF下载</a>，以供打印的需要。<br><a id="more"></a></p>
+    <content><![CDATA[<p>本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上<a href="/images/PAT乙级总结.pdf" download="PAT乙级前95题总结.pdf" style="color:#027EF2">PDF下载</a>，以供打印的需要。</p>
 <h1 id="类型一：模拟类"><a href="#类型一：模拟类" class="headerlink" title="类型一：模拟类"></a>类型一：模拟类</h1><p>按照题目要求编码，主要考察<strong>代码能力</strong>，并列出实际操作中较难题目。</p>
 <table>
 <thead>
@@ -31,6 +31,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h2 id="1050-螺旋矩阵-（25-分）"><a href="#1050-螺旋矩阵-（25-分）" class="headerlink" title="1050 螺旋矩阵 （25 分）"></a>1050 螺旋矩阵 （25 分）</h2><p>本题要求将给定的 N 个正整数按非递增的顺序，填入“螺旋矩阵”。所谓“螺旋矩阵”，是指从左上角第 1 个格子开始，按顺时针螺旋方向填充。要求矩阵的规模为 m 行 n 列，满足条件：$m×n$ 等于 N；$m≥n$；且 $m−n$ 取所有可能值中的最小值。<br><strong>输入格式：</strong><br>输入在第 1 行中给出一个正整数 N，第 2 行给出 N 个待填充的正整数。所有数字不超过 $10^4$，相邻数字以空格分隔。<br><strong>输出格式：</strong><br>输出螺旋矩阵。每行 n 个数字，共 m 行。相邻数字以 1 个空格分隔，行末不得有多余空格。<br><strong>输入样例：</strong></p>
 <blockquote>
 <p>12<br>37 76 20 98 76 42 53 95 60 81 58 93</p>
@@ -1537,8 +1538,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -2289,8 +2290,8 @@ color:rgb(199,37,78)
       <tags>
         <tag>Optimize(优化)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>LinkedList(链表)</tag>
         <tag>位运算</tag>
+        <tag>LinkedList(链表)</tag>
       </tags>
   </entry>
   <entry>

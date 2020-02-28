@@ -130,20 +130,20 @@
 
 
 
-<meta name="description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。">
+<meta name="description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。 类型一：模拟类按照题目要求编码，主要考察代码能力，并列出实际操作中较难题目。    题号 题目 说明     B1050 螺旋矩阵（25 分） 逻辑，二维vector   B1068 万绿丛中一点红（20 分） 涉及图的周围八个方向索引技巧   B1088 三人行（20 分） 类型">
 <meta name="keywords" content="PAT,PAT-Basic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT乙级95题总结">
 <meta property="og:url" content="https://war3cdota.github.io/2019/12/28/PAT乙级90题总结/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。">
+<meta property="og:description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。 类型一：模拟类按照题目要求编码，主要考察代码能力，并列出实际操作中较难题目。    题号 题目 说明     B1050 螺旋矩阵（25 分） 逻辑，二维vector   B1068 万绿丛中一点红（20 分） 涉及图的周围八个方向索引技巧   B1088 三人行（20 分） 类型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://war3cdota.github.io/images/螺旋循环.png">
 <meta property="og:image" content="https://war3cdota.github.io/images/1070%20结绳%20（25%20分）.jpg">
-<meta property="og:updated_time" content="2020-02-28T14:59:24.640Z">
+<meta property="og:updated_time" content="2020-02-28T15:07:14.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAT乙级95题总结">
-<meta name="twitter:description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。">
+<meta name="twitter:description" content="本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上PDF下载，以供打印的需要。 类型一：模拟类按照题目要求编码，主要考察代码能力，并列出实际操作中较难题目。    题号 题目 说明     B1050 螺旋矩阵（25 分） 逻辑，二维vector   B1068 万绿丛中一点红（20 分） 涉及图的周围八个方向索引技巧   B1088 三人行（20 分） 类型">
 <meta name="twitter:image" content="https://war3cdota.github.io/images/螺旋循环.png">
 
 
@@ -459,7 +459,7 @@
       
 
       
-        <p>本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上<a href="/images/PAT乙级总结.pdf" download="PAT乙级前95题总结.pdf" style="color:#027EF2">PDF下载</a>，以供打印的需要。<br><a id="more"></a></p>
+        <p>本章面对PAT-乙级程序设计，共总结了16种类型题目，并总结了重点题目以及分析，同时附上<a href="/images/PAT乙级总结.pdf" download="PAT乙级前95题总结.pdf" style="color:#027EF2">PDF下载</a>，以供打印的需要。</p>
 <h1 id="类型一：模拟类"><a href="#类型一：模拟类" class="headerlink" title="类型一：模拟类"></a>类型一：模拟类</h1><p>按照题目要求编码，主要考察<strong>代码能力</strong>，并列出实际操作中较难题目。</p>
 <table>
 <thead>
@@ -487,6 +487,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h2 id="1050-螺旋矩阵-（25-分）"><a href="#1050-螺旋矩阵-（25-分）" class="headerlink" title="1050 螺旋矩阵 （25 分）"></a>1050 螺旋矩阵 （25 分）</h2><p>本题要求将给定的 N 个正整数按非递增的顺序，填入“螺旋矩阵”。所谓“螺旋矩阵”，是指从左上角第 1 个格子开始，按顺时针螺旋方向填充。要求矩阵的规模为 m 行 n 列，满足条件：$m×n$ 等于 N；$m≥n$；且 $m−n$ 取所有可能值中的最小值。<br><strong>输入格式：</strong><br>输入在第 1 行中给出一个正整数 N，第 2 行给出 N 个待填充的正整数。所有数字不超过 $10^4$，相邻数字以空格分隔。<br><strong>输出格式：</strong><br>输出螺旋矩阵。每行 n 个数字，共 m 行。相邻数字以 1 个空格分隔，行末不得有多余空格。<br><strong>输入样例：</strong></p>
 <blockquote>
 <p>12<br>37 76 20 98 76 42 53 95 60 81 58 93</p>
