@@ -1140,6 +1140,54 @@
       </tags>
   </entry>
   <entry>
+    <title>一道Java多线程问题</title>
+    <url>/2019/12/25/%E4%B8%80%E9%81%93Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>这道题在我2015年初学Java时遇到，至今已过去4年多了，也收到了200多的赞和很多回复，对我的Java学习起到了很好的正反馈作用，那么现在就来看下这道题目到底是怎么回事。</p>
+<p>以下JAVA程序的输出是什么（）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *https://www.nowcoder.com/questionTerminal/3b463ebec8404ad9b1b288859f124543?toCommentId=59907</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloSogou</span></span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] a)</span></span>&#123;</span><br><span class="line">         Thread t=<span class="keyword">new</span> Thread()&#123;</span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;Sogou();&#125;</span><br><span class="line">     &#125;;</span><br><span class="line">     t.run();</span><br><span class="line">     System.out.print(<span class="string">"Hello"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">Sogou</span><span class="params">()</span></span>&#123;</span><br><span class="line">     System.out.print(<span class="string">"Sogou"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A. HelloSogou</span><br><span class="line">B. SogouHello</span><br><span class="line">C. Hello</span><br><span class="line">D. 结果不确定</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>第一，我觉得误区有两个：一个是run和start区别，<code>Thread.run()</code>是调用方法，<code>Thread. start()</code>是启动线程；另一个是锁持有问题。这个题是调用方法，和多线程就无关。本题只有一个线程，持有HelloSogou.class锁。那么，就是第二个问题了：同步方法调用另一个同步方法的锁问题？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span>  <span class="title">methodA</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">(<span class="keyword">int</span>  a）&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">   methodA(a, <span class="number">0</span>)</span></span>; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>首先要明白两个问题，<strong>1.锁的对象是谁？2.谁持有了锁？</strong></p>
+<p>假设方法A和B是在同一个类Test中的两个方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Test  t=<span class="keyword">new</span> Test(); </span><br><span class="line">t.methodB();</span><br></pre></td></tr></table></figure>
+<p>调用methodB()方法，获得锁，锁是对象<code>t</code>；锁谁持有？当前线程（不可以说是methodB持有该锁），methodB又调用methodA，也需要锁<code>t</code>，该线程已持有<code>t</code>，当然可以直接调用methodA。 </p>
+<p>类比到此题，只有一个主线程，调用main，持有<code>HelloSogou.class</code>锁，那当然可以直接调用Sogou方法。</p>
+<p>第二，如果是<code>t.statrt()</code>，那么这个题，<strong>静态同步函数的锁是该类的字节码文件.class。</strong>此题中，main函数和Sogou方法都是static的，所以持有相同<code>锁 HelloSogou.class</code>，那么，在main线程（main  是一个线程也是一个进程  ）中又开了一个线程，调用Sogou方法，锁会冲突。</p>
+<p>所以我的分析是：调用main函数（一个线程），main函数开启另一个线程，并启动，但是main函数和Sogou方法是同一个锁，所以main函数执行完毕后才会释放锁，Sogou方法才会执行，这就是为什么，换成start，是HelloSogou。 </p>
+<p>第三，将Sogou方法的锁改为其他.class锁，那么，HelloSogou和SogouHello都可能出现。因为没有互斥现象了，变为<code>抢占式</code>的了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>牛客网</tag>
+        <tag>多线程</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一道Java垃圾回收问题</title>
+    <url>/2019/12/19/%E4%B8%80%E9%81%93Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>初读《深入理解JVM虚拟机》，随即便碰到了这道题目，刚好对所学进行了一个总结归纳，对这道题目做了解析，这几年获得了400多赞，对我的Java学习之路起到了积极作用。</p>
+<p>以下哪些jvm的垃圾回收方式采用的是复制算法回收：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A. 新生代串行收集器</span><br><span class="line">B. 老年代串行收集器</span><br><span class="line">C. 并行收集器</span><br><span class="line">D. 新生代并行回收收集器</span><br><span class="line">E. 老年代并行回收收集器</span><br><span class="line">F. cms收集器</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>两个最基本的java回收算法：复制算法和标记清理算法<br><code>复制算法</code>：两个区域A和B，初始对象在A，继续存活的对象被转移到B。此为新生代最常用的算法<br><code>标记清理</code>：一块区域，标记可达对象（可达性分析），然后回收不可达对象，会出现碎片，那么引出<br><code>标记-整理算法</code>：多了碎片整理，整理出更大的内存放更大的对象<br>两个概念：新生代和年老代<br><code>新生代</code>：初始对象，生命周期短的<br><code>永久代</code>：长时间存在的对象<br>整个java的垃圾回收是新生代和年老代的协作，这种叫做分代回收。<br>P.S：Serial New收集器是针对新生代的收集器，采用的是复制算法<br>Parallel New（并行）收集器，新生代采用复制算法，老年代采用标记整理<br>Parallel Scavenge（并行）收集器，针对新生代，采用复制收集算法<br>Serial Old（串行）收集器，新生代采用复制，老年代采用标记整理<br>Parallel Old（并行）收集器，针对老年代，标记整理<br>CMS收集器，基于标记清理<br>G1收集器：整体上是基于标记 整理 ，局部采用复制</p>
+<p><code>综上：新生代基本采用复制算法，老年代采用标记整理算法。cms采用标记清理。</code></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Java垃圾回收</tag>
+        <tag>牛客网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT B1011 A+B 和 C (15分)</title>
     <url>/2019/12/05/PAT-B1011-A-B-%E5%92%8C-C-15%E5%88%86/</url>
     <content><![CDATA[<p>给定区间 $[−2^{31},2^{31}]$ 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
@@ -1196,6 +1244,68 @@ d&amp;Hyscvnm
       <tags>
         <tag>PAT</tag>
         <tag>PAT-Basic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>毛泽东选集第一卷笔记</title>
+    <url>/2018/12/20/%E6%AF%9B%E6%B3%BD%E4%B8%9C%E9%80%89%E9%9B%86%E7%AC%AC%E4%B8%80%E5%8D%B7%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<ul>
+<li><p>《中国社会各阶级的分析》：分析了中国社会各阶级的组成，指出了革命斗争的敌人和朋友。指导我们，做事情先要调查和思考，不能盲目，要团结真正的朋友，以攻击真正的敌人。</p>
+  <a id="more"></a>
+</li>
+<li><p>《湖南农民运动考察报告》：没有调查权就没有发言权，通过对当地经济，政治切身实地的考察，农民革命的发展和农会的发展。提出了两点：</p>
+<ul>
+<li>封建社会中国人民所受的四种权力的支配：政权，族权，神权，夫权（女性）。</li>
+<li>矫枉必须过正，不过正不能矫枉。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>《中国的红色革命为什么能够存在》：由于反革命势力的不统一及其之间的斗争，使得红色政权可以存在，坚持斗争。</p>
+</li>
+<li><p>《井冈山的斗争》：分析了先前失败的斗争原因，其一个重要问题，是拿不住中间阶级。</p>
+</li>
+<li><p>《关于纠正党内的错误思想》：党指导军的思想。并分析了一些错误的思想，对主观主义，盲动主义，绝对平均主义，个人主义提出了批评和纠正指导。符合唯物辩证主义的思想，注意理论和实践的结合，拒绝倒向两个极端。</p>
+</li>
+<li><p>《星星之火可以燎原》：从战略角度上考虑了当前的形势，教育我们不能悲观，要认清事实的本质；另一方面，从战术的角度，指出了游击战术与集中兵力需要适时分析与使用；最后，通过既有分析，掷地有声地指出了”星星之火可以燎原“，提升了信心。</p>
+</li>
+<li><p>《必须注意经济工作》：指出了战时经济的重要性，从现实指出了经济的重要性，经济建设是战争胜利的保证，呼应了《孙子兵法》的对于战争日费千金的警示，同时给出了具体的经济建设的一些指导意见；对于工农，政检，文教三方面要重视，要相互促进，辩证统一。</p>
+</li>
+<li><p>《怎样分析农村阶级》：对于阶级进行划分，分地主，富农，中农，贫农，工人五个阶级。</p>
+</li>
+<li><p>《我们的经济政策》：坚持经济建设，坚持斗争；并指出了当前的国民经济由：国营，合作社，私营三方面组成。</p>
+</li>
+<li><p>《关心群众生活，注意工作方法》：指出了群众的重要性，同时要想发动群众，就要走到群众中去，为群众服务；同时不能光说不做，要研究如何去做，要注意工作方法。</p>
+</li>
+<li><p>《论反对日本帝国主义的策略》：分析了当前的形式，中国仍是半殖民地半封建的社会，民族资产阶级是中间派，他们是可以联合的，而非完全敌对的，同时，说明了长征并不只是一次转移，期间做的一些工作和后面对于长征的评价，将是有益于革命的；确立了建立统一战线，反对关门主义，指出了革命道路上应该辩证思考问题，避免扯向两个极端；指出当前革命任务仍是反帝反封建的资产阶级的民主革命；指出了国际援助的必要性。</p>
+</li>
+<li><p>《中国革命战争的战略问题》：</p>
+<ul>
+<li>第一章    如何研究战争：定义了战争，是矛盾的最高斗争形势，战争（矛盾）具有普遍性和特殊性；要用发展的眼光看问题，要注重自身实践，并联系理论，在实践中检验理论；战略和战术的关系，也即是全局和局部的关系，要抓住主要矛盾，照顾好全局，使得局部与全局相统一；指出了学习的重要性，要善于在实践中学习，实践与理论具有客观和主观的矛盾关系，要解决好主客观间的矛盾关系，要辩证的取舍的学习，取其精华去其糟粕。</li>
+<li>第二章    中国共产党和中国革命战争：指出了革命道路上是曲折的，前途是光明的。</li>
+<li>第三章    中国革命战争的特点：指出了革命战争的四条特点，辩证地指出了革命的前途光明，但是道路是曲折的；提出了战略上应该持久战，战术上应该速决战等论点。</li>
+<li>第四章    围剿和反围剿–中国内战的主要形式：通过国民党和中国共产党的五次围剿和反围剿，引出了防御和进攻的概念，为后面解释整体的战略做引导。</li>
+<li>第五章    战略防御：进攻具有连续性；不打无准备的仗，准备条件从政治，军事，财政，社会舆论等方面入手；解释了以弱胜强的一个方法–以退为进（战略退却），并用《曹刿论战》做了历史案例，强调后发制人，在当前不能与敌抗衡时，用空间换取时间，为胜利赢取条件，另外，也指出了退却的时机尽量过早，绝不可过晚，过迟的损失比过早的大；指出了，一旦条件成熟，应该及时出手，并捡弱的打，否则，宁可等待也绝不出手，一旦出手将是第一战，指出了初战的重要性，初战是全盘战役的序幕，此时心中应该已有全局的计划，最后，应该留有后手，做最坏的打算；集中兵力的问题，强调了“伤其十指不如断其一指”的战术，只有集中兵力才能重创敌人，另强调了获取主动权的重要意义，一旦被动将被环境支配，陷于应付主义，最终失败；提出了“战略上以一当十，战术上以十当一”的理念，也顺应了“战略上藐视敌人，战术上重视敌人”，提出了战术上还是应该运动战和速决战，而战略上应是持久战。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>《关于蒋介石声明的声明》：西安事变的评论。</p>
+</li>
+<li><p>《中国共产党在抗日时期的任务》：讲了同一民族战线的建立，回顾了历史上的国共合作，确立了关键点是要掌握主动权，不能失去独立自主的原则，失掉了自主将失去党的生命。</p>
+</li>
+<li><p>《实践论》：见文章实践论笔记。</p>
+</li>
+<li>《矛盾论》：见文章矛盾论笔记。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>哲学</category>
+        <category>毛泽东思想</category>
+      </categories>
+      <tags>
+        <tag>毛泽东思想</tag>
+        <tag>哲学</tag>
       </tags>
   </entry>
   <entry>
@@ -2290,8 +2400,8 @@ color:rgb(199,37,78)
       <tags>
         <tag>Optimize(优化)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>位运算</tag>
         <tag>LinkedList(链表)</tag>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -3191,8 +3301,9 @@ help(值为nu6的节点);return;
 </li>
 </ul>
 <p>SUN公司，由斯坦福大学网络（<strong>S</strong>tanford <strong>U</strong>niversity <strong>N</strong>etwork）缩写而来。虽作为一代传奇，但也最终倒在了互联网的浪潮下（09年被甲骨文<a href="https://www.oracle.com/index.html" target="_blank" rel="noopener">Oracle公司</a>收购）。</p>
+<a id="more"></a>
 <p>现在整体的下载环境也有所改变，但直观上很容易看到想下载的内容的。</p>
-<p>下载地址：<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">Oracle官方下载地址</a><br><img style="width:500px;height:200px;" src="/images/JDK下载1.png"><br>官网下载固然安全可靠，但是由于国内环境等因素，也有可能访问很慢。那么可以基于国内<strong>开源镜像</strong>（可以理解为由一些组织维护的官方备份）下载，提供一个下载渠道：</p>
+<p>下载地址：<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">Oracle官方下载地址</a><br><img style="width:500px;height:200px;" src="/images/JDK1.PNG"><br>官网下载固然安全可靠，但是由于国内环境等因素，也有可能访问很慢。那么可以基于国内<strong>开源镜像</strong>（可以理解为由一些组织维护的官方备份）下载，提供一个下载渠道：</p>
 <ul>
 <li><a href="https://mirrors.huaweicloud.com/java/jdk/" target="_blank" rel="noopener">华为JDK镜像下载</a></li>
 </ul>
