@@ -399,8 +399,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -1119,8 +1119,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>Optimize(优化)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>快慢指针</tag>
+        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -2036,6 +2036,61 @@ help(值为nu6的节点);return;
       <tags>
         <tag>JavaScript</tag>
         <tag>XSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java学习1 - JDK下载及JAVA环境搭建</title>
+    <url>/2015/08/01/Java%E5%AD%A6%E4%B9%A01-%E6%8A%80%E6%9C%AF%E4%B8%BA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E8%80%8C%E7%94%9F/</url>
+    <content><![CDATA[<p>—————————————————–更新于2020年2月28日—————————————————–</p>
+<h2 id="一、JDK-Java-Development-Kit"><a href="#一、JDK-Java-Development-Kit" class="headerlink" title="一、JDK(Java Development Kit)"></a>一、JDK(Java Development Kit)</h2><p>Java 语言的软件开发工具包(SDK)，包括JRE和JDK（Java开发工具集）。主要包括以下几个版本：</p>
+<ul>
+<li><p>SE(J2SE)，Standard Edition，标准版，主要是桌面应用开发。</p>
+</li>
+<li><p>EE(J2EE)，Enterprise Edition，企业版，主要是Web开发。</p>
+</li>
+<li><p>ME(J2ME)，Micro Edition，主要是移动平台开发。</p>
+</li>
+</ul>
+<p>SUN公司，由斯坦福大学网络（<strong>S</strong>tanford <strong>U</strong>niversity <strong>N</strong>etwork）缩写而来。虽作为一代传奇，但也最终倒在了互联网的浪潮下（09年被甲骨文<a href="https://www.oracle.com/index.html" target="_blank" rel="noopener">Oracle公司</a>收购）。</p>
+<p>现在整体的下载环境也有所改变，但直观上很容易看到想下载的内容的。</p>
+<p>下载地址：<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">Oracle官方下载地址</a><br><img style="width:500px;height:200px;" src="./images/JDK下载1.png"><br>官网下载固然安全可靠，但是由于国内环境等因素，也有可能访问很慢。那么可以基于国内<strong>开源镜像</strong>（可以理解为由一些组织维护的官方备份）下载，提供一个下载渠道：</p>
+<ul>
+<li><a href="https://mirrors.huaweicloud.com/java/jdk/" target="_blank" rel="noopener">华为JDK镜像下载</a></li>
+</ul>
+<p>安装比较简单，需要注意，对于比较旧版本的安装（JDK8及一下），JDK安装完后可能会弹出<strong>JRE</strong>（Java Runtime Environment）安装，注意JRE可以不安装，它是Java的运行环境，JDK中已经包含，是JDK的子集。</p>
+<p><img src="./images/JRE和JDK.webp"></p>
+<h2 id="二、环境变量配置"><a href="#二、环境变量配置" class="headerlink" title="二、环境变量配置"></a>二、环境变量配置</h2><p><strong>什么是环境变量？</strong></p>
+<blockquote>
+<p>告诉系统在哪里可以使用java javac等操作命令去操作.java .class等Java等相关文件。以windows为例，在命令行操作中，不配置环境变量而直接输入java会提示找不到指令，而配置后系统会去相应路径寻找操作程序。</p>
+</blockquote>
+<p>一般来说，使用安装方式会自动配置环境变量，但是如果是解压缩等方式获得JDk（常见于基于Linux内核的系统），就需要手动配置环境变量了。</p>
+<p><strong>如何配置环境变量？（以win10为例）</strong></p>
+<ul>
+<li><p>右键我的电脑，<code>属性–&gt;系统设置–&gt;高级–&gt;环境变量</code>，会出现两个上下栏，上栏的配置只会影响当前用户的环境配置，也就是说你新建一个用户，那么你的环境变量需要重新配置；下栏的配置会影响系统的环境变量，也就是说新建一个用户，那么环境变量是不变的。</p>
+</li>
+<li><p>我选择在上栏用户下配置：<br>若有Path变量名，则点击<code>编辑-&gt;新建</code>添加java的bin文件夹路径即可；<br>若没有则需要新建。</p>
+<p>注意：Path的添加不是同步生效，需要重新打开命令行窗口测试。</p>
+</li>
+</ul>
+<p><strong>灵活使用环境变量</strong></p>
+<ul>
+<li><strong>win10以前</strong>的环境变量Path，所有配置的值是在一行的，所以会出现万一删错了，或者多加了几个符号可就不灵了的情况。所以衍生出了一些操作：</li>
+<li><p>在环境变量下，新建一个变量名为<code>JAVA_HOME</code>，变量值为：<code>D:\Important Soft\Java\bin</code>，然后再Path路径下添加<code>%JAVA-HOME%</code>（<code>%***%</code>意思是动态的获取某一个已存在的环境变量的值）</p>
+</li>
+<li><p>这种设置的好处，我的JDK路径要是更改了，我不用动Path的值，更改<code>JAVA-HOME</code>的值就好了，对Path的操作越少，那么可能出现的错误也会比较少。</p>
+</li>
+<li><p>出了一点小问题，需要到朋友电脑上运行一下某一个编译好的class文件，又不想费时间和空间去在朋友电脑上装JDK，怎么办呢？</p>
+<blockquote>
+<p>弄个临时的配置不就好了，先找个U盘或者硬盘，把我这安装好的JDK文件夹全部装进去，插到朋友电脑上。<br>进cmd，输入”set Path”以及”java -version”，发现java是不能用的（因为环境变良没配置）。<br>此时可以选择使用CMD配置临时环境变量，然后输入”set Path=u盘盘符:\java\bin;%Path%”。<br>但是，这个是有限制的，你如果退出当前cmd，则你的配置就会消失，所以这是临时配置，适合的场合也是特殊情况，但是这是简单有效而又不留痕迹的方式。<br>注：后面为什么加%Path%，为了不覆盖以前的Path配置，只是在原Path上添加。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
