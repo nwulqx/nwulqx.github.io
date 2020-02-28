@@ -24,14 +24,14 @@ SUN公司，由斯坦福大学网络（**S**tanford **U**niversity **N**etwork�
 现在整体的下载环境也有所改变，但直观上很容易看到想下载的内容的。
 
 下载地址：<a  href="https://www.oracle.com/java/technologies/javase-downloads.html">Oracle官方下载地址</a>
-<img style="width:500px;height:200px;" src="./images/JDK下载1.png">
+<img style="width:500px;height:200px;" src="./JDK下载1.png">
 官网下载固然安全可靠，但是由于国内环境等因素，也有可能访问很慢。那么可以基于国内**开源镜像**（可以理解为由一些组织维护的官方备份）下载，提供一个下载渠道：
 
 - <a href="https://mirrors.huaweicloud.com/java/jdk/">华为JDK镜像下载</a>
 
 安装比较简单，需要注意，对于比较旧版本的安装（JDK8及一下），JDK安装完后可能会弹出**JRE**（Java Runtime Environment）安装，注意JRE可以不安装，它是Java的运行环境，JDK中已经包含，是JDK的子集。
 
-<img src="./images/JRE和JDK.webp">
+<img src="./JRE和JDK.webp">
 
 ## 二、环境变量配置
 
