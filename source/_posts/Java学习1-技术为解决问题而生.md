@@ -21,10 +21,12 @@ Java 语言的软件开发工具包(SDK)，包括JRE和JDK（Java开发工具集
 
 SUN公司，由斯坦福大学网络（**S**tanford **U**niversity **N**etwork）缩写而来。虽作为一代传奇，但也最终倒在了互联网的浪潮下（09年被甲骨文<a href="https://www.oracle.com/index.html">Oracle公司</a>收购）。
 
+<!-- more -->
+
 现在整体的下载环境也有所改变，但直观上很容易看到想下载的内容的。
 
 下载地址：<a  href="https://www.oracle.com/java/technologies/javase-downloads.html">Oracle官方下载地址</a>
-<img style="width:500px;height:200px;" src="/images/JDK下载1.png">
+<img style="width:500px;height:200px;" src="/images/JDK1.PNG">
 官网下载固然安全可靠，但是由于国内环境等因素，也有可能访问很慢。那么可以基于国内**开源镜像**（可以理解为由一些组织维护的官方备份）下载，提供一个下载渠道：
 
 - <a href="https://mirrors.huaweicloud.com/java/jdk/">华为JDK镜像下载</a>
