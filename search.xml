@@ -1172,9 +1172,9 @@
     <title>一道Java垃圾回收问题</title>
     <url>/2019/12/19/%E4%B8%80%E9%81%93Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>初读《深入理解JVM虚拟机》，随即便碰到了这道题目，刚好对所学进行了一个总结归纳，对这道题目做了解析，这几年获得了400多赞，对我的Java学习之路起到了积极作用。</p>
-<p>以下哪些jvm的垃圾回收方式采用的是复制算法回收：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A. 新生代串行收集器</span><br><span class="line">B. 老年代串行收集器</span><br><span class="line">C. 并行收集器</span><br><span class="line">D. 新生代并行回收收集器</span><br><span class="line">E. 老年代并行回收收集器</span><br><span class="line">F. cms收集器</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<p>以下哪些jvm的垃圾回收方式采用的是复制算法回收：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A. 新生代串行收集器</span><br><span class="line">B. 老年代串行收集器</span><br><span class="line">C. 并行收集器</span><br><span class="line">D. 新生代并行回收收集器</span><br><span class="line">E. 老年代并行回收收集器</span><br><span class="line">F. cms收集器</span><br><span class="line">回答链接：https:<span class="comment">//www.nowcoder.com/questionTerminal/795b066b67c84478aec4dc400b3d0153?toCommentId=88925</span></span><br></pre></td></tr></table></figure>
 <h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>两个最基本的java回收算法：复制算法和标记清理算法<br><code>复制算法</code>：两个区域A和B，初始对象在A，继续存活的对象被转移到B。此为新生代最常用的算法<br><code>标记清理</code>：一块区域，标记可达对象（可达性分析），然后回收不可达对象，会出现碎片，那么引出<br><code>标记-整理算法</code>：多了碎片整理，整理出更大的内存放更大的对象<br>两个概念：新生代和年老代<br><code>新生代</code>：初始对象，生命周期短的<br><code>永久代</code>：长时间存在的对象<br>整个java的垃圾回收是新生代和年老代的协作，这种叫做分代回收。<br>P.S：Serial New收集器是针对新生代的收集器，采用的是复制算法<br>Parallel New（并行）收集器，新生代采用复制算法，老年代采用标记整理<br>Parallel Scavenge（并行）收集器，针对新生代，采用复制收集算法<br>Serial Old（串行）收集器，新生代采用复制，老年代采用标记整理<br>Parallel Old（并行）收集器，针对老年代，标记整理<br>CMS收集器，基于标记清理<br>G1收集器：整体上是基于标记 整理 ，局部采用复制</p>
 <p><code>综上：新生代基本采用复制算法，老年代采用标记整理算法。cms采用标记清理。</code></p>
 ]]></content>
@@ -1244,6 +1244,67 @@ d&amp;Hyscvnm
       <tags>
         <tag>PAT</tag>
         <tag>PAT-Basic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《实践论》笔记</title>
+    <url>/2018/12/21/%E3%80%8A%E5%AE%9E%E8%B7%B5%E8%AE%BA%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<ul>
+<li><p>实践的三种形式：</p>
+<ul>
+<li><p>人类的生产活动（劳动实践）是最基本的实践，通过劳动，我们可以了解自然的规律和属性，人与自然的关系等；进而也可以了解人与人之间的关系。</p>
+</li>
+<li><p>人的社会政治实践，比如：政治生活，阶级斗争等。</p>
+</li>
+<li><p>科学文化实践，不论是从对于社会历史发展的全面了解，还是对于其他科学领域的实践探索，也都是实践。</p>
+  <a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>实践决定认识，通过实践检验认识，或者纠正认识；同时认识反作用于实践，对实践进行指导。实践先于并且高于认识，并且最终实践与认识会相统一。<code>实践是检验真理的唯一标准</code>，这是真理的本性和实践的特点决定的：<ul>
+<li>真理的本性是<code>主客观相统一</code>。</li>
+<li>实践的本性是直接现实性。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>认识的两个阶段：<ul>
+<li>感性认识，是人在是实践中感官对事物的形态的直接，具体的反映。包含感知，直觉，表象三种形式。它具有直接性和具体性。</li>
+<li>理性认识，是认识的高级阶段，是人通过思维对事物内部联系的间接，概括的反映。它包括概念，判断，推理，以及假说和理论等形式。它具有间接性和抽象性。</li>
+<li>辩证关系：<code>理性认识依赖于感性认识，感性认识有待于发展成理性认知</code>。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>认识的两次飞跃：<ul>
+<li>第一次是从感性认识到理性认识，两者具有辩证关系。夸大感性，导致经验主义（读书无用论）；夸大理性，导致教条主义（死读书，唯理论）。</li>
+<li>第二次是从理性认识回到实践：从实践的角度看，<code>只有回到实践才能指导实践</code>；从认识的角度看，<code>只有回到实践才能检验认识</code>。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>感觉到的东西，我们不能立刻理解它，只有理解的东西才能深刻地感觉它。感觉只解决现象问题，理论才解决本质问题。</li>
+</ul>
+<ul>
+<li>实践需要<code>诚实和谦逊</code>的态度，这点虽然不是理论点，但实践中我们经常犯眼高手低的错误。<code>虚心使人进步，骄傲使人落后</code>。</li>
+</ul>
+<ul>
+<li>认识的规律：<ul>
+<li>认识具有<code>反复性</code>，人对于一个复杂事物的认识，往往要经过由感性认识到理性认识，再由理性认识到实践的多次反复才能完成。</li>
+<li>认识具有<code>无限性</code>：人的认识是无止境的，它表现为“实践，认识，再实践，再认识”的无限循环，但这种循环不是原地打转，而是循环往复，螺旋上升的。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>哲学</category>
+        <category>毛泽东思想</category>
+      </categories>
+      <tags>
+        <tag>毛泽东思想</tag>
+        <tag>哲学</tag>
       </tags>
   </entry>
   <entry>
@@ -1806,8 +1867,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -1961,9 +2022,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -2002,9 +2063,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -2400,8 +2461,8 @@ color:rgb(199,37,78)
       <tags>
         <tag>Optimize(优化)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>LinkedList(链表)</tag>
         <tag>位运算</tag>
+        <tag>LinkedList(链表)</tag>
       </tags>
   </entry>
   <entry>
