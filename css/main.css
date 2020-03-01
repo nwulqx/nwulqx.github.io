@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #94da69;
+  background: #ff7774;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2823,6 +2823,10 @@ a:hover {
   padding: 0.5em;
   background: #eee;
   border-bottom: 1px solid #e9e9e9;
+}
+pre,
+code {
+  font-family: 'Consolas', 'Noto Serif SC', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 .highlight figcaption a {
   color: #5073b8;
