@@ -80,7 +80,8 @@ deploy:
   type: git
   repo:
     github: git@github.com:War3cdota/War3cdota.github.io.git,master
-    coding: git@git.coding.net:war3cdota/war3cdota.git,master
+    #coding: git@git.coding.net:war3cdota/war3cdota.git,master
+    coding: git@e.coding.net:war3cdota-01/war3cdota.git
 
 # search功能
 search:
