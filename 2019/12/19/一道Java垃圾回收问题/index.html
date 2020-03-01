@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="Java,Java垃圾回收,牛客网,">
+  <meta name="keywords" content="Java,牛客网,Java垃圾回收,">
 
 
 
@@ -131,7 +131,7 @@
 
 
 <meta name="description" content="背景初读《深入理解JVM虚拟机》，随即便碰到了这道题目，刚好对所学进行了一个总结归纳，对这道题目做了解析，这几年获得了400多赞，对我的Java学习之路起到了积极作用。">
-<meta name="keywords" content="Java,Java垃圾回收,牛客网">
+<meta name="keywords" content="Java,牛客网,Java垃圾回收">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一道Java垃圾回收问题">
 <meta property="og:url" content="https://war3cdota.github.io/2019/12/19/一道Java垃圾回收问题/index.html">
@@ -151,7 +151,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -371,7 +371,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-01T00:16:28+08:00">
+                2020-03-01
+              </time>
             
           </span>
 
@@ -498,9 +510,9 @@
           
             <a href="/tags/Java/" <i class="fa fa-tag"> Java</a>
           
-            <a href="/tags/Java垃圾回收/" <i class="fa fa-tag"> Java垃圾回收</a>
-          
             <a href="/tags/牛客网/" <i class="fa fa-tag"> 牛客网</a>
+          
+            <a href="/tags/Java垃圾回收/" <i class="fa fa-tag"> Java垃圾回收</a>
           
         </div>
       
@@ -774,6 +786,8 @@ show_date_time();
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1264,6 +1278,9 @@ show_date_time();
 
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 
