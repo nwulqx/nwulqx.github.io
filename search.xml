@@ -1188,67 +1188,137 @@
       </tags>
   </entry>
   <entry>
-    <title>PAT B1011 A+B 和 C (15分)</title>
-    <url>/2019/12/05/PAT-B1011-A-B-%E5%92%8C-C-15%E5%88%86/</url>
-    <content><![CDATA[<p>给定区间 $[−2^{31},2^{31}]$ 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
+    <title>算法导论-第一章</title>
+    <url>/2019/12/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
+    <content><![CDATA[<h2 id="第一章-算法在计算中的作用"><a href="#第一章-算法在计算中的作用" class="headerlink" title="第一章    算法在计算中的作用"></a>第一章    算法在计算中的作用</h2><p><strong>算法</strong>，应该注意它广义的定义，<code>不正确的算法只要其错误率可控有时可能是有用的</code>。</p>
+<p><strong>数据结构</strong>，没有单一的数据结构对所有用途均有效，所以重要的是知道几种数据结构的<code>优势和局限</code>。</p>
+<p><strong>1.2-2</strong>    假设我们正在比较插入排序与归并排序在相同机器上的实现。对规模为n的输入，插入排序运行$8{n^2}$步，而归并排序运行$64n\log_2n$步。问对那些n值，插入排序优于归并排序？</p>
 <a id="more"></a>
-<p><strong>输入格式：</strong></p>
-<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
-<p><strong>输出格式：</strong></p>
-<p>对每组测试用例，在一行中输出 <code>Case #X: true</code> 如果 A+B&gt;C，否则输出 <code>Case #X: false</code>，其中 <code>X</code>是测试用例的编号（从 1 开始）。</p>
-<p><strong>输入样例：</strong></p>
-<pre><code>4
-1 2 3
-2 3 4
-2147483647 0 2147483646
-0 -2147483648 -2147483647
-</code></pre><p><strong>输出样例：</strong></p>
-<pre><code>Case #1: false
-Case #2: true
-Case #3: true
-Case #4: false
-</code></pre><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
-<li>因为在给定区间 $[-2^{31},2^{31}]$判断，该区间右端点在int范围已经溢出，且$−2^{31}+(−2^{31}) = −2^{32}$也在<code>int</code>范围是溢出的，说明加数，和均会溢出。所以不能使用<code>int</code>类型存储输入数据，需要用<code>long long</code>类型来保证计算不会溢出。</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805312417021952</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> A, B, C,sum;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;A,&amp;B,&amp;C);</span><br><span class="line">        sum = A + B;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; C)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: true\n"</span>,i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: false\n"</span>, i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<blockquote>
+<p>$8{n^2} &lt; 64n\log_2n$<br>$n &lt; 8\log_2n$<br>$n &lt; \log_2{n^8}$<br>$2^n &lt; {n^8}$</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">pow</span>(<span class="number">2.0</span>, (<span class="keyword">double</span>)n) &lt; <span class="built_in">pow</span>((<span class="keyword">double</span>)n, <span class="number">8.0</span>))&#123;</span><br><span class="line">		n++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,n<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>得出n从2开始，到44为止（不含44）。所以结果是$2≤n≤43$。</p>
+<p><strong>1.2-3</strong>    n的最小值为何值时，运行时间为$100n^2$的一个算法在相同机器上快于运行时间为$2^n$的另一个算法？</p>
+<blockquote>
+<p>$100n^2 &lt; 2^n$</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">100.0</span> * <span class="built_in">pow</span>((<span class="keyword">double</span>)n,<span class="number">2.0</span>) &gt; <span class="built_in">pow</span>(<span class="number">2.0</span>, (<span class="keyword">double</span>)n))&#123;</span><br><span class="line">		n++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当<code>n = 14</code>时，则$100n^2$ 第一次快于 $2^n$。</p>
+<p><strong>思考题1-1</strong>    （运行时间的比较）假设求解问题的算法需要$f(n)$毫秒（原书是微秒microseconds），对下表中的每个函数$f(n)$和时间t，确定可以在时间t内求解的问题的最大规模n。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">1 second</th>
+<th style="text-align:center">1 minute</th>
+<th style="text-align:center">1 hour</th>
+<th style="text-align:center">1 day</th>
+<th style="text-align:center">1 month</th>
+<th style="text-align:center">1 year</th>
+<th style="text-align:center">1 century</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$lgn$</td>
+<td style="text-align:center">$2^{10^6}$</td>
+<td style="text-align:center">$2^{6× 10^7}$</td>
+<td style="text-align:center">$2^{3.6 × 10^9}$</td>
+<td style="text-align:center">$2^{8.64 × 10^{10}}$</td>
+<td style="text-align:center">$2^{2.592 × 10^{12}}$</td>
+<td style="text-align:center">$2^{3.1536 × 10^{13}}$</td>
+<td style="text-align:center">$2^{3.1536 × 10^{15}}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\sqrt{n}$</td>
+<td style="text-align:center">$10^{12}$</td>
+<td style="text-align:center">$3.6 × 10^{15}$</td>
+<td style="text-align:center">$1.296 ×10^{19}$</td>
+<td style="text-align:center">$7.465 × 10^{21}$</td>
+<td style="text-align:center">$6.718 × 10^{24}$</td>
+<td style="text-align:center">$9.945 × 10^{26}$</td>
+<td style="text-align:center">$9.945 × 10^{30}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$n$</td>
+<td style="text-align:center">$10^6$</td>
+<td style="text-align:center">$6 × 10^7$</td>
+<td style="text-align:center">$3.6 × 10^9$</td>
+<td style="text-align:center">$8.64 × 10^{10}$</td>
+<td style="text-align:center">$2.592 × 10^{12}$</td>
+<td style="text-align:center">$3.1536 × 10^{13}$</td>
+<td style="text-align:center">$3.1536 × 10^{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$nlgn$</td>
+<td style="text-align:center">$62746$</td>
+<td style="text-align:center">$2.8 × 10^6$</td>
+<td style="text-align:center">$1.3 × 10^8$</td>
+<td style="text-align:center">$2.7 × 10^9$</td>
+<td style="text-align:center">$7.1 × 10^{10}$</td>
+<td style="text-align:center">$7.9 × 10^{11}$</td>
+<td style="text-align:center">$6.8 × 10^{13}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$n^2$</td>
+<td style="text-align:center">$10^3$</td>
+<td style="text-align:center">$7745$</td>
+<td style="text-align:center">$60000$</td>
+<td style="text-align:center">$293938$</td>
+<td style="text-align:center">$1609968$</td>
+<td style="text-align:center">$5615692$</td>
+<td style="text-align:center">$56175382$</td>
+</tr>
+<tr>
+<td style="text-align:center">$n^3$</td>
+<td style="text-align:center">$10^2$</td>
+<td style="text-align:center">$391$</td>
+<td style="text-align:center">$1532$</td>
+<td style="text-align:center">$4420$</td>
+<td style="text-align:center">$13736$</td>
+<td style="text-align:center">$31593$</td>
+<td style="text-align:center">$146677$</td>
+</tr>
+<tr>
+<td style="text-align:center">$2^n$</td>
+<td style="text-align:center">$19$</td>
+<td style="text-align:center">$25$</td>
+<td style="text-align:center">$31$</td>
+<td style="text-align:center">$36$</td>
+<td style="text-align:center">$41$</td>
+<td style="text-align:center">$44$</td>
+<td style="text-align:center">$51$</td>
+</tr>
+<tr>
+<td style="text-align:center">$n!$</td>
+<td style="text-align:center">$9$</td>
+<td style="text-align:center">$11$</td>
+<td style="text-align:center">$12$</td>
+<td style="text-align:center">$13$</td>
+<td style="text-align:center">$15$</td>
+<td style="text-align:center">$16$</td>
+<td style="text-align:center">$17$</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>$1s=10^6us$<br>$1min=6 × 10^7us$<br>$1h=3.6 × 10^9us$<br>$1D=8.64 × 10^{10}us$<br>$1Mon=2.592 × 10^{12}us$ （1个月30天）<br>$1Y=3.1536 × 10^{13}us$ （365天）<br>$1C=3.1536 × 10^{15}us$</p>
+<p>这里给出第一列的计算过程：<br>$lgn = 1s = 10^6us$    ==&gt;    $n = 2^{10^6}$<br>$\sqrt{n} = 1s = 10^6us$    ==&gt;    $n = {10^6}^2 = 10^{12}$<br>$n = 1s = 10^6us$<br>$nlgn = 1s = 10^6us$    ==&gt;    $n = 62746$（可以通过编程来计算）<br>$n^2 = 1s = 10^6us$    ==&gt;    $n = 10^3$<br>$n^3 = 1s = 10^6us$    ==&gt;    $n = 10^2$<br>$2^n = 1s = 10^6us$    ==&gt;    $n = 19$<br>$n! = 1s = 10^6us$    ==&gt;    $n = 9$（可以通过编程来计算）</p>
+</blockquote>
+]]></content>
       <categories>
         <category>算法</category>
+        <category>算法导论</category>
       </categories>
       <tags>
-        <tag>PAT</tag>
-        <tag>PAT-Basic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PAT B1014-福尔摩斯的约会 (20分)</title>
-    <url>/2019/12/05/PAT-B1014-%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A-20%E5%88%86/</url>
-    <content><![CDATA[<p>大侦探福尔摩斯接到一张奇怪的字条：<code>我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm</code>。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间<code>星期四 14:04</code>，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 <code>D</code>，代表星期四；第 2 对相同的字符是 <code>E</code> ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 <code>A</code> 到 <code>N</code> 表示）；后面两字符串第 1 对相同的英文字母 <code>s</code> 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
-<a id="more"></a>
-<p><strong>输入格式：</strong></p>
-<p>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
-<p><strong>输出格式：</strong><br>在一行中输出约会的时间，格式为 <code>DAY HH:MM</code>，其中 <code>DAY</code> 是某星期的 3 字符缩写，即 <code>MON</code> 表示星期一，<code>TUE</code> 表示星期二，<code>WED</code> 表示星期三，<code>THU</code> 表示星期四，<code>FRI</code> 表示星期五，<code>SAT</code> 表示星期六，<code>SUN</code> 表示星期日。题目输入保证每个测试存在唯一解。</p>
-<p><strong>输入样例：</strong></p>
-<pre><code>3485djDkxh4hhGE
-
-2984akDfkkkkggEdsb
-
-s&amp;hgsfdk
-
-d&amp;Hyscvnm
-</code></pre><p><strong>输出样例：</strong></p>
-<pre><code>THU 14:04
-</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>星期，小时和分钟都是<strong>有界限的</strong>，需要进行边界判断。星期是A-G大写字母，小时是：0-9、A-N大写字母，分钟是：0-60数字。对这些字母处理的同时需要做好边界检测。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805308755394560</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">string</span> week[<span class="number">7</span>] = &#123;<span class="string">"MON"</span>,<span class="string">"TUE"</span>,<span class="string">"WED"</span>,<span class="string">"THU"</span>,<span class="string">"FRI"</span>,<span class="string">"SAT"</span>,<span class="string">"SUN"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isUpperLetter</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'A'</span> &amp;&amp; c &lt;= <span class="string">'Z'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isWeek</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'H'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isHour</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'O'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isNum</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameLetter</span><span class="params">(<span class="keyword">char</span> a,<span class="keyword">char</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (a &gt;= <span class="string">'a'</span>&amp;&amp; a &lt;= <span class="string">'z'</span>) || (a &gt;= <span class="string">'A'</span>&amp;&amp; a &lt;= <span class="string">'Z'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2, s3, s4;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; s3 &gt;&gt; s4;</span><br><span class="line">    <span class="keyword">int</span> minLen1 = s1.length() &lt; s2.length() ? s1.length() : s2.length();</span><br><span class="line">    <span class="keyword">int</span> minLen2 = s3.length() &lt; s4.length() ? s3.length() : s4.length();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; minLen1; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i] &amp;&amp; isWeek(s1[i]))&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; week[s1[i]-<span class="string">'A'</span>];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = i+<span class="number">1</span>; i &lt; minLen1;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i])&#123;</span><br><span class="line">            <span class="keyword">if</span> (isHour(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>,<span class="number">10</span>+s1[i]-<span class="string">'A'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isNum(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>, s1[i] - <span class="string">'0'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">61</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (isSameLetter(s3[j], s4[j])&amp;&amp;j &lt; <span class="number">61</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">":%02d\n"</span>,j);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-]]></content>
-      <tags>
-        <tag>PAT</tag>
-        <tag>PAT-Basic</tag>
+        <tag>算法</tag>
+        <tag>算法导论</tag>
       </tags>
   </entry>
   <entry>
     <title>《实践论》笔记</title>
-    <url>/2018/12/21/%E3%80%8A%E5%AE%9E%E8%B7%B5%E8%AE%BA%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
+    <url>/2019/01/02/%E3%80%8A%E5%AE%9E%E8%B7%B5%E8%AE%BA%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<ul>
 <li><p>实践的三种形式：</p>
 <ul>
@@ -1309,7 +1379,7 @@ d&amp;Hyscvnm
   </entry>
   <entry>
     <title>毛泽东选集第一卷笔记</title>
-    <url>/2018/12/20/%E6%AF%9B%E6%B3%BD%E4%B8%9C%E9%80%89%E9%9B%86%E7%AC%AC%E4%B8%80%E5%8D%B7%E7%AC%94%E8%AE%B0/</url>
+    <url>/2019/01/01/%E6%AF%9B%E6%B3%BD%E4%B8%9C%E9%80%89%E9%9B%86%E7%AC%AC%E4%B8%80%E5%8D%B7%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<ul>
 <li><p>《中国社会各阶级的分析》：分析了中国社会各阶级的组成，指出了革命斗争的敌人和朋友。指导我们，做事情先要调查和思考，不能盲目，要团结真正的朋友，以攻击真正的敌人。</p>
   <a id="more"></a>
@@ -1367,6 +1437,65 @@ d&amp;Hyscvnm
       <tags>
         <tag>毛泽东思想</tag>
         <tag>哲学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT B1014-福尔摩斯的约会 (20分)</title>
+    <url>/2018/02/05/PAT-B1014-%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A-20%E5%88%86/</url>
+    <content><![CDATA[<p>大侦探福尔摩斯接到一张奇怪的字条：<code>我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm</code>。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间<code>星期四 14:04</code>，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 <code>D</code>，代表星期四；第 2 对相同的字符是 <code>E</code> ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 <code>A</code> 到 <code>N</code> 表示）；后面两字符串第 1 对相同的英文字母 <code>s</code> 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<a id="more"></a>
+<p><strong>输入格式：</strong></p>
+<p>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
+<p><strong>输出格式：</strong><br>在一行中输出约会的时间，格式为 <code>DAY HH:MM</code>，其中 <code>DAY</code> 是某星期的 3 字符缩写，即 <code>MON</code> 表示星期一，<code>TUE</code> 表示星期二，<code>WED</code> 表示星期三，<code>THU</code> 表示星期四，<code>FRI</code> 表示星期五，<code>SAT</code> 表示星期六，<code>SUN</code> 表示星期日。题目输入保证每个测试存在唯一解。</p>
+<p><strong>输入样例：</strong></p>
+<pre><code>3485djDkxh4hhGE
+
+2984akDfkkkkggEdsb
+
+s&amp;hgsfdk
+
+d&amp;Hyscvnm
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>THU 14:04
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>星期，小时和分钟都是<strong>有界限的</strong>，需要进行边界判断。星期是A-G大写字母，小时是：0-9、A-N大写字母，分钟是：0-60数字。对这些字母处理的同时需要做好边界检测。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805308755394560</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">string</span> week[<span class="number">7</span>] = &#123;<span class="string">"MON"</span>,<span class="string">"TUE"</span>,<span class="string">"WED"</span>,<span class="string">"THU"</span>,<span class="string">"FRI"</span>,<span class="string">"SAT"</span>,<span class="string">"SUN"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isUpperLetter</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'A'</span> &amp;&amp; c &lt;= <span class="string">'Z'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isWeek</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'H'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isHour</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isUpperLetter(c) &amp;&amp; (c &lt; <span class="string">'O'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isNum</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameLetter</span><span class="params">(<span class="keyword">char</span> a,<span class="keyword">char</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (a &gt;= <span class="string">'a'</span>&amp;&amp; a &lt;= <span class="string">'z'</span>) || (a &gt;= <span class="string">'A'</span>&amp;&amp; a &lt;= <span class="string">'Z'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2, s3, s4;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; s3 &gt;&gt; s4;</span><br><span class="line">    <span class="keyword">int</span> minLen1 = s1.length() &lt; s2.length() ? s1.length() : s2.length();</span><br><span class="line">    <span class="keyword">int</span> minLen2 = s3.length() &lt; s4.length() ? s3.length() : s4.length();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; minLen1; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i] &amp;&amp; isWeek(s1[i]))&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; week[s1[i]-<span class="string">'A'</span>];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = i+<span class="number">1</span>; i &lt; minLen1;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i] == s2[i])&#123;</span><br><span class="line">            <span class="keyword">if</span> (isHour(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>,<span class="number">10</span>+s1[i]-<span class="string">'A'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isNum(s1[i]))&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %02d"</span>, s1[i] - <span class="string">'0'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">61</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (isSameLetter(s3[j], s4[j])&amp;&amp;j &lt; <span class="number">61</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">":%02d\n"</span>,j);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+]]></content>
+      <tags>
+        <tag>PAT</tag>
+        <tag>PAT-Basic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT B1011 A+B 和 C (15分)</title>
+    <url>/2018/01/05/PAT-B1011-A-B-%E5%92%8C-C-15%E5%88%86/</url>
+    <content><![CDATA[<p>给定区间 $[−2^{31},2^{31}]$ 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
+<a id="more"></a>
+<p><strong>输入格式：</strong></p>
+<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
+<p><strong>输出格式：</strong></p>
+<p>对每组测试用例，在一行中输出 <code>Case #X: true</code> 如果 A+B&gt;C，否则输出 <code>Case #X: false</code>，其中 <code>X</code>是测试用例的编号（从 1 开始）。</p>
+<p><strong>输入样例：</strong></p>
+<pre><code>4
+1 2 3
+2 3 4
+2147483647 0 2147483646
+0 -2147483648 -2147483647
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>Case #1: false
+Case #2: true
+Case #3: true
+Case #4: false
+</code></pre><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<li>因为在给定区间 $[-2^{31},2^{31}]$判断，该区间右端点在int范围已经溢出，且$−2^{31}+(−2^{31}) = −2^{32}$也在<code>int</code>范围是溢出的，说明加数，和均会溢出。所以不能使用<code>int</code>类型存储输入数据，需要用<code>long long</code>类型来保证计算不会溢出。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app=PAT-Basic lang=c++</span></span><br><span class="line"><span class="comment"> * https://pintia.cn/problem-sets/994805260223102976/problems/994805312417021952</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> A, B, C,sum;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;A,&amp;B,&amp;C);</span><br><span class="line">        sum = A + B;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; C)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: true\n"</span>,i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: false\n"</span>, i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+        <tag>PAT-Basic</tag>
       </tags>
   </entry>
   <entry>
@@ -1709,8 +1838,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Pre-Order Traversal(先序遍历)</tag>
         <tag>Morris Traversal</tag>
+        <tag>Pre-Order Traversal(先序遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -2461,8 +2590,8 @@ color:rgb(199,37,78)
       <tags>
         <tag>Optimize(优化)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>位运算</tag>
         <tag>LinkedList(链表)</tag>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
