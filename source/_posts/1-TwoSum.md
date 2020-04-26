@@ -13,20 +13,20 @@ You may assume that each input would have ***exactly*** one solution.
 **Example:**
 
 	Given nums = [2, 7, 11, 15], target = 9,
-
+	
 	Because nums[0] + nums[1] = 2 + 7 = 9,
 	return [0, 1].
 
 <!--more-->
 
 # 爆破法：
->通过两次遍历数组，找出所有两个数的组合，将结果与target比较，返回满足要求的索引，这种方法简单易懂，但是如果寻找三个数或者以上的多位相加，他的时间复杂度是指数增长的。
+>通过遍历两次数组，找出所有两个数的组合，将结果与target比较，返回满足要求的索引。这种方法简单易懂，但是如果寻找三个数或者以上的多位相加，他的时间复杂度是指数增长的。
 
 ```java
 import java.util.*;
 /*
-	Standard Brute Forced method to solve;
-*/
+ * Standard Brute Forced method to solve;
+ */
 public class TwoSum{
 	public static int[] twoSum(int[] nums, int target){
 		for(int i = 0;i<nums.length;i++){
@@ -40,16 +40,15 @@ public class TwoSum{
 }
 ```
 
->上面这是一种标准的暴力破解方法，简单易懂，但是如果是找三个或者4个，这种多层的嵌套不利于。应该借助下面这种封装的方式来避免多层（3层以上的）嵌套。
+>上面这是一种标准的暴力破解方法，简单易懂，但是如果是找三个或者4个，这种多层的嵌套不利于实际操作和理解。应该借助下面这种封装的方式来避免多层（3层以上的）嵌套。
 
 ```java
 import java.util.*;
 /*
-This method is a Brute Forced method.
-
-time completicity is O(n2);
-space complicity is O(1);
-beats: 25%;
+ * This method is a Brute Forced method.
+ * time completicity is O(n2);
+ * space complicity is O(1);
+ * beats: 25%;
 */
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
@@ -79,15 +78,20 @@ public class TwoSum {
 ```
 
 # Hash法：
->HashMap的数据结构是树，使用HashMap，它的查询时的时间复杂度是O(n+logn)。<br/>
+>HashMap的数据结构是树，使用HashMap，它的查询时的时间复杂度是O(n+logn)。
+>
+
+**Java实现**
 
 ```java
 import java.util.*;
 /*
-Beats : 45%;
-Time complicity is O(n);
-Space complicity is O(n);
-*/
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/two-sum/submissions/
+ * Beats : 45%;
+ * Time complicity is O(n);
+ * Space complicity is O(n);
+ */
 public class TwoSum3{
 	public static int[] twoSum(int[] nums, int target){
 		Map<Integer,Integer> map = new HashMap();
@@ -104,6 +108,58 @@ public class TwoSum3{
 	}
 }
 ```
+
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/two-sum/submissions/
+ * Beats : 95.51%;
+ */
+#include <cstdio>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+class Solution {
+public:
+	vector<int> twoSum(vector<int>& nums, int target) {
+		unordered_map<int, int> hash;
+		vector<int> result;
+		for (int i = 0; i < nums.size(); i++){
+			int numToFind = target - nums[i];
+			if (hash.find(numToFind) != hash.end()){
+				result.push_back(hash[numToFind]);
+				result.push_back(i);
+				return result;
+			}
+			hash[nums[i]] = i;
+		}
+		return result;
+	}
+};
+```
+
+**python实现**
+
+```python
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hash_dict = {}
+        for i in range(len(nums)):
+            numToFind = target - nums[i]
+            if numToFind in hash_dict:
+                return [hash_dict[numToFind],i]
+            hash_dict[nums[i]] = i;
+
+```
+
+
 
 ## 疑惑
 
@@ -125,10 +181,10 @@ public class TwoSum3{
 ```java
 import java.util.*;
 /*
-This method is found the 2 nums sum is target ,but the return isn't the index!
-*/
+ * This method is found the 2 nums sum is target ,but the return isn't the index!
+ */
 public class TwoSum4{
-	/*the return isn't index,it is a array of values*/
+	//the return isn't index,it is a array of values
 	public static int[] twoSum(int[] nums, int target){
 		Arrays.sort(nums);
 		int lo = 0;
@@ -148,4 +204,4 @@ public class TwoSum4{
 >这道题有两个目的：
 
 >1. 通过找两个数的和，接下来还有找三个数的四个数的，那么多层嵌套是非常反逻辑的，会把你带到逻辑漩涡里。所以，封装成找两个数的和，三个数的等这些`函数`后，那么问题被简化了。
->2. 逼近法是一个很好的查找元素的思路，对于数组先排序，利用数组的有序性，通过`双索引+逼近法`。但是，缺点是排序打乱了索引，只能查找元素值。
+>   2. 逼近法是一个很好的查找元素的思路，对于数组先排序，利用数组的有序性，通过`双索引+逼近法`。但是，缺点是排序打乱了索引，只能查找元素值。
