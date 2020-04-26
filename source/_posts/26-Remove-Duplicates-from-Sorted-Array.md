@@ -3,6 +3,7 @@ title: 26. Remove Duplicates from Sorted Array
 date: 2017-03-16 16:19:33
 tags:
 - LeetCode-easy
+- Array
 ---
 Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
 

@@ -3,7 +3,7 @@ title: 27. Remove Element
 date: 2017-03-16 16:31:05
 tags:
 - LeetCode-easy
-- Optimize(优化)
+- Array
 ---
 Given an array and a value, remove all instances of that value in place and return the new length.
 

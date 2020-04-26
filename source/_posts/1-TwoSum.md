@@ -4,6 +4,7 @@ date: 2017-01-06 10:59:38
 tags:
 - LeetCode-easy
 - 双指针+逼近法
+- Array
 ---
 
 Given an array of integers, return **indices** of the two numbers such that they add up to a specific target.
