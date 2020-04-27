@@ -4,6 +4,7 @@ date: 2017-05-31 09:40:13
 tags:
 - LeetCode-easy
 - Pascal's Triangle(杨辉三角形)
+- Array
 ---
 
 Given numRows, generate the first numRows of Pascal's triangle.
@@ -12,22 +13,29 @@ For example, given numRows = 5,
 
 Return
 
-		[
-		     [1],
-		    [1,1],
-		   [1,2,1],
-		  [1,3,3,1],
-		 [1,4,6,4,1]
-		]
+```java
+	[
+	     [1],
+	    [1,1],
+	   [1,2,1],
+	  [1,3,3,1],
+	 [1,4,6,4,1]
+	]
+```
 
 <!-- more -->
-# Solution
+# 分析
 
-## Solution1
+## 暴力法
 
->笨方法，不需要知道规律，只要根据输入，得出输出即可。
+>暴力法，不需要知道规律，只要根据输入，得出输出即可。
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/pascals-triangle
+ * Beats : 90%;
+ */
 public class PascalsTriangle{
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -57,21 +65,31 @@ public class PascalsTriangle{
 }
 ```
 
-## Solution2
+## 优化
 
->找规律，发现，每次比上层多一个元素。规律也很容易发现，需要循环解决。
+>找规律，发现，每次比上层多一个元素。规律也很容易发现，需要用循环解决。
 
 
 ```java
-public class PascalsTriangle{
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/pascals-triangle
+ * Beats : 100%;
+ */
+class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> list = new ArrayList<Integer>();
-        for(int i=0;i<numRows;i++){
-            list.add(0,1);
-            for(int j=1;j<list.size()-1;j++){
-                list.set(j,list.get(j+1) + list.get(j));
+        for(int i = 0 ;i < numRows; i++){
+            list.add(1);
+            for(int j = list.size()-2;j > 0;j--){
+                list.set(j,list.get(j)+list.get(j-1));
             }
+            /*
+             * 这里为什么要new呢？因为Java和python都是将引用直接加进去的，所以最后结果是统一的
+             * 比如：[[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1]]
+             * 不是我们希望的结果
+             */
             result.add(new ArrayList<Integer>(list));
         }
         return result;
@@ -79,14 +97,67 @@ public class PascalsTriangle{
 }
 ```
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/pascals-triangle
+ * Beats : 100%;
+ */
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+		vector<vector<int>> result;
+		vector<int> every;
+		for (int i = 0; i < numRows; i++){
+			every.push_back(1);
+			for (int j = every.size() - 2; j >= 1; j--){
+				every[j] += every[j - 1];
+			}
+            /*
+             * 这里是很值得分析下的：可以看出vector是将引用的复制push进去的，而不是引用本身。
+             * 这个是与Java和python很有区别的。
+             */
+			result.push_back(every);
+		}
+		return result;
+    }
+};
+```
+
+**python实现**
+
+```python
+class Solution(object):
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        list = []
+        for i in range(0,numRows):
+            list.append(1)
+            for i in range(len(list)-2,0,-1):
+                list[i] = list[i]+list[i-1]
+            """注意这里由于引用未被复制添加的原因"""
+            tmp = list[:]
+            res.append(tmp)
+        return res
+```
+
+
+
 **注意：**
 
->这里思路，很简单，但是其实是根据很多次尝试得出的，包括在list的前面加1，而不是最后加1，因为如果在后面加一，会导致每次获取当前值变得复杂。
+>这里思路，很简单，实际操作可以多次尝试得出正确循环体，包括在list的前面加1，还是在最后加1都是正确的。
 
->`result.add(new ArrayList<Integer>(list));`这行犯了错误，是指针的问题，我觉得需要特别注意！
+>Java中`result.add(new ArrayList<Integer>(list));`和python中`res.append(tmp)`与
+>
+>c++中`result.push_back(every);`相区别，c++对引用进行了复制后再添加，而Java和python则直接将索引添加，这导致了不同的结果。`需要特别注意！`
 
 # 总结
 
->这个题目其实找到规律就很简单了：
-> 1. 规律，正确的写法。
-> 2. 指针的注意。
+>1. 寻找规律。
+> 2. 注意引用的复制问题。
