@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-easy,位运算,">
+  <meta name="keywords" content="LeetCode-easy,Array,">
 
 
 
@@ -81,14 +81,14 @@
 
 
 <meta name="description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
-<meta name="keywords" content="LeetCode-easy,位运算">
+<meta name="keywords" content="LeetCode-easy,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="66. Plus One">
 <meta property="og:url" content="https://war3cdota.github.io/2017/04/24/66-Plus-One/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-04T08:03:03.593Z">
+<meta property="og:updated_time" content="2020-04-27T10:01:25.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="66. Plus One">
 <meta name="twitter:description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-04T16:03:03+08:00">
-                2017-05-04
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-27T18:01:25+08:00">
+                2020-04-27
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  460 字
+                  603 字
                 </span>
               
 
@@ -399,24 +399,20 @@
         <p>Given a non-negative number represented as an array of digits, plus one to the number.</p>
 <p>The digits are stored such that the most significant digit is at the head of the list.</p>
 <a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>其实，仔细看这道题，进位运算是这道题的考点。何时进位，如何进位，以及连续的进位应该怎么做？</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>其实，仔细看这道题，进位运算是这道题的考点。何时进位，如何进位，以及连续的进位应该怎么做？</p>
 <p><strong>伪码</strong></p>
-<pre><code>for(i&lt;--digits[digits的长度-1];i&gt;=0;i--){
-    if(digits[i]&lt;9){//这里很巧妙，小于9，则直接+1后return，如果能想到这里的话，基本上就很简单了
-        digits[i]++;
-        return digits;
-    }else{
-        digits[i] = 0;//这里其实只需要置0即可，因为这里最大的进位仅为1，所以不需要考虑大于1的进位
-    }
-}
-newDigits数组 &lt;-- 新数组[digits的长度+1]//到达了这一步仍没有返回，说明，每一位都是9，所以，出现了比原数组多了一位。
-newDigits[0] &lt;-- 1;
-return newDigits;
-</code></pre><p><strong>源码</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlusOne</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">if</span>(digits.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        <span class="keyword">int</span> i = digits.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;</span><br><span class="line">                digits[i]++;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> []newDigits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        newDigits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> newDigits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=digits.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;</span><br><span class="line">            digits[i]++;</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            digits[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> newDigits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">    newDigits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> newDigits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i&lt;--digits[digits的长度<span class="number">-1</span>];i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;<span class="comment">//这里很巧妙，小于9，则直接+1后return，如果能想到这里的话，基本上就很简单了</span></span><br><span class="line">        digits[i]++;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        digits[i] = <span class="number">0</span>;<span class="comment">//这里其实只需要置0即可，因为这里最大的进位仅为1，所以不需要考虑大于1的进位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">newDigits数组 &lt;-- 新数组[digits的长度+<span class="number">1</span>]<span class="comment">//到达了这一步仍没有返回，说明，每一位都是9，所以，出现了比原数组多了一位。</span></span><br><span class="line">newDigits[<span class="number">0</span>] &lt;-- <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> newDigits;</span><br></pre></td></tr></table></figure>
+<p><strong>源码</strong></p>
+<p><strong>Java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/plus-one/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlusOne</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">if</span>(digits.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        <span class="keyword">int</span> i = digits.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;</span><br><span class="line">                digits[i]++;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> []newDigits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        newDigits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> newDigits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>c++实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/plus-one/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; plusOne(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits) &#123;</span><br><span class="line">		<span class="keyword">int</span> n = digits.size() - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (n &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span> (digits[n] &lt; <span class="number">9</span>)&#123;</span><br><span class="line">				digits[n] += <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">return</span> digits;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				digits[n] = <span class="number">0</span>;</span><br><span class="line">				n--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>python实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plusOne</span><span class="params">(self, digits)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type digits: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i = len(digits) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> i &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> digits[i] &lt; <span class="number">9</span>:</span><br><span class="line">                digits[i] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> digits</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                digits[i] = <span class="number">0</span></span><br><span class="line">                i -= <span class="number">1</span></span><br><span class="line">        digits.insert(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> digits</span><br></pre></td></tr></table></figure>
 <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><blockquote>
-<p>这道题其实对我来说很难。对于进位运算的操作和实践太少，思路也不够清晰。<br><br>主要思路在于，对于位上是9的操作，只需要将该位置0，而对于位上小于9的操作，只需要该位加1，返回即可。这是加1运算的局限，不需要单独的进位变量，因为进位最大不会超过1。</p>
+<p>2017年时，这道题其实对我来说很难。对于进位运算的操作和实践太少，思路也不够清晰。<br></p>
+<p>2020年时，这道题对于我来说很简单了，没有难点，由于它的局限性，只是加1操作，对于加n操作的位运算，遇到了在进行分析。</p>
+<p>主要思路在于，对于位上是9的操作，只需要将该位置0，而对于位上小于9的操作，只需要该位加1，返回即可。这是加1运算的局限，不需要单独的进位变量，因为进位最大不会超过1。</p>
 </blockquote>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
 <p>进位运算其实很考察逻辑，需要注意的是进位。</p>
@@ -457,7 +453,7 @@ return newDigits;
           
             <a href="/tags/LeetCode-easy/" <i class="fa fa-tag"> LeetCode-easy</a>
           
-            <a href="/tags/位运算/" <i class="fa fa-tag"> 位运算</a>
+            <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
           
         </div>
       
@@ -563,7 +559,7 @@ return newDigits;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -664,7 +660,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">1.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">1.2.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">1.1.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -698,7 +694,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">54.4k</span>
+    <span title="Site words total count">55.7k</span>
   
 </div>
 
