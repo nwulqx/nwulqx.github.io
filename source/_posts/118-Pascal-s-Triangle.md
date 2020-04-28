@@ -86,7 +86,7 @@ class Solution {
                 list.set(j,list.get(j)+list.get(j-1));
             }
             /*
-             * 这里为什么要new呢？因为Java和python都是将引用直接加进去的，所以最后结果是统一的
+             * 这里为什么要new呢？因为Java和python都是将引用直接加进去的，所以结果是最后一次循环的结果的多次，因为他们并没有被复制，而是一个引用的多次
              * 比如：[[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1],[1,4,6,4,1]]
              * 不是我们希望的结果
              */
@@ -141,7 +141,7 @@ class Solution(object):
             list.append(1)
             for i in range(len(list)-2,0,-1):
                 list[i] = list[i]+list[i-1]
-            """注意这里由于引用未被复制添加的原因"""
+            """注意这里和Java的原因一样"""
             tmp = list[:]
             res.append(tmp)
         return res

@@ -1,9 +1,12 @@
 ---
+
 title: 121. Best Time to Buy and Sell Stock
 date: 2017-06-16 17:19:11
 tags:
 - LeetCode-easy
 - 最长公共子序列（LCS）
+- Array
+- DP(动态规划)
 ---
 Say you have an array for which the ith element is the price of a given stock on day i.
 
@@ -40,6 +43,11 @@ If you were only permitted to complete at most one transaction (ie, buy one and 
 总结：买进和卖出没有联系，卖出是买进前的最大利益，所以当输入[7, 6, 8, 3, 1]，虽然买进是1，但是获利最大是8-6=2，利润是2。
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ * Beats : 90 %;
+ */
 public class Solution {
     public int maxProfit(int[] prices) {
         if(prices.length==0){
@@ -64,7 +72,23 @@ public class Solution {
 ## Solution2
 ### <a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97">最长公共子序列</a>
 
+其实这类问题就是动态规划问题，动态规划问题，需要想清楚：
+
+1. 如果设置一个数组，这个数组存储的是动态规划时的什么数据？这个数据决定当前节点，所得到的结果。
+2. 结果一定是通过之前创建的动态规划数组得到的。
+
+具体思路：
+1. 设置一个数组，用作动态规划数组，这个数组优化后可以不要，但易于理解，脑子里要有他。
+2. 这个数组的意义：用于存放当前节点所能获取的最大利润，每次到当前节点都要计算他与买时的差值，如果是正数，则计入动态规划数组；如果是负值，则置为0，此外还应，看看是否比买入低，重置买入值。
+
+**Java实现**
+
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ * Beats : 100%;
+ */
 public class Solution {
     public int maxProfit(int[] prices) {
         if(prices.length==0){
@@ -82,6 +106,52 @@ public class Solution {
 }
 ```
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ * Beats : 100%;
+ */
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+		if (prices.size() == 0) return 0;
+		int buy = prices[0];
+		int profit = 0;
+		for (int i = 1; i < prices.size(); i++){
+			profit = prices[i] - buy>profit ? prices[i] - buy : profit;
+			buy = prices[i] < buy?prices[i]:buy;
+		}
+		return profit;
+    }
+};
+```
+
+**python实现**
+
+```python
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if len(prices) < 1:
+            return 0
+        buy = prices[0]
+        profit = 0
+        for i in range(1,len(prices)):
+            if prices[i]-buy>profit:
+                profit = prices[i]-buy
+            elif prices[i]<buy:
+                buy = prices[i]
+        return profit
+```
+
+
+
 # 总结
 
->这道题目上栽了好几次了，其实把握第一个基本思路是基础。对于后提到的最长公共子序列算法应该格外注意。
+>这个是比较简单的动态规划问题了，动态规划在于动态规划数组的设置意义，它是用来存储什么意义的值的，这个一定要想清楚。

@@ -4,6 +4,7 @@ date: 2017-06-01 17:28:36
 tags:
 - LeetCode-easy
 - Pascal's Triangle(杨辉三角形)
+- Array
 ---
 Given an index k, return the kth row of the Pascal's triangle.
 
@@ -15,13 +16,20 @@ Return `[1,3,3,1]`.
 Could you optimize your algorithm to use only O(k) extra space?
 
 <!-- more -->
-# Solution
+# 分析
 
 ## Solution1
 
-**通过上层来计算当前行**
+**通过上层来计算当前行**，这个解法就是118. Pascal's Triangle的解法。
+
+**Java实现**
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/pascals-triangle-ii
+ * Beats : 100%;
+ */
 public class PascalsTriangleII4{
     public List<Integer> getRow(int rowIndex) {
         List<Integer> list = new ArrayList<Integer>();
@@ -36,6 +44,48 @@ public class PascalsTriangleII4{
 }
 ```
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/pascals-triangle-ii
+ * Beats : 100%;
+ */
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+		vector<int> result;
+		for (int i = 0; i <= rowIndex; i++){
+			result.push_back(1);
+			for (int j = result.size() - 2; j > 0; j--){
+				result[j] += result[j - 1];
+			}
+		}
+		return result;
+    }
+};
+```
+
+**python实现**
+
+```python
+class Solution(object):
+    def getRow(self, rowIndex):
+        """
+        :type rowIndex: int
+        :rtype: List[int]
+        """
+        result = []
+        for i in range(0,rowIndex+1):
+            result.append(1)
+            for j in range(len(result)-2,0,-1):
+                result[j] = result[j]+result[j-1]
+        return result
+```
+
+
+
 ## Solution2
 
 >其实这个计算是有公式的。
@@ -43,12 +93,27 @@ public class PascalsTriangleII4{
 ## <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle#Calculating_a_row_or_diagonal_by_itself">Calculating a row or diagonal by itself</a>
 
 >当前行的值可以通过，改之所在行和索引来计算。
-
-C[k,i] = C[k,i-1]*(k-i+1)/i
-
-k为第几行，i为该行第几个数。
+>
+>k表示第k行，i表示该行的第i个元素。他们之间的关系有如下的公式：
+>
+>$ C[k,i] = C[k,i-1] \times (k-i+1)\div i $
+>
+>例如：k=5时
+>
+>$ C[5,0] = 1$
+>
+>$ C[5,1] = C[5,0] \times (5-1+1) \div 1 = 5$
+>
+>$ C[5,2] = C[5,1] \times (5-2+1) \div 2 = 10$
+>
+>......
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/pascals-triangle-ii
+ * Beats : 100%;
+ */
 public class PascalsTriangleII{
     public List<Integer> getRow(int rowIndex) {
         Integer []rowarray = new Integer[rowIndex+1];
@@ -63,4 +128,7 @@ public class PascalsTriangleII{
 
 # 总结
 
->这个题目没什么新意，<a href="https://war3cdota.github.io/2017/05/31/118-Pascal-s-Triangle/">118. Pascal's Triangle</a>，最后的公式计算需要记一下。
+对于这种Pascal's Triangle（杨辉三角）类型的题目，如果想计算它，我们知道有两种方法：
+
+1. 直接在一行首或尾加1，然后计算下一行。例如：1,2,1 ---> 1,2,1,1 ---> 1,3,3,1
+2. 根据$ C[k,i] = C[k,i-1] \times (k-i+1)\div i $，可以直接计算当前行，所根据的只是当前行号和当前行的元素索引，而不需要知道上一行的内容。
