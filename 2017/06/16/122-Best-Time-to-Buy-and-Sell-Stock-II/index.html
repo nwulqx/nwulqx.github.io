@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-easy,">
+  <meta name="keywords" content="LeetCode-easy,Array,贪心(Greedy),">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
-<meta name="keywords" content="LeetCode-easy">
+<meta name="description" content="Say you have an array prices for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e.,">
+<meta name="keywords" content="LeetCode-easy,Array,贪心(Greedy)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="122. Best Time to Buy and Sell Stock II">
 <meta property="og:url" content="https://war3cdota.github.io/2017/06/16/122-Best-Time-to-Buy-and-Sell-Stock-II/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
+<meta property="og:description" content="Say you have an array prices for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e.,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-06-16T09:34:54.711Z">
+<meta property="og:updated_time" content="2020-04-28T11:45:52.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="122. Best Time to Buy and Sell Stock II">
-<meta name="twitter:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one a">
+<meta name="twitter:description" content="Say you have an array prices for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e.,">
 
 
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-16T17:34:54+08:00">
-                2017-06-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-28T19:45:52+08:00">
+                2020-04-28
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  211 字
+                  889 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -396,16 +396,34 @@
       
 
       
-        <p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+        <p>Say you have an array <code>prices</code> for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</p>
+<p><strong>Note:</strong> You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
 <a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><blockquote>
-<p>这道题比较有争议，仔细思考，很简单，只要把赚钱的段取出，相加即可，那这道题这样想的话其实没有可做性了。</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">7</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">4</span>]</span><br><span class="line">Output: <span class="number">7</span></span><br><span class="line">Explanation: Buy on day <span class="number">2</span> (price = <span class="number">1</span>) and sell on day <span class="number">3</span> (price = <span class="number">5</span>), profit = <span class="number">5</span>-<span class="number">1</span> = <span class="number">4</span>.</span><br><span class="line">             Then buy on day <span class="number">4</span> (price = <span class="number">3</span>) and sell on day <span class="number">5</span> (price = <span class="number">6</span>), profit = <span class="number">6</span>-<span class="number">3</span> = <span class="number">3</span>.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">Output: <span class="number">4</span></span><br><span class="line">Explanation: Buy on day <span class="number">1</span> (price = <span class="number">1</span>) and sell on day <span class="number">5</span> (price = <span class="number">5</span>), profit = <span class="number">5</span>-<span class="number">1</span> = <span class="number">4</span>.</span><br><span class="line">             Note that you cannot buy on day <span class="number">1</span>, buy on day <span class="number">2</span> and sell them later, as you are</span><br><span class="line">             engaging multiple transactions at the same time. You must sell before buying again.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">7</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br><span class="line">Output: <span class="number">0</span></span><br><span class="line">Explanation: In <span class="keyword">this</span> <span class="keyword">case</span>, no transaction is done, i.e. max profit = <span class="number">0</span>.</span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= prices.length &lt;= 3 * 10 ^ 4</code></li>
+<li><code>0 &lt;= prices[i] &lt;= 10 ^ 4</code></li>
+</ul>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>详见：<a href="https://leetcode.com/articles/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">https://leetcode.com/articles/best-time-to-buy-and-sell-stock-ii/</a></p>
+<p>这个题目其实有难度的，虽然直接利用贪心，可以很快的得到答案，但是这么做不是真的解决问题。<br>我看了答案，提供了三种解法：</p>
+<h2 id="解法一（暴力法）-Time-Limit-Exceeded超时"><a href="#解法一（暴力法）-Time-Limit-Exceeded超时" class="headerlink" title="解法一（暴力法）-Time Limit Exceeded超时"></a>解法一（暴力法）-Time Limit Exceeded超时</h2><p>第一种是暴力解法，思路很实际，但是在数据较多的情况下，一定会超时，因为他本身利用了递归。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii</span></span><br><span class="line"><span class="comment"> * Error:Time Limit Exceeded</span></span><br><span class="line"><span class="comment"> * Beats : 0 %;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> calculate(prices, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> prices[], <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s &gt;= prices.length)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> start = s; start &lt; prices.length; start++) &#123;</span><br><span class="line">            <span class="keyword">int</span> maxprofit = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start + <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (prices[start] &lt; prices[i]) &#123;</span><br><span class="line">                    <span class="keyword">int</span> profit = calculate(prices, i + <span class="number">1</span>) + prices[i] - prices[start];</span><br><span class="line">                    <span class="keyword">if</span> (profit &gt; maxprofit)</span><br><span class="line">                        maxprofit = profit;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (maxprofit &gt; max)</span><br><span class="line">                max = maxprofit;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个思路用了递归，相当于枚举了所有的情况，进而得出强行得出结果，优点是直接，但缺点也很明显，那就是效率很低。</p>
+<h2 id="解法二-谷峰法"><a href="#解法二-谷峰法" class="headerlink" title="解法二-谷峰法"></a>解法二-谷峰法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii</span></span><br><span class="line"><span class="comment"> * Beats : 93.55%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> valley = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> peak = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> maxprofit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; prices.length - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; prices.length - <span class="number">1</span> &amp;&amp; prices[i] &gt;= prices[i + <span class="number">1</span>])</span><br><span class="line">                i++;</span><br><span class="line">            valley = prices[i];</span><br><span class="line">            <span class="keyword">while</span> (i &lt; prices.length - <span class="number">1</span> &amp;&amp; prices[i] &lt;= prices[i + <span class="number">1</span>])</span><br><span class="line">                i++;</span><br><span class="line">            peak = prices[i];</span><br><span class="line">            maxprofit += peak - valley;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>谷峰法的关键点在于：</p>
+<blockquote>
+<p>In case we skip one of the peaks (trying to obtain more profit), we will end up losing the profit over one of the transactions leading to an overall lesser profit.<br>如果我们跳过其中一个峰值(试图获得更多的利润)，我们最终将失去其中一个交易的利润，导致整体利润减少。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i]&gt;prices[i-<span class="number">1</span>])&#123;</span><br><span class="line">                profit += (prices[i]-prices[i-<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这种题目应该是，想起来有问题，而做起来是很简单的问题。我觉得还是应该仔细想想出题人的目的。</p>
-</blockquote>
+<h2 id="解法三-贪心"><a href="#解法三-贪心" class="headerlink" title="解法三-贪心"></a>解法三-贪心</h2><p>这个贪心其实是在上面谷峰法的基础上改进的，因为谷峰法是把每一段增长段都不能丢弃的全部计算到一起；而贪心则是这些增长段分割为最小段计算总和，虽然题目是不允许同日买进卖出，但其实我们只是在数学意义上进行转换，而不涉及实际操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii</span></span><br><span class="line"><span class="comment"> * Beats : 93.55%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i]&gt;prices[i-<span class="number">1</span>])&#123;</span><br><span class="line">                profit += (prices[i]-prices[i-<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个题目关键是谷峰法，而贪心只是谷峰法的一个变化。</p>
 
       
     </div>
@@ -441,6 +459,10 @@
         <div class="post-tags">
           
             <a href="/tags/LeetCode-easy/" <i class="fa fa-tag"> LeetCode-easy</a>
+          
+            <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
+            <a href="/tags/贪心-Greedy/" <i class="fa fa-tag"> 贪心(Greedy)</a>
           
         </div>
       
@@ -546,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -568,7 +590,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -647,7 +669,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解法一（暴力法）-Time-Limit-Exceeded超时"><span class="nav-number">1.1.</span> <span class="nav-text">解法一（暴力法）-Time Limit Exceeded超时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法二-谷峰法"><span class="nav-number">1.2.</span> <span class="nav-text">解法二-谷峰法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法三-贪心"><span class="nav-number">1.3.</span> <span class="nav-text">解法三-贪心</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -681,7 +703,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.7k</span>
+    <span title="Site words total count">57.6k</span>
   
 </div>
 
