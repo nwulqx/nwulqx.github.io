@@ -39,6 +39,8 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 # 分析
 
+多种解法参考：https://leetcode.com/problems/rotate-array/solution/
+
 这个题目因为之前有了解过，所以直接就想到了反转的思路。理论上要经历暴力循环，然后才知道这个反转的策略。
 
 **注意**：k的值首先要模上数组大小，因为k的值是会大于数组大小的。而他的意义是和`k%nums.size()`意义一样的。
@@ -48,7 +50,7 @@ rotate 2 steps to the right: [3,99,-1,-100]
 ```java
 /*
  * app:leetcode lang:c++
- * https://leetcode.com/problems/majority-element
+ * https://leetcode.com/problems/rotate-array
  * Beats : 100%
  * Time complicity is O(n);
  * Space complicity is O(1);
@@ -77,7 +79,7 @@ class Solution {
 ```c++
 /*
  * app:leetcode lang:c++
- * https://leetcode.com/problems/majority-element
+ * https://leetcode.com/problems/rotate-array
  * Beats : c++测试有问题，不过代码是正确的
  * Time complicity is O(n);
  * Space complicity is O(1);
