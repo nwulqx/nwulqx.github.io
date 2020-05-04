@@ -50,7 +50,7 @@ import java.util.*;
  * time completicity is O(n2);
  * space complicity is O(1);
  * beats: 25%;
-*/
+ */
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
     	int []ret = new int[2];
@@ -155,7 +155,7 @@ class Solution(object):
         for i in range(len(nums)):
             numToFind = target - nums[i]
             if numToFind in hash_dict:
-                return [hash_dict[numToFind],i]
+                return [hash_dict[numToFind], i]
             hash_dict[nums[i]] = i;
 
 ```
