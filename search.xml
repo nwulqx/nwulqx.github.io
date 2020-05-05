@@ -1163,9 +1163,9 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>牛客网</tag>
         <tag>多线程</tag>
         <tag>并发</tag>
+        <tag>牛客网</tag>
       </tags>
   </entry>
   <entry>
@@ -1183,8 +1183,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Java垃圾回收</tag>
         <tag>牛客网</tag>
+        <tag>Java垃圾回收</tag>
       </tags>
   </entry>
   <entry>
@@ -3164,8 +3164,8 @@ color:rgb(199,37,78)
       <tags>
         <tag>Optimize(优化)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>LinkedList(链表)</tag>
         <tag>位运算</tag>
+        <tag>LinkedList(链表)</tag>
       </tags>
   </entry>
   <entry>
@@ -3807,7 +3807,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
