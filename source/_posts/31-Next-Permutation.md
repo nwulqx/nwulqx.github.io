@@ -19,6 +19,8 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 `3,2,1` → `1,2,3`
 `1,1,5` → `1,5,1`
 
+<!-- more -->
+
 # 分析
 
 详细参见：https://leetcode.com/articles/next-permutation/
