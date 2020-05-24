@@ -1163,9 +1163,9 @@
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>牛客网</tag>
         <tag>多线程</tag>
         <tag>并发</tag>
-        <tag>牛客网</tag>
       </tags>
   </entry>
   <entry>
@@ -1183,8 +1183,63 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>牛客网</tag>
         <tag>Java垃圾回收</tag>
+        <tag>牛客网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法导论-第2章 算法基础</title>
+    <url>/2019/12/02/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%AC%AC2%E7%AB%A0-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p><strong>2.1-1</strong>    Using figure 2.4 as a model, illustrate the operations of Insertion-Sort on the array A=⟨31,41,59,26,41,58⟩.</p>
+<a id="more"></a>
+<p><img src="/images/sfdl-2.1-1.png" alt="Alt text"></p>
+<p><strong>2.1-2</strong>    Rewrite the Insertion-Sort procedure to sort into nonincreasing instead of nondecreasing order.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">    key = A[j]</span><br><span class="line">    i = j - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &lt; key</span><br><span class="line">        A[i+<span class="number">1</span>] = A[i]</span><br><span class="line">        i = i - <span class="number">1</span></span><br><span class="line">    A[i+<span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
+<p><strong>2.1-3</strong>    Consider the searching problem:</p>
+<p>Input: A sequence of n numbers A=⟨a1,a2,…,an⟩ and a value ν.</p>
+<p>Output: And index i such that ν=A[i] or the special value NIL if ν does not appear in A<br>Write the pseudocode for linear search, which scans through the sequence, looking for ν. Using a loop invariant, prove that your algorithm is correct. Make sure that your loop invariant fulfills the three necessary properties.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">SEARCH(A, v):</span><br><span class="line">  <span class="keyword">for</span> i = <span class="number">1</span> to A.length</span><br><span class="line">      <span class="keyword">if</span> A[i] == v</span><br><span class="line">          <span class="keyword">return</span> i</span><br><span class="line">  <span class="keyword">return</span> NIL</span><br></pre></td></tr></table></figure>
+<p><strong>2.1-4</strong>    Consider the problem of adding two n-bit binary integers, stored in two n-element arrays A and B. The sum of the two integers should be stored in binary form in an (n+1)-element array C. State the problem formally and write pseudocode for adding the two integers.</p>
+<p><strong>输入</strong>：数组A=⟨a1,a2,…,an⟩和数组B=⟨b1,b2,…,bn⟩，分别代表一个整数存储在二进制格式（每个元素为0或1），长度为n</p>
+<p><strong>输出</strong>： 数组C=⟨c1,c2,…,cn+1⟩ ，C′=A′+B′, 其中 A′，B′ 和 C′ 是数组A，B，C中的元素.</p>
+<p><strong>伪码</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">ADD-BINARY(A, B):</span><br><span class="line">  C = <span class="keyword">new</span> integer[A.length + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">  carry = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i = A.length to <span class="number">1</span> </span><br><span class="line">      C[i] = (A[i] + B[i] + carry) % <span class="number">2</span>  <span class="comment">// remainder</span></span><br><span class="line">      carry = (A[i] + B[i] + carry) / <span class="number">2</span> <span class="comment">// quotient</span></span><br><span class="line">  C[i] = carry</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> C</span><br></pre></td></tr></table></figure>
+<p><strong>2.2-1</strong>    Express the function $n^3/1000−100n^2−100n+3$ in terms of Θ-notation</p>
+<p>答：$Θ(n^3)$</p>
+<p><strong>2.2-2</strong>    Consider sorting n numbers in an array A by first finding the smallest element of A and exchanging it with the element in A[1]. Then find the second smallest element of A, and exchange it with A[2]. Continue in this manner for the first n−1 elements of A. Write pseudocode for this algorithm, which is known as <strong>selection sort</strong>. What loop invariants does this algorithm maintain? Why does it need to run for only the first n−1 elements, rather than for all n elements? Give the best-case and the worst-case running times of selection sort in Θ-notation.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">SELECTION-SORT(A):</span><br><span class="line">  <span class="keyword">for</span> i = <span class="number">1</span> to A.length - <span class="number">1</span></span><br><span class="line">      min = i</span><br><span class="line">      <span class="keyword">for</span> j = i + <span class="number">1</span> to A.length</span><br><span class="line">          <span class="keyword">if</span> A[j] &lt; A[min]</span><br><span class="line">              min = j</span><br><span class="line">      temp = A[i]</span><br><span class="line">      A[i] = A[min]</span><br><span class="line">      A[min] = temp</span><br></pre></td></tr></table></figure>
+<p>循环不变式：</p>
+<blockquote>
+<p>在外部for循环的每次迭代开始时，子数组A[1..i−1]包含数组中最小的i−1元素，按非递减顺序排列。<br>在内部for循环的每次迭代开始时，A[min]是子数组A[i..j−1]中的最小值。</p>
+</blockquote>
+<p>为什么是n-1步？</p>
+<blockquote>
+<p>在最后一步，算法将剩下两个元素进行比较。它将较小的一个存储在[n−1]中，较大的一个存储在[n]中。最后一个元素将是数组中最大的元素，因为之前的迭代除了最后两个元素(外循环不变元素)之外，其他元素都已排序。如果我们这样做n次，我们将得到一个冗余的步骤来排序一个单元素子数组。</p>
+</blockquote>
+<p>运行时间：</p>
+<blockquote>
+<p>在最佳情况下(数组已排序)，不会调用if的主体。操作数(将比较算为一个操作)为:</p>
+<p>$(n−1)(\frac{n+2}{2}+4)$  </p>
+<p>在最坏情况下的时间(数组反转)，每次调用if的主体，使内部循环的步数加倍，即:</p>
+<p>$(n−1)(n+6)$<br>两者的时间复杂度都是：$Θ(n^2)$.</p>
+</blockquote>
+<p><strong>2.2-3</strong>     Consider linear search again (see exercise 2.1-3). How many elements of the input sequence need to be checked on the average, assuming that the element being searched for is equally likely to be any element in the array? How about the worst case? What are the average-case and worst-case running times of linear search in Θ-notation? Justify your answers.</p>
+<blockquote>
+<p>平均检查$n/2$个元素，最坏情况则检查n个元素。</p>
+<p>两者的时间复杂度都为$Θ(n)$.</p>
+</blockquote>
+<p><strong>2.2-4</strong>    How can we modify almost any algorithm to have a good best-case running time?</p>
+<blockquote>
+<p>应该检查其特殊情况，有序时则直接返回结果，那么其时间复杂度为$Θ(n)$</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>算法导论</tag>
       </tags>
   </entry>
   <entry>
@@ -1321,9 +1376,12 @@
     <url>/2019/01/04/%E3%80%8A%E7%9F%9B%E7%9B%BE%E8%AE%BA%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>世界是怎样存在的？</p>
 <ul>
-<li>形而上学或庸俗进化论：孤立，静止，片面，无矛盾的的观点。</li>
-<li>辩证法：联系，全面，发展，矛盾的观点。</li>
+<li><p>形而上学或庸俗进化论：孤立，静止，片面，无矛盾的的观点。</p>
+</li>
+<li><p>辩证法：联系，全面，发展，矛盾的观点。</p>
+</li>
 </ul>
+<a id="more"></a>
 <p>事物发展的根本原因，在于事物内部的矛盾性，外因通过内因起作用，内因和外因的辩证关系：</p>
 <ul>
 <li>事物的内部矛盾是事物的内因，事物的外部矛盾是事物发展的外因。</li>
@@ -1499,6 +1557,7 @@ d&amp;Hyscvnm
 <p>The replacement must be <strong><a href="http://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> and use only constant extra memory.</p>
 <p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.</p>
 <p><code>1,2,3</code> → <code>1,3,2</code><br><code>3,2,1</code> → <code>1,2,3</code><br><code>1,1,5</code> → <code>1,5,1</code></p>
+<a id="more"></a>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>详细参见：<a href="https://leetcode.com/articles/next-permutation/" target="_blank" rel="noopener">https://leetcode.com/articles/next-permutation/</a></p>
 <p><img src="/images/31_nums_graph.png" alt="Alt text"></p>
 <p><strong>Java实现</strong></p>
@@ -3807,7 +3866,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
