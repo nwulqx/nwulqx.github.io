@@ -1188,6 +1188,77 @@
       </tags>
   </entry>
   <entry>
+    <title>算法导论-第3章-函数的增长</title>
+    <url>/2019/12/06/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%AC%AC3%E7%AB%A0-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A2%9E%E9%95%BF/</url>
+    <content><![CDATA[<p><strong>Θ记号</strong>：标记了函数的渐进上界和渐进下界</p>
+<p><strong>O记号</strong>：标记了函数的渐进上界</p>
+<p><strong>Ω记号</strong>：标记了函数的渐进下界</p>
+<p><strong>o记号</strong>：表示一个非渐进紧确的上界</p>
+<p><strong>ω记号</strong>：表示一个非渐进紧确的下界</p>
+<a id="more"></a>
+<p>这里在学习的时候，当看到<strong>o记号</strong>时，突然反应过来，这不就是微积分里的<strong>等价无穷小</strong>，进而得以联想，进行理解。</p>
+<p><strong>3.1-1</strong>    Let f(n) + g(n) be asymptotically nonnegative（渐进非负） functions. Using the basic definition of Θ-notation, prove that $max(f(n),g(n))=Θ(f(n)+g(n))$.</p>
+<p>证明：从渐进非负函数，我们得到：</p>
+<p>$∃n_1,n_2:f(n)≥0,当n&gt;n_1$</p>
+<p>$g(n)≥0, 当n&gt;n_2$</p>
+<p>令$ n_0=max(n_1,n_2)$。则对于任意$n&gt;n_0$:</p>
+<p>$f(n)≤max(f(n),g(n))$</p>
+<p>$g(n)≤max(f(n),g(n))$</p>
+<p>$(f(n)+g(n))/2≤max(f(n),g(n))$</p>
+<p>$max(f(n),g(n))≤f(n)+g(n)$</p>
+<p>根据上面两个等式，我们得到了：</p>
+<p>$0≤{1\over2}(f(n)+g(n))≤max(f(n),g(n))≤f(n)+g(n),当n&gt;n_0$</p>
+<p> 所以，$max(f(n),g(n)) = Θ(f(n)+g(n))$当c1=1/2,c2=1时。</p>
+<p><strong>3.1-2</strong>    Show that for any real constants a and b, where b&gt;0,$(n+a)^b=Θ(n^b)$</p>
+<p>证明：$(n+a)^b=\dbinom{n}{0}n^b+\dbinom{n}{1}n^{b−1}b+⋯+\dbinom{n}{0}a^b$</p>
+<p>可以看出，$n^b$是它的最高阶的项，所以$(n+a)^b=Θ(n^b)$。</p>
+<p><strong>3.1-3</strong>    Explain why the statement, “The running time of algorithm A is at least O(n2) is meaningless.</p>
+<p>答：因为大写O标记的是上确界，而最少表示下确界，所以无意义。</p>
+<p><strong>3.1-4</strong>    Is $2^{n+1}=O(2^n)$? Is $2^{2n}=O(2^n)$?</p>
+<p>答：只要确定是否存在c，使得$2^{n+1}≤c2^n$？存在，c≥2时满足。</p>
+<p>是否存在c，使得$2^{2n}≤c2^n$？不存在。</p>
+<p><strong>3.1-5</strong>    Prove Theorem 3.1</p>
+<p><strong>定理3.1</strong>：对任意的两个函数f(n)和g(n)，我们有$f(n)= Θ(g(n))$，当且仅当$f(n)=O(g(n))$且$f(n)=Ω(g(n))$</p>
+<p>证明：由$f(n)=Θ(g(n)) $，我们可以得到：</p>
+<p>$0≤c_1g(n)≤f(n)≤c_2g(n),当n&gt;n0$</p>
+<p>我们可以在这里选择常量，去定义O和Ω：</p>
+<p>对于$f(n)=Ω(g(n))$ 和 $f(n)=O(g(n))$：</p>
+<p>$0≤c_3g(n)≤f(n)，对于所有的n≥n_1$</p>
+<p>$0≤f(n)≤c_4g(n)，对于所有的n≥n_2$</p>
+<p>如果我们选择$n3=max(n1,n2)$ ，然后合并这两个不等式，则：</p>
+<p>$0≤c_3g(n)≤f(n)≤c_4g(n)，对于所有的n&gt;n_3$<br>这样就定义了Θ。</p>
+<p><strong>3.1-6</strong>    Prove that the running time of an algorithm is Θ(g(n)) if and only if its worst-case running time is O(g(n)) and its best-case running time is Ω(g(n)).</p>
+<p>证明：令$T_w$是最坏运行时间，$T_b$是最好运行时间，我们由已知可以得到：</p>
+<p>$0≤c_1g(n)≤T_b(n)，对于n&gt;n_b$</p>
+<p>$0≤T_w(n)≤c_2g(n)，对于n&gt;n_w$<br>合并这两个不等式，则：</p>
+<p>$0≤c_1g(n)≤T_b(n)≤T_w(n)≤c2g(n)，对于n&gt;max(n_b,n_w)$</p>
+<p>由于运行时间是绑定在$T_w$和之$T_b$间的，所以上述证明了Θ符号。</p>
+<p><strong>3.1-7</strong>    Prove o(g(n))∩ω(g(n)) is the empty set.</p>
+<p>证明：由已知可得，对于任意的正整数c：</p>
+<p>$∃n_1&gt;0:0≤f(n)&lt;cg(n)$</p>
+<p>$∃n_2&gt;0:0≤cg(n)&lt;f(n)$<br>如果我们选择 $n0=max(n1,n2)$，由以上的我们可以得到：</p>
+<p>$f(n)&lt;cg(n)&lt;f(n)$</p>
+<p>它显然没有解。这意味着交集是空集。</p>
+<p><strong>3.1-8</strong>    We can extend our notation to the case of two parameters n and m that can go to infinity independently at different rates. For a given function g(n,m) we denote O(g(n,m)) the set of functions:</p>
+<blockquote>
+<p>O(g(n,m)={f(n,m):there exist positive constants c,n0, and m0such that 0≤f(n,m)≤cg(n,m)for all n≥n0 or m≥m0}</p>
+</blockquote>
+<p>Give corresponding definitions for Ω(g(n,m)) and Θ(g(n,m)).</p>
+<p>答：</p>
+<blockquote>
+<p>$Ω(g(n,m)={f(n,m):存在正正整数 c,n_0, and m_0,使得0≤cg(n,m)≤f(n,m)对所有的n≥n_0或m≥m_0}$<br>$Θ(g(n,m)={f(n,m):存在正正整数 c_1,c_2,n_0, 和 m_0 使得0≤c_1g(n,m)≤f(n,m)≤c_2g(n,m)对所有的n≥n_0 或 m≥m_0}$</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>算法导论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-第2章 算法基础</title>
     <url>/2019/12/02/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%AC%AC2%E7%AB%A0-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p><strong>2.1-1</strong>    Using figure 2.4 as a model, illustrate the operations of Insertion-Sort on the array A=⟨31,41,59,26,41,58⟩.</p>
@@ -2491,8 +2562,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -2580,10 +2651,10 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -2621,8 +2692,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>DFS(深度优先遍历)</tag>
         <tag>Optimize(优化)</tag>
+        <tag>DFS(深度优先遍历)</tag>
         <tag>AVL树(平衡二叉树)</tag>
       </tags>
   </entry>
@@ -2649,8 +2720,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -2758,10 +2829,10 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -2804,9 +2875,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -2845,9 +2916,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Queue(队列)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -3359,8 +3430,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>Optimize(优化)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
   <entry>
@@ -3887,7 +3958,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
