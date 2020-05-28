@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Θ记号：标记了函数的渐进上界和渐进下界 O记号：标记了函数的渐进上界 Ω记号：标记了函数的渐进下界 o记号：表示一个非渐进紧确的上界 ω记号：表示一个非渐进紧确的下界">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-28T10:50:23.615Z">
+<meta property="og:updated_time" content="2020-05-28T14:59:18.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论-第3章-函数的增长">
 <meta name="twitter:description" content="Θ记号：标记了函数的渐进上界和渐进下界 O记号：标记了函数的渐进上界 Ω记号：标记了函数的渐进下界 o记号：表示一个非渐进紧确的上界 ω记号：表示一个非渐进紧确的下界">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-28T18:50:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-28T22:59:18+08:00">
                 2020-05-28
               </time>
             
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k 字
+                  1.8k 字
                 </span>
               
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -505,7 +505,7 @@
 <p>其余两个的证明很明显：</p>
 <p>$∀n&gt;3:2^n= \underbrace{2⋅2⋅⋯⋅2}_{\text{n个}} &lt;1⋅2⋅⋯⋅n=n!⇒n!=ω(2^n)$</p>
 <p>$∀n&gt;1:n!= 1⋅2⋅⋯⋅n &lt; \underbrace{n⋅n⋅⋯⋅n}_{\text{n个}}=n^n⇒n!=o(n^n)$</p>
-<p><strong>3.2-4</strong>    ⋆ Is the function ⌈lgn⌉! polynomially bounded? Is the function ⌈lglgn⌉ polynomially bounded?</p>
+<p><strong>3.2-4</strong>    * Is the function ⌈lgn⌉! polynomially bounded? Is the function ⌈lglgn⌉ polynomially bounded?</p>
 <p>证明：由多项式定义可得：</p>
 <p>$f(n)≤cn^k$</p>
 <p>两边取对数得：</p>
@@ -513,10 +513,29 @@
 <p>所以：$lgf(n)=O(lgn)$，即$lgf(n)≤clgn=lgn^c$，$f(n)≤n^c$</p>
 <p>由<strong>3.19</strong>可知，$lg(n!)=Θ(nlgn)$，得：</p>
 <p>$lg(lglgn!)=Θ(lglgnlglglgn)$</p>
-<p>因为对于任意的n&gt;1，$lglglgn<lglgn$，则存在常数$c和n_0$，使得$n>=n_0$时，$lg(f(n))&lt;=c(lglgn)^2$</lglgn$，则存在常数$c和n_0$，使得$n></p>
-<p>$Θ(lglgnlglglgn)==o(lglgn)^2=o(lgn)$(最后一个结论来自本章的论述，即多对数函数比多项式函数增长得慢。)</p>
-<p><strong>3.2-5</strong>    ⋆ Which is asymptotically larger: $lg(lg^<em>n)$or$lg^</em>(lg{n})$.</p>
-<p>答：第二个大，因为$ \lg^<em>(\lg{n}) = \lg^</em>n - 1 &gt; \lg(\lg^*(n)) $</p>
+<p>因为对于任意的n&gt;1，${lglglgn}&lt;{lglgn}$，则存在常数$c和n_0$，使得$n&gt;=n_0$时，$lg(f(n))&lt;=c(lglgn)^2$</p>
+<p>$Θ(lglgnlglglgn)=o(lglgn)^2=o(lgn)$(最后一个结论来自本章的论述，即多对数函数比多项式函数增长得慢。)</p>
+<p><strong>3.2-5</strong>    * Which is asymptotically larger: $lg(lg^{*}n)$or$lg^{*}{(lg{n})}$.</p>
+<p>答：第二个大，因为$lg^*n = lglglg……n=i$</p>
+<p>所以$lg^*{(lg{n})}=lg^*n-1=i-1$</p>
+<p>而$lg(lg^*n)=lg(i)$，由于P33页多对数函数比多项式函数增长得慢。所以$lg^*(lg{n})$的渐进大。</p>
+<p><strong>3.2-6</strong>    Show that the golden ratio ϕ and its conjugate $\hat{ϕ}$ both satisfy the equation $x^2=x+1$.</p>
+<p>证明：直接代入计算：$ϕ^2−ϕ−1=({(1+\sqrt{5})\over 2})^2−{(1+\sqrt{5})\over 2}−1={1+2\sqrt {5}+5−2−2\sqrt{5}-4\over 4}=0$</p>
+<p>$\hat{ϕ}^2−\hat{ϕ}−1=({(1-\sqrt{5})\over 2})^2−{(1-\sqrt{5})\over 2}−1={1-2\sqrt {5}+5−2+2\sqrt{5}-4\over 4}=0$</p>
+<p><strong>3.2-7</strong>    Proove by induction that the ith Fibonacci number satisfies the equality</p>
+<p>$F_i={ϕ^i−\hat{ϕ}^i\over {\sqrt{5}}}$</p>
+<p>证明：${ϕ^0−\hat{ϕ}^0\over {\sqrt{5}}}={1−1\over \sqrt{5}}=0=F_0$</p>
+<p>${ϕ^1−\hat{ϕ}^1\over {\sqrt{5}}}={1+\sqrt{5}−1++\sqrt{5}\over 2\sqrt{5}}=1=F_1$</p>
+<p>$F_{n+2}=F_{n+1}+F_n={ϕ^{n+1}−\hat{ϕ}^{n+1}\over {\sqrt{5}}}+{ϕ^{n}−\hat{ϕ}^{n}\over {\sqrt{5}}}={ϕ^{n}(ϕ+1)−\hat{ϕ}^{n}(\hat{ϕ}+1)\over {\sqrt{5}}}={ϕ^{n}ϕ^{2}−\hat{ϕ}^{n}\hat{ϕ}^{2}\over {\sqrt{5}}}={ϕ^{n+2}−\hat{ϕ}^{n+2}\over {\sqrt{5}}}$</p>
+<p>这里，$ϕ+1={1+\sqrt{5} \over {2}}+1={3+\sqrt{5} \over {2}}$</p>
+<p>而，$ϕ^2={6+2\sqrt{5} \over {4}}={1+\sqrt{5} \over {2}}$</p>
+<p>所以，$ϕ+1=ϕ^2$是成立的，同理$\hat{ϕ}+1=\hat{ϕ}^2$也成立。</p>
+<p><strong>3.2-8</strong>    Show that $klnk=Θ(n)$ implies $k=Θ(n/lnn)$.</p>
+<p>证明：由P30页对称性知：</p>
+<p>$klnk=Θ(n)⇒n=Θ(klnk)$，取对数有：</p>
+<p>$lnn=Θ(ln(klnk))=Θ(lnk+lnlnk)=Θ(lnk)$</p>
+<p>相除有：</p>
+<p>${n\over lnn}={Θ(klnk)\over Θ(lnk)}=Θ{klnk\over lnk}=Θ(k)$</p>
 
       
     </div>
@@ -769,7 +788,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">67.5k</span>
+    <span title="Site words total count">67.8k</span>
   
 </div>
 
