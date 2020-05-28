@@ -1248,6 +1248,36 @@
 <blockquote>
 <p>$Ω(g(n,m)={f(n,m):存在正正整数 c,n_0, and m_0,使得0≤cg(n,m)≤f(n,m)对所有的n≥n_0或m≥m_0}$<br>$Θ(g(n,m)={f(n,m):存在正正整数 c_1,c_2,n_0, 和 m_0 使得0≤c_1g(n,m)≤f(n,m)≤c_2g(n,m)对所有的n≥n_0 或 m≥m_0}$</p>
 </blockquote>
+<p><strong>3.2-1</strong>    Show that if f(n) and g(n) are monotonically increasing functions, then so are the functions f(n)+g(n) and f(g(n)), and if f(n) and g(n) are in addition nonnegative, then f(n)⋅g(n) is monotonically increasing.</p>
+<p>证明：$f(m)≤f(n), m≤n$</p>
+<p>$g(m)≤f(n),m≤n$</p>
+<p>所以，$f(m)+g(m)≤f(n)+g(n),m≤n$</p>
+<p>$f(g(m))≤f(g(n)),m≤n$</p>
+<p>因为$g(m)&gt;g(n)$  且 f(n) 是单调递增的。</p>
+<p>因为f(n)和g(n)都是非负的，所以将两个不等式相乘得：</p>
+<p>$f(m)⋅g(m)≤f(n)⋅g(n)$</p>
+<p><strong>3.2-2</strong>    Prove equation (3.16)</p>
+<p>$a^{log_bc}=c^{log_ba}$</p>
+<p>证明：$a^{log_bc}=b^{log_ba \cdot log_bc}=b^{log_bc \cdot log_ba}=c^{log_ba}$</p>
+<p><strong>3.2-3</strong>    Prove equation (3.19). Also prove that $n!=ω(2^n) $and $n!=o(n^n)$.</p>
+<p>$lg(n!)=Θ(nlgn)$(3.19)</p>
+<p>证明：我们使用斯特林近似公式：</p>
+<p>$lg(n!)=lg(\sqrt{2πn}({n\over e})^n(1+Θ({1\over n}))=lg(\sqrt{2πn})+lg({n\over e})^n+lg(Θ(1)+Θ({1\over n}))=Θ(n^{1\over 2})+nlg({n\over e})+lg({1\over n})=Θ(n^{1\over 2})+Θ(nlgn)+Θ({1\over n})$</p>
+<p>其余两个的证明很明显：</p>
+<p>$∀n&gt;3:2^n= \underbrace{2⋅2⋅⋯⋅2}_{\text{n个}} &lt;1⋅2⋅⋯⋅n=n!⇒n!=ω(2^n)$</p>
+<p>$∀n&gt;1:n!= 1⋅2⋅⋯⋅n &lt; \underbrace{n⋅n⋅⋯⋅n}_{\text{n个}}=n^n⇒n!=o(n^n)$</p>
+<p><strong>3.2-4</strong>    ⋆ Is the function ⌈lgn⌉! polynomially bounded? Is the function ⌈lglgn⌉ polynomially bounded?</p>
+<p>证明：由多项式定义可得：</p>
+<p>$f(n)≤cn^k$</p>
+<p>两边取对数得：</p>
+<p>$lgf(n)≤lgc+klgn$</p>
+<p>所以：$lgf(n)=O(lgn)$，即$lgf(n)≤clgn=lgn^c$，$f(n)≤n^c$</p>
+<p>由<strong>3.19</strong>可知，$lg(n!)=Θ(nlgn)$，得：</p>
+<p>$lg(lglgn!)=Θ(lglgnlglglgn)$</p>
+<p>因为对于任意的n&gt;1，$lglglgn<lglgn$，则存在常数$c和n_0$，使得$n>=n_0$时，$lg(f(n))&lt;=c(lglgn)^2$</lglgn$，则存在常数$c和n_0$，使得$n></p>
+<p>$Θ(lglgnlglglgn)==o(lglgn)^2=o(lgn)$(最后一个结论来自本章的论述，即多对数函数比多项式函数增长得慢。)</p>
+<p><strong>3.2-5</strong>    ⋆ Which is asymptotically larger: $lg(lg^<em>n)$or$lg^</em>(lg{n})$.</p>
+<p>答：第二个大，因为$ \lg^<em>(\lg{n}) = \lg^</em>n - 1 &gt; \lg(\lg^*(n)) $</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2651,10 +2681,10 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -2692,8 +2722,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>AVL树(平衡二叉树)</tag>
       </tags>
   </entry>
@@ -2720,8 +2750,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
@@ -2829,10 +2859,10 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -2875,9 +2905,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -2916,9 +2946,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Boundary Check(边界值检测)</tag>
-        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
+        <tag>Stack(栈)</tag>
+        <tag>Boundary Check(边界值检测)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
@@ -3430,8 +3460,8 @@ color:rgb(199,37,78)
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Optimize(优化)</tag>
         <tag>Boundary Check(边界值检测)</tag>
+        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -3958,7 +3988,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>

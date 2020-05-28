@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Θ记号：标记了函数的渐进上界和渐进下界 O记号：标记了函数的渐进上界 Ω记号：标记了函数的渐进下界 o记号：表示一个非渐进紧确的上界 ω记号：表示一个非渐进紧确的下界">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-27T14:49:37.229Z">
+<meta property="og:updated_time" content="2020-05-28T10:50:23.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论-第3章-函数的增长">
 <meta name="twitter:description" content="Θ记号：标记了函数的渐进上界和渐进下界 O记号：标记了函数的渐进上界 Ω记号：标记了函数的渐进下界 o记号：表示一个非渐进紧确的上界 ω记号：表示一个非渐进紧确的下界">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-27T22:49:37+08:00">
-                2020-05-27
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-28T18:50:23+08:00">
+                2020-05-28
               </time>
             
           </span>
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k 字
+                  1.5k 字
                 </span>
               
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -487,6 +487,36 @@
 <blockquote>
 <p>$Ω(g(n,m)={f(n,m):存在正正整数 c,n_0, and m_0,使得0≤cg(n,m)≤f(n,m)对所有的n≥n_0或m≥m_0}$<br>$Θ(g(n,m)={f(n,m):存在正正整数 c_1,c_2,n_0, 和 m_0 使得0≤c_1g(n,m)≤f(n,m)≤c_2g(n,m)对所有的n≥n_0 或 m≥m_0}$</p>
 </blockquote>
+<p><strong>3.2-1</strong>    Show that if f(n) and g(n) are monotonically increasing functions, then so are the functions f(n)+g(n) and f(g(n)), and if f(n) and g(n) are in addition nonnegative, then f(n)⋅g(n) is monotonically increasing.</p>
+<p>证明：$f(m)≤f(n), m≤n$</p>
+<p>$g(m)≤f(n),m≤n$</p>
+<p>所以，$f(m)+g(m)≤f(n)+g(n),m≤n$</p>
+<p>$f(g(m))≤f(g(n)),m≤n$</p>
+<p>因为$g(m)&gt;g(n)$  且 f(n) 是单调递增的。</p>
+<p>因为f(n)和g(n)都是非负的，所以将两个不等式相乘得：</p>
+<p>$f(m)⋅g(m)≤f(n)⋅g(n)$</p>
+<p><strong>3.2-2</strong>    Prove equation (3.16)</p>
+<p>$a^{log_bc}=c^{log_ba}$</p>
+<p>证明：$a^{log_bc}=b^{log_ba \cdot log_bc}=b^{log_bc \cdot log_ba}=c^{log_ba}$</p>
+<p><strong>3.2-3</strong>    Prove equation (3.19). Also prove that $n!=ω(2^n) $and $n!=o(n^n)$.</p>
+<p>$lg(n!)=Θ(nlgn)$(3.19)</p>
+<p>证明：我们使用斯特林近似公式：</p>
+<p>$lg(n!)=lg(\sqrt{2πn}({n\over e})^n(1+Θ({1\over n}))=lg(\sqrt{2πn})+lg({n\over e})^n+lg(Θ(1)+Θ({1\over n}))=Θ(n^{1\over 2})+nlg({n\over e})+lg({1\over n})=Θ(n^{1\over 2})+Θ(nlgn)+Θ({1\over n})$</p>
+<p>其余两个的证明很明显：</p>
+<p>$∀n&gt;3:2^n= \underbrace{2⋅2⋅⋯⋅2}_{\text{n个}} &lt;1⋅2⋅⋯⋅n=n!⇒n!=ω(2^n)$</p>
+<p>$∀n&gt;1:n!= 1⋅2⋅⋯⋅n &lt; \underbrace{n⋅n⋅⋯⋅n}_{\text{n个}}=n^n⇒n!=o(n^n)$</p>
+<p><strong>3.2-4</strong>    ⋆ Is the function ⌈lgn⌉! polynomially bounded? Is the function ⌈lglgn⌉ polynomially bounded?</p>
+<p>证明：由多项式定义可得：</p>
+<p>$f(n)≤cn^k$</p>
+<p>两边取对数得：</p>
+<p>$lgf(n)≤lgc+klgn$</p>
+<p>所以：$lgf(n)=O(lgn)$，即$lgf(n)≤clgn=lgn^c$，$f(n)≤n^c$</p>
+<p>由<strong>3.19</strong>可知，$lg(n!)=Θ(nlgn)$，得：</p>
+<p>$lg(lglgn!)=Θ(lglgnlglglgn)$</p>
+<p>因为对于任意的n&gt;1，$lglglgn<lglgn$，则存在常数$c和n_0$，使得$n>=n_0$时，$lg(f(n))&lt;=c(lglgn)^2$</lglgn$，则存在常数$c和n_0$，使得$n></p>
+<p>$Θ(lglgnlglglgn)==o(lglgn)^2=o(lgn)$(最后一个结论来自本章的论述，即多对数函数比多项式函数增长得慢。)</p>
+<p><strong>3.2-5</strong>    ⋆ Which is asymptotically larger: $lg(lg^<em>n)$or$lg^</em>(lg{n})$.</p>
+<p>答：第二个大，因为$ \lg^<em>(\lg{n}) = \lg^</em>n - 1 &gt; \lg(\lg^*(n)) $</p>
 
       
     </div>
@@ -739,7 +769,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">67k</span>
+    <span title="Site words total count">67.5k</span>
   
 </div>
 
