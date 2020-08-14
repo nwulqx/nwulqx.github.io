@@ -3,10 +3,10 @@ title: 101. Symmetric Tree
 date: 2017-05-04 15:52:14
 tags:
 - LeetCode-easy
+- Tree(树)
 - recursion(递归)
-- Queue(队列)
 - Stack(栈)
-- Boundary Check(边界值检测)
+- Queue(队列)
 - BFS(广度优先遍历)
 - DFS(深度优先遍历)
 ---
@@ -14,24 +14,27 @@ Given a binary tree, check whether it is a mirror of itself (ie, symmetric aroun
 
 For example, this binary tree `[1,2,2,3,4,4,3]` is symmetric:
 
-		    1
-		   / \
-		  2   2
-		 / \ / \
-		3  4 4  3
+```c++
+	    1
+	   / \
+	  2   2
+	 / \ / \
+	3  4 4  3
+```
 
 But the following `[1,2,2,null,3,null,3]` is not:
 
-		    1
-		   / \
-		  2   2
-		   \   \
-		   3    3
+```c++
+	    1
+	   / \
+	  2   2
+	   \   \
+	   3    3
+```
 
 <!-- more -->
 
-同类题目：
-# <a href="https://war3cdota.github.io/2017/05/04/100-Same-Tree/">100. Same Tree</a>
+同类题目：{% post_link 100-Same-Tree %}
 
 # Solution
 
@@ -39,11 +42,50 @@ But the following `[1,2,2,null,3,null,3]` is not:
 
 ## Solution1
 
-**递归法**
+**使用递归来解决，注意树的比较，是左子树的右节点和右子树的左节点比较，这样才是对称的。**
 
-使用递归来解决，注意树的比较，是左子树的右节点和右子树的左节点比较，这样才是对称的。
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/symmetric-tree/
+ * Beats : 68.77%;
+ */
+struct TreeNode {
+	int val;
+	TreeNode *left;
+	TreeNode *right;
+	TreeNode() : val(0), left(nullptr), right(nullptr) {}
+	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+	TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+public:
+	bool isSymmetric(TreeNode* root) {
+		if (root == nullptr) return true;
+		return isSymmetric(root->left, root->right);
+	}
+	bool isSymmetric(TreeNode* left, TreeNode* right) {
+		if (left == nullptr && right == nullptr) return true;
+		if (left == nullptr || right == nullptr) return false;
+		if (left->val != right->val) return false;
+		return isSymmetric(left->left, right->right) && isSymmetric(left->right, right->left);
+	}
+};
+```
+
+
+
+**Java实现**
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/symmetric-tree/
+ * Beats : 40%;
+ */
 public class SymmetricTree{
     public boolean isSymmetric(TreeNode root) {
         if(root==null){
@@ -71,10 +113,6 @@ public class SymmetricTree{
     }
 }
 ```
-
-**Boundary Check（边界检测）**
-
-注意边界检测，都为空节点返回true。
 
 ## 非递归法
 
@@ -186,5 +224,5 @@ public class SymmetricTree2{
 
 # 总结
 
->注意深度优先遍历和广度优先遍历，这里两处的代码基本可以说是一致的，但是由于使用的栈和队列的数据结构完全不相同，所以两种思路是完全不同的。不得不感慨数据结构的强大，虽然代码逻辑完全一样，但是由于使用了不同的数据结构，却出现了两种不同的解决思路。
+注意深度优先遍历和广度优先遍历，这里两处的代码基本可以说是一致的，但是由于使用的栈和队列的数据结构完全不相同，所以两种思路是完全不同的。不得不感慨数据结构的强大，虽然代码逻辑完全一样，但是由于使用了不同的数据结构，却出现了两种不同的解决思路。
 

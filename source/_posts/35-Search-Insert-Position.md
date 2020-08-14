@@ -202,7 +202,7 @@ public:
 };
 ```
 
-python实现
+**python实现**
 
 ```python
 class Solution(object):

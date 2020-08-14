@@ -3,31 +3,93 @@ title: 100. Same Tree
 date: 2017-05-04 15:24:18
 tags:
 - LeetCode-easy
+- Tree(树)
 - recursion(递归)
-- Boundary Check(边界值检测)
 - Stack(栈)
 - Queue(队列)
 - BFS(广度优先遍历)
 - DFS(深度优先遍历)
 ---
 
-Given two binary trees, write a function to check if they are equal or not.
+Given two binary trees, write a function to check if they are the same or not.
 
-Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+**Example 1:**
+
+```c++
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+```
+
+**Example 2:**
+
+```c++
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+```
+
+**Example 3:**
+
+```c++
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false
+```
 
 <!-- more -->
 # Solution
 
 ## Solution1
 
->二叉树的操作，感觉从方便性的角度考虑，使用递归是一个好方法。但是递归代码不易于理解。
-
-**Boundary Check**
+二叉树的操作，使用递归解决。需要注意边界值检查：
 
 1. 同时为空:true
-2. 左右子树不同:false。
+2. 两树节点不同时为空:false
+3. 两树节点值不相同：false
+4. 递归两树的左右子树
+
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/same-tree/
+ * Beats : 61.62%;
+ */
+class Solution {
+public:
+	bool isSameTree(TreeNode* p, TreeNode* q) {
+		if (p == nullptr && q == nullptr) return true;
+		if (p == nullptr || q == nullptr) return false;
+		if (p->val != q->val) return false;
+		return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+	}
+};
+```
+
+**Java实现**
 
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/same-tree/
+ * Beats : 40%;
+ */
 public class SameTree{
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p==null&&q==null){
@@ -43,6 +105,33 @@ public class SameTree{
     }
 }
 ```
+
+**Python实现**
+
+```python
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution(object):
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if p==None and q==None:
+            return True
+        if p==None or q==None:
+            return False
+        if p.val!=q.val:
+            return False
+        return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+```
+
+
 
 具体的思路还是一个尾递归的思路，先判断尾部叶节点的元素，然后再向上递归。
 
@@ -146,4 +235,4 @@ public class SameTree{
 两种遍历二叉树的方式很不相同，但是归根结底只是使用数据结构的不通，方法和思路是一致的。
 
 # 总结
->二叉树的递归操作思路是一种很巧妙的方法，需要我去熟悉理解。而使用堆栈及队列的遍历操作则是一种常规思路，注重数据结构的使用，需要去记忆。
+二叉树的递归操作思路是递归思路的一种，需要去熟悉递归边界，递归式。而使用堆栈及队列的遍历操作则是一种递归的循环思路，注重数据结构的使用。
