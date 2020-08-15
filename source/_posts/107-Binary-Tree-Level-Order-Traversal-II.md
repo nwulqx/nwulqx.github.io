@@ -3,6 +3,7 @@ title: 107. Binary Tree Level Order Traversal II
 date: 2017-05-08 17:54:47
 tags:
 - LeetCode-easy
+- Tree(树)
 - recursion(递归)
 - Queue(队列)
 - BFS(广度优先遍历)
@@ -13,63 +14,81 @@ Given a binary tree, return the bottom-up level order traversal of its nodes' va
 For example:
 Given binary tree `[3,9,20,null,null,15,7]`,
 
-	    3
-	   / \
-	  9  20
-	    /  \
-	   15   7
+```c++
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
 return its bottom-up level order traversal as:
 
-		[
-		  [15,7],
-		  [9,20],
-		  [3]
-		]
+```c++
+	[
+	  [15,7],
+	  [9,20],
+	  [3]
+	]
+```
 
 <!-- more -->
+
 # Solution
 
 ## Solution1
 
-一开始有点蒙，因为我一直在想，除了相同的思路，然后在添加的时候反向添加，难道还有什么神奇的方法？
-
-**思路相同：**<a href="https://war3cdota.github.io/2017/05/08/102-Binary-Tree-Level-Order-Traversal/">102. Binary Tree Level Order Traversal</a>
-
-这题应该自信一点，相同的思路，反向添加，切记自信！
-
-**Using DFS**
-
-```java
-public class BinaryTreeLevelOrderTraversalII{
-    //Using DFS
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if(root==null){
-            return res;
-        }
-        levelOrderBottomHelp(res,root,1);
-        return res;
-    }
-    public void levelOrderBottomHelp(List<List<Integer>> res, TreeNode node, int level){
-        if(res.size()<level){
-            res.add(0,new ArrayList<Integer>());
-        }
-        res.get(res.size()-level).add(node.val);
-        if(node.left!=null){
-            levelOrderBottomHelp(res,node.left,level+1);
-        }
-        if(node.right!=null){
-            levelOrderBottomHelp(res,node.right,level+1);
-        }
-    }
-}
-```
-
-## Solution2
-
 **Using BFS**
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ * Runtime: 4 ms Beats : 93.18%
+ * Memory: 12.6 MB Beats: 88.08%
+ */
+class Solution {
+public:
+	vector<vector<int>> levelOrderBottom(TreeNode* root) {
+		vector<vector<int>> result;
+		if (root == NULL){
+			return result;
+		}
+		queue<TreeNode*> q;
+		q.push(root);
+		while (!q.empty()){
+			int length = q.size();
+			vector<int> level;
+			while (length--){
+				TreeNode* t = q.front();
+				q.pop();
+				level.push_back(t->val);
+				if (t->left != NULL){
+					q.push(t->left);
+				}
+				if (t->right != NULL){
+					q.push(t->right);
+				}
+			}
+			result.push_back(level);
+		}
+		reverse(result.begin(), result.end());
+		return result;
+	}
+};
+```
+
+
+
+**Java实现**
+
 ```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ * Beats : 83.47%
+ */
 public class BinaryTreeLevelOrderTraversalII2{
     // Using BFS
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
@@ -98,6 +117,49 @@ public class BinaryTreeLevelOrderTraversalII2{
 }
 ```
 
+## Solution2
+
+一开始有点蒙，因为我一直在想，除了相同的思路，然后在添加的时候反向添加，难道还有什么神奇的方法？
+
+**思路相同：** {% post_link 102-Binary-Tree-Level-Order-Traversal %}
+
+这题应该自信一点，相同的思路，反向添加，切记自信！
+
+**DFS**
+
+```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ * Beats : 87.41%
+ */
+public class BinaryTreeLevelOrderTraversalII{
+    //Using DFS
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root==null){
+            return res;
+        }
+        levelOrderBottomHelp(res,root,1);
+        return res;
+    }
+    public void levelOrderBottomHelp(List<List<Integer>> res, TreeNode node, int level){
+        if(res.size()<level){
+            res.add(0,new ArrayList<Integer>());
+        }
+        res.get(res.size()-level).add(node.val);
+        if(node.left!=null){
+            levelOrderBottomHelp(res,node.left,level+1);
+        }
+        if(node.right!=null){
+            levelOrderBottomHelp(res,node.right,level+1);
+        }
+    }
+}
+```
+
+## 
+
 # 总结
 
->这种题目一定要自信的先把能想到的最好的方法做出来，然后再考虑是否还有另类的解法，关键是一定要自信！
+这种题目一定要自信的先把能想到的最好的方法做出来，然后再考虑是否还有另类的解法，关键是一定要自信！

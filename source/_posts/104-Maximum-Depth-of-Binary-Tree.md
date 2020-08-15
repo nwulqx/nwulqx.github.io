@@ -3,49 +3,67 @@ title: 104. Maximum Depth of Binary Tree
 date: 2017-05-08 16:55:15
 tags:
 - LeetCode-easy
+- Tree(树)
 - recursion(递归)
-- Optimize(优化)
 ---
 Given a binary tree, find its maximum depth.
 
 The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
-# BinaryTree Operation(二叉树操作)
+**Note:** A leaf is a node with no children.
 
-> http://blog.csdn.net/luckyxiaoqiang/article/details/7518888
+**Example:**
+
+Given binary tree `[3,9,20,null,null,15,7]`,
+
+```c++
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
+
+return its depth = 3.
 
 <!-- more -->
+
 # Solution
 
 ## 思路：
 
-1. 从下向上的思想，先得到左右子树的深度。
-2. 选择左右子树中深度大的值+1作为当前深度返回上层。
-3. 如果当前节点为空，应该返回0表示第0层（第0层是不存在的那一层，因为是空）
+采用递归的思路解决。
 
-```java
-public class MaximumDepthofBinaryTree3{
-    public int maxDepth(TreeNode root) {
-        return maxDepthHelp(root);
-    }
-    public int maxDepthHelp(TreeNode node) {
-        if(node==null){
-            return 0;
-        }
-        if(node.left==null && node.right==null){
-            return 1;
-        }
-        return Math.max(maxDepthHelp(node.left),maxDepthHelp(node.right))+1;
-    }
-}
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ * Beats : 83.16%;
+ */
+class Solution {
+public:
+	int maxDepth(TreeNode* root) {
+		if (root == nullptr) return 0;
+		int left = maxDepth(root->left);
+		int right = maxDepth(root->right);
+		return left > right ? left + 1 : right + 1;
+	}
+};
 ```
 
-## Optimized(优化)
 
-其实，仔细看，完全没有必要再去新建一个方法，因为参数和返回值完全一致。所以，只用在现有函数上既可。
+
+**Java实现**
 
 ```java
-public class MaximumDepthofBinaryTree3{
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ * Beats : 40%;
+ */
+public class MaximumDepthofBinaryTree{
     public int maxDepth(TreeNode root) {
         if(root==null){
             return 0;
@@ -56,4 +74,4 @@ public class MaximumDepthofBinaryTree3{
 ```
 
 # 总结
->又是一道二叉树的问题，万变不离其宗，BFS，Stack，DFS，Queue，递归思路不能忘记！
+一道二叉树的问题，万变不离其宗，BFS，Stack，DFS，Queue，递归思路不能忘记！
