@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-easy,recursion(递归),Optimize(优化),">
+  <meta name="keywords" content="LeetCode-easy,Tree(树),recursion(递归),">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. BinaryTree Operation(二叉树操作) http://blog.">
-<meta name="keywords" content="LeetCode-easy,recursion(递归),Optimize(优化)">
+<meta name="description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with no children.">
+<meta name="keywords" content="LeetCode-easy,Tree(树),recursion(递归)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="104. Maximum Depth of Binary Tree">
 <meta property="og:url" content="https://war3cdota.github.io/2017/05/08/104-Maximum-Depth-of-Binary-Tree/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. BinaryTree Operation(二叉树操作) http://blog.">
+<meta property="og:description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with no children.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-08T09:04:12.641Z">
+<meta property="og:updated_time" content="2020-08-15T03:09:15.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="104. Maximum Depth of Binary Tree">
-<meta name="twitter:description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. BinaryTree Operation(二叉树操作) http://blog.">
+<meta name="twitter:description" content="Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with no children.">
 
 
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-08T17:04:12+08:00">
-                2017-05-08
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-15T11:09:15+08:00">
+                2020-08-15
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  277 字
+                  204 字
                 </span>
               
 
@@ -398,21 +398,18 @@
       
         <p>Given a binary tree, find its maximum depth.</p>
 <p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<h1 id="BinaryTree-Operation-二叉树操作"><a href="#BinaryTree-Operation-二叉树操作" class="headerlink" title="BinaryTree Operation(二叉树操作)"></a>BinaryTree Operation(二叉树操作)</h1><blockquote>
-<p><a href="http://blog.csdn.net/luckyxiaoqiang/article/details/7518888" target="_blank" rel="noopener">http://blog.csdn.net/luckyxiaoqiang/article/details/7518888</a></p>
-</blockquote>
+<p><strong>Note:</strong> A leaf is a node with no children.</p>
+<p><strong>Example:</strong></p>
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">3</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">9</span>  <span class="number">20</span></span><br><span class="line">  /  \</span><br><span class="line"> <span class="number">15</span>   <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p>return its depth = 3.</p>
 <a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><ol>
-<li>从下向上的思想，先得到左右子树的深度。</li>
-<li>选择左右子树中深度大的值+1作为当前深度返回上层。</li>
-<li>如果当前节点为空，应该返回0表示第0层（第0层是不存在的那一层，因为是空）</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumDepthofBinaryTree3</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> maxDepthHelp(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepthHelp</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.left==<span class="keyword">null</span> &amp;&amp; node.right==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepthHelp(node.left),maxDepthHelp(node.right))+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Optimized-优化"><a href="#Optimized-优化" class="headerlink" title="Optimized(优化)"></a>Optimized(优化)</h2><p>其实，仔细看，完全没有必要再去新建一个方法，因为参数和返回值完全一致。所以，只用在现有函数上既可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumDepthofBinaryTree3</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left),maxDepth(root.right))+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>又是一道二叉树的问题，万变不离其宗，BFS，Stack，DFS，Queue，递归思路不能忘记！</p>
-</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>采用递归的思路解决。</p>
+<p><strong>c++实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/maximum-depth-of-binary-tree/</span></span><br><span class="line"><span class="comment"> * Beats : 83.16%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> left = maxDepth(root-&gt;left);</span><br><span class="line">		<span class="keyword">int</span> right = maxDepth(root-&gt;right);</span><br><span class="line">		<span class="keyword">return</span> left &gt; right ? left + <span class="number">1</span> : right + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/maximum-depth-of-binary-tree/</span></span><br><span class="line"><span class="comment"> * Beats : 40%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumDepthofBinaryTree</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left),maxDepth(root.right))+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一道二叉树的问题，万变不离其宗，BFS，Stack，DFS，Queue，递归思路不能忘记！</p>
 
       
     </div>
@@ -449,9 +446,9 @@
           
             <a href="/tags/LeetCode-easy/" <i class="fa fa-tag"> LeetCode-easy</a>
           
-            <a href="/tags/recursion-递归/" <i class="fa fa-tag"> recursion(递归)</a>
+            <a href="/tags/Tree-树/" <i class="fa fa-tag"> Tree(树)</a>
           
-            <a href="/tags/Optimize-优化/" <i class="fa fa-tag"> Optimize(优化)</a>
+            <a href="/tags/recursion-递归/" <i class="fa fa-tag"> recursion(递归)</a>
           
         </div>
       
@@ -658,7 +655,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BinaryTree-Operation-二叉树操作"><span class="nav-number">1.</span> <span class="nav-text">BinaryTree Operation(二叉树操作)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路："><span class="nav-number">2.1.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimized-优化"><span class="nav-number">2.2.</span> <span class="nav-text">Optimized(优化)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路："><span class="nav-number">1.1.</span> <span class="nav-text">思路：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -692,7 +689,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">69.2k</span>
+    <span title="Site words total count">69.3k</span>
   
 </div>
 
