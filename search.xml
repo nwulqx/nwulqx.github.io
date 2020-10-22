@@ -35,7 +35,7 @@
 <li><p>让程序员通过使编译器能够生成更有效的机器代码来学习编写C代码。你会惊讶于C代码做的一些简单变换能给程序带来多大的速度提升！—《CSAPP：XIV本书概述-第5章》</p>
 <p>  你可能没想过，C语言一些简单的如：调整代码顺序，简单的增加几句就可以提升代码速度，这是很神奇的一件事情！</p>
 </li>
-<li><p>存储器是由不同容量、造假和访问时间的存储设备组成的<strong>层次结构</strong>。—《CSAPP：XIV本书概述-第6章》</p>
+<li><p>存储器是由不同容量、造价和访问时间的存储设备组成的<strong>层次结构</strong>。—《CSAPP：XIV本书概述-第6章》</p>
 <p>  <strong>存储器的层次结构</strong>在计算机中是一个非常重要的概念，从寄存器，CPU高速缓存，内存，ssd，硬盘都是层次结构中的一员，他们共同贡献自己的力量，让你感觉计算机的存储既快速又宽阔。</p>
 </li>
 <li><p>连接器生成的目标文件是与一些像加载、虚拟内存和内存映射这样的概念相关的。—《CSAPP：XIV本书概述-第7章》</p>
@@ -52,6 +52,8 @@
 </li>
 <li><p>并发编程，<strong>三种编写并发程序的基本机制（进程、IO多路复用、线程）</strong>；探讨了用P、V信号量操作来实现同步、线程安全和可重入、竞争条件以及死锁等的基本原则。—《CSAPP：XIV本书概述-第12章》</p>
 <p>  <strong>进程，线程，PV信号量</strong>这三个是非常重要的概念，进程 &gt; 线程，所以，经常可以看到，进程中存在线程的并行等操作。</p>
+</li>
+<li><p>本书虽然谈及了机器语言，但是重点并不在于如何手工编写汇编语言，而是关注C语言编译器是如何将C语言的结构翻译成机器代码的，包括编译器是如何翻译指针、循环、过程调用以及开关（switch）语句的。更进一步地，我们将更广泛和全盘地看待系统，包括硬件和系统软件，涵盖了包括链接、加载、进程、信号、性能优化、虚拟内存、I/O以及网络与并发编程等在内的主题。</p>
 </li>
 </ul>
 ]]></content>
@@ -2701,8 +2703,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Pre-Order Traversal(先序遍历)</tag>
         <tag>Morris Traversal</tag>
+        <tag>Pre-Order Traversal(先序遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -4087,7 +4089,7 @@ help(值为nu6的节点);return;
 <p><img src="http://i.imgur.com/O4dnoPP.png" alt></p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">JSP中最常见的一种语法：</span><br><span class="line">&lt;%=java代码%&gt;，就是一种很常见的模板写法。</span><br></pre></td></tr></table></figure>
-<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而前端去操作的话，会使用JavaScript：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">'title'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        type: <span class="string">"get"</span>,</span><br><span class="line">        url: <span class="string">"data.json"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"#title"</span>).html(data.title);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>可能都会基于此种方式。</p>
 <p><strong>区别：</strong></p>
 <ol>
