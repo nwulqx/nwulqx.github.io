@@ -20,6 +20,8 @@ Output: [1,3,12,0,0]
 1. You must do this **in-place** without making a copy of the array.
 2. Minimize the total number of operations.
 
+<!--more-->
+
 # 分析
 
 这个问题想复杂了，其实很简单，设置一个索引把非零数按序重新按序排列，最后将后面补0

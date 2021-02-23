@@ -44,6 +44,8 @@ Explanation: Note that the third maximum here means the third maximum distinct n
 Both numbers with value 2 are both considered as second maximum.
 ```
 
+<!--more-->
+
 # 分析
 
 查找第三个最大的数，这个问题以前应该碰到过类似问题，查找最大的都会，但是问题变为第三个最大的就不会了。

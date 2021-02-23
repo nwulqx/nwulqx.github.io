@@ -21,6 +21,8 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 
 If you have figured out the O(*n*) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
+<!--more-->
+
 # 分析
 
 这个问题比较明显，是动态规划的问题。

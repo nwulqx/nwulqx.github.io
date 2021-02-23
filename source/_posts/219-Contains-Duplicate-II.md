@@ -29,6 +29,8 @@ Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
 ```
 
+<!--more-->
+
 # 分析
 
 使用HashMap做就可以了。
