@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T10:27:00.078Z">
+<meta property="og:updated_time" content="2021-02-23T14:42:53.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="219. Contains Duplicate II">
 <meta name="twitter:description" content="Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-29T18:27:00+08:00">
-                2020-04-29
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:42:53+08:00">
+                2021-02-23
               </time>
             
           </span>
@@ -403,6 +403,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>], k = <span class="number">1</span></span><br><span class="line">Output: <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], k = <span class="number">2</span></span><br><span class="line">Output: <span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>使用HashMap做就可以了。</p>
 <p><strong>Java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/contains-duplicate-ii</span></span><br><span class="line"><span class="comment"> * Beats : 89.19%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(n);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.containsKey(nums[i]))&#123;</span><br><span class="line">                <span class="keyword">if</span>(i - hash.get(nums[i]) &lt;= k)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    hash.put(nums[i],i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                hash.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -674,7 +675,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

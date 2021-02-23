@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given an array nums, write a function to move all 0‘s to the end of it while maintaining the relative order of the non-zero elements. Example: 12Input: [0,1,0,3,12]Output: [1,3,12,0,0] Note:  You must">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-30T07:37:49.477Z">
+<meta property="og:updated_time" content="2021-02-23T14:42:45.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="283. Move Zeroes">
 <meta name="twitter:description" content="Given an array nums, write a function to move all 0‘s to the end of it while maintaining the relative order of the non-zero elements. Example: 12Input: [0,1,0,3,12]Output: [1,3,12,0,0] Note:  You must">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-30T15:37:49+08:00">
-                2020-04-30
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:42:45+08:00">
+                2021-02-23
               </time>
             
           </span>
@@ -404,6 +404,7 @@
 <li>You must do this <strong>in-place</strong> without making a copy of the array.</li>
 <li>Minimize the total number of operations.</li>
 </ol>
+<a id="more"></a>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个问题想复杂了，其实很简单，设置一个索引把非零数按序重新按序排列，最后将后面补0</p>
 <p><strong>c++实现</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/move-zeroes</span></span><br><span class="line"><span class="comment"> * Beats : 99.83%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> n = nums.size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (nums[i] != <span class="number">0</span>)&#123;</span><br><span class="line">				nums[index++] = nums[i];</span><br><span class="line"> 			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = index; j &lt; n; j++)&#123;</span><br><span class="line">			nums[j] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -673,7 +674,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

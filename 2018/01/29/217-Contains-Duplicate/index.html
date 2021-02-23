@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T10:18:49.662Z">
+<meta property="og:updated_time" content="2021-02-23T14:42:56.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="217. Contains Duplicate">
 <meta name="twitter:description" content="Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-29T18:18:49+08:00">
-                2020-04-29
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:42:56+08:00">
+                2021-02-23
               </time>
             
           </span>
@@ -404,6 +404,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">Output: <span class="keyword">false</span></span><br></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">2</span>]</span><br><span class="line">Output: <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h2 id="方法一：利用排序"><a href="#方法一：利用排序" class="headerlink" title="方法一：利用排序"></a>方法一：利用排序</h2><p>思路很简单，排序，然后找重。</p>
 <p><strong>java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/contains-duplicate</span></span><br><span class="line"><span class="comment"> * Beats : 99.76%;</span></span><br><span class="line"><span class="comment"> * Time complicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == nums[i+<span class="number">1</span>]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -682,7 +683,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

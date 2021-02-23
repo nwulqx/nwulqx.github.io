@@ -667,8 +667,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-30T15:41:59+08:00">
-                2020-04-30
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:42:41+08:00">
+                2021-02-23
               </time>
             
           </span>
@@ -733,31 +733,20 @@
 
       
         
-          
-            <p>Given a <strong>non-empty</strong> array of integers, return the <strong>third</strong> maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).</p>
+          <p>Given a <strong>non-empty</strong> array of integers, return the <strong>third</strong> maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).</p>
 <p><strong>Example 1:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">Output: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">Explanation: The third maximum is <span class="number">1</span>.</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">Output: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">Explanation: The third maximum does not exist, <span class="function">so the <span class="title">maximum</span> <span class="params">(<span class="number">2</span>)</span> is returned instead.</span></span><br></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">Output: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">Explanation: Note that the third maximum here means the third maximum distinct number.</span><br><span class="line">Both numbers with value <span class="number">2</span> are both considered as second maximum.</span><br></pre></td></tr></table></figure>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>查找第三个最大的数，这个问题以前应该碰到过类似问题，查找最大的都会，但是问题变为第三个最大的就不会了。</p>
-<p>思路：</p>
-<ol>
-<li><p>借助一个set集合，set内部会按照有序排列，c++中只要不用unordered_set就行，这样set会自动排序这个数组，我们只需要维护这个set集合大小为3，那么其实就找出了前三个最大的数了。</p>
-</li>
-<li><p>当然这个问题也可以用来找最小的3个数，只不过此时将从set集合的尾部删除元素。</p>
-</li>
-</ol>
-<p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/third-maximum-number/</span></span><br><span class="line"><span class="comment"> * Beats : 100%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(n);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; top3;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">			top3.insert(num);</span><br><span class="line">			<span class="keyword">if</span> (top3.size() &gt; <span class="number">3</span>)&#123;</span><br><span class="line">				top3.erase(top3.begin());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//注意end返回最后一个元素的下一个位置，所以要用rbegin</span></span><br><span class="line">		<span class="keyword">return</span> top3.size() == <span class="number">3</span> ? *top3.begin() : *top3.rbegin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是：<code>set.end()</code>返回的是最后一个元素的下一个位置。所以使用<code>set.rbegin()</code></p>
-<p>同时，<code>top3.erase(top3.begin());</code>用于删除头元素，也就是删除set中最小的元素，所以就剩下最大的3个元素了；如果此题是查找最小的3个元素，那么就变成了<code>top3.erase(top3.rbegin());</code>删除集合中最大的元素</p>
-<p>这道题目python实现上述算法，有点困难。这里给一个网上的python作为<strong>参考</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">thirdMax</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        nums = sorted(list(set(nums)))</span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> max(nums)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">-3</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>set，map集合可以借助其默认有序的特点，对其保存最大n位或最小n位数，是很值得考虑的。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/30/414-Third-Maximum-Number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -850,8 +839,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-30T15:37:49+08:00">
-                2020-04-30
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:42:45+08:00">
+                2021-02-23
               </time>
             
           </span>
@@ -916,8 +905,7 @@
 
       
         
-          
-            <p>Given an array <code>nums</code>, write a function to move all <code>0</code>‘s to the end of it while maintaining the relative order of the non-zero elements.</p>
+          <p>Given an array <code>nums</code>, write a function to move all <code>0</code>‘s to the end of it while maintaining the relative order of the non-zero elements.</p>
 <p><strong>Example:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">12</span>]</span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">3</span>,<span class="number">12</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <p><strong>Note</strong>:</p>
@@ -925,14 +913,13 @@
 <li>You must do this <strong>in-place</strong> without making a copy of the array.</li>
 <li>Minimize the total number of operations.</li>
 </ol>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个问题想复杂了，其实很简单，设置一个索引把非零数按序重新按序排列，最后将后面补0</p>
-<p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/move-zeroes</span></span><br><span class="line"><span class="comment"> * Beats : 99.83%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> n = nums.size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (nums[i] != <span class="number">0</span>)&#123;</span><br><span class="line">				nums[index++] = nums[i];</span><br><span class="line"> 			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = index; j &lt; n; j++)&#123;</span><br><span class="line">			nums[j] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>python实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: None Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">                nums[index] = nums[i]</span><br><span class="line">                index += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(index,len(nums)):</span><br><span class="line">            nums[i] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>有时候，这种问题很简单，不要把它想得太难了，直接遍历可能会很容易。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/30/283-Move-Zeroes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1295,7 +1282,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
