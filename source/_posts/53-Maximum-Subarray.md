@@ -4,7 +4,7 @@ date: 2018-01-27 12:33:00
 tags:
 - LeetCode-easy
 - DP(动态规划)
-- Array
+- 最大子数组和
 ---
 
 Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
@@ -65,19 +65,14 @@ class Solution {
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-		vector<int> res;
-		int sum = nums[0];
-		res.push_back(nums[0]);
-		for (int i = 1; i < nums.size(); i++){
-			if (nums[i] + res[i-1] > nums[i]){
-				res.push_back(nums[i] + res[i - 1]);
-			}
-			else{
-				res.push_back(nums[i]);
-			}
-			sum = res[i] > sum ? res[i] : sum;
-		}
-		return sum;
+        int length = nums.size();
+        vector<int> dp(nums);
+        int result = nums[0];
+        for(int i = 1;i < length; i++){
+            dp[i] = max(dp[i-1]+nums[i],dp[i]);
+            result = max(result,dp[i]);
+        }
+        return result;
     }
 };
 ```
