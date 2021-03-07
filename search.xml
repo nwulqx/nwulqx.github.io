@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>673. Number of Longest Increasing Subsequence</title>
+    <url>/2021/03/07/673-Number-of-Longest-Increasing-Subsequence/</url>
+    <content><![CDATA[<p>Given an integer array nums, return the number of longest increasing subsequences.</p>
+<p>Notice that the sequence has to be strictly increasing.</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: nums = [1,3,5,4,7]<br>Output: 2<br>Explanation: The two longest increasing subsequences are [1, 3, 4, 7] and [1, 3, 5, 7].</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: nums = [2,2,2,2,2]<br>Output: 5<br>Explanation: The length of longest continuous increasing subsequence is 1, and there are 5 subsequences’ length is 1, so output 5.</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= 2000</li>
+<li>-106 &lt;= nums[i] &lt;= 106</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>求解最长子序列的个数，注意需要另一个状态来保存每一个以i为结尾的序列的个数。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findNumberOfLIS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(length,<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cnt(length,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> maxLen = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j] &lt; nums[i])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(dp[i] &lt; dp[j]+<span class="number">1</span>)&#123;</span><br><span class="line">                        dp[i] = dp[j]+<span class="number">1</span>;</span><br><span class="line">                        cnt[i] = cnt[j]; <span class="comment">// 注意这里的状态转移</span></span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(dp[i] == dp[j]+<span class="number">1</span>)&#123;</span><br><span class="line">                        cnt[i] += cnt[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = dp[i]&gt;maxLen?dp[i]:maxLen;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            result += (dp[i]==maxLen?cnt[i]:<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+        <tag>LIS(最长上升子序列)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>354. Russian Doll Envelopes</title>
+    <url>/2021/03/07/354-Russian-Doll-Envelopes/</url>
+    <content><![CDATA[<p>You are given a 2D array of integers envelopes where envelopes[i] = [wi, hi] represents the width and the height of an envelope.</p>
+<p>One envelope can fit into another if and only if both the width and height of one envelope is greater than the width and height of the other envelope.</p>
+<p>Return the maximum number of envelopes can you Russian doll (i.e., put one inside the other).</p>
+<p>Note: You cannot rotate an envelope.</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: envelopes = [[5,4],[6,4],[6,7],[2,3]]<br>Output: 3<br>Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] =&gt; [5,4] =&gt; [6,7]).</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: envelopes = [[1,1],[1,1],[1,1]]<br>Output: 1</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= envelopes.length &lt;= 5000</li>
+<li>envelopes[i].length == 2</li>
+<li>1 &lt;= wi, hi &lt;= 104</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>常规动态规划解法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxEnvelopes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; envelopes)</span> </span>&#123;</span><br><span class="line">        sort(envelopes.begin(),envelopes.end());</span><br><span class="line">        <span class="keyword">int</span> length = envelopes.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(length,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(envelopes[j][<span class="number">0</span>]&lt;envelopes[i][<span class="number">0</span>] &amp;&amp; envelopes[j][<span class="number">1</span>]&lt;envelopes[i][<span class="number">1</span>])&#123;</span><br><span class="line">                    dp[i] = max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = max(result,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><p>常规方法最重要的一点是基于排序的方法，但是排序是有优化点的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxEnvelopes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; envelopes)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序的重点！</span></span><br><span class="line">        sort(envelopes.begin(), envelopes.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; e1, <span class="keyword">const</span> <span class="keyword">auto</span>&amp; e2) &#123;</span><br><span class="line">            <span class="keyword">return</span> e1[<span class="number">0</span>] &lt; e2[<span class="number">0</span>] || (e1[<span class="number">0</span>] == e2[<span class="number">0</span>] &amp;&amp; e1[<span class="number">1</span>] &gt; e2[<span class="number">1</span>]);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">int</span> length = envelopes.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(length,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(envelopes[j][<span class="number">0</span>]&lt;envelopes[i][<span class="number">0</span>] &amp;&amp; envelopes[j][<span class="number">1</span>]&lt;envelopes[i][<span class="number">1</span>])&#123;</span><br><span class="line">                    dp[i] = max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = max(result,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+        <tag>LIS(最长上升子序列)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>300. Longest Increasing Subsequence</title>
+    <url>/2021/03/07/300-Longest-Increasing-Subsequence/</url>
+    <content><![CDATA[<p>Given an integer array nums, return the length of the longest strictly increasing subsequence.</p>
+<p>A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, <code>[3,6,2,7]</code> is a subsequence of the array <code>[0,3,1,6,2,2,7]</code>.</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: nums = [10,9,2,5,3,7,101,18]<br>Output: 4<br>Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: nums = [0,1,0,3,2,3]<br>Output: 4</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p>Input: nums = [7,7,7,7,7,7,7]<br>Output: 1</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= 2500</li>
+<li>-104 &lt;= nums[i] &lt;= 104</li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>Could you come up with the O(n2) solution?</li>
+<li>Could you improve it to O(n log(n)) time complexity?</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>dp[i]表示第i个索引结尾时的最长序列。</p>
+<p>需要借助两个循环：</p>
+<ul>
+<li>第一个循环目的是找出所有<code>i</code>结尾时最长序列长度</li>
+<li>第二个循环目的是计算以<code>i</code>结尾时，dp[0]~dp[i-1]的最长长度（本质上是递归的迭代办法）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(length,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)&#123;</span><br><span class="line">            dp[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j] &lt; nums[i])&#123;</span><br><span class="line">                    dp[i] = max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = max(result,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+        <tag>LIS(最长上升子序列)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>152. Maximum Product Subarray</title>
+    <url>/2021/03/07/152-Maximum-Product-Subarray/</url>
+    <content><![CDATA[<p>Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.</p>
+<p>It is guaranteed that the answer will fit in a 32-bit integer.</p>
+<p>A subarray is a contiguous subsequence of the array.</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: nums = [2,3,-2,4]<br>Output: 6<br>Explanation: [2,3] has the largest product 6.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: nums = [-2,0,-1]<br>Output: 0<br>Explanation: The result cannot be 2, because [-2,-1] is not a subarray.</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= 2 * 104</li>
+<li>-10 &lt;= nums[i] &lt;= 10</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>注意这道题目对于负数是要处理的，因为两个负数相乘是负数，所以要考虑：</p>
+<ul>
+<li>使用一个minDP的DP数组，用来存储负数最小的值，因为负数最小的值，乘以一个负数会变成最大的正数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; minDP(nums),maxDP(nums);</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; length;i++)&#123;</span><br><span class="line">            <span class="comment">// 这里的逻辑要认真考虑</span></span><br><span class="line">            maxDP[i] = max(minDP[i<span class="number">-1</span>]*nums[i],max(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            minDP[i] = min(minDP[i<span class="number">-1</span>]*nums[i],min(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            result = max(result,maxDP[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+        <tag>最大子数组和</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>深入理解计算机系统CS:APP</title>
     <url>/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FCS-APP/</url>
     <content><![CDATA[<p>深入理解计算机系统CS:APP是我非常喜欢的一本介绍计算机系统的书籍。他补充了我许多计算机基础知识，例如：编译，汇编，二进制补码，CPU流水线，高级语言的汇编优化，内存管理等等，很多计算机基础，都在这本书中涉及。他的阅读体验非常好，每节后面都有练习题并配有讲解答案，非常适合边学边练。</p>
@@ -2212,15 +2340,15 @@ d&amp;Hyscvnm
 <p><strong>Java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/maximum-subarray/</span></span><br><span class="line"><span class="comment"> * Beats :  67.13%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i-<span class="number">1</span>]+nums[i]&gt;nums[i])&#123;</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>]+nums[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            sum = dp[i]&gt;sum?dp[i]:sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/maximum-subarray/</span></span><br><span class="line"><span class="comment"> * Beats : 11.94 %;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">		<span class="keyword">int</span> sum = nums[<span class="number">0</span>];</span><br><span class="line">		res.push_back(nums[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (nums[i] + res[i<span class="number">-1</span>] &gt; nums[i])&#123;</span><br><span class="line">				res.push_back(nums[i] + res[i - <span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				res.push_back(nums[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			sum = res[i] &gt; sum ? res[i] : sum;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/maximum-subarray/</span></span><br><span class="line"><span class="comment"> * Beats : 11.94 %;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(nums);</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; length; i++)&#123;</span><br><span class="line">            dp[i] = max(dp[i<span class="number">-1</span>]+nums[i],dp[i]);</span><br><span class="line">            result = max(result,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>python实现</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = []</span><br><span class="line">        dp.append(nums[<span class="number">0</span>])</span><br><span class="line">        sum = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</span><br><span class="line">            <span class="keyword">if</span> dp[i<span class="number">-1</span>]+nums[i] &gt; nums[i]:</span><br><span class="line">                dp.append(dp[i - <span class="number">1</span>] + nums[i])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp.append(nums[i])</span><br><span class="line">        sum = max(dp)</span><br><span class="line">        <span class="keyword">return</span> sum</span><br></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>动态规划（Dynamic Programing）问题是很有意思的。总体思路其实就是循环，不过这个循环很特殊，他的当前循环的变量是根据之前的数据得出的，有很强的规划性（根据之前数据得出当前值）。总体思路是：设计一个数组存放动态规划数据，然后再在这个动态规划数组中寻找需要的数据；一般情况下可以优化，后一步查找可以在生成动态规划数组时就完成，进而省去一个循环。</p>
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Array</tag>
         <tag>DP(动态规划)</tag>
+        <tag>最大子数组和</tag>
       </tags>
   </entry>
   <entry>
@@ -2711,8 +2839,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Pre-Order Traversal(先序遍历)</tag>
         <tag>Morris Traversal</tag>
+        <tag>Pre-Order Traversal(先序遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -2800,9 +2928,9 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
@@ -2841,8 +2969,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
         <tag>AVL树(平衡二叉树)</tag>
       </tags>
   </entry>
@@ -2900,11 +3028,11 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Tree(树)</tag>
       </tags>
   </entry>
   <entry>
@@ -2927,8 +3055,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>recursion(递归)</tag>
         <tag>Tree(树)</tag>
+        <tag>recursion(递归)</tag>
       </tags>
   </entry>
   <entry>
@@ -2971,9 +3099,9 @@ In this case, no transaction is done, i.e. max profit = 0.
         <tag>LeetCode-easy</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>Optimize(优化)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
+        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
@@ -3005,12 +3133,12 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
+        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Tree(树)</tag>
-        <tag>Stack(栈)</tag>
       </tags>
   </entry>
   <entry>
@@ -3054,12 +3182,12 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
+        <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
-        <tag>Tree(树)</tag>
-        <tag>Stack(栈)</tag>
       </tags>
   </entry>
   <entry>
@@ -3093,8 +3221,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Array</tag>
         <tag>Optimize(优化)</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -4344,8 +4472,8 @@ help(值为nu6的节点);return;
 </blockquote>
 ]]></content>
       <tags>
-        <tag>XSS</tag>
         <tag>JavaScript</tag>
+        <tag>XSS</tag>
       </tags>
   </entry>
   <entry>
