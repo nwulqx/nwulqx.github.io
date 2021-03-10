@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>213. House Robber II</title>
+    <url>/2021/03/10/213-House-Robber-II/</url>
+    <content><![CDATA[<p>ou are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
+  <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: nums = [2,3,2]<br>Output: 3<br>Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2), because they are adjacent houses.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: nums = [1,2,3,1]<br>Output: 4<br>Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).<br>Total amount you can rob = 1 + 3 = 4.</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p>Input: nums = [0]<br>Output: 0</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= 100</li>
+<li>0 &lt;= nums[i] &lt;= 1000</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size(); </span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span> n ? nums[<span class="number">0</span>] : <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 看成两个DP来解决~</span></span><br><span class="line">        <span class="keyword">return</span> max(robber(nums, <span class="number">0</span>, n - <span class="number">1</span>), robber(nums, <span class="number">1</span>, n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">robber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>, pre = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt; r; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = cur;</span><br><span class="line">            cur = max(pre + nums[i], cur);</span><br><span class="line">            pre = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>198. House Robber</title>
+    <url>/2021/03/10/198-House-Robber/</url>
+    <content><![CDATA[<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: nums = [1,2,3,1]<br>Output: 4<br>Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).<br>Total amount you can rob = 1 + 3 = 4.</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: nums = [2,7,9,3,1]<br>Output: 12<br>Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).<br>Total amount you can rob = 2 + 9 + 1 = 12.</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= 100</li>
+<li>0 &lt;= nums[i] &lt;= 400</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(length &lt; <span class="number">2</span>) <span class="keyword">return</span> length ? nums[<span class="number">0</span>] : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>, pre = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)&#123;</span><br><span class="line">            <span class="comment">// 这块的逻辑很巧妙，巧妙地解决了前两个数的问题</span></span><br><span class="line">            <span class="keyword">int</span> tmp = cur;</span><br><span class="line">            cur = max(pre+nums[i],cur);</span><br><span class="line">            pre = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>918. Maximum Sum Circular Subarray</title>
+    <url>/2021/03/07/918-Maximum-Sum-Circular-Subarray/</url>
+    <content><![CDATA[<p>Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.</p>
+<p>Here, a circular array means the end of the array connects to the beginning of the array.  (Formally, C[i] = A[i] when 0 &lt;= i &lt; A.length, and C[i+A.length] = C[i] when i &gt;= 0.)</p>
+<p>Also, a subarray may only include each element of the fixed buffer A at most once.  (Formally, for a subarray C[i], C[i+1], …, C[j], there does not exist i &lt;= k1, k2 &lt;= j with k1 % A.length = k2 % A.length.)</p>
+ <a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: [1,-2,3,-2]<br>Output: 3<br>Explanation: Subarray [3] has maximum sum 3</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: [5,-3,5]<br>Output: 10<br>Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p>Input: [3,-1,2,-1]<br>Output: 4<br>Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4</p>
+</blockquote>
+<p><strong>Example 4:</strong></p>
+<blockquote>
+<p>Input: [3,-2,2,-3]<br>Output: 3<br>Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3</p>
+</blockquote>
+<p><strong>Example 5:</strong></p>
+<blockquote>
+<p>Input: [-2,-3,-1]<br>Output: -1<br>Explanation: Subarray [-1] has maximum sum -1</p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<ul>
+<li>-30000 &lt;= A[i] &lt;= 30000</li>
+<li>1 &lt;= A.length &lt;= 30000</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Kadane算法，感觉好像就是把DP数组换成一个基本类型来处理这个操作。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubarraySumCircular</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = A.size();</span><br><span class="line">        <span class="keyword">int</span> curMin = <span class="number">0</span>,curMax = <span class="number">0</span>,minSum = A[<span class="number">0</span>],maxSum = A[<span class="number">0</span>],sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            sum += A[i];</span><br><span class="line">            curMax = max(curMax+A[i],A[i]);</span><br><span class="line">            maxSum = max(curMax,maxSum);</span><br><span class="line"></span><br><span class="line">            curMin = min(curMin+A[i],A[i]);</span><br><span class="line">            minSum = min(curMin,minSum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回值，要考虑全部为负数的情况。</span></span><br><span class="line">        <span class="keyword">return</span> maxSum &lt; <span class="number">0</span> ? maxSum : max(maxSum,sum-minSum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>DP(动态规划)</tag>
+        <tag>最大子数组和</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>673. Number of Longest Increasing Subsequence</title>
     <url>/2021/03/07/673-Number-of-Longest-Increasing-Subsequence/</url>
     <content><![CDATA[<p>Given an integer array nums, return the number of longest increasing subsequences.</p>
@@ -2750,8 +2843,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>recursion(递归)</tag>
-        <tag>LeetCode-medium</tag>
         <tag>Post-Order Traversal(后序遍历)</tag>
+        <tag>LeetCode-medium</tag>
         <tag>Morris Traversal</tag>
       </tags>
   </entry>
@@ -2839,8 +2932,8 @@ In this case, no transaction is done, i.e. max profit = 0.
       <tags>
         <tag>recursion(递归)</tag>
         <tag>LeetCode-medium</tag>
-        <tag>Morris Traversal</tag>
         <tag>Pre-Order Traversal(先序遍历)</tag>
+        <tag>Morris Traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -3221,8 +3314,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>Optimize(优化)</tag>
         <tag>Array</tag>
+        <tag>Optimize(优化)</tag>
       </tags>
   </entry>
   <entry>
