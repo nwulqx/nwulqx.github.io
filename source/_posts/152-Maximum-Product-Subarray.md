@@ -4,6 +4,8 @@ date: 2021-03-07 17:23:05
 tags:
 - DP(动态规划)
 - 最大子数组和
+- Array
+- LeetCode-medium
 ---
 
 Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
@@ -54,3 +56,48 @@ public:
     }
 };
 ```
+
+二刷
+
+参考：https://leetcode.com/problems/maximum-product-subarray/discuss/48230/Possibly-simplest-solution-with-O(n)-time-complexity
+
+```c++
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int res = nums[0];
+        for(int i = 1,rmin = res,rmax = res; i < nums.size(); i++){
+            if(nums[i] < 0){
+                swap(rmin, rmax);
+            }
+            rmax = max(nums[i],rmax*nums[i]);
+            rmin = min(nums[i],rmin*nums[i]);
+            res = max(rmax,res);
+        }
+        return res;
+    }
+};
+```
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+    let res = nums[0], rmin = nums[0], rmax = nums[0];
+    for(let i = 1; i < nums.length; i++){
+        if(nums[i] < 0){
+            const temp = rmin;
+            rmin = rmax;
+            rmax = temp;
+        }
+        rmax = Math.max(nums[i],nums[i]*rmax);
+        rmin = Math.min(nums[i],nums[i]*rmin);
+        
+        res = Math.max(res,rmax);
+    }
+    return res;
+};
+```
+
