@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/162-Find-Peak-Element/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -301,7 +301,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/09/12/64-Minimum-Path-Sum/" itemprop="url">64. Minimum Path Sum</a></h1>
+                <a class="post-title-link" href="/2021/09/20/162-Find-Peak-Element/" itemprop="url">162. Find Peak Element</a></h1>
         
 
         <div class="post-meta">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-12T19:47:10+08:00">
-                2021-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T19:56:02+08:00">
+                2021-09-20
               </time>
             
 
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-12T19:56:19+08:00">
-                2021-09-12
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T20:01:43+08:00">
+                2021-09-20
               </time>
             
           </span>
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  372 字
+                  459 字
                 </span>
               
 
@@ -395,11 +395,13 @@
 
       
         
-          <p>Given a <code>m x n</code> <code>grid</code> filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.</p>
-<p><strong>Note:</strong> You can only move either down or right at any point in time.</p>
+          <p>A peak element is an element that is strictly greater than its neighbors.</p>
+<p>Given an integer array <code>nums</code>, find a peak element, and return its index. If the array contains multiple peaks, return the index to <strong>any of the peaks</strong>.</p>
+<p>You may imagine that <code>nums[-1] = nums[n] = -∞</code>.</p>
+<p>You must write an algorithm that runs in <code>O(log n)</code> time.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/09/12/64-Minimum-Path-Sum/#more" rel="contents">
+            <a class="btn" href="/2021/09/20/162-Find-Peak-Element/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -449,7 +451,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/12/63-Unique-Paths-II/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/153-Find-Minimum-in-Rotated-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -468,7 +470,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/09/12/63-Unique-Paths-II/" itemprop="url">63. Unique Paths II</a></h1>
+                <a class="post-title-link" href="/2021/09/20/153-Find-Minimum-in-Rotated-Sorted-Array/" itemprop="url">153. Find Minimum in Rotated Sorted Array</a></h1>
         
 
         <div class="post-meta">
@@ -480,8 +482,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-12T19:33:50+08:00">
-                2021-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T19:38:36+08:00">
+                2021-09-20
               </time>
             
 
@@ -496,8 +498,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-12T19:48:25+08:00">
-                2021-09-12
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T19:42:15+08:00">
+                2021-09-20
               </time>
             
           </span>
@@ -524,7 +526,349 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  487 字
+                  429 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Suppose an array of length <code>n</code> sorted in ascending order is <strong>rotated</strong> between <code>1</code> and <code>n</code> times. For example, the array <code>nums = [0,1,2,4,5,6,7]</code> might become:</p>
+<ul>
+<li><code>[4,5,6,7,0,1,2]</code> if it was rotated <code>4</code> times.</li>
+<li><code>[0,1,2,4,5,6,7]</code> if it was rotated <code>7</code> times.</li>
+</ul>
+<p>Notice that <strong>rotating</strong> an array <code>[a[0], a[1], a[2], ..., a[n-1]]</code> 1 time results in the array <code>[a[n-1], a[0], a[1], a[2], ..., a[n-2]]</code>.</p>
+<p>Given the sorted rotated array <code>nums</code> of <strong>unique</strong> elements, return <em>the minimum element of this array</em>.</p>
+<p>You must write an algorithm that runs in <code>O(log n) time.</code></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/09/20/153-Find-Minimum-in-Rotated-Sorted-Array/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/150-Evaluate-Reverse-Polish-Notation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LQX">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="War3cdota's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/09/20/150-Evaluate-Reverse-Polish-Notation/" itemprop="url">150. Evaluate Reverse Polish Notation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T19:11:53+08:00">
+                2021-09-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T19:17:27+08:00">
+                2021-09-20
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  516 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Evaluate the value of an arithmetic expression in <a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank" rel="noopener">Reverse Polish Notation</a>.</p>
+<p>Valid operators are <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. Each operand may be an integer or another expression.</p>
+<p><strong>Note</strong> that division between two integers should truncate toward zero.</p>
+<p>It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/09/20/150-Evaluate-Reverse-Polish-Notation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/134-Gas-Station/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LQX">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="War3cdota's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/09/20/134-Gas-Station/" itemprop="url">134. Gas Station</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T18:56:03+08:00">
+                2021-09-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T19:12:43+08:00">
+                2021-09-20
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  586 字
                 </span>
               
 
@@ -562,360 +906,30 @@
 
       
         
-          <p>A robot is located at the top-left corner of a <code>m x n</code> grid (marked ‘Start’ in the diagram below).</p>
-<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
-<p>Now consider if some obstacles are added to the grids. How many unique paths would there be?</p>
-<p>An obstacle and space is marked as <code>1</code> and <code>0</code> respectively in the grid.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/09/12/63-Unique-Paths-II/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/12/62-Unique-Paths/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LQX">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="War3cdota's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/12/62-Unique-Paths/" itemprop="url">62. Unique Paths</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-12T18:26:52+08:00">
-                2021-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-12T19:47:23+08:00">
-                2021-09-12
-              </time>
-            
-          </span>
-
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  311 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>A robot is located at the top-left corner of a <code>m x n</code> grid (marked ‘Start’ in the diagram below).</p>
-<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
-<p>How many possible unique paths are there?</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/09/12/62-Unique-Paths/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/12/59-Spiral-Matrix-II/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LQX">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="War3cdota's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/12/59-Spiral-Matrix-II/" itemprop="url">59. Spiral Matrix II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-12T16:56:45+08:00">
-                2021-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-12T19:28:36+08:00">
-                2021-09-12
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  420 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Given a positive integer <code>n</code>, generate an <code>n x n</code> <code>matrix</code> filled with elements from <code>1</code> to <code>n2</code> in spiral order.</p>
+            <p>There are <code>n</code> gas stations along a circular route, where the amount of gas at the <code>ith</code> station is <code>gas[i]</code>.</p>
+<p>You have a car with an unlimited gas tank and it costs <code>cost[i]</code> of gas to travel from the <code>ith</code> station to its next <code>(i + 1)th</code> station. You begin the journey with an empty tank at one of the gas stations.</p>
+<p>Given two integer arrays <code>gas</code> and <code>cost</code>, return <em>the starting gas station’s index if you can travel around the circuit once in the clockwise direction, otherwise return</em> <code>-1</code>. If there exists a solution, it is <strong>guaranteed</strong> to be <strong>unique</strong></p>
 <p><strong>Example 1:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/11/13/spiraln.jpg" alt="img"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = <span class="number">3</span></span><br><span class="line">Output: [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">8</span>,<span class="number">9</span>,<span class="number">4</span>],[<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">gas</span> <span class="string">=</span> <span class="string">[1,2,3,4,5],</span> <span class="string">cost</span> <span class="string">=</span> <span class="string">[3,4,5,1,2]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">Explanation:</span></span><br><span class="line"><span class="string">Start</span> <span class="string">at</span> <span class="string">station</span> <span class="number">3</span> <span class="string">(index</span> <span class="number">3</span><span class="string">)</span> <span class="string">and</span> <span class="string">fill</span> <span class="string">up</span> <span class="string">with</span> <span class="number">4</span> <span class="string">unit</span> <span class="string">of</span> <span class="string">gas.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">0</span> <span class="string">+</span> <span class="number">4</span> <span class="string">=</span> <span class="number">4</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">4</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">4</span> <span class="bullet">-</span> <span class="number">1</span> <span class="string">+</span> <span class="number">5</span> <span class="string">=</span> <span class="number">8</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">0</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">8</span> <span class="bullet">-</span> <span class="number">2</span> <span class="string">+</span> <span class="number">1</span> <span class="string">=</span> <span class="number">7</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">1</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">7</span> <span class="bullet">-</span> <span class="number">3</span> <span class="string">+</span> <span class="number">2</span> <span class="string">=</span> <span class="number">6</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">2</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">6</span> <span class="bullet">-</span> <span class="number">4</span> <span class="string">+</span> <span class="number">3</span> <span class="string">=</span> <span class="number">5</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">3</span><span class="string">.</span> <span class="string">The</span> <span class="string">cost</span> <span class="string">is</span> <span class="number">5</span><span class="string">.</span> <span class="string">Your</span> <span class="string">gas</span> <span class="string">is</span> <span class="string">just</span> <span class="string">enough</span> <span class="string">to</span> <span class="string">travel</span> <span class="string">back</span> <span class="string">to</span> <span class="string">station</span> <span class="number">3</span><span class="string">.</span></span><br><span class="line"><span class="string">Therefore,</span> <span class="string">return</span> <span class="number">3</span> <span class="string">as</span> <span class="string">the</span> <span class="string">starting</span> <span class="string">index.</span></span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = <span class="number">1</span></span><br><span class="line">Output: [[<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">gas</span> <span class="string">=</span> <span class="string">[2,3,4],</span> <span class="string">cost</span> <span class="string">=</span> <span class="string">[3,4,3]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">-1</span></span><br><span class="line"><span class="attr">Explanation:</span></span><br><span class="line"><span class="string">You</span> <span class="string">can't</span> <span class="string">start</span> <span class="string">at</span> <span class="string">station</span> <span class="number">0</span> <span class="string">or</span> <span class="number">1</span><span class="string">,</span> <span class="string">as</span> <span class="string">there</span> <span class="string">is</span> <span class="string">not</span> <span class="string">enough</span> <span class="string">gas</span> <span class="string">to</span> <span class="string">travel</span> <span class="string">to</span> <span class="string">the</span> <span class="string">next</span> <span class="string">station.</span></span><br><span class="line"><span class="string">Let's</span> <span class="string">start</span> <span class="string">at</span> <span class="string">station</span> <span class="number">2</span> <span class="string">and</span> <span class="string">fill</span> <span class="string">up</span> <span class="string">with</span> <span class="number">4</span> <span class="string">unit</span> <span class="string">of</span> <span class="string">gas.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">0</span> <span class="string">+</span> <span class="number">4</span> <span class="string">=</span> <span class="number">4</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">0</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">4</span> <span class="bullet">-</span> <span class="number">3</span> <span class="string">+</span> <span class="number">2</span> <span class="string">=</span> <span class="number">3</span></span><br><span class="line"><span class="string">Travel</span> <span class="string">to</span> <span class="string">station</span> <span class="number">1</span><span class="string">.</span> <span class="string">Your</span> <span class="string">tank</span> <span class="string">=</span> <span class="number">3</span> <span class="bullet">-</span> <span class="number">3</span> <span class="string">+</span> <span class="number">3</span> <span class="string">=</span> <span class="number">3</span></span><br><span class="line"><span class="string">You</span> <span class="string">cannot</span> <span class="string">travel</span> <span class="string">back</span> <span class="string">to</span> <span class="string">station</span> <span class="number">2</span><span class="string">,</span> <span class="string">as</span> <span class="string">it</span> <span class="string">requires</span> <span class="number">4</span> <span class="string">unit</span> <span class="string">of</span> <span class="string">gas</span> <span class="string">but</span> <span class="string">you</span> <span class="string">only</span> <span class="string">have</span> <span class="number">3</span><span class="string">.</span></span><br><span class="line"><span class="string">Therefore,</span> <span class="string">you</span> <span class="string">can't</span> <span class="string">travel</span> <span class="string">around</span> <span class="string">the</span> <span class="string">circuit</span> <span class="string">once</span> <span class="literal">no</span> <span class="string">matter</span> <span class="string">where</span> <span class="string">you</span> <span class="string">start.</span></span><br></pre></td></tr></table></figure>
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><code>1 &lt;= n &lt;= 20</code></li>
+<li><code>gas.length == n</code></li>
+<li><code>cost.length == n</code></li>
+<li><code>1 &lt;= n &lt;= 104</code></li>
+<li><code>0 &lt;= gas[i], cost[i] &lt;= 104</code></li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/09/12/59-Spiral-Matrix-II/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>参考；<a href="https://www.liuchuo.net/archives/1224" target="_blank" rel="noopener">https://www.liuchuo.net/archives/1224</a></p>
+<p>这道题目其实挺难的，主要在于需要先判断是否能走完一圈，这个并不一定需要先找到开始位置才可以判断。其实循环全部 <code>gas[i]-cost[i]</code>就可得到总和来判断。</p>
+<ul>
+<li>接着去找一个结点，该节点必须满足当前及以后的<code>gas[i]-cost[i]</code>大于0，就是需要的了</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/gas-station/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; gas, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>, tank = <span class="number">0</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; gas.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            total += gas[i] - cost[i];</span><br><span class="line">            <span class="keyword">if</span>(tank &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                tank += gas[i] - cost[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                start = i;</span><br><span class="line">                tank = gas[i] - cost[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total &gt;= <span class="number">0</span>? start:<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">gas</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">cost</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> canCompleteCircuit = <span class="function"><span class="keyword">function</span>(<span class="params">gas, cost</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span>, tank = <span class="number">0</span>, start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; gas.length; i++)&#123;</span><br><span class="line">        total += gas[i] - cost[i];</span><br><span class="line">        <span class="keyword">if</span>(tank &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            tank += gas[i] - cost[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            start = i;</span><br><span class="line">            tank = gas[i] - cost[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total&gt;=<span class="number">0</span>?start:<span class="number">-1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -961,7 +975,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/03/10/213-House-Robber-II/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/128-Longest-Consecutive-Sequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -980,7 +994,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/10/213-House-Robber-II/" itemprop="url">213. House Robber II</a></h1>
+                <a class="post-title-link" href="/2021/09/20/128-Longest-Consecutive-Sequence/" itemprop="url">128. Longest Consecutive Sequence</a></h1>
         
 
         <div class="post-meta">
@@ -992,8 +1006,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-10T21:03:37+08:00">
-                2021-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T18:40:22+08:00">
+                2021-09-20
               </time>
             
 
@@ -1008,8 +1022,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-03-10T21:04:13+08:00">
-                2021-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T19:12:36+08:00">
+                2021-09-20
               </time>
             
           </span>
@@ -1036,7 +1050,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  266 字
+                  346 字
                 </span>
               
 
@@ -1074,11 +1088,11 @@
 
       
         
-          <p>ou are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
-<p>Given a list of non-negative integers nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
+          <p>Given an unsorted array of integers <code>nums</code>, return <em>the length of the longest consecutive elements sequence.</em></p>
+<p>You must write an algorithm that runs in <code>O(n)</code> time.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/03/10/213-House-Robber-II/#more" rel="contents">
+            <a class="btn" href="/2021/09/20/128-Longest-Consecutive-Sequence/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1119,7 +1133,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1169,7 +1183,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1191,7 +1205,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1288,7 +1302,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">81.6k</span>
   
 </div>
 

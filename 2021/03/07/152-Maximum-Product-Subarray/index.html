@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="DP(动态规划),最大子数组和,">
+  <meta name="keywords" content="Array,DP(动态规划),LeetCode-medium,最大子数组和,">
 
 
 
@@ -81,14 +81,14 @@
 
 
 <meta name="description" content="Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product. It is guaranteed that the answer will fit in a 32-bit integer.">
-<meta name="keywords" content="DP(动态规划),最大子数组和">
+<meta name="keywords" content="Array,DP(动态规划),LeetCode-medium,最大子数组和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="152. Maximum Product Subarray">
 <meta property="og:url" content="https://war3cdota.github.io/2021/03/07/152-Maximum-Product-Subarray/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product. It is guaranteed that the answer will fit in a 32-bit integer.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-03-07T09:32:18.485Z">
+<meta property="og:updated_time" content="2021-09-20T11:39:00.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="152. Maximum Product Subarray">
 <meta name="twitter:description" content="Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product. It is guaranteed that the answer will fit in a 32-bit integer.">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-03-07T17:32:18+08:00">
-                2021-03-07
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T19:39:00+08:00">
+                2021-09-20
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  259 字
+                  418 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -417,7 +417,12 @@
 <ul>
 <li>使用一个minDP的DP数组，用来存储负数最小的值，因为负数最小的值，乘以一个负数会变成最大的正数</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        vector&lt;int&gt; minDP(nums),maxDP(nums);</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; length;i++)&#123;</span><br><span class="line">            <span class="comment">// 这里的逻辑要认真考虑</span></span><br><span class="line">            maxDP[i] = max(minDP[i<span class="number">-1</span>]*nums[i],max(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            minDP[i] = min(minDP[i<span class="number">-1</span>]*nums[i],min(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            result = max(result,maxDP[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = nums.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;int&gt; minDP(nums),maxDP(nums);</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; length;i++)&#123;</span><br><span class="line">            <span class="comment">// 这里的逻辑要认真考虑</span></span><br><span class="line">            maxDP[i] = <span class="built_in">max</span>(minDP[i<span class="number">-1</span>]*nums[i],<span class="built_in">max</span>(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            minDP[i] = <span class="built_in">min</span>(minDP[i<span class="number">-1</span>]*nums[i],<span class="built_in">min</span>(nums[i],maxDP[i<span class="number">-1</span>]*nums[i]));</span><br><span class="line">            result = <span class="built_in">max</span>(result,maxDP[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>二刷</p>
+<p>参考：<a href="https://leetcode.com/problems/maximum-product-subarray/discuss/48230/Possibly-simplest-solution-with-O(n)-time-complexity" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-product-subarray/discuss/48230/Possibly-simplest-solution-with-O(n)-time-complexity</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>,rmin = res,rmax = res; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                swap(rmin, rmax);</span><br><span class="line">            &#125;</span><br><span class="line">            rmax = <span class="built_in">max</span>(nums[i],rmax*nums[i]);</span><br><span class="line">            rmin = <span class="built_in">min</span>(nums[i],rmin*nums[i]);</span><br><span class="line">            res = <span class="built_in">max</span>(rmax,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxProduct = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = nums[<span class="number">0</span>], rmin = nums[<span class="number">0</span>], rmax = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> temp = rmin;</span><br><span class="line">            rmin = rmax;</span><br><span class="line">            rmax = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        rmax = <span class="built_in">Math</span>.max(nums[i],nums[i]*rmax);</span><br><span class="line">        rmin = <span class="built_in">Math</span>.min(nums[i],nums[i]*rmin);</span><br><span class="line">        </span><br><span class="line">        res = <span class="built_in">Math</span>.max(res,rmax);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -451,7 +456,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
             <a href="/tags/DP-动态规划/" <i class="fa fa-tag"> DP(动态规划)</a>
+          
+            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
           
             <a href="/tags/最大子数组和/" <i class="fa fa-tag"> 最大子数组和</a>
           
@@ -559,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -581,7 +590,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -694,7 +703,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">81.6k</span>
   
 </div>
 

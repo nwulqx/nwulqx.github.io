@@ -413,7 +413,7 @@
 </li>
 </ol>
 <p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/third-maximum-number/</span></span><br><span class="line"><span class="comment"> * Beats : 100%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(n);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; top3;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">			top3.insert(num);</span><br><span class="line">			<span class="keyword">if</span> (top3.size() &gt; <span class="number">3</span>)&#123;</span><br><span class="line">				top3.erase(top3.begin());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//注意end返回最后一个元素的下一个位置，所以要用rbegin</span></span><br><span class="line">		<span class="keyword">return</span> top3.size() == <span class="number">3</span> ? *top3.begin() : *top3.rbegin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/third-maximum-number/</span></span><br><span class="line"><span class="comment"> * Beats : 100%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(n);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; top3;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">			top3.insert(num);</span><br><span class="line">			<span class="keyword">if</span> (top3.<span class="built_in">size</span>() &gt; <span class="number">3</span>)&#123;</span><br><span class="line">				top3.erase(top3.<span class="built_in">begin</span>());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//注意end返回最后一个元素的下一个位置，所以要用rbegin</span></span><br><span class="line">		<span class="keyword">return</span> top3.<span class="built_in">size</span>() == <span class="number">3</span> ? *top3.<span class="built_in">begin</span>() : *top3.rbegin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>需要注意的是：<code>set.end()</code>返回的是最后一个元素的下一个位置。所以使用<code>set.rbegin()</code></p>
 <p>同时，<code>top3.erase(top3.begin());</code>用于删除头元素，也就是删除set中最小的元素，所以就剩下最大的3个元素了；如果此题是查找最小的3个元素，那么就变成了<code>top3.erase(top3.rbegin());</code>删除集合中最大的元素</p>
 <p>这道题目python实现上述算法，有点困难。这里给一个网上的python作为<strong>参考</strong></p>
@@ -563,7 +563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -698,7 +698,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">81.6k</span>
   
 </div>
 
