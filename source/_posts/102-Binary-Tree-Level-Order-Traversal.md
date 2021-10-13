@@ -2,7 +2,7 @@
 title: 102. Binary Tree Level Order Traversal
 date: 2017-05-08 15:51:29
 tags:
-- LeetCode-easy
+- LeetCode-medium
 - recursion(递归)
 - Queue(队列)
 - Optimize(优化)
@@ -31,7 +31,97 @@ return its level order traversal as:
 
 <!-- more -->
 
-# Solution
+# 分析
+
+## BFS队列思路
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:**javascript**
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
+ * Runtime: 105 ms, faster than 28.47%
+ * Memory Usage: 40.5 MB, less than 59.99% 
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    const res = [];
+    if(!root) return res;
+    const q = [];
+    q.push(root);
+     // 注意要写大于0
+    while(q.length > 0){
+        const len = q.length;
+        const level = [];
+        for(let i = 0; i < len; i++){
+            const node = q.shift();
+            level.push(node.val);
+            if(node.left) q.push(node.left);
+            if(node.right) q.push(node.right);
+        }
+        res.push([...level]);
+    }
+    return res;
+};
+```
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang:**c++**
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
+ * Runtime: 0 ms, faster than 100.00 %
+ * Memory Usage: 12.4 MB, less than 84.74 %
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        if(!root) return res;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()){
+            int size = q.size();
+            vector<int> level(size);
+            for(int i = 0; i < size; i++){
+                TreeNode* node = q.front();
+                q.pop();
+                level[i] = node->val;
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
+            }
+            res.push_back(level);
+        }
+        return res;
+    }
+};
+```
+
+
 
 ## Solution1
 

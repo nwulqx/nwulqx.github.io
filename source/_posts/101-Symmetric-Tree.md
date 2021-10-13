@@ -44,6 +44,40 @@ But the following `[1,2,2,null,3,null,3]` is not:
 
 **使用递归来解决，注意树的比较，是左子树的右节点和右子树的左节点比较，这样才是对称的。**
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:**javascript**
+ * https://leetcode.com/problems/symmetric-tree/submissions/
+ * Runtime: 171 ms, faster than 5.15%
+ * Memory Usage: 41 MB, less than 37.56%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    function helper(left, right){
+        if(!left && !right) return true;
+        if((!left || !right) || (left.val != right.val)) return false;
+        return helper(left.left, right.right) && helper(left.right, right.left);
+    }
+    if(!root) return ture;
+    return helper(root.left, root.right);
+};
+```
+
+
+
 **c++实现**
 
 ```c++

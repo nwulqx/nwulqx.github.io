@@ -4,6 +4,7 @@ date: 2021-10-12 22:43:37
 tags:
 - LeetCode-medium
 - DP(动态规划)
+- Tree
 ---
 
 Given an integer `n`, return *the number of structurally unique **BST'**s (binary search trees) which has exactly* `n` *nodes of unique values from* `1` *to* `n`.

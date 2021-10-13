@@ -27,6 +27,8 @@ Input:     1         1
 Output: true
 ```
 
+<!-- more -->
+
 **Example 2:**
 
 ```c++
@@ -51,7 +53,7 @@ Input:     1         1
 Output: false
 ```
 
-<!-- more -->
+
 # Solution
 
 ## Solution1
@@ -81,6 +83,37 @@ public:
 	}
 };
 ```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:**javascript**
+ * https://leetcode.com/problems/same-tree/submissions/
+ * Runtime: 82 ms, faster than 34.17% 
+ * Memory Usage: 38.6 MB, less than 96.00%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+var isSameTree = function(p, q) {
+    if(!p && !q) return true;
+    if((!p || !q) || (p.val != q.val)) return false;
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
+```
+
+
 
 **Java实现**
 
