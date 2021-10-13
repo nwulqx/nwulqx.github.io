@@ -34,6 +34,35 @@ return its depth = 3.
 
 采用递归的思路解决。
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:**javascript**
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ * Runtime: 124 ms, faster than 15.63%
+ * Memory Usage: 41.3 MB, less than 96.06%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+    if(!root) return 0;
+    return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;
+};
+```
+
+
+
 **c++实现**
 
 ```c++
