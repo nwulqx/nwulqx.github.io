@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
 <meta property="og:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 12345    1   / \  2   2 / \ / \3  4 4  3 But">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-14T03:20:00.705Z">
+<meta property="og:updated_time" content="2021-10-13T14:25:43.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="101. Symmetric Tree">
 <meta name="twitter:description" content="Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 12345    1   / \  2   2 / \ / \3  4 4  3 But">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-14T11:20:00+08:00">
-                2020-08-14
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-13T22:25:43+08:00">
+                2021-10-13
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  883 字
+                  1k 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -407,6 +407,8 @@
 <p>这种树的问题一般两种思路：递归和非递归。<br></p>
 </blockquote>
 <h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p><strong>使用递归来解决，注意树的比较，是左子树的右节点和右子树的左节点比较，这样才是对称的。</strong></p>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:**javascript**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/symmetric-tree/submissions/</span></span><br><span class="line"><span class="comment"> * Runtime: 171 ms, faster than 5.15%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 41 MB, less than 37.56%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val, left, right) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.left = (left===undefined ? null : left)</span></span><br><span class="line"><span class="comment"> *     this.right = (right===undefined ? null : right)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;TreeNode&#125;</span> <span class="variable">root</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isSymmetric = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">helper</span>(<span class="params">left, right</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!left &amp;&amp; !right) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>((!left || !right) || (left.val != right.val)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> helper(left.left, right.right) &amp;&amp; helper(left.right, right.left);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!root) <span class="keyword">return</span> ture;</span><br><span class="line">    <span class="keyword">return</span> helper(root.left, root.right);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>c++实现</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/symmetric-tree/</span></span><br><span class="line"><span class="comment"> * Beats : 68.77%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	TreeNode *left;</span><br><span class="line">	TreeNode *right;</span><br><span class="line">	TreeNode() : val(<span class="number">0</span>), left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">	TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">	TreeNode(<span class="keyword">int</span> x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span> isSymmetric(root-&gt;left, root-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* left, TreeNode* right)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (left == <span class="literal">nullptr</span> &amp;&amp; right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">if</span> (left == <span class="literal">nullptr</span> || right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (left-&gt;val != right-&gt;val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">return</span> isSymmetric(left-&gt;left, right-&gt;right) &amp;&amp; isSymmetric(left-&gt;right, right-&gt;left);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>Java实现</strong></p>
@@ -571,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +595,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -706,7 +708,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.5k</span>
+    <span title="Site words total count">84.7k</span>
   
 </div>
 
