@@ -25,6 +25,89 @@ Subscribe to see which companies asked this question
 >这道题的思路主要是二分法，由于是一个BST，所以应该满足：节点的左节点小于根节点，右节点大于根节点。<br>
 >所以这道题使用二分法来递归的把每一个节点放到BST中。
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+ * Runtime: 131 ms, faster than 20.45% 
+ * Memory Usage: 41.2 MB, less than 80.00%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function(nums) {
+    function help(start, end){
+        if(start > end) return null;
+        const mid = Math.trunc(start + (end-start)/2);
+        const left = help(start, mid - 1);
+        const root = new TreeNode();
+        root.val = nums[mid];
+        root.left = left;
+        root.right = help(mid+1,end);
+        return root;
+    }
+    const n = nums.length;
+    if(n == 0) return null;
+    return help(0,n-1);
+};
+```
+
+
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+ * Runtime: 22 ms, faster than 31.09%
+ * Memory Usage: 21.3 MB, less than 95.19% 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        int n = nums.size();
+        if(n < 0) return NULL;
+        return help(0, n - 1, nums);
+    }
+    TreeNode* help(int start, int end, vector<int>& nums){
+        if(start > end) return NULL;
+        int mid = start + (end - start) / 2;
+        TreeNode* node = new TreeNode();
+        node->val = nums[mid];
+        node->left = help(start, mid - 1, nums);
+        node->right = help(mid + 1,end, nums);
+        return node;
+    }
+};
+```
+
+
+
+**java**
+
 ```java
 public class ConvertSortedArraytoBinarySearchTree{
     public TreeNode sortedArrayToBST(int[] nums) {

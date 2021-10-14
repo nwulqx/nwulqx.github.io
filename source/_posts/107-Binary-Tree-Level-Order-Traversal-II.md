@@ -2,7 +2,7 @@
 title: 107. Binary Tree Level Order Traversal II
 date: 2017-05-08 17:54:47
 tags:
-- LeetCode-easy
+- LeetCode-medium
 - Tree(树)
 - recursion(递归)
 - Queue(队列)
@@ -39,11 +39,54 @@ return its bottom-up level order traversal as:
 
 **Using BFS**
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:Javascript
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ * Runtime: 68 ms, faster than 98.21%
+ * Memory Usage: 40.9 MB, less than 15.56% 
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrderBottom = function(root) {
+    const res = [];
+    if(!root) return res;
+    const q = [];
+    q.push(root);
+    while(q.length > 0){
+        const len = q.length;
+        const level = [];
+        for(let i = 0; i < len; i++){
+            const node = q.shift();
+            level.push(node.val);
+            if(node.left) q.push(node.left);
+            if(node.right) q.push(node.right);
+        }
+        res.unshift([...level]);
+    }
+    return res;
+};
+```
+
+
+
 **c++实现**
 
 ```c++
 /*
- * app:leetcode lang:Java
+ * app:leetcode lang:c++
  * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
  * Runtime: 4 ms Beats : 93.18%
  * Memory: 12.6 MB Beats: 88.08%
@@ -157,8 +200,6 @@ public class BinaryTreeLevelOrderTraversalII{
     }
 }
 ```
-
-## 
 
 # 总结
 
