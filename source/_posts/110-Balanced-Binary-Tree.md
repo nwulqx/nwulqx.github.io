@@ -25,6 +25,74 @@ For this problem, a height-balanced binary tree is defined as a binary tree in w
 >2. 对每一个节点所构成的子树进行判断是否为平衡树；
 >3. 继续递归该节点的左右节点（这个循环的嵌套值得研究）。
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/balanced-binary-tree/
+ * Runtime: 127 ms, faster than 26.56%
+ * Memory Usage: 44.9 MB, less than 13.58%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isBalanced = function(root) {
+    function depth(node){
+        if(!node) return 0;
+        return Math.max(depth(node.left),depth(node.right)) + 1;
+    }
+    if(!root) return true;
+    return Math.abs(depth(root.left)-depth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+};
+```
+
+
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/balanced-binary-tree/
+ * Runtime: 29 ms, faster than 8.97%
+ * Memory Usage: 21.1 MB, less than 22.66% 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(!root) return true;
+        return abs(help(root->left)-help(root->right)) <= 1 && isBalanced(root->left)&& isBalanced(root->right);
+    }
+    int help(TreeNode* node){
+        if(!node) return 0;
+        return max(help(node->left), help(node->right)) + 1;
+    }
+};
+```
+
+**java**
+
 ```java
 public class BalancedBinaryTree{
     /*Recursion!*/

@@ -28,7 +28,72 @@ return true, as there exist a root-to-leaf path `5->4->11->2` which sum is 22.
 # Solution
 ## Solution1
 
-**递归**
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/path-sum/
+ * Runtime: 136 ms, faster than 15.48%
+ * Memory Usage: 42.5 MB, less than 73.20%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} targetSum
+ * @return {boolean}
+ */
+var hasPathSum = function(root, targetSum) {
+    if(!root) return false;
+    if(!root.left && !root.right){
+        return targetSum === root.val;
+    }
+    return hasPathSum(root.left, targetSum-root.val) || hasPathSum(root.right, targetSum-root.val);
+};
+```
+
+
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/path-sum/
+ * Runtime: 350 ms, faster than 25.19% 
+ * Memory Usage: 102.2 MB, less than 29.91%
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if(!root) return false;
+        if(!root->left && !root->right){
+            return targetSum == root->val;
+        }
+        return hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, targetSum-root->val);
+    }
+};
+```
+
+**java**
 
 ```java
 public class PathSum{
