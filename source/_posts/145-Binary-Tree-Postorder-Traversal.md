@@ -2,7 +2,7 @@
 title: 145. Binary Tree Postorder Traversal
 date: 2017-05-19 18:20:56
 tags:
-- LeetCode-medium
+- LeetCode-easy
 - recursion(递归)
 - Post-Order Traversal(后序遍历)
 - Morris Traversal
@@ -28,8 +28,48 @@ return `[3,2,1]`.
 
 ## Solution1
 
-
 **使用递归(Recursion)**
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/binary-tree-postorder-traversal/
+ * Runtime: 0 ms, faster than 100.00%
+ * Memory Usage: 8.5 MB, less than 63.43%
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        postorder(root);
+        return res;
+    }
+    void postorder(TreeNode* node){
+        if(node == NULL) return;
+        res.push_back(node->val);
+        postorder(node->left);
+        postorder(node->right);
+    }
+};
+```
+
+
+
+**java**
 
 ```java
 public class BinaryTreePostorderTraversal{
@@ -69,6 +109,103 @@ public class TreeNode {
 		 4   5
 
 我们发现，有后序遍历[4,5,2,3,1]，它的反转[1,3,2,5,4]，是一个遍历先右子树的先序遍历。那么就可以参考先序遍历的思路来解决！
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/binary-tree-postorder-traversal/
+ * Runtime: 80 ms, faster than 41.12%
+ * Memory Usage: 39.2 MB, less than 11.72%
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var postorderTraversal = function(root) {
+    const st = [];
+    const res = [];
+    let pre = null;
+    while(root || st.length > 0){
+        if(root){
+            st.push(root);
+            root = root.left;
+        }else{
+            let node = st[st.length-1];
+            if(node.right && node.right !== pre){
+                root = node.right;
+            }else{
+                res.push(node.val);
+                pre = node;
+                st.pop();
+            }
+        }
+    }
+    return res;
+};
+```
+
+
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/binary-tree-postorder-traversal/
+ * Runtime: 4 ms, faster than 43.99%
+ * Memory Usage: 8.3 MB, less than 86.67%
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if(!root) return res;
+        stack<TreeNode*> st;
+        TreeNode* pre = NULL;
+        while(root || !st.empty()){
+            if(root){
+                st.push(root);
+                root = root->left;
+            }else{
+                TreeNode* node = st.top();
+                if(node->right && pre != node->right){
+                    root = node->right;
+                }else{
+                    res.push_back(node->val);
+                    pre = node;
+                    st.pop();
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+
+
+
+**java**
 
 ```java
 /*for [1,2,3,4,5]
