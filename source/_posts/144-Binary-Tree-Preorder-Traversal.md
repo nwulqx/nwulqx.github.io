@@ -2,7 +2,7 @@
 title: 144. Binary Tree Preorder Traversal
 date: 2017-05-19 17:20:52
 tags:
-- LeetCode-medium
+- LeetCode-easy
 - recursion(递归)
 - Pre-Order Traversal(先序遍历)
 - Morris Traversal
@@ -31,6 +31,47 @@ Note: Recursive solution is trivial, could you do it iteratively?
 ## Solution1
 
 **使用递归(Recursion)**
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/binary-tree-preorder-traversal/
+ * Runtime: 4 ms, faster than 44.88 %
+ * Memory Usage: 8.5 MB, less than 44.99 %
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> res;
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        preorder(root);
+        return res;
+    }
+    void preorder(TreeNode* node){
+        if(node == NULL) return;
+        res.push_back(node->val);
+        preorder(node->left);
+        preorder(node->right);
+    }
+};
+```
+
+
+
+**java**
 
 ```java
 public class BinaryTreePreorderTraversal{
@@ -65,6 +106,89 @@ public class TreeNode {
 
 >主要借助栈，存取每一次的根节点，然后每次弹出栈顶元素，然后遍历右子树。
 
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/binary-tree-preorder-traversal/
+ * Runtime: Runtime: 0 ms, faster than 100.00% 
+ * Memory Usage: 8.3 MB, less than 77.46%
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if(!root) return res;
+        stack<TreeNode*> st;
+        while(root || !st.empty()){
+            if(root){
+                res.push_back(root->val);
+                st.push(root->right);
+                root = root->left;
+            }else{
+                root = st.top();
+                st.pop();
+            }
+        }
+        return res;
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/binary-tree-preorder-traversal/
+ * Runtime: 76 ms, faster than 61.09% 
+ * Memory Usage: 39 MB, less than 25.98% 
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var preorderTraversal = function(root) {
+    const st = [];
+    const res = [];
+    if(!root) return res;
+    while(root || st.length > 0){
+        if(root){
+            res.push(root.val);
+            st.push(root.right);
+            root = root.left;
+        }else{
+            root = st.pop();
+        }
+    }
+    return res;
+};
+```
+
+
+
+**java**
+
 ```java
 public class BinaryTreePreorderTraversal3{
     // Without using recursion!
@@ -92,6 +216,8 @@ public class BinaryTreePreorderTraversal3{
 **不使用递归(Without using recursion)**
 
 >仍然是不使用递归的思路，与Solution2不同的是，对于栈的使用有所不同。此方法中，更像是BFS的思路，按层来遍历，将每层的右节点存入栈中。然后利用栈的性质：“后进先出”，待到左节点为空时，再依次取出栈中元素。
+
+**java**
 
 ```java
 public class BinaryTreePreorderTraversal{
