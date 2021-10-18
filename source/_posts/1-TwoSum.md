@@ -82,6 +82,69 @@ public class TwoSum {
 >HashMap的数据结构是树，使用HashMap，它的查询时的时间复杂度是O(n+logn)。
 >
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:javascript
+ * https://leetcode.com/problems/two-sum/
+ * Runtime: 95 ms, faster than 66.17%
+ * Memory Usage: 41.7 MB, less than 8.76%
+ */
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const mp = new Map();
+    const res = [];
+    for(let i = 0; i < nums.length; i++){
+        const sub = target - nums[i];
+        if(mp.get(sub) !== undefined){
+            res.push(mp.get(sub));
+            res.push(i);
+        }
+        mp.set(nums[i],i);
+    }
+    return res;
+};
+```
+
+
+
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/two-sum/
+ * Runtime: 11 ms, faster than 81.35%
+ * Memory Usage: 10.8 MB, less than 40.20%
+ */
+#include <cstdio>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+class Solution {
+public:
+	vector<int> twoSum(vector<int>& nums, int target) {
+		unordered_map<int, int> hash;
+		vector<int> result;
+		for (int i = 0; i < nums.size(); i++){
+			int numToFind = target - nums[i];
+			if (hash.find(numToFind) != hash.end()){
+				result.push_back(hash[numToFind]);
+				result.push_back(i);
+				return result;
+			}
+			hash[nums[i]] = i;
+		}
+		return result;
+	}
+};
+```
+
 **Java实现**
 
 ```java
@@ -108,37 +171,6 @@ public class TwoSum3{
 		throw new IllegalArgumentException("No Such Two Arguments");
 	}
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/two-sum/submissions/
- * Beats : 95.51%;
- */
-#include <cstdio>
-#include <vector>
-#include <unordered_map>
-using namespace std;
-class Solution {
-public:
-	vector<int> twoSum(vector<int>& nums, int target) {
-		unordered_map<int, int> hash;
-		vector<int> result;
-		for (int i = 0; i < nums.size(); i++){
-			int numToFind = target - nums[i];
-			if (hash.find(numToFind) != hash.end()){
-				result.push_back(hash[numToFind]);
-				result.push_back(i);
-				return result;
-			}
-			hash[nums[i]] = i;
-		}
-		return result;
-	}
-};
 ```
 
 **python实现**
