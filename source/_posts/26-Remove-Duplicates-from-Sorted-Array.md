@@ -23,6 +23,55 @@ Your function should return length = <font color='rgb(199,37,78)'>`2`</font>, wi
 >需要设置一个长度length（该值既可以表示索引，也可以表示索引长度），遍历数组，当数组相邻元素重复时，将当前索引处的值赋给length为索引处，同时length++；<br>
 >遍历完成后，返回length。
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ * Beats : 98.54%
+ */
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size() < 1) return 0;
+        int j = 1;
+        for(int i = 1; i < nums.size(); i++){
+            if(nums[i] != nums[i-1]){
+                nums[j++] = nums[i];
+            }
+        }
+        return j;
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:javascript
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ * Runtime: 153 ms, faster than 25.90%
+ * Memory Usage: 40.7 MB, less than 96.05%
+ */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    let j = 0;
+    for(let i = 0; i < nums.length; i++){
+        if(i === 0 || nums[i] !== nums[i-1]){
+            nums[j++] = nums[i];
+        }
+    }
+    return j;
+};
+```
+
+
+
 **Java实现**
 
 ```java
@@ -43,29 +92,6 @@ class Solution {
         return index;
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
- * Beats : 98.54%
- */
-class Solution {
-public:
-    int removeDuplicates(vector<int>& nums) {
-        if(nums.size() < 1) return 0;
-        int j = 1;
-        for(int i = 1; i < nums.size(); i++){
-            if(nums[i] != nums[i-1]){
-                nums[j++] = nums[i];
-            }
-        }
-        return j;
-    }
-};
 ```
 
 **python实现**
