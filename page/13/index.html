@@ -622,7 +622,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/temp/18-4Sum/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/18-4Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -641,7 +641,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/04/temp/18-4Sum/" itemprop="url">18. 4Sum</a></h1>
+                <a class="post-title-link" href="/2018/02/04/18-4Sum/" itemprop="url">18. 4Sum</a></h1>
         
 
         <div class="post-meta">
@@ -669,8 +669,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-02-23T22:41:59+08:00">
-                2021-02-23
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-19T00:05:04+08:00">
+                2021-10-19
               </time>
             
           </span>
@@ -697,7 +697,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  779 字
+                  1.1k 字
                 </span>
               
 
@@ -713,7 +713,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -735,14 +735,26 @@
 
       
         
-          <p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, are there elements <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> + <em>d</em> = <code>target</code>? Find all unique quadruplets in the array which gives the sum of <code>target</code>.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate quadruplets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">2</span>, <span class="number">2</span>], and target = <span class="number">0</span>.</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-<span class="number">1</span>,  <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  [-<span class="number">2</span>,  <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+          <p>Given an array <code>nums</code> of <code>n</code> integers, return <em>an array of all the <strong>unique</strong> quadruplets</em> <code>[nums[a], nums[b], nums[c], nums[d]]</code> such that:</p>
+<ul>
+<li><code>0 &lt;= a, b, c, d &lt; n</code></li>
+<li><code>a</code>, <code>b</code>, <code>c</code>, and <code>d</code> are <strong>distinct</strong>.</li>
+<li><code>nums[a] + nums[b] + nums[c] + nums[d] == target</code></li>
+</ul>
+<p>You may return the answer in <strong>any order</strong>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,0,<span class="string">-1</span>,0,<span class="string">-2</span>,2], target = 0</span><br><span class="line">Output: [[<span class="string">-2</span>,<span class="string">-1</span>,1,2],[<span class="string">-2</span>,0,0,2],[<span class="string">-1</span>,0,0,1]]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>], target = <span class="number">8</span></span><br><span class="line">Output: <span class="string">[[2,2,2,2]]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 200</code></li>
+<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
+<li><code>-109 &lt;= target &lt;= 109</code></li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/04/temp/18-4Sum/#more" rel="contents">
+            <a class="btn" href="/2018/02/04/18-4Sum/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -792,7 +804,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/temp/16-3Sum-Closest/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/16-3Sum-Closest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -811,7 +823,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/04/temp/16-3Sum-Closest/" itemprop="url">16. 3Sum Closest</a></h1>
+                <a class="post-title-link" href="/2018/02/04/16-3Sum-Closest/" itemprop="url">16. 3Sum Closest</a></h1>
         
 
         <div class="post-meta">
@@ -839,8 +851,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-04T17:04:29+08:00">
-                2020-05-04
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-19T00:05:10+08:00">
+                2021-10-19
               </time>
             
           </span>
@@ -867,7 +879,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  502 字
+                  754 字
                 </span>
               
 
@@ -883,7 +895,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -905,12 +917,22 @@
 
       
         
-          <p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, -<span class="number">4</span>], and target = <span class="number">1</span>.</span><br><span class="line"></span><br><span class="line">The sum that is closest to the target is <span class="number">2</span>. (-<span class="number">1</span> + <span class="number">2</span> + <span class="number">1</span> = <span class="number">2</span>).</span><br></pre></td></tr></table></figure>
+          <p>Given an integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>.</p>
+<p>Return <em>the sum of the three integers</em>.</p>
+<p>You may assume that each input would have exactly one solution.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[-1,2,1,-4],</span> <span class="string">target</span> <span class="string">=</span> <span class="number">1</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">Explanation:</span> <span class="string">The</span> <span class="string">sum</span> <span class="string">that</span> <span class="string">is</span> <span class="string">closest</span> <span class="string">to</span> <span class="string">the</span> <span class="string">target</span> <span class="string">is</span> <span class="number">2</span><span class="string">.</span> <span class="string">(-1</span> <span class="string">+</span> <span class="number">2</span> <span class="string">+</span> <span class="number">1</span> <span class="string">=</span> <span class="number">2</span><span class="string">).</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[0,0,0],</span> <span class="string">target</span> <span class="string">=</span> <span class="number">1</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>3 &lt;= nums.length &lt;= 1000</code></li>
+<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>
+<li><code>-104 &lt;= target &lt;= 104</code></li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/04/temp/16-3Sum-Closest/#more" rel="contents">
+            <a class="btn" href="/2018/02/04/16-3Sum-Closest/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1007,8 +1029,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-10-18T22:32:01+08:00">
-                2021-10-18
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-19T00:05:16+08:00">
+                2021-10-19
               </time>
             
           </span>
@@ -1290,7 +1312,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">94.5k</span>
+    <span title="Site words total count">95.1k</span>
   
 </div>
 
