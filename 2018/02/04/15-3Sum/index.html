@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-medium,Queue(队列),BFS(广度优先遍历),">
+  <meta name="keywords" content="双指针+逼近法,Array,LeetCode-medium,">
 
 
 
@@ -80,20 +80,18 @@
 
 
 
-<meta name="description" content="Given the root of a binary tree, return the zigzag level order traversal of its nodes’ values. (i.e., from left to right, then right to left for the next level and alternate between). Example 1:  12In">
-<meta name="keywords" content="LeetCode-medium,Queue(队列),BFS(广度优先遍历)">
+<meta name="description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
+<meta name="keywords" content="双指针+逼近法,Array,LeetCode-medium">
 <meta property="og:type" content="article">
-<meta property="og:title" content="103. Binary Tree Zigzag Level Order Traversal">
-<meta property="og:url" content="https://war3cdota.github.io/2021/10/13/103-Binary-Tree-Zigzag-Level-Order-Traversal/index.html">
+<meta property="og:title" content="15. 3Sum">
+<meta property="og:url" content="https://war3cdota.github.io/2018/02/04/15-3Sum/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given the root of a binary tree, return the zigzag level order traversal of its nodes’ values. (i.e., from left to right, then right to left for the next level and alternate between). Example 1:  12In">
+<meta property="og:description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg">
-<meta property="og:updated_time" content="2021-10-13T14:41:49.425Z">
+<meta property="og:updated_time" content="2021-10-18T14:32:01.417Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="103. Binary Tree Zigzag Level Order Traversal">
-<meta name="twitter:description" content="Given the root of a binary tree, return the zigzag level order traversal of its nodes’ values. (i.e., from left to right, then right to left for the next level and alternate between). Example 1:  12In">
-<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg">
+<meta name="twitter:title" content="15. 3Sum">
+<meta name="twitter:description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2021/10/13/103-Binary-Tree-Zigzag-Level-Order-Traversal/">
+  <link rel="canonical" href="https://war3cdota.github.io/2018/02/04/15-3Sum/">
 
 
 
 
 
-  <title>103. Binary Tree Zigzag Level Order Traversal | War3cdota's Blog</title>
+  <title>15. 3Sum | War3cdota's Blog</title>
   
 
 
@@ -288,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/10/13/103-Binary-Tree-Zigzag-Level-Order-Traversal/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/15-3Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -305,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">103. Binary Tree Zigzag Level Order Traversal</h1>
+          <h1 class="post-title" itemprop="name headline">15. 3Sum</h1>
         
 
         <div class="post-meta">
@@ -317,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-13T22:37:08+08:00">
-                2021-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T10:24:36+08:00">
+                2018-02-04
               </time>
             
 
@@ -333,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-10-13T22:41:49+08:00">
-                2021-10-13
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-18T22:32:01+08:00">
+                2021-10-18
               </time>
             
           </span>
@@ -361,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  434 字
+                  953 字
                 </span>
               
 
@@ -377,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -398,24 +396,28 @@
       
 
       
-        <p>Given the <code>root</code> of a binary tree, return <em>the zigzag level order traversal of its nodes’ values</em>. (i.e., from left to right, then right to left for the next level and alternate between).</p>
-<p><strong>Example 1:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg" alt="img"></p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = <span class="comment">[3,9,20,null,null,15,7]</span></span><br><span class="line">Output: <span class="comment">[<span class="comment">[3]</span>,<span class="comment">[20,9]</span>,<span class="comment">[15,7]</span>]</span></span><br></pre></td></tr></table></figure>
+        <p>Given an array <code>nums</code> of <em>n</em> integers, are there elements <em>a</em>, <em>b</em>, <em>c</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p><strong>Note:</strong></p>
+<p>The solution set must not contain duplicate triplets.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">4</span>],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [-<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [<span class="number">1</span>]</span><br><span class="line">Output: <span class="string">[[1]]</span></span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Input</span>: root =<span class="meta"> []</span></span><br><span class="line"><span class="attribute">Output</span>:<span class="meta"> []</span></span><br></pre></td></tr></table></figure>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li>The number of nodes in the tree is in the range <code>[0, 2000]</code>.</li>
-<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-</ul>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p><strong>javascript</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:**c++**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</span></span><br><span class="line"><span class="comment"> * Runtime: 76 ms, faster than 79.88% </span></span><br><span class="line"><span class="comment"> * Memory Usage: 40.6 MB, less than 27.57%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val, left, right) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.left = (left===undefined ? null : left)</span></span><br><span class="line"><span class="comment"> *     this.right = (right===undefined ? null : right)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;TreeNode&#125;</span> <span class="variable">root</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> zigzagLevelOrder = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">    <span class="keyword">const</span> q = [];</span><br><span class="line">    q.push(root);</span><br><span class="line">    <span class="keyword">let</span> zigzag = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// 注意要写大于0</span></span><br><span class="line">    <span class="keyword">while</span>(q.length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> len = q.length;</span><br><span class="line">        <span class="keyword">const</span> level = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">const</span> node = q.shift();</span><br><span class="line">            <span class="keyword">if</span>(zigzag) level.push(node.val);</span><br><span class="line">            <span class="keyword">else</span> level.unshift(node.val);</span><br><span class="line">            <span class="keyword">if</span>(node.left) q.push(node.left);</span><br><span class="line">            <span class="keyword">if</span>(node.right) q.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">        zigzag = !zigzag;</span><br><span class="line">        res.push([...level]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>c++</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:**c++**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</span></span><br><span class="line"><span class="comment"> * Runtime: 4 ms, faster than 60.49%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 12.2 MB, less than 48.65% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">zigzagLevelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">bool</span> zigzag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> <span class="built_in">size</span> = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">level</span><span class="params">(<span class="built_in">size</span>)</span></span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)&#123;</span><br><span class="line">                TreeNode* node = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">int</span> index = zigzag?i:<span class="built_in">size</span>-i<span class="number">-1</span>;</span><br><span class="line">                level[index] = node-&gt;val;</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) q.push(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) q.push(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            zigzag = !zigzag;</span><br><span class="line">            res.push_back(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>借助排序，使用双指针，由于双指针外嵌套了一个循环，所以时间复杂度是$O(nlogn)$。</p>
+<h2 id="去重复的问题"><a href="#去重复的问题" class="headerlink" title="去重复的问题"></a>去重复的问题</h2><p>这里难点在于，如何去除<strong>结果中的重复问题</strong>，去重最先想到了手段是Hash，使用<code>Set</code>和<code>Map</code>最常用手段，但这个题不是单个元素，而是对数组去重，那么只能添加判断手动去除。</p>
+<p>这里再两个地方去重：</p>
+<ol>
+<li>外层循环时，判断第一个元素是否重复；</li>
+<li>当查找到一个合适数组时，此时应继续查找。但继续查找第二三个合适元素时，应该判断第二三个元素是否重复，如果重复，则跳过。</li>
+</ol>
+<p><strong>c++实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/3sum</span></span><br><span class="line"><span class="comment"> * time completicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * space complicity is O(1);</span></span><br><span class="line"><span class="comment"> * Runtime: 104 ms, faster than 55.42% </span></span><br><span class="line"><span class="comment"> * Memory Usage: 23.6 MB, less than 32.21%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">threeSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		sort(nums.begin(),nums.end());</span><br><span class="line">		<span class="keyword">int</span> n = nums.size();</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//1.第一个元素去除重复</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">int</span> low = i + <span class="number">1</span>, high = n - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (low &lt; high)&#123;</span><br><span class="line">				<span class="keyword">int</span> sum = nums[i] + nums[low] + nums[high];</span><br><span class="line">				<span class="keyword">if</span> (sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">					low++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">					high--;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">					v.push_back(nums[i]);</span><br><span class="line">					v.push_back(nums[low]);</span><br><span class="line">					v.push_back(nums[high]);</span><br><span class="line">					result.push_back(v);</span><br><span class="line">                    <span class="comment">//2.第二三个元素去除重复，注意只有等于时需要去重</span></span><br><span class="line">					<span class="keyword">while</span> ((low &lt; high) &amp;&amp; (nums[low] == nums[low + <span class="number">1</span>])) low++;</span><br><span class="line">					<span class="keyword">while</span> ((low &lt; high) &amp;&amp; (nums[high] == nums[high - <span class="number">1</span>])) high--;</span><br><span class="line">					low++;</span><br><span class="line">					high--;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/3sum</span></span><br><span class="line"><span class="comment"> * time completicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * space complicity is O(1);</span></span><br><span class="line"><span class="comment"> * Runtime: 243 ms, faster than 45.31% </span></span><br><span class="line"><span class="comment"> * Memory Usage: 48.8 MB, less than 87.04%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> threeSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    nums.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b);</span><br><span class="line">    <span class="keyword">const</span> n = nums.length;</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n<span class="number">-2</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i] === nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">let</span> low = i+<span class="number">1</span>, high = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            <span class="keyword">const</span> sum = nums[i] + nums[low] + nums[high];</span><br><span class="line">            <span class="keyword">if</span>(sum === <span class="number">0</span>)&#123;</span><br><span class="line">                res.push([nums[i],nums[low],nums[high]]);</span><br><span class="line">                low++;</span><br><span class="line">                high--;</span><br><span class="line">                <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[low] === nums[low<span class="number">-1</span>]) low++;</span><br><span class="line">                <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[high] === nums[high+<span class="number">1</span>]) high--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/3sum</span></span><br><span class="line"><span class="comment"> * Beats :  89.47%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n-<span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//1.第一个元素去除重复</span></span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i]==nums[i-<span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> low = i+<span class="number">1</span>,high = n-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i]+nums[low]+nums[high];</span><br><span class="line">                <span class="keyword">if</span>(sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    low++;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    high--;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    result.add(Arrays.asList(nums[i],nums[low],nums[high]));</span><br><span class="line">                    <span class="comment">//2.第二三个元素去除重复</span></span><br><span class="line">                    <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[low]==nums[low+<span class="number">1</span>]) low++;</span><br><span class="line">                    <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[high]==nums[high-<span class="number">1</span>]) high--;</span><br><span class="line">                    low++;</span><br><span class="line">                    high--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>python实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums = sorted(nums)</span><br><span class="line">        n = len(nums)</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            low = i + <span class="number">1</span></span><br><span class="line">            high = n - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> low &lt; high:</span><br><span class="line">                sum = nums[i]+nums[low]+nums[high]</span><br><span class="line">                <span class="keyword">if</span> sum &lt; <span class="number">0</span>:</span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> sum &gt; <span class="number">0</span>:</span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res = [nums[i],nums[low],nums[high]]</span><br><span class="line">                    result.append(res)</span><br><span class="line">                    <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> nums[low] == nums[low+<span class="number">1</span>]:</span><br><span class="line">                        low += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> nums[high] == nums[high<span class="number">-1</span>]:</span><br><span class="line">                        high -= <span class="number">1</span></span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h2 id="考察点"><a href="#考察点" class="headerlink" title="考察点"></a>考察点</h2><p>如何去除结果的重复。针对三个元素分别判断重复。</p>
 
       
     </div>
@@ -436,7 +438,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2021/10/13/103-Binary-Tree-Zigzag-Level-Order-Traversal/" title="103. Binary Tree Zigzag Level Order Traversal">https://war3cdota.github.io/2021/10/13/103-Binary-Tree-Zigzag-Level-Order-Traversal/</a>
+    <a href="https://war3cdota.github.io/2018/02/04/15-3Sum/" title="15. 3Sum">https://war3cdota.github.io/2018/02/04/15-3Sum/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -450,11 +452,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/双指针-逼近法/" <i class="fa fa-tag"> 双指针+逼近法</a>
+          
+            <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
             <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
-          
-            <a href="/tags/Queue-队列/" <i class="fa fa-tag"> Queue(队列)</a>
-          
-            <a href="/tags/BFS-广度优先遍历/" <i class="fa fa-tag"> BFS(广度优先遍历)</a>
           
         </div>
       
@@ -467,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/10/13/99-Recover-Binary-Search-Tree/" rel="next" title="99. Recover Binary Search Tree">
-                <i class="fa fa-chevron-left"></i> 99. Recover Binary Search Tree
+              <a href="/2018/01/30/temp/414-Third-Maximum-Number/" rel="next" title="414. Third Maximum Number">
+                <i class="fa fa-chevron-left"></i> 414. Third Maximum Number
               </a>
             
           </div>
@@ -477,8 +479,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/10/13/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" rel="prev" title="105. Construct Binary Tree from Preorder and Inorder Traversal">
-                105. Construct Binary Tree from Preorder and Inorder Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/04/temp/16-3Sum-Closest/" rel="prev" title="16. 3Sum Closest">
+                16. 3Sum Closest <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -661,7 +663,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重复的问题"><span class="nav-number">1.1.</span> <span class="nav-text">去重复的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考察点"><span class="nav-number">1.2.</span> <span class="nav-text">考察点</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -695,7 +697,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">87.5k</span>
+    <span title="Site words total count">94.5k</span>
   
 </div>
 

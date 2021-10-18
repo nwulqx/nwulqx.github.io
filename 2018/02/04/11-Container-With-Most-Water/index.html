@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-medium,双指针+逼近法,Array,">
+  <meta name="keywords" content="双指针+逼近法,Array,LeetCode-medium,greedy(贪心),">
 
 
 
@@ -80,18 +80,20 @@
 
 
 
-<meta name="description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
-<meta name="keywords" content="LeetCode-medium,双指针+逼近法,Array">
+<meta name="description" content="Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find">
+<meta name="keywords" content="双指针+逼近法,Array,LeetCode-medium,greedy(贪心)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="15. 3Sum">
-<meta property="og:url" content="https://war3cdota.github.io/2018/02/04/temp/15-3Sum/index.html">
+<meta property="og:title" content="11. Container With Most Water">
+<meta property="og:url" content="https://war3cdota.github.io/2018/02/04/11-Container-With-Most-Water/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
+<meta property="og:description" content="Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-04T07:33:34.765Z">
+<meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg">
+<meta property="og:updated_time" content="2021-10-18T14:18:19.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="15. 3Sum">
-<meta name="twitter:description" content="Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contai">
+<meta name="twitter:title" content="11. Container With Most Water">
+<meta name="twitter:description" content="Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find">
+<meta name="twitter:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2018/02/04/temp/15-3Sum/">
+  <link rel="canonical" href="https://war3cdota.github.io/2018/02/04/11-Container-With-Most-Water/">
 
 
 
 
 
-  <title>15. 3Sum | War3cdota's Blog</title>
+  <title>11. Container With Most Water | War3cdota's Blog</title>
   
 
 
@@ -286,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/temp/15-3Sum/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2018/02/04/11-Container-With-Most-Water/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -303,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">15. 3Sum</h1>
+          <h1 class="post-title" itemprop="name headline">11. Container With Most Water</h1>
         
 
         <div class="post-meta">
@@ -315,7 +317,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T10:24:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T14:07:37+08:00">
                 2018-02-04
               </time>
             
@@ -331,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-04T15:33:34+08:00">
-                2020-05-04
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-18T22:18:19+08:00">
+                2021-10-18
               </time>
             
           </span>
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  767 字
+                  806 字
                 </span>
               
 
@@ -396,26 +398,40 @@
       
 
       
-        <p>Given an array <code>nums</code> of <em>n</em> integers, are there elements <em>a</em>, <em>b</em>, <em>c</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate triplets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">4</span>],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [-<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+        <p>Given <code>n</code> non-negative integers <code>a1, a2, ..., an</code> , where each represents a point at coordinate <code>(i, ai)</code>. <code>n</code> vertical lines are drawn such that the two endpoints of the line <code>i</code> is at <code>(i, ai)</code> and <code>(i, 0)</code>. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.</p>
+<p><strong>Notice</strong> that you may not slant the container.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg" alt="img"></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: height = [1,8,6,2,5,4,8,3,7]</span><br><span class="line">Output: 49</span><br><span class="line">Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. <span class="keyword">In</span> this case, the max<span class="built_in"> area </span>of water (blue section) the container can contain is 49.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>借助排序，使用双指针，由于双指针外嵌套了一个循环，所以时间复杂度是$O(nlogn)$。</p>
-<h2 id="去重复的问题"><a href="#去重复的问题" class="headerlink" title="去重复的问题"></a>去重复的问题</h2><p>这里难点在于，如何去除<strong>结果中的重复问题</strong>，去重最先想到了手段是Hash，使用<code>Set</code>和<code>Map</code>最常用手段，但这个题不是单个元素，而是对数组去重，那么只能添加判断手动去除。</p>
-<p>这里再两个地方去重：</p>
-<ol>
-<li>外层循环时，判断第一个元素是否重复；</li>
-<li>当查找到一个合适数组时，此时应继续查找。但继续查找第二三个合适元素时，应该判断第二三个元素是否重复，如果重复，则跳过。</li>
-</ol>
-<p><strong>Java实现</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/3sum</span></span><br><span class="line"><span class="comment"> * Beats :  89.47%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n-<span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//1.第一个元素去除重复</span></span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i]==nums[i-<span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> low = i+<span class="number">1</span>,high = n-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i]+nums[low]+nums[high];</span><br><span class="line">                <span class="keyword">if</span>(sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    low++;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    high--;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    result.add(Arrays.asList(nums[i],nums[low],nums[high]));</span><br><span class="line">                    <span class="comment">//2.第二三个元素去除重复</span></span><br><span class="line">                    <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[low]==nums[low+<span class="number">1</span>]) low++;</span><br><span class="line">                    <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[high]==nums[high-<span class="number">1</span>]) high--;</span><br><span class="line">                    low++;</span><br><span class="line">                    high--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">height</span> <span class="string">=</span> <span class="string">[1,1]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">height</span> <span class="string">=</span> <span class="string">[4,3,2,1,4]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">height</span> <span class="string">=</span> <span class="string">[1,2,1]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>n == height.length</code></li>
+<li><code>2 &lt;= n &lt;= 105</code></li>
+<li><code>0 &lt;= height[i] &lt;= 104</code></li>
+</ul>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这道题目一开始，我定位在<del>动态规划</del>问题，其实是<strong>贪心问题</strong>，在实现的时候遇到了不能解决的逻辑上的问题，只好参考了别人的解法。</p>
+<p>发现其实这道题目是二分法问题，具体实现可以用双指针实现。</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(height[low] &lt; height[high]) &#123;</span><br><span class="line">    low++;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    high--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段逻辑的证明：当<code>height[low] &lt; height[high]</code>时，如果<code>high--</code>，那么<code>Math.min(height[low], height[high])*(high-low);</code><strong>一定小于原来的面积</strong>，这个可以根据图来分析。逻辑上，开始当以<code>height[low]</code>作为高，此时如果<code>high--</code>，且<code>height[low]&lt;height[high]</code>时，那么仍以<code>height[low]</code>作为高的矩形一定更小，因为长一定变短（索引减小了）；而另一种情况当<code>height[high]&lt;height[low]</code>时，不仅长变短了，而且高也变短了，高为<code>height[high]</code>了，面积一定小于原面积。所以就没必要使<code>high--</code>了，因为一定是小于原面积的，此时，需要<code>low++</code>来查找下一个面积了。</p>
 <p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/3sum</span></span><br><span class="line"><span class="comment"> * time completicity is O(nlogn);</span></span><br><span class="line"><span class="comment"> * space complicity is O(1);</span></span><br><span class="line"><span class="comment"> * beats: 87.09%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">threeSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">		sort(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">		<span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//1.第一个元素去除重复</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">int</span> low = i + <span class="number">1</span>, high = n - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (low &lt; high)&#123;</span><br><span class="line">				<span class="keyword">int</span> sum = nums[i] + nums[low] + nums[high];</span><br><span class="line">				<span class="keyword">if</span> (sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">					low++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">					high--;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">					v.push_back(nums[i]);</span><br><span class="line">					v.push_back(nums[low]);</span><br><span class="line">					v.push_back(nums[high]);</span><br><span class="line">					result.push_back(v);</span><br><span class="line">                    <span class="comment">//2.第二三个元素去除重复</span></span><br><span class="line">					<span class="keyword">while</span> ((low &lt; high) &amp;&amp; (nums[low] == nums[low + <span class="number">1</span>])) low++;</span><br><span class="line">					<span class="keyword">while</span> ((low &lt; high) &amp;&amp; (nums[high] == nums[high - <span class="number">1</span>])) high--;</span><br><span class="line">					low++;</span><br><span class="line">					high--;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/container-with-most-water/</span></span><br><span class="line"><span class="comment"> * Runtime: 166 ms, faster than 13.19%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 59 MB, less than 39.38%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; <span class="built_in">height</span>)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> low = <span class="number">0</span>, high = <span class="built_in">height</span>.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> area = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (low &lt; high)&#123;</span><br><span class="line">			area = <span class="built_in">max</span>(area,<span class="built_in">min</span>(<span class="built_in">height</span>[low],<span class="built_in">height</span>[high])*(high - low));</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">height</span>[low] &lt; <span class="built_in">height</span>[high])&#123;</span><br><span class="line">				low++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				high--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/container-with-most-water/</span></span><br><span class="line"><span class="comment"> * Runtime: 96 ms, faster than 52.70% </span></span><br><span class="line"><span class="comment"> * Memory Usage: 48.1 MB, less than 28.98%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">height</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxArea = <span class="function"><span class="keyword">function</span>(<span class="params">height</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = height.length - <span class="number">1</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">const</span> sum = (high-low) * <span class="built_in">Math</span>.min(height[low],height[high]);</span><br><span class="line">        res = <span class="built_in">Math</span>.max(sum,res);</span><br><span class="line">        <span class="keyword">if</span>(height[low] &lt; height[high]) low++;</span><br><span class="line">        <span class="keyword">else</span> high--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/container-with-most-water</span></span><br><span class="line"><span class="comment"> * Beats : 95.02%</span></span><br><span class="line"><span class="comment"> * Time complicity is O(logn);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(1);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>,high = height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> area = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = Math.min(height[low], height[high])*(high-low);</span><br><span class="line">            area = sum &gt;area?sum:area;</span><br><span class="line">            <span class="keyword">if</span>(height[low] &lt; height[high]) &#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>python实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums = sorted(nums)</span><br><span class="line">        n = len(nums)</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            low = i + <span class="number">1</span></span><br><span class="line">            high = n - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> low &lt; high:</span><br><span class="line">                sum = nums[i]+nums[low]+nums[high]</span><br><span class="line">                <span class="keyword">if</span> sum &lt; <span class="number">0</span>:</span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> sum &gt; <span class="number">0</span>:</span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res = [nums[i],nums[low],nums[high]]</span><br><span class="line">                    result.append(res)</span><br><span class="line">                    <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> nums[low] == nums[low+<span class="number">1</span>]:</span><br><span class="line">                        low += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> nums[high] == nums[high<span class="number">-1</span>]:</span><br><span class="line">                        high -= <span class="number">1</span></span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<h2 id="考察点"><a href="#考察点" class="headerlink" title="考察点"></a>考察点</h2><p>如何去除结果的重复。针对三个元素分别判断重复。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type height: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(height) - <span class="number">1</span></span><br><span class="line">        area = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> low &lt; high:</span><br><span class="line">            area = max(area,min(height[low],height[high])*(high-low))</span><br><span class="line">            <span class="keyword">if</span> height[low] &lt; height[high]:</span><br><span class="line">                low += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> area</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>如何定位，这道题，难在定位上，如何分析题目类型很重要，一开始我定位在了动态规划上，结果解不出来，最后使用双指针解决了。</li>
+<li>本题难点，在于双指针的条件判断上。</li>
+</ol>
 
       
     </div>
@@ -436,7 +452,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2018/02/04/temp/15-3Sum/" title="15. 3Sum">https://war3cdota.github.io/2018/02/04/temp/15-3Sum/</a>
+    <a href="https://war3cdota.github.io/2018/02/04/11-Container-With-Most-Water/" title="11. Container With Most Water">https://war3cdota.github.io/2018/02/04/11-Container-With-Most-Water/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -450,11 +466,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
-          
             <a href="/tags/双指针-逼近法/" <i class="fa fa-tag"> 双指针+逼近法</a>
           
             <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
+            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
+          
+            <a href="/tags/greedy-贪心/" <i class="fa fa-tag"> greedy(贪心)</a>
           
         </div>
       
@@ -467,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/30/temp/414-Third-Maximum-Number/" rel="next" title="414. Third Maximum Number">
-                <i class="fa fa-chevron-left"></i> 414. Third Maximum Number
+              <a href="/2018/02/04/temp/18-4Sum/" rel="next" title="18. 4Sum">
+                <i class="fa fa-chevron-left"></i> 18. 4Sum
               </a>
             
           </div>
@@ -477,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/04/temp/16-3Sum-Closest/" rel="prev" title="16. 3Sum Closest">
-                16. 3Sum Closest <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/05/temp/31-Next-Permutation/" rel="prev" title="31. Next Permutation">
+                31. Next Permutation <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -661,7 +679,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重复的问题"><span class="nav-number">1.1.</span> <span class="nav-text">去重复的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考察点"><span class="nav-number">1.2.</span> <span class="nav-text">考察点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -695,7 +713,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">94.1k</span>
+    <span title="Site words total count">94.5k</span>
   
 </div>
 
