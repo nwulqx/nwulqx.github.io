@@ -25,7 +25,77 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 
 详细参见：https://leetcode.com/articles/next-permutation/
 
-![Alt text](/images/31_nums_graph.png)
+![Alt text](https://leetcode.com/media/original_images/31_Next_Permutation.gif)
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/next-permutation/
+ * Time complicity is O(n);
+ * Space complicity is O(1);
+ * Runtime: 140 ms, faster than 10.97%
+ * Memory Usage: 40.1 MB, less than 94.22%
+ */
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var nextPermutation = function(nums) {
+    function swap(nums,i,j){
+        const temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    function reverse(nums,start,end){
+        while(start < end){
+            swap(nums,start,end);
+            start++;
+            end--;
+        }
+    }
+    const n = nums.length;
+    let i = n - 2;
+    while(i >= 0 && nums[i] >= nums[i+1]) i--;
+    if(i >= 0){
+        let j = n - 1;
+        while(j >= 0 && nums[j] <= nums[i]) j--;
+        swap(nums,i,j);
+    }
+    reverse(nums,i+1,n-1);
+};
+```
+
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/next-permutation/
+ * Beats : 58.63%
+ * Time complicity is O(n);
+ * Space complicity is O(1);
+ */
+class Solution {
+public:
+	void nextPermutation(vector<int>& nums) {
+		int n = nums.size();
+		int i = n - 2;
+		while (i >= 0 && nums[i] >= nums[i + 1]){
+			i--;
+		}
+		if (i >= 0){
+			int j = n - 1;
+			while (j >= 0 && nums[j] <= nums[i]){
+				j--;
+			}
+			swap(nums[i], nums[j]);
+		}
+		reverse(nums.begin()+i+1,nums.end());
+	}
+};
+```
 
 **Java实现**
 
@@ -69,36 +139,6 @@ class Solution {
         }
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/next-permutation/
- * Beats : 58.63%
- * Time complicity is O(n);
- * Space complicity is O(1);
- */
-class Solution {
-public:
-	void nextPermutation(vector<int>& nums) {
-		int n = nums.size();
-		int i = n - 2;
-		while (i >= 0 && nums[i] >= nums[i + 1]){
-			i--;
-		}
-		if (i >= 0){
-			int j = n - 1;
-			while (j >= 0 && nums[j] <= nums[i]){
-				j--;
-			}
-			swap(nums[i], nums[j]);
-		}
-		reverse(nums.begin()+i+1,nums.end());
-	}
-};
 ```
 
 **c++实现**

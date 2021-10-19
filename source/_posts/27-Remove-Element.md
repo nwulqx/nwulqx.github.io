@@ -21,6 +21,54 @@ Your function should return length = 2, with the first two elements of nums bein
 >利用了和26. Remove Duplicates from Sorted Array相同的思想，时间复杂度O(n)<br>
 >利用length既可以该值既可以表示索引，也可以表示索引长度，将比较重复的逻辑换成比较数组元素和val即可！
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/remove-element/
+ * Runtime: 4 ms, faster than 47.03%
+ * Memory Usage: 8.9 MB, less than 35.63%
+ */
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int j = 0;
+        for(int i = 0; i < nums.size(); i++){
+            if(nums[i] != val){
+                nums[j++] = nums[i];
+            }
+        }
+        return j;
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/remove-element/
+ * Runtime: 106 ms, faster than 22.34%
+ * Memory Usage: 38.8 MB, less than 50.01%
+ */
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+    let j = 0;
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] !== val){
+            nums[j++] = nums[i];
+        }
+    }
+    return j;
+};
+```
+
 **Java实现**
 
 ```java
@@ -41,28 +89,6 @@ Your function should return length = 2, with the first two elements of nums bein
         }
         return length;
     }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/remove-element/
- * Beats : 51.4%
- */
-class Solution {
-public:
-    int removeElement(vector<int>& nums, int val) {
-		int index = 0;
-		for (int i = 0; i < nums.size(); i++){
-			if (nums[i] != val){
-				nums[index++] = nums[i];
-			}
-		}
-		return index;
-    }
-};
 ```
 
 **python实现**
