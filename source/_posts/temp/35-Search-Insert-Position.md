@@ -150,32 +150,6 @@ int binarySearch(int a[],int low,int high,int x){
 
 那么这道题目就是**查找第一个大于或等于x的元素位置**。
 
-**Java实现**
-
-```java
-/*
- * app:leetcode lang:Java
- * https://leetcode.com/problems/search-insert-position
- * Beats : 90%;
- */
-class Solution {
-    public int searchInsert(int[] nums, int target) {
-        int low = 0,high = nums.length-1,mid;
-        while(low <= high){
-            mid = low + (high-low)/2;
-            if(nums[mid] < target){
-                low = mid+1;
-            }else if(nums[mid] >= target){
-                high = mid-1;
-            }
-        }
-        return low;
-    }
-}
-```
-
-
-
 **c++实现**
 
 ```c++
@@ -200,6 +174,60 @@ public:
 		return low;
     }
 };
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/search-insert-position
+ * Runtime: 68 ms, faster than 92.95%
+ * Memory Usage: 39.9 MB, less than 31.39% 
+ */
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function(nums, target) {
+    let low = 0, high = nums.length;
+    while(low <= high){
+        const mid = Math.trunc(low + (high - low)/2);
+        if(nums[mid] < target){
+            low = mid + 1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return low;
+};
+```
+
+
+
+**Java实现**
+
+```java
+/*
+ * app:leetcode lang:Java
+ * https://leetcode.com/problems/search-insert-position
+ * Beats : 90%;
+ */
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int low = 0,high = nums.length-1,mid;
+        while(low <= high){
+            mid = low + (high-low)/2;
+            if(nums[mid] < target){
+                low = mid+1;
+            }else if(nums[mid] >= target){
+                high = mid-1;
+            }
+        }
+        return low;
+    }
+}
 ```
 
 **python实现**
