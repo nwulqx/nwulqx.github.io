@@ -2,6 +2,9 @@
 title: 45. Jump Game II
 date: 2021-10-20 22:46:48
 tags:
+- Array
+- LeetCode-medium
+- BFS(广度优先遍历)
 ---
 
 Given an array of non-negative integers `nums`, you are initially positioned at the first index of the array.
