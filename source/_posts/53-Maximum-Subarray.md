@@ -27,6 +27,52 @@ If you have figured out the O(*n*) solution, try coding another solution using t
 
 这个问题比较明显，是动态规划的问题。
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/maximum-subarray/
+ * Runtime: 104 ms, faster than 36.23%
+ * Memory Usage: 67.7 MB, less than 26.34% 
+ */
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        if(nums.size() < 1) return 0;
+        int dp = nums[0], res = nums[0];
+        for(int i = 1; i < nums.size(); i++){
+            dp = max(dp+nums[i],nums[i]);
+            res = max(res,dp);
+        }
+        return res;
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/maximum-subarray/
+ * Runtime: 134 ms, faster than 23.21%
+ * Memory Usage: 48.2 MB, less than 45.01%
+ */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    let dp = nums[0], res = nums[0];
+    for(let i = 1; i < nums.length; i++){
+        dp = Math.max(nums[i]+dp, nums[i]);
+        res = Math.max(res, dp);
+    }
+    return res;
+};
+```
+
 **Java实现**
 
 ```java
@@ -52,29 +98,6 @@ class Solution {
         return sum;
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/maximum-subarray/
- * Beats : 11.94 %;
- */
-class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        int length = nums.size();
-        vector<int> dp(nums);
-        int result = nums[0];
-        for(int i = 1;i < length; i++){
-            dp[i] = max(dp[i-1]+nums[i],dp[i]);
-            result = max(result,dp[i]);
-        }
-        return result;
-    }
-};
 ```
 
 **python实现**
