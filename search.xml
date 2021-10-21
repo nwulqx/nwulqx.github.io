@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>48. Rotate Image</title>
+    <url>/2021/10/21/48-Rotate-Image/</url>
+    <content><![CDATA[<p>You are given an <code>n x n</code> 2D <code>matrix</code> representing an image, rotate the image by <strong>90</strong> degrees (clockwise).</p>
+<p>You have to rotate the image <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a>, which means you have to modify the input 2D matrix directly. <strong>DO NOT</strong> allocate another 2D matrix and do the rotation.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg" alt="img"></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">Input: matrix = <span class="string">[[1,2,3],[4,5,6],[7,8,9]]</span></span><br><span class="line">Output: <span class="string">[[7,4,1],[8,5,2],[9,6,3]]</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg" alt="img"></p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">Input: matrix = <span class="comment">[<span class="comment">[5,1,9,11]</span>,<span class="comment">[2,4,8,10]</span>,<span class="comment">[13,3,6,7]</span>,<span class="comment">[15,14,12,16]</span>]</span></span><br><span class="line">Output: <span class="comment">[<span class="comment">[15,13,2,5]</span>,<span class="comment">[14,3,4,1]</span>,<span class="comment">[12,6,8,9]</span>,<span class="comment">[16,7,10,11]</span>]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">Input: matrix = <span class="string">[[1]]</span></span><br><span class="line">Output: <span class="string">[[1]]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">Input: matrix = <span class="string">[[1,2],[3,4]]</span></span><br><span class="line">Output: <span class="string">[[3,1],[4,2]]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>matrix.length == n</code></li>
+<li><code>matrix[i].length == n</code></li>
+<li><code>1 &lt;= n &lt;= 20</code></li>
+<li><code>-1000 &lt;= matrix[i][j] &lt;= 1000</code></li>
+</ul>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/rotate-image/</span></span><br><span class="line"><span class="comment"> * Runtime: 0 ms, faster than 100.00%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 7.1 MB, less than 32.75%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        reverse(matrix.<span class="built_in">begin</span>(),matrix.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="comment">// 重点在于j = i+1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; matrix[<span class="number">0</span>].<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                swap(matrix[i][j],matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/rotate-image/</span></span><br><span class="line"><span class="comment"> * Runtime: 93 ms, faster than 35.22% </span></span><br><span class="line"><span class="comment"> * Memory Usage: 38.7 MB, less than 75.59%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">matrix</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> rotate = <span class="function"><span class="keyword">function</span>(<span class="params">matrix</span>) </span>&#123;</span><br><span class="line">    matrix.reverse();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i+<span class="number">1</span>; j &lt; matrix[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">            <span class="keyword">const</span> temp = matrix[i][j];</span><br><span class="line">            matrix[i][j] = matrix[j][i];</span><br><span class="line">            matrix[j][i] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>47. Permutations II</title>
+    <url>/2021/10/21/47-Permutations-II/</url>
+    <content><![CDATA[<p>Given a collection of numbers, <code>nums</code>, that might contain duplicates, return <em>all possible unique permutations <strong>in any order</strong>.</em></p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">Input: nums = <span class="comment">[1,1,2]</span></span><br><span class="line">Output:</span><br><span class="line"><span class="comment">[<span class="comment">[1,1,2]</span>,</span></span><br><span class="line"><span class="comment"> <span class="comment">[1,2,1]</span>,</span></span><br><span class="line"><span class="comment"> <span class="comment">[2,1,1]</span>]</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">Input: nums = <span class="comment">[1,2,3]</span></span><br><span class="line">Output: <span class="comment">[<span class="comment">[1,2,3]</span>,<span class="comment">[1,3,2]</span>,<span class="comment">[2,1,3]</span>,<span class="comment">[2,3,1]</span>,<span class="comment">[3,1,2]</span>,<span class="comment">[3,2,1]</span>]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 8</code></li>
+<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+</ul>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/permutations-ii/</span></span><br><span class="line"><span class="comment"> * Runtime: 13 ms, faster than 43.29%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 9.7 MB, less than 42.14% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums;</span><br><span class="line">    <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">permuteUnique</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        sort(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = nums;</span><br><span class="line">        dfs(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level == nums.<span class="built_in">size</span>())&#123;</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(st.<span class="built_in">find</span>(i) != st.<span class="built_in">end</span>()) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i<span class="number">-1</span>] &amp;&amp; st.<span class="built_in">find</span>(i<span class="number">-1</span>) == st.<span class="built_in">end</span>()) <span class="keyword">continue</span>;</span><br><span class="line">            st.insert(i);</span><br><span class="line">            path.push_back(nums[i]);</span><br><span class="line">            dfs(level+<span class="number">1</span>);</span><br><span class="line">            path.pop_back();</span><br><span class="line">            st.erase(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/permutations-ii/</span></span><br><span class="line"><span class="comment"> * Runtime: 159 ms, faster than 37.61%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 42 MB, less than 84.62%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> permuteUnique = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">const</span> path = [];</span><br><span class="line">    <span class="keyword">const</span> st = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">    nums.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b);</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">level</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level === nums.length)&#123;</span><br><span class="line">            res.push([...path]);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(st.has(i)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i] === nums[i<span class="number">-1</span>] &amp;&amp; !st.has(i<span class="number">-1</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            st.add(i);</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            dfs(level+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">            st.delete(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
+        <tag>DFS(深度优先遍历)</tag>
+        <tag>DFS去重</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>46. Permutations</title>
+    <url>/2021/10/21/46-Permutations/</url>
+    <content><![CDATA[<p>Given an array <code>nums</code> of distinct integers, return <em>all the possible permutations</em>. You can return the answer in <strong>any order</strong>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">Input: nums = <span class="comment">[1,2,3]</span></span><br><span class="line">Output: <span class="comment">[<span class="comment">[1,2,3]</span>,<span class="comment">[1,3,2]</span>,<span class="comment">[2,1,3]</span>,<span class="comment">[2,3,1]</span>,<span class="comment">[3,1,2]</span>,<span class="comment">[3,2,1]</span>]</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">Input: nums = [<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">Output: <span class="string">[[0,1],[1,0]]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>]</span><br><span class="line">Output: <span class="string">[[1]]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 6</code></li>
+<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+<li>All the integers of <code>nums</code> are <strong>unique</strong>.</li>
+</ul>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/permutations/</span></span><br><span class="line"><span class="comment"> * Runtime: 137 ms, faster than 25.70%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 42.3 MB, less than 34.75%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> permute = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> path = [];</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">const</span> st = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">level</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level === nums.length)&#123;</span><br><span class="line">            res.push([...path]);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(st.has(nums[i])) <span class="keyword">continue</span>;</span><br><span class="line">            st.add(nums[i]);</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            dfs(level+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">            st.delete(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> *https://leetcode.com/problems/permutations/</span></span><br><span class="line"><span class="comment"> * Runtime: 7 ms, faster than 24.51%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 8.3 MB, less than 17.72%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">permute</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = nums;</span><br><span class="line">        dfs(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level == nums.<span class="built_in">size</span>())&#123;</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(st.<span class="built_in">find</span>(nums[i]) != st.<span class="built_in">end</span>()) <span class="keyword">continue</span>;</span><br><span class="line">            st.insert(nums[i]);</span><br><span class="line">            path.push_back(nums[i]);</span><br><span class="line">            dfs(level+<span class="number">1</span>);</span><br><span class="line">            st.erase(nums[i]);</span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
+        <tag>DFS(深度优先遍历)</tag>
+        <tag>DFS去重</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>45. Jump Game II</title>
     <url>/2021/10/20/45-Jump-Game-II/</url>
     <content><![CDATA[<p>Given an array of non-negative integers <code>nums</code>, you are initially positioned at the first index of the array.</p>
@@ -22,6 +110,11 @@
 <p><strong>c++</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/jump-game-ii/</span></span><br><span class="line"><span class="comment"> * Runtime: 32 ms, faster than 48.11%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 16.3 MB, less than 71.58%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>(), <span class="built_in">step</span> = <span class="number">0</span>, start = <span class="number">0</span>, <span class="built_in">end</span> = <span class="number">0</span>, maxEnd = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">end</span> &lt; n<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">step</span>++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt;= <span class="built_in">end</span>; i++)&#123;</span><br><span class="line">                maxEnd = <span class="built_in">max</span>(maxEnd,nums[i]+i);</span><br><span class="line">            &#125;</span><br><span class="line">            start = <span class="built_in">end</span> + <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">end</span> = maxEnd;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">step</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <tags>
+        <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
+        <tag>BFS(广度优先遍历)</tag>
+      </tags>
   </entry>
   <entry>
     <title>40. Combination Sum II</title>
@@ -46,8 +139,8 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/combination-sum-ii/</span></span><br><span class="line"><span class="comment"> * Runtime: 12 ms, faster than 33.76%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 10.6 MB, less than 88.24% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> target;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;target = target;</span><br><span class="line">        sort(candidates.<span class="built_in">begin</span>(),candidates.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sum &gt; target) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; start &amp;&amp; candidates[i] == candidates[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            dfs(i+<span class="number">1</span>, sum+candidates[i]);</span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>DFS去重</tag>
       </tags>
@@ -82,8 +175,8 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/combination-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 11 ms, faster than 53.48%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 11 MB, less than 54.20%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> target;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;target = target;</span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sum &gt; target) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            dfs(i, sum+candidates[i]);</span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
   </entry>
@@ -119,8 +212,8 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/valid-sudoku/</span></span><br><span class="line"><span class="comment"> * Runtime: 24 ms, faster than 55.88%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 18.1 MB, less than 72.18% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> used1[<span class="number">9</span>][<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;,used2[<span class="number">9</span>][<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;,used3[<span class="number">9</span>][<span class="number">9</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board[<span class="number">0</span>].<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] != <span class="string">'.'</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> nums = board[i][j] - <span class="string">'0'</span> - <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">int</span> k = i/<span class="number">3</span>*<span class="number">3</span> + j/<span class="number">3</span>;</span><br><span class="line">                    <span class="keyword">if</span>(used1[i][nums] || used2[j][nums] || used3[k][nums])&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    used1[i][nums] = used2[j][nums] = used3[k][nums] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>数独(Sudoku)</tag>
       </tags>
   </entry>
@@ -152,8 +245,8 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/</span></span><br><span class="line"><span class="comment"> * Runtime: 7 ms, faster than 74.47%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 13.7 MB, less than 17.88%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">1</span>) <span class="keyword">return</span> &#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target)&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(low &lt; n &amp;&amp; nums[low] == target)&#123;</span><br><span class="line">            high = low;</span><br><span class="line">            <span class="keyword">while</span>(high &lt; nums.<span class="built_in">size</span>() &amp;&amp; nums[high] == nums[low]) high++;</span><br><span class="line">            <span class="keyword">return</span> &#123;low,high<span class="number">-1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -584,11 +677,11 @@
 ]]></content>
       <tags>
         <tag>LeetCode-medium</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -659,8 +752,8 @@
 ]]></content>
       <tags>
         <tag>LeetCode-medium</tag>
-        <tag>Queue(队列)</tag>
         <tag>BFS(广度优先遍历)</tag>
+        <tag>Queue(队列)</tag>
       </tags>
   </entry>
   <entry>
@@ -808,8 +901,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findPeakElement = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.length, low = <span class="number">1</span>, high = nums.length - <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(nums.length === <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(nums[<span class="number">0</span>] &gt; nums[<span class="number">1</span>]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(nums[n<span class="number">-1</span>] &gt; nums[n<span class="number">-2</span>]) <span class="keyword">return</span> n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.trunc(low + (high - low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &gt; nums[mid<span class="number">-1</span>] &amp;&amp; nums[mid] &gt; nums[mid+<span class="number">1</span>]) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &lt; nums[mid<span class="number">-1</span>]) high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &lt; nums[mid+<span class="number">1</span>]) low = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -845,8 +938,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findMin = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.trunc(low + (high-low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &gt;= nums[high])&#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[high];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -874,8 +967,8 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">evalRPN</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; tokens)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">string</span> s : tokens)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s == <span class="string">"+"</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                <span class="keyword">int</span> b = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                st.push(a+b);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s == <span class="string">"-"</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                <span class="keyword">int</span> b = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                st.push(b-a);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s == <span class="string">"*"</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                <span class="keyword">int</span> b = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                st.push(a*b);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s == <span class="string">"/"</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> a = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                <span class="keyword">int</span> b = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                st.push(b/a);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">int</span> c = stoi(s);</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>逆波兰式(Reverse Polish Notation)</tag>
       </tags>
   </entry>
@@ -906,8 +999,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">gas</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">cost</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> canCompleteCircuit = <span class="function"><span class="keyword">function</span>(<span class="params">gas, cost</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span>, tank = <span class="number">0</span>, start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; gas.length; i++)&#123;</span><br><span class="line">        total += gas[i] - cost[i];</span><br><span class="line">        <span class="keyword">if</span>(tank &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            tank += gas[i] - cost[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            start = i;</span><br><span class="line">            tank = gas[i] - cost[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total&gt;=<span class="number">0</span>?start:<span class="number">-1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>Optimize(优化)</tag>
       </tags>
   </entry>
@@ -932,8 +1025,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> longestConsecutive = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> st = <span class="keyword">new</span> <span class="built_in">Set</span>(nums);</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> n = nums[i];</span><br><span class="line">        <span class="comment">// 优化点，之前没找过的才作为start开始找</span></span><br><span class="line">        <span class="keyword">if</span>(!st.has(n<span class="number">-1</span>))&#123;</span><br><span class="line">            <span class="keyword">while</span>(st.has(n))&#123;</span><br><span class="line">                n++</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="built_in">Math</span>.max(res,n - nums[i]); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>Optimize(优化)</tag>
       </tags>
   </entry>
@@ -960,8 +1053,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">triangle</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minimumTotal = <span class="function"><span class="keyword">function</span>(<span class="params">triangle</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> m = triangle.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = m<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt;= i; j++)&#123;</span><br><span class="line">            triangle[i][j] += <span class="built_in">Math</span>.min(triangle[i+<span class="number">1</span>][j],triangle[i+<span class="number">1</span>][j+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>DP(动态规划)</tag>
       </tags>
   </entry>
@@ -984,8 +1077,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsetsWithDup = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [], path = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">        res.push([...path]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = index; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; index &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            dfs(i+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    nums.sort();</span><br><span class="line">    dfs(<span class="number">0</span>);    </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
   </entry>
@@ -1014,8 +1107,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> search = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor(low + (high - low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] === target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] === nums[low] &amp;&amp; nums[mid] === nums[high])&#123;</span><br><span class="line">            low++;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; nums[high])&#123;</span><br><span class="line">            <span class="keyword">if</span>(target &gt;= nums[low] &amp;&amp; target &lt; nums[mid])&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &lt; nums[low])&#123;</span><br><span class="line">            <span class="keyword">if</span>(target &gt; nums[mid] &amp;&amp; target &lt;= nums[high])&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(target &lt; nums[mid])&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -1048,8 +1141,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/search-in-rotated-sorted-array/</span></span><br><span class="line"><span class="comment"> * Runtime: 84 ms, faster than 45.80%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 40.3 MB, less than 12.32%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> search = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = nums.length<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">const</span> mid = <span class="built_in">Math</span>.trunc(low + (high - low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] === target) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &lt; nums[low])&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &lt; target &amp;&amp; target &lt;= nums[high])&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; nums[high])&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[low] &lt;= target &amp;&amp; target &lt; nums[mid])&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt; target)&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -1079,8 +1172,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> n <span class="keyword">of</span> nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(res &lt; <span class="number">2</span> || nums[res<span class="number">-2</span>] &lt; n)&#123;</span><br><span class="line">            nums[res++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1111,8 +1204,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;character[][]&#125;</span> <span class="variable">board</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">word</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> exist = <span class="function"><span class="keyword">function</span>(<span class="params">board, word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> dir = [[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">-1</span>],[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">-1</span>,<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">let</span> res = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> m = board.length, n = board[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">const</span> visit = [...Array(m)].map(<span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">Array</span>(n).fill(<span class="literal">false</span>));</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">x,y,index</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(index === word.length<span class="number">-1</span> &amp;&amp; board[x][y] === word[index])&#123;</span><br><span class="line">            res = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">const</span> tx = x + dir[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">const</span> ty = y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(tx &gt;= <span class="number">0</span> &amp;&amp; tx &lt; m &amp;&amp; ty &gt;= <span class="number">0</span> &amp;&amp; ty &lt; n &amp;&amp; !visit[tx][ty] &amp;&amp; board[x][y] === word[index])&#123;</span><br><span class="line">                visit[tx][ty] = <span class="literal">true</span>;</span><br><span class="line">                dfs(tx,ty,index+<span class="number">1</span>);</span><br><span class="line">                visit[tx][ty] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n;j++)&#123;</span><br><span class="line">            visit[i][j] = <span class="literal">true</span>;</span><br><span class="line">            dfs(i,j,<span class="number">0</span>);</span><br><span class="line">            visit[i][j] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
   </entry>
@@ -1137,8 +1230,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [], path = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">        res.push([...path]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = index; i &lt; nums.length; i++)&#123;</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            dfs(i+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
   </entry>
@@ -1162,8 +1255,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">k</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> combine = <span class="function"><span class="keyword">function</span>(<span class="params">n, k</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [],path = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">index,cnt</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt === k) res.push([...path]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = index; i &lt; n; i++)&#123;</span><br><span class="line">            path.push(i+<span class="number">1</span>);</span><br><span class="line">            dfs(i+<span class="number">1</span>,cnt+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DFS(深度优先遍历)</tag>
       </tags>
   </entry>
@@ -1195,8 +1288,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> sortColors = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> high = nums.length - <span class="number">1</span>, low = <span class="number">0</span>, index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(index &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[index] === <span class="number">1</span>) index++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[index] === <span class="number">0</span>)&#123;</span><br><span class="line">            nums[index++] = nums[low];</span><br><span class="line">            nums[low++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[index] === <span class="number">2</span>)&#123;</span><br><span class="line">            nums[index] = nums[high];</span><br><span class="line">            nums[high--] = <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1227,8 +1320,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">matrix</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> searchMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">matrix, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> m = matrix.length, n = matrix[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = m * n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor(low + (high - low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">let</span> tx = <span class="built_in">Math</span>.floor(mid / n), ty = mid % n;</span><br><span class="line">        <span class="keyword">if</span>(matrix[tx][ty] === target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(matrix[tx][ty] &gt; target)&#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1268,8 +1361,8 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">matrix</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> setZeroes = <span class="function"><span class="keyword">function</span>(<span class="params">matrix</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> m = matrix.length, n = matrix[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">let</span> isCol = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!matrix[i][<span class="number">0</span>]) isCol = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!matrix[i][j])&#123;</span><br><span class="line">               matrix[i][<span class="number">0</span>] = matrix[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = m<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!matrix[i][<span class="number">0</span>] || !matrix[<span class="number">0</span>][j]) matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(isCol) matrix[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1385,8 +1478,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>, k = <span class="number">1</span>, len = n*n;</span><br><span class="line">    <span class="keyword">var</span> res = [...Array(n)].map(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">while</span>(k &lt;= len)&#123;</span><br><span class="line">        <span class="keyword">var</span> temp = [];</span><br><span class="line">        <span class="keyword">var</span> j = i;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; n - i &amp;&amp; k &lt;= len)&#123;</span><br><span class="line">            res[i][j++] = k++;</span><br><span class="line">        &#125;</span><br><span class="line">        j = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; n-i &amp;&amp; k &lt;= len)&#123;</span><br><span class="line">            res[j++][n-i<span class="number">-1</span>] = k++;</span><br><span class="line">        &#125;</span><br><span class="line">        j = n<span class="number">-2</span>-i;</span><br><span class="line">        <span class="keyword">while</span>(j &gt; i &amp;&amp; k &lt;= len)&#123;</span><br><span class="line">            res[n-i<span class="number">-1</span>][j--] = k++;</span><br><span class="line">        &#125;</span><br><span class="line">        j = n<span class="number">-1</span>-i;</span><br><span class="line">        <span class="keyword">while</span>(j &gt; i &amp;&amp; k &lt;= len)&#123;</span><br><span class="line">            res[j--][i] = k++;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1611,8 +1704,8 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxProduct = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = nums[<span class="number">0</span>], rmin = nums[<span class="number">0</span>], rmax = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> temp = rmin;</span><br><span class="line">            rmin = rmax;</span><br><span class="line">            rmax = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        rmax = <span class="built_in">Math</span>.max(nums[i],nums[i]*rmax);</span><br><span class="line">        rmin = <span class="built_in">Math</span>.min(nums[i],nums[i]*rmin);</span><br><span class="line">        </span><br><span class="line">        res = <span class="built_in">Math</span>.max(res,rmax);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>DP(动态规划)</tag>
         <tag>最大子数组和</tag>
       </tags>
@@ -3424,8 +3517,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个全排列问题，其实有固定的一套解决办法，没有技巧，需要配合图，来记住这个套路。</p>
 ]]></content>
       <tags>
-        <tag>Array</tag>
         <tag>LeetCode-medium</tag>
+        <tag>Array</tag>
         <tag>排列组合(Permutation)</tag>
       </tags>
   </entry>
@@ -3468,9 +3561,9 @@ d&amp;Hyscvnm
 </ol>
 ]]></content>
       <tags>
+        <tag>LeetCode-medium</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
-        <tag>LeetCode-medium</tag>
         <tag>greedy(贪心)</tag>
       </tags>
   </entry>
@@ -3513,9 +3606,9 @@ d&amp;Hyscvnm
 </ol>
 ]]></content>
       <tags>
+        <tag>LeetCode-medium</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
-        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -3557,9 +3650,9 @@ d&amp;Hyscvnm
 </ol>
 ]]></content>
       <tags>
+        <tag>LeetCode-medium</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
-        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -3589,9 +3682,9 @@ d&amp;Hyscvnm
 <h2 id="考察点"><a href="#考察点" class="headerlink" title="考察点"></a>考察点</h2><p>如何去除结果的重复。针对三个元素分别判断重复。</p>
 ]]></content>
       <tags>
+        <tag>LeetCode-medium</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
-        <tag>LeetCode-medium</tag>
       </tags>
   </entry>
   <entry>
@@ -3622,8 +3715,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>set，map集合可以借助其默认有序的特点，对其保存最大n位或最小n位数，是很值得考虑的。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>set(集合)</tag>
       </tags>
   </entry>
@@ -3647,8 +3740,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>有时候，这种问题很简单，不要把它想得太难了，直接遍历可能会很容易。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -3698,8 +3791,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>位操作是一个很好的办法，以后在很多问题上也会见到位操作的技巧，其中异或操作作为很有特点的操作，在处理一些问题上很有效。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>Bit Manipulation(位操作)</tag>
       </tags>
   </entry>
@@ -3724,8 +3817,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Map和Set是解决数组类问题的得力工具，必要的时候很值得考虑。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -3757,8 +3850,8 @@ d&amp;Hyscvnm
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(nums) &gt; len(set(nums))</span><br><span class="line">    </span><br><span class="line">    	<span class="string">"""</span></span><br><span class="line"><span class="string">        超时</span></span><br><span class="line"><span class="string">        hash = []</span></span><br><span class="line"><span class="string">        for i in range(0, len(nums)):</span></span><br><span class="line"><span class="string">            if nums[i] in hash:</span></span><br><span class="line"><span class="string">                return True</span></span><br><span class="line"><span class="string">            else:</span></span><br><span class="line"><span class="string">                hash.append(nums[i])</span></span><br><span class="line"><span class="string">        return False</span></span><br><span class="line"><span class="string">        """</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -3788,8 +3881,8 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这种Rotate Array旋转数组的最好方法是<code>reverse</code>方法（从思路和时间空间复杂度考虑），通过三次反转数组，即可达到旋转数组的目的，这么做的好处是它可以不借助额外空间，使其空间复杂度为$O(1)$</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>reverse(反转数组)</tag>
       </tags>
   </entry>
@@ -3829,8 +3922,8 @@ d&amp;Hyscvnm
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        majority = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(nums)):</span><br><span class="line">            <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">                majority = nums[i]</span><br><span class="line">            <span class="keyword">if</span> majority==nums[i]:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> majority</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>Boyer-Moore Voting Algorithm（多数投票算法）</tag>
       </tags>
   </entry>
@@ -3857,9 +3950,9 @@ d&amp;Hyscvnm
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>双指针的使用条件，要注意是有序数组，不是有序数组不能使用双指针和二分法，这点一定要注意。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -3950,8 +4043,8 @@ d&amp;Hyscvnm
 <p>这两个情况的哪一个，具体只需要看看等号是加在哪个条件上就可以决定不同的结果了。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>二分法</tag>
       </tags>
   </entry>
@@ -4095,8 +4188,8 @@ Case #4: false
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个题目关键是谷峰法，而贪心只是谷峰法的一个变化。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>贪心(Greedy)</tag>
       </tags>
   </entry>
@@ -4148,8 +4241,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 </blockquote>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>DP(动态规划)</tag>
         <tag>最长公共子序列（LCS）</tag>
       </tags>
@@ -4190,8 +4283,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 </ol>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>Pascal&#39;s Triangle(杨辉三角形)</tag>
       </tags>
   </entry>
@@ -4229,8 +4322,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 </blockquote>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>Pascal&#39;s Triangle(杨辉三角形)</tag>
       </tags>
   </entry>
@@ -4518,10 +4611,10 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Optimize(优化)</tag>
         <tag>recursion(递归)</tag>
-        <tag>BFS(广度优先遍历)</tag>
         <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
@@ -4597,11 +4690,11 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
-        <tag>DFS(深度优先遍历)</tag>
         <tag>二分法</tag>
+        <tag>BFS(广度优先遍历)</tag>
+        <tag>DFS(深度优先遍历)</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
         <tag>Boundary Check(边界值检测)</tag>
       </tags>
   </entry>
@@ -4630,11 +4723,11 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-medium</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -4705,11 +4798,11 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-medium</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Optimize(优化)</tag>
         <tag>recursion(递归)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -4743,12 +4836,12 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
         <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -4794,12 +4887,12 @@ In this case, no transaction is done, i.e. max profit = 0.
 ]]></content>
       <tags>
         <tag>LeetCode-easy</tag>
+        <tag>BFS(广度优先遍历)</tag>
         <tag>DFS(深度优先遍历)</tag>
         <tag>Tree(树)</tag>
         <tag>recursion(递归)</tag>
         <tag>Stack(栈)</tag>
         <tag>Queue(队列)</tag>
-        <tag>BFS(广度优先遍历)</tag>
       </tags>
   </entry>
   <entry>
@@ -4832,8 +4925,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 </blockquote>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
         <tag>Optimize(优化)</tag>
       </tags>
   </entry>
@@ -4946,8 +5039,8 @@ Last Input: 44
 </blockquote>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -5060,8 +5153,8 @@ color:rgb(199,37,78)
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这类题目其实考察数组的操作，其目的不在于返回一个答案数组，而只是需要前n项符合答案的数组就可以了。</p>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -5085,8 +5178,8 @@ color:rgb(199,37,78)
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        index = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] == nums[i<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[index] = nums[i]</span><br><span class="line">                index += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> index</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
@@ -5509,7 +5602,7 @@ return [0, 1].
 <p><strong>javascript</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 95 ms, faster than 66.17%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 41.7 MB, less than 8.76%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> mp = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">const</span> sub = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span>(mp.get(sub) !== <span class="literal">undefined</span>)&#123;</span><br><span class="line">            res.push(mp.get(sub));</span><br><span class="line">            res.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        mp.set(nums[i],i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 11 ms, faster than 81.35%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 10.8 MB, less than 40.20%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hash;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> numToFind = target - nums[i];</span><br><span class="line">			<span class="keyword">if</span> (hash.find(numToFind) != hash.end())&#123;</span><br><span class="line">				result.push_back(hash[numToFind]);</span><br><span class="line">				result.push_back(i);</span><br><span class="line">				<span class="keyword">return</span> result;</span><br><span class="line">			&#125;</span><br><span class="line">			hash[nums[i]] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 11 ms, faster than 81.35%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 10.8 MB, less than 40.20%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hash;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> numToFind = target - nums[i];</span><br><span class="line">			<span class="keyword">if</span> (hash.<span class="built_in">find</span>(numToFind) != hash.<span class="built_in">end</span>())&#123;</span><br><span class="line">				result.push_back(hash[numToFind]);</span><br><span class="line">				result.push_back(i);</span><br><span class="line">				<span class="keyword">return</span> result;</span><br><span class="line">			&#125;</span><br><span class="line">			hash[nums[i]] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>Java实现</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/submissions/</span></span><br><span class="line"><span class="comment"> * Beats : 45%;</span></span><br><span class="line"><span class="comment"> * Time complicity is O(n);</span></span><br><span class="line"><span class="comment"> * Space complicity is O(n);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSum3</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)&#123;</span><br><span class="line">		Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">			map.put(nums[i],i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">			 <span class="comment">// We don't need two same elements!</span></span><br><span class="line">			<span class="keyword">if</span>(map.containsKey(target-nums[j])&amp;&amp;(map.get(target-nums[j])!=j))&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;j,map.get(target-nums[j])&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No Such Two Arguments"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>python实现</strong></p>
@@ -5535,9 +5628,9 @@ return [0, 1].
 </blockquote>
 ]]></content>
       <tags>
-        <tag>LeetCode-easy</tag>
         <tag>双指针+逼近法</tag>
         <tag>Array</tag>
+        <tag>LeetCode-easy</tag>
       </tags>
   </entry>
   <entry>
