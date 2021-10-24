@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-easy,Array,">
+  <meta name="keywords" content="Array,DP(动态规划),">
 
 
 
@@ -80,18 +80,20 @@
 
 
 
-<meta name="description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
-<meta name="keywords" content="LeetCode-easy,Array">
+<meta name="description" content="Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move either down or right at a">
+<meta name="keywords" content="Array,DP(动态规划)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="66. Plus One">
-<meta property="og:url" content="https://war3cdota.github.io/2017/04/24/temp/66-Plus-One/index.html">
+<meta property="og:title" content="64. Minimum Path Sum">
+<meta property="og:url" content="https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
+<meta property="og:description" content="Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move either down or right at a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-27T10:06:20.374Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg">
+<meta property="og:updated_time" content="2021-10-24T14:16:52.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="66. Plus One">
-<meta name="twitter:description" content="Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head of the list.">
+<meta name="twitter:title" content="64. Minimum Path Sum">
+<meta name="twitter:description" content="Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move either down or right at a">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2017/04/24/temp/66-Plus-One/">
+  <link rel="canonical" href="https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/">
 
 
 
 
 
-  <title>66. Plus One | War3cdota's Blog</title>
+  <title>64. Minimum Path Sum | War3cdota's Blog</title>
   
 
 
@@ -286,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2017/04/24/temp/66-Plus-One/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -303,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">66. Plus One</h1>
+          <h1 class="post-title" itemprop="name headline">64. Minimum Path Sum</h1>
         
 
         <div class="post-meta">
@@ -315,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T16:29:33+08:00">
-                2017-04-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-12T19:47:10+08:00">
+                2021-09-12
               </time>
             
 
@@ -331,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-27T18:06:20+08:00">
-                2020-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-24T22:16:52+08:00">
+                2021-10-24
               </time>
             
           </span>
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  603 字
+                  373 字
                 </span>
               
 
@@ -396,27 +398,26 @@
       
 
       
-        <p>Given a non-negative number represented as an array of digits, plus one to the number.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list.</p>
-<a id="more"></a>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>其实，仔细看这道题，进位运算是这道题的考点。何时进位，如何进位，以及连续的进位应该怎么做？</p>
-<p><strong>伪码</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i&lt;--digits[digits的长度<span class="number">-1</span>];i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;<span class="comment">//这里很巧妙，小于9，则直接+1后return，如果能想到这里的话，基本上就很简单了</span></span><br><span class="line">        digits[i]++;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        digits[i] = <span class="number">0</span>;<span class="comment">//这里其实只需要置0即可，因为这里最大的进位仅为1，所以不需要考虑大于1的进位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">newDigits数组 &lt;-- 新数组[digits的长度+<span class="number">1</span>]<span class="comment">//到达了这一步仍没有返回，说明，每一位都是9，所以，出现了比原数组多了一位。</span></span><br><span class="line">newDigits[<span class="number">0</span>] &lt;-- <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> newDigits;</span><br></pre></td></tr></table></figure>
-<p><strong>源码</strong></p>
-<p><strong>Java实现</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/plus-one/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlusOne</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">if</span>(digits.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        <span class="keyword">int</span> i = digits.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]&lt;<span class="number">9</span>)&#123;</span><br><span class="line">                digits[i]++;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> []newDigits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        newDigits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> newDigits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/plus-one/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n = digits.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (n &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span> (digits[n] &lt; <span class="number">9</span>)&#123;</span><br><span class="line">				digits[n] += <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">return</span> digits;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				digits[n] = <span class="number">0</span>;</span><br><span class="line">				n--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		digits.insert(digits.<span class="built_in">begin</span>(), <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>python实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plusOne</span><span class="params">(self, digits)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type digits: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i = len(digits) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> i &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> digits[i] &lt; <span class="number">9</span>:</span><br><span class="line">                digits[i] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> digits</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                digits[i] = <span class="number">0</span></span><br><span class="line">                i -= <span class="number">1</span></span><br><span class="line">        digits.insert(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> digits</span><br></pre></td></tr></table></figure>
-<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><blockquote>
-<p>2017年时，这道题其实对我来说很难。对于进位运算的操作和实践太少，思路也不够清晰。<br></p>
-<p>2020年时，这道题对于我来说很简单了，没有难点，由于它的局限性，只是加1操作，对于加n操作的位运算，遇到了在进行分析。</p>
-<p>主要思路在于，对于位上是9的操作，只需要将该位置0，而对于位上小于9的操作，只需要该位加1，返回即可。这是加1运算的局限，不需要单独的进位变量，因为进位最大不会超过1。</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>进位运算其实很考察逻辑，需要注意的是进位。</p>
-</blockquote>
+        <p>Given a <code>m x n</code> <code>grid</code> filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.</p>
+<p><strong>Note:</strong> You can only move either down or right at any point in time.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg" alt="img"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">grid</span> <span class="string">=</span> <span class="string">[[1,3,1],[1,5,1],[4,2,1]]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">7</span></span><br><span class="line"><span class="attr">Explanation:</span> <span class="string">Because</span> <span class="string">the</span> <span class="string">path</span> <span class="number">1</span> <span class="string">→</span> <span class="number">3</span> <span class="string">→</span> <span class="number">1</span> <span class="string">→</span> <span class="number">1</span> <span class="string">→</span> <span class="number">1</span> <span class="string">minimizes</span> <span class="string">the</span> <span class="string">sum.</span></span><br></pre></td></tr></table></figure>
+  <a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = <span class="string">[[1,2,3],[4,5,6]]</span></span><br><span class="line">Output: <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 200</code></li>
+<li><code>0 &lt;= grid[i][j] &lt;= 100</code></li>
+</ul>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>参考：<a href="https://leetcode.com/problems/minimum-path-sum/discuss/23457/C%2B%2B-DP" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-path-sum/discuss/23457/C%2B%2B-DP</a></p>
+<p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/minimum-path-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 11 ms, faster than 50.53%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 9.6 MB, less than 86.47%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">            grid[i][<span class="number">0</span>] += grid[i<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;n; j++)&#123;</span><br><span class="line">            grid[<span class="number">0</span>][j] += grid[<span class="number">0</span>][j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">                grid[i][j] += <span class="built_in">min</span>(grid[i<span class="number">-1</span>][j],grid[i][j<span class="number">-1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> grid[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/minimum-path-sum/</span></span><br><span class="line"><span class="comment"> * Runtime: 103 ms, faster than 43.03%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 40.4 MB, less than 86.55%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">grid</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minPathSum = <span class="function"><span class="keyword">function</span>(<span class="params">grid</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> m = grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">        grid[i][<span class="number">0</span>] += grid[i<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">        grid[<span class="number">0</span>][j] += grid[<span class="number">0</span>][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            grid[i][j] += <span class="built_in">Math</span>.min(grid[i<span class="number">-1</span>][j], grid[i][j<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> grid[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -437,7 +438,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2017/04/24/temp/66-Plus-One/" title="66. Plus One">https://war3cdota.github.io/2017/04/24/temp/66-Plus-One/</a>
+    <a href="https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/" title="64. Minimum Path Sum">https://war3cdota.github.io/2021/09/12/64-Minimum-Path-Sum/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -451,9 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode-easy/" <i class="fa fa-tag"> LeetCode-easy</a>
-          
             <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
+            <a href="/tags/DP-动态规划/" <i class="fa fa-tag"> DP(动态规划)</a>
           
         </div>
       
@@ -466,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/21/temp/58-Length-of-Last-Word/" rel="next" title="58. Length of Last Word">
-                <i class="fa fa-chevron-left"></i> 58. Length of Last Word
+              <a href="/2021/09/12/63-Unique-Paths-II/" rel="next" title="63. Unique Paths II">
+                <i class="fa fa-chevron-left"></i> 63. Unique Paths II
               </a>
             
           </div>
@@ -476,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/temp/70-Climbing-Stairs/" rel="prev" title="70. Climbing Stairs">
-                70. Climbing Stairs <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/20/temp/73-Set-Matrix-Zeroes/" rel="prev" title="73. Set Matrix Zeroes">
+                73. Set Matrix Zeroes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -660,7 +661,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">1.1.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li></ol></div>
             
 
           </div>
@@ -694,7 +695,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.3k</span>
+    <span title="Site words total count">100.5k</span>
   
 </div>
 
