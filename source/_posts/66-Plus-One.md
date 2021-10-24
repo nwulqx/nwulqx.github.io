@@ -34,6 +34,67 @@ return newDigits;
 
 **源码**
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/plus-one/
+ * Runtime: 3 ms, faster than 54.04%
+ * Memory Usage: 8.7 MB, less than 85.67%
+ */
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var minPathSum = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    for(let i = 1; i < m; i++){
+        grid[i][0] += grid[i-1][0];
+    }
+    for(let j = 1; j < n; j++){
+        grid[0][j] += grid[0][j-1];
+    }
+    for(let i = 1; i < m; i++){
+        for(let j = 1; j < n; j++){
+            grid[i][j] += Math.min(grid[i-1][j], grid[i][j-1]);
+        }
+    }
+    return grid[m-1][n-1];
+};
+```
+
+
+
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/plus-one/
+ * Runtime: 3 ms, faster than 54.04%
+ * Memory Usage: 8.7 MB, less than 85.67%
+ */
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int len = digits.size();
+        int carry = 1;
+        for(int i = len - 1; i >= 0; i--){
+            digits[i] += carry;
+            carry = digits[i] / 10;
+            digits[i] %= 10;
+        }
+        if(carry > 0){
+            digits.insert(digits.begin(), carry);
+        }
+        return digits;
+    }
+};
+```
+
+
+
 **Java实现**
 
 ```java
@@ -61,34 +122,6 @@ public class PlusOne{
         return newDigits;
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/plus-one/
- * Beats : 100%;
- */
-class Solution {
-public:
-    vector<int> plusOne(vector<int>& digits) {
-		int n = digits.size() - 1;
-		while (n >= 0){
-			if (digits[n] < 9){
-				digits[n] += 1;
-				return digits;
-			}
-			else{
-				digits[n] = 0;
-				n--;
-			}
-		}
-		digits.insert(digits.begin(), 1);
-		return digits;
-    }
-};
 ```
 
 **python实现**
