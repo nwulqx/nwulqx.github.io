@@ -11,7 +11,7 @@ Write an efficient algorithm that searches for a value in an `m x n` matrix. Thi
 - Integers in each row are sorted from left to right.
 - The first integer of each row is greater than the last integer of the previous row.
 
-  <!-- more -->
+
 
 **Example 1:**
 
@@ -21,6 +21,8 @@ Write an efficient algorithm that searches for a value in an `m x n` matrix. Thi
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
 Output: true
 ```
+
+<!-- more -->
 
 **Example 2:**
 
@@ -46,50 +48,56 @@ Output: false
 
 二维数组的二分法
 
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/search-a-2d-matrix/
- * Runtime: 4 ms Beats : 100 %
- * Memory: 7.5 MB Beats:  80 %
- */
-class Solution {
-public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int m = matrix.size(), n = matrix[0].size();
-        int low = 0, high = m*n-1;
-        while(low <= high){
-            int mid = low + (high - low)/2;
-            int val = matrix[mid/n][mid%n];
-            if(val == target) return true;
-            if(val < target) low = mid + 1;
-            else high = mid - 1;
-        }
-        return false;
-    }
-};
-```
+**javascript**
 
 ```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/search-a-2d-matrix/
+ * Runtime: 68 ms, faster than 93.93%
+ * Memory Usage: 40 MB, less than 20.22%
+ */
 /**
  * @param {number[][]} matrix
  * @param {number} target
  * @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
-    let m = matrix.length, n = matrix[0].length;
-    let low = 0, high = m * n - 1;
+    const m = matrix.length, n = matrix[0].length;
+    let low = 0, high = m*n-1;
     while(low <= high){
-        let mid = Math.floor(low + (high - low)/2);
-        let tx = Math.floor(mid / n), ty = mid % n;
-        if(matrix[tx][ty] === target) return true;
-        else if(matrix[tx][ty] > target){
-            high = mid - 1;
-        }else{
-            low = mid + 1;
-        }
+        const mid = Math.trunc(low + (high-low)/2);
+        const x = Math.trunc(mid / n), y = mid % n;
+        if(matrix[x][y] === target) return true;
+        if(matrix[x][y] < target) low = mid + 1;
+        else high = mid - 1;
     }
     return false;
+};
+```
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/search-a-2d-matrix/
+ * Runtime: 0 ms, faster than 100.00%
+ * Memory Usage: 9.4 MB, less than 79.04%
+ */
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int low = 0, m = matrix.size(), n = matrix[0].size(), high = m*n-1;
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            int x = mid / n, y = mid % n;
+            if(matrix[x][y] == target) return true;
+            if(matrix[x][y] > target) high = mid - 1;
+            else low = mid + 1;
+        }
+        return false;
+    }
 };
 ```
 

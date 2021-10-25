@@ -12,7 +12,7 @@ We will use the integers `0`, `1`, and `2` to represent the color red, white, an
 
 You must solve this problem without using the library's sort function.
 
-   <!-- more -->
+
 
 **Example 1:**
 
@@ -20,6 +20,8 @@ You must solve this problem without using the library's sort function.
 Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 ```
+
+   <!-- more -->
 
 **Example 2:**
 
@@ -60,10 +62,41 @@ Output: [1]
 
 参考：https://leetcode.com/problems/sort-colors/discuss/26474/Sharing-C%2B%2B-solution-with-Good-Explanation
 
+**javascript**
+
+```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/sort-colors/
+ * Runtime: 148 ms, faster than 5.09%
+ * Memory Usage: 38 MB, less than 99.64%
+ */
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var sortColors = function(nums) {
+    let zero = 0, second = nums.length - 1, index = 0;
+    while(index <= second){
+        if(nums[index] === 0){
+            nums[index++] = nums[zero];
+            nums[zero++] = 0;
+        }
+        else if(nums[index] === 2){
+            nums[index] = nums[second];
+             nums[second--] = 2;
+        }else{
+            index++;
+        }
+    }
+};
+```
+**c++**
+
 ```c++
 /*
  * app:leetcode lang:c++
- * https://leetcode.com/problems/sort-colors/submissions/
+ * https://leetcode.com/problems/sort-colors/
  * Runtime: 0 ms Beats : 100 %
  * Memory: 8.3 MB Beats:  68.29% 
  */
@@ -84,27 +117,5 @@ public:
         }
     }
 };
-```
-
-```javascript
-/**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
- */
-var sortColors = function(nums) {
-    let high = nums.length - 1, low = 0, index = 0;
-    while(index <= high){
-        if(nums[index] === 1) index++;
-        else if(nums[index] === 0){
-            nums[index++] = nums[low];
-            nums[low++] = 0;
-        }
-        else if(nums[index] === 2){
-            nums[index] = nums[high];
-            nums[high--] = 2;
-        }
-    }
-};
-
 ```
 

@@ -4,6 +4,7 @@ date: 2021-09-20 12:56:59
 tags:
 - Array
 - LeetCode-medium
+- matrix(矩阵)
 ---
 
 Given an `m x n` integer matrix `matrix`, if an element is `0`, set its entire row and column to `0`'s, and return *the matrix*.
@@ -67,20 +68,21 @@ https://leetcode.com/problems/set-matrix-zeroes/discuss/26014/Any-shorter-O(1)-s
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-        int m = matrix.size(), n = matrix[0].size();
+        int m = matrix.size();
+        int n = matrix[0].size();
         bool isCol = false;
         for(int i = 0; i < m; i++){
-            if(!matrix[i][0]) isCol = true;
+            if(matrix[i][0] == 0) isCol = true;
             for(int j = 1; j < n; j++){
-                if(!matrix[i][j]){
+                if(matrix[i][j] == 0){
                     matrix[i][0] = matrix[0][j] = 0;
                 }
             }
         }
-        for(int i = m - 1; i >= 0; i--){
+        for(int i = m-1; i >= 0; i--){
             for(int j = 1; j < n; j++){
-                if(!matrix[i][0] || !matrix[0][j]){
-                     matrix[i][j] = 0;
+                if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                    matrix[i][j] = 0;
                 }
             }
             if(isCol) matrix[i][0] = 0;
@@ -89,27 +91,35 @@ public:
 };
 ```
 
-
+**javascript**
 
 ```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/set-matrix-zeroes/
+ * Runtime: 137 ms, faster than 30.24%
+ * Memory Usage: 41 MB, less than 76.36%
+ */
 /**
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = function(matrix) {
-    let m = matrix.length, n = matrix[0].length;
+    const m = matrix.length, n = matrix[0].length;
     let isCol = false;
     for(let i = 0; i < m; i++){
-        if(!matrix[i][0]) isCol = true;
+        if(matrix[i][0] === 0) isCol = true;
         for(let j = 1; j < n; j++){
-            if(!matrix[i][j]){
-               matrix[i][0] = matrix[0][j] = 0;
+            if(matrix[i][j] === 0){
+                matrix[i][0] = matrix[0][j] = 0;
             }
         }
     }
     for(let i = m-1; i >= 0; i--){
         for(let j = 1; j < n; j++){
-            if(!matrix[i][0] || !matrix[0][j]) matrix[i][j] = 0;
+            if(matrix[i][0] === 0 || matrix[0][j] === 0){
+                matrix[i][j] = 0;
+            }
         }
         if(isCol) matrix[i][0] = 0;
     }
