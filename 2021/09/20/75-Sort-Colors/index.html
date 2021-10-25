@@ -80,21 +80,18 @@
 
 
 
-<meta name="description" content="Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers in each row are sorted from left to right. The first integer of each row">
+<meta name="description" content="Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the in">
 <meta name="keywords" content="LeetCode-medium,Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="74. Search a 2D Matrix">
-<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/temp/74-Search-a-2D-Matrix/index.html">
+<meta property="og:title" content="75. Sort Colors">
+<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/75-Sort-Colors/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers in each row are sorted from left to right. The first integer of each row">
+<meta property="og:description" content="Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/05/mat.jpg">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/05/mat2.jpg">
-<meta property="og:updated_time" content="2021-09-20T05:34:19.176Z">
+<meta property="og:updated_time" content="2021-10-25T16:17:07.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="74. Search a 2D Matrix">
-<meta name="twitter:description" content="Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers in each row are sorted from left to right. The first integer of each row">
-<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/10/05/mat.jpg">
+<meta name="twitter:title" content="75. Sort Colors">
+<meta name="twitter:description" content="Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the in">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/temp/74-Search-a-2D-Matrix/">
+  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/75-Sort-Colors/">
 
 
 
 
 
-  <title>74. Search a 2D Matrix | War3cdota's Blog</title>
+  <title>75. Sort Colors | War3cdota's Blog</title>
   
 
 
@@ -289,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/temp/74-Search-a-2D-Matrix/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/75-Sort-Colors/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -306,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">74. Search a 2D Matrix</h1>
+          <h1 class="post-title" itemprop="name headline">75. Sort Colors</h1>
         
 
         <div class="post-meta">
@@ -318,7 +315,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T13:32:22+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T14:27:16+08:00">
                 2021-09-20
               </time>
             
@@ -334,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T13:34:19+08:00">
-                2021-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-26T00:17:07+08:00">
+                2021-10-26
               </time>
             
           </span>
@@ -362,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  300 字
+                  390 字
                 </span>
               
 
@@ -378,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -399,29 +396,31 @@
       
 
       
-        <p>Write an efficient algorithm that searches for a value in an <code>m x n</code> matrix. This matrix has the following properties:</p>
-<ul>
-<li>Integers in each row are sorted from left to right.</li>
-<li><p>The first integer of each row is greater than the last integer of the previous row.</p>
-<a id="more"></a>
-</li>
-</ul>
+        <p>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong><a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> so that objects of the same color are adjacent, with the colors in the order red, white, and blue.</p>
+<p>We will use the integers <code>0</code>, <code>1</code>, and <code>2</code> to represent the color red, white, and blue, respectively.</p>
+<p>You must solve this problem without using the library’s sort function.</p>
 <p><strong>Example 1:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/10/05/mat.jpg" alt="img"></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = <span class="string">[[1,3,5,7],[10,11,16,20],[23,30,34,60]]</span>, target = <span class="number">3</span></span><br><span class="line">Output: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = <span class="string">[2,0,2,1,1,0]</span></span><br><span class="line">Output: <span class="string">[0,0,1,1,2,2]</span></span><br></pre></td></tr></table></figure>
+   <a id="more"></a>
 <p><strong>Example 2:</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/10/05/mat2.jpg" alt="img"></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = <span class="string">[[1,3,5,7],[10,11,16,20],[23,30,34,60]]</span>, target = <span class="number">13</span></span><br><span class="line">Output: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Input</span>: nums =<span class="meta"> [2,0,1]</span></span><br><span class="line"><span class="attribute">Output</span>:<span class="meta"> [0,1,2]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Input</span>: nums =<span class="meta"> [0]</span></span><br><span class="line"><span class="attribute">Output</span>:<span class="meta"> [0]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Input</span>: nums =<span class="meta"> [1]</span></span><br><span class="line"><span class="attribute">Output</span>:<span class="meta"> [1]</span></span><br></pre></td></tr></table></figure>
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[i].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 100</code></li>
-<li><code>-104 &lt;= matrix[i][j], target &lt;= 104</code></li>
+<li><code>n == nums.length</code></li>
+<li><code>1 &lt;= n &lt;= 300</code></li>
+<li><code>nums[i]</code> is <code>0</code>, <code>1</code>, or <code>2</code>.</li>
 </ul>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>二维数组的二分法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/search-a-2d-matrix/</span></span><br><span class="line"><span class="comment"> * Runtime: 4 ms Beats : 100 %</span></span><br><span class="line"><span class="comment"> * Memory: 7.5 MB Beats:  80 %</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = m*n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> val = matrix[mid/n][mid%n];</span><br><span class="line">            <span class="keyword">if</span>(val == target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(val &lt; target) low = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">matrix</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> searchMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">matrix, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> m = matrix.length, n = matrix[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = m * n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor(low + (high - low)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">let</span> tx = <span class="built_in">Math</span>.floor(mid / n), ty = mid % n;</span><br><span class="line">        <span class="keyword">if</span>(matrix[tx][ty] === target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(matrix[tx][ty] &gt; target)&#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Follow up:</strong> Could you come up with a one-pass algorithm using only constant extra space?</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>原址操作，空间复杂度为 S(1)</p>
+<p>参考：<a href="https://leetcode.com/problems/sort-colors/discuss/26474/Sharing-C%2B%2B-solution-with-Good-Explanation" target="_blank" rel="noopener">https://leetcode.com/problems/sort-colors/discuss/26474/Sharing-C%2B%2B-solution-with-Good-Explanation</a></p>
+<p><strong>javascript</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/sort-colors/</span></span><br><span class="line"><span class="comment"> * Runtime: 148 ms, faster than 5.09%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 38 MB, less than 99.64%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> sortColors = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> zero = <span class="number">0</span>, second = nums.length - <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(index &lt;= second)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[index] === <span class="number">0</span>)&#123;</span><br><span class="line">            nums[index++] = nums[zero];</span><br><span class="line">            nums[zero++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[index] === <span class="number">2</span>)&#123;</span><br><span class="line">            nums[index] = nums[second];</span><br><span class="line">             nums[second--] = <span class="number">2</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/sort-colors/</span></span><br><span class="line"><span class="comment"> * Runtime: 0 ms Beats : 100 %</span></span><br><span class="line"><span class="comment"> * Memory: 8.3 MB Beats:  68.29% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.<span class="built_in">size</span>() - <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 注意不是low &lt;= high</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt;= high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[index] == <span class="number">1</span>) index++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[index] == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">// 注意这里的逻辑，index和low均 ++</span></span><br><span class="line">                swap(nums[low++],nums[index++]);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[index] == <span class="number">2</span>)&#123;</span><br><span class="line">                <span class="comment">// 因为从high换下来的值不确定是多少，所以此时index不变</span></span><br><span class="line">                swap(nums[high--],nums[index]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -442,7 +441,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2021/09/20/temp/74-Search-a-2D-Matrix/" title="74. Search a 2D Matrix">https://war3cdota.github.io/2021/09/20/temp/74-Search-a-2D-Matrix/</a>
+    <a href="https://war3cdota.github.io/2021/09/20/75-Sort-Colors/" title="75. Sort Colors">https://war3cdota.github.io/2021/09/20/75-Sort-Colors/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -471,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/20/temp/73-Set-Matrix-Zeroes/" rel="next" title="73. Set Matrix Zeroes">
-                <i class="fa fa-chevron-left"></i> 73. Set Matrix Zeroes
+              <a href="/2021/09/20/74-Search-a-2D-Matrix/" rel="next" title="74. Search a 2D Matrix">
+                <i class="fa fa-chevron-left"></i> 74. Search a 2D Matrix
               </a>
             
           </div>
@@ -481,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/09/20/temp/75-Sort-Colors/" rel="prev" title="75. Sort Colors">
-                75. Sort Colors <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/20/temp/77-Combinations/" rel="prev" title="77. Combinations">
+                77. Combinations <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -699,7 +698,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.5k</span>
+    <span title="Site words total count">100.6k</span>
   
 </div>
 
