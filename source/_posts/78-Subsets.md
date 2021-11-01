@@ -11,14 +11,14 @@ Given an integer array `nums` of **unique** elements, return *all possible subse
 
 The solution set **must not** contain duplicate subsets. Return the solution in **any order**.
 
-​     <!-- more -->
-
 **Example 1:**
 
 ```
 Input: nums = [1,2,3]
 Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 ```
+
+​     <!-- more -->
 
 **Example 2:**
 
@@ -39,25 +39,28 @@ Output: [[],[0]]
 
 深度优先搜索DFS
 
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/subsets/
+ * Runtime: 4 ms, faster than 54.98%
+ * Memory Usage: 7.3 MB, less than 46.79% 
  */
 class Solution {
 private:
-    vector<int> nums;
+    vector<int> nums, path;
     vector<vector<int>> res;
-    vector<int> path;
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
-        this -> nums = nums;
+        this->nums = nums;
         dfs(0);
         return res;
     }
-    void dfs(int index) {
+    void dfs(int start){
         res.push_back(path);
-        for(int i = index; i < nums.size(); i++) {
+        for(int i = start; i < nums.size(); i++){
             path.push_back(nums[i]);
             dfs(i+1);
             path.pop_back();
@@ -65,17 +68,24 @@ public:
     }
 };
 ```
+**javascript**
 
 ```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/subsets/
+ * Runtime: 72 ms, faster than 94.59%
+ * Memory Usage: 40.8 MB, less than 76.79%
+ */
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
 var subsets = function(nums) {
     const res = [], path = [];
-    function dfs(index){
+    function dfs(start){
         res.push([...path]);
-        for(let i = index; i < nums.length; i++){
+        for(let i = start; i < nums.length; i++){
             path.push(nums[i]);
             dfs(i+1);
             path.pop();

@@ -11,8 +11,6 @@ Given two integers `n` and `k`, return *all possible combinations of* `k` *numbe
 
 You may return the answer in **any order**.
 
-​    <!-- more -->
-
 **Example 1:**
 
 ```
@@ -27,6 +25,8 @@ Output:
   [1,4],
 ]
 ```
+
+ <!-- more -->
 
 **Example 2:**
 
@@ -46,46 +46,65 @@ Output: [[1]]
 
 DFS遍历
 
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/combinations/
+ * Runtime: 28 ms, faster than 59.10%
+ * Memory Usage: 10 MB, less than 48.81%
  */
 class Solution {
+private:
+    vector<vector<int>> res;
+    vector<int> path;
+    int k, n;
 public:
     vector<vector<int>> combine(int n, int k) {
-        vector<vector<int>> res;
-        vector<int> path;
-        dfs(res,path,1,n,k);
+        this->k = k;
+        this->n = n;
+        dfs(0,0);
         return res;
     }
-    void dfs(vector<vector<int>> &res,vector<int> &path, int index,int n, int k){
-        if(path.size() == k){
+    void dfs(int start, int level){
+        if(level == k){
             res.push_back(path);
             return;
         }
-        for(int i = index; i <=n; i++){
-            path.push_back(i);
-            dfs(res, path, i+1,n,k);
+        for(int i = start; i < n; i++){
+            path.push_back(i+1);
+            dfs(i+1,level+1);
             path.pop_back();
         }
     }
 };
 ```
 
+**javascript**
+
 ```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/combinations/
+ * Runtime: 120 ms, faster than 76.42%
+ * Memory Usage: 44.1 MB, less than 82.17%
+ */
 /**
  * @param {number} n
  * @param {number} k
  * @return {number[][]}
  */
 var combine = function(n, k) {
-    const res = [],path = [];
-    function dfs(index,cnt){
-        if(cnt === k) res.push([...path]);
-        for(let i = index; i < n; i++){
+    const res = [], path = [];
+    function dfs(level, start){
+        if(level === k){
+            res.push([...path]);
+            return;
+        }
+        for(let i = start; i < n; i++){
             path.push(i+1);
-            dfs(i+1,cnt+1);
+            dfs(level+1,i+1);
             path.pop();
         }
     }

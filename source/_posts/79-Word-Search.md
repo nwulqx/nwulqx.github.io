@@ -11,8 +11,6 @@ Given an `m x n` grid of characters `board` and a string `word`, return `true` *
 
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
-​      <!-- more -->
-
 **Example 1:**
 
 ![img](https://assets.leetcode.com/uploads/2020/11/04/word2.jpg)
@@ -21,6 +19,8 @@ The word can be constructed from letters of sequentially adjacent cells, where a
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
 ```
+
+<!-- more -->
 
 **Example 2:**
 
@@ -56,86 +56,103 @@ Output: false
 
 # 分析
 
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/word-search/
+ * Runtime: 204 ms, faster than 82.73%
+ * Memory Usage: 7.9 MB, less than 7.46% 
  */
 class Solution {
 private:
-    vector<vector<char>> board;
-    string word;
-    vector<vector<bool>> visit;
-    bool res = false;
-    int dir[4][2] = {{1,0},{0,1},{0,-1},{-1,0}};
     int m,n;
+    string word;
+    vector<vector<char>> board;
+    vector<vector<bool>> visit;
+    int direct[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+    bool res = false;
 public:
     bool exist(vector<vector<char>>& board, string word) {
-        this -> board = board;
-        this -> word = word;
-        m = board.size(), n = board[0].size();
-        visit.resize(m, vector<bool>(n));
+        this->word = word;
+        this->m = board.size();
+        this->n = board[0].size();
+        this->board = board;
+        visit.resize(m,vector<bool>(n,false));
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                if(word[0] == board[i][j]){
+                if(board[i][j] == word[0]){
                     visit[i][j] = true;
-                    dfs(i, j, 0);
+                    dfs(0,i,j);
                     visit[i][j] = false;
                 }
             }
         }
         return res;
     }
-    void dfs(int x, int y, int index){
+    void dfs(int level, int x, int y){
         if(res) return;
-        if(index == word.size()-1){
+        if(level == word.size()-1){
             res = true;
             return;
         }
         for(int i = 0; i < 4; i++){
-            int tx = x+dir[i][0],ty = y+dir[i][1];
-            if(tx >= 0 && tx < m && ty >= 0 && ty < n && word[index + 1] == board[tx][ty] &&!visit[tx][ty]) {
+            int tx = x + direct[i][0];
+            int ty = y + direct[i][1];
+            if(tx >= 0 && tx < m && ty >=0 && ty < n && word[level+1] == board[tx][ty] && !visit[tx][ty]){
                 visit[tx][ty] = true;
-                dfs(tx, ty, index + 1);
+                dfs(level+1,tx,ty);
                 visit[tx][ty] = false;
             }
         }
     }
 };
 ```
+**javascript**
+
+js真tm是个垃圾语言，lenght拼写错误，竟然不报错
 
 ```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/word-search/
+ * Runtime: 288 ms, faster than 87.77%
+ * Memory Usage: 39.8 MB, less than 57.18%
+ */
 /**
  * @param {character[][]} board
  * @param {string} word
  * @return {boolean}
  */
 var exist = function(board, word) {
-    const dir = [[0,1],[0,-1],[1,0],[-1,0]];
-    let res = false;
     const m = board.length, n = board[0].length;
-    const visit = [...Array(m)].map(()=> Array(n).fill(false));
-    function dfs(x,y,index){
+    const visit = [...Array(m)].map(item => Array(n).fill(false));
+    let res = false;
+    const direct = [[0,1],[0,-1],[1,0],[-1,0]];
+    function dfs(level,x,y){
         if(res) return;
-        if(index === word.length-1 && board[x][y] === word[index]){
+        if(level === word.length-1){
             res = true;
             return;
         }
         for(let i = 0; i < 4; i++){
-            const tx = x + dir[i][0];
-            const ty = y + dir[i][1];
-            if(tx >= 0 && tx < m && ty >= 0 && ty < n && !visit[tx][ty] && board[x][y] === word[index]){
+            const tx = x + direct[i][0];
+            const ty = y + direct[i][1];
+            if(tx>=0 && tx < m && ty>=0 && ty <n && !visit[tx][ty]&& board[tx][ty]===word[level+1] ){
                 visit[tx][ty] = true;
-                dfs(tx,ty,index+1);
+                dfs(level+1,tx,ty);
                 visit[tx][ty] = false;
             }
         }
     }
     for(let i = 0; i < m; i++){
-        for(let j = 0; j < n;j++){
-            visit[i][j] = true;
-            dfs(i,j,0);
-            visit[i][j] = false;
+        for(let j = 0; j < n; j++){
+            if(board[i][j]===word[0]){
+                visit[i][j] = true;
+                dfs(0,i,j);
+                visit[i][j] = false;
+            }
         }
     }
     return res;
