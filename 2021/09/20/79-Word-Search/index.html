@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-medium,Array,DFS(深度优先遍历),">
+  <meta name="keywords" content="Array,LeetCode-medium,DFS(深度优先遍历),">
 
 
 
@@ -80,18 +80,22 @@
 
 
 
-<meta name="description" content="Given an integer array nums of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order. ​">
-<meta name="keywords" content="LeetCode-medium,Array,DFS(深度优先遍历)">
+<meta name="description" content="Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are hor">
+<meta name="keywords" content="Array,LeetCode-medium,DFS(深度优先遍历)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="78. Subsets">
-<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/temp/78-Subsets/index.html">
+<meta property="og:title" content="79. Word Search">
+<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/79-Word-Search/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given an integer array nums of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order. ​">
+<meta property="og:description" content="Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are hor">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-09-20T08:57:34.497Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/11/04/word2.jpg">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/11/04/word-1.jpg">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/15/word3.jpg">
+<meta property="og:updated_time" content="2021-11-01T16:29:54.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="78. Subsets">
-<meta name="twitter:description" content="Given an integer array nums of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order. ​">
+<meta name="twitter:title" content="79. Word Search">
+<meta name="twitter:description" content="Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are hor">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/11/04/word2.jpg">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/temp/78-Subsets/">
+  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/79-Word-Search/">
 
 
 
 
 
-  <title>78. Subsets | War3cdota's Blog</title>
+  <title>79. Word Search | War3cdota's Blog</title>
   
 
 
@@ -286,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/temp/78-Subsets/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/79-Word-Search/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -303,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">78. Subsets</h1>
+          <h1 class="post-title" itemprop="name headline">79. Word Search</h1>
         
 
         <div class="post-meta">
@@ -315,7 +319,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T16:54:38+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T17:19:31+08:00">
                 2021-09-20
               </time>
             
@@ -331,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T16:57:34+08:00">
-                2021-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2021-11-02T00:29:54+08:00">
+                2021-11-02
               </time>
             
           </span>
@@ -359,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  223 字
+                  647 字
                 </span>
               
 
@@ -375,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -396,22 +400,32 @@
       
 
       
-        <p>Given an integer array <code>nums</code> of <strong>unique</strong> elements, return <em>all possible subsets (the power set)</em>.</p>
-<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
-<p>​     <a id="more"></a></p>
+        <p>Given an <code>m x n</code> grid of characters <code>board</code> and a string <code>word</code>, return <code>true</code> <em>if</em> <code>word</code> <em>exists in the grid</em>.</p>
+<p>The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = <span class="comment">[1,2,3]</span></span><br><span class="line">Output: <span class="comment">[<span class="comment">[]</span>,<span class="comment">[1]</span>,<span class="comment">[2]</span>,<span class="comment">[1,2]</span>,<span class="comment">[3]</span>,<span class="comment">[1,3]</span>,<span class="comment">[2,3]</span>,<span class="comment">[1,2,3]</span>]</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/04/word2.jpg" alt="img"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input</span>: board = [[<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"E"</span>],[<span class="string">"S"</span>,<span class="string">"F"</span>,<span class="string">"C"</span>,<span class="string">"S"</span>],[<span class="string">"A"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"E"</span>]], word = <span class="string">"ABCCED"</span></span><br><span class="line"><span class="symbol">Output</span>: true</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">0</span>]</span><br><span class="line">Output: <span class="string">[[],[0]]</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/04/word-1.jpg" alt="img"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input</span>: board = [[<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"E"</span>],[<span class="string">"S"</span>,<span class="string">"F"</span>,<span class="string">"C"</span>,<span class="string">"S"</span>],[<span class="string">"A"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"E"</span>]], word = <span class="string">"SEE"</span></span><br><span class="line"><span class="symbol">Output</span>: true</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/15/word3.jpg" alt="img"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input</span>: board = [[<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"E"</span>],[<span class="string">"S"</span>,<span class="string">"F"</span>,<span class="string">"C"</span>,<span class="string">"S"</span>],[<span class="string">"A"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"E"</span>]], word = <span class="string">"ABCB"</span></span><br><span class="line"><span class="symbol">Output</span>: false</span><br></pre></td></tr></table></figure>
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><code>1 &lt;= nums.length &lt;= 10</code></li>
-<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
-<li>All the numbers of <code>nums</code> are <strong>unique</strong>.</li>
+<li><code>m == board.length</code></li>
+<li><code>n = board[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 6</code></li>
+<li><code>1 &lt;= word.length &lt;= 15</code></li>
+<li><code>board</code> and <code>word</code> consists of only lowercase and uppercase English letters.</li>
 </ul>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>深度优先搜索DFS</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/subsets/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">subsets</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span> -&gt; nums = nums;</span><br><span class="line">        dfs(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        res.push_back(path);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            path.push_back(nums[i]);</span><br><span class="line">            dfs(i+<span class="number">1</span>);</span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = [], path = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">        res.push([...path]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = index; i &lt; nums.length; i++)&#123;</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            dfs(i+<span class="number">1</span>);</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Follow up:</strong> Could you use search pruning to make your solution faster with a larger <code>board</code>?</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/word-search/</span></span><br><span class="line"><span class="comment"> * Runtime: 204 ms, faster than 82.73%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 7.9 MB, less than 7.46% </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m,n;</span><br><span class="line">    <span class="built_in">string</span> <span class="keyword">word</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; board;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; visit;</span><br><span class="line">    <span class="keyword">int</span> direct[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">    <span class="keyword">bool</span> res = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">exist</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">string</span> <span class="keyword">word</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;<span class="keyword">word</span> = <span class="keyword">word</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;m = board.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;n = board[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;board = board;</span><br><span class="line">        visit.resize(m,<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n,<span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="keyword">word</span>[<span class="number">0</span>])&#123;</span><br><span class="line">                    visit[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    dfs(<span class="number">0</span>,i,j);</span><br><span class="line">                    visit[i][j] = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> level, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(level == <span class="keyword">word</span>.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;</span><br><span class="line">            res = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> tx = x + direct[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> ty = y + direct[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(tx &gt;= <span class="number">0</span> &amp;&amp; tx &lt; m &amp;&amp; ty &gt;=<span class="number">0</span> &amp;&amp; ty &lt; n &amp;&amp; <span class="keyword">word</span>[level+<span class="number">1</span>] == board[tx][ty] &amp;&amp; !visit[tx][ty])&#123;</span><br><span class="line">                visit[tx][ty] = <span class="literal">true</span>;</span><br><span class="line">                dfs(level+<span class="number">1</span>,tx,ty);</span><br><span class="line">                visit[tx][ty] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<p>js真tm是个垃圾语言，lenght拼写错误，竟然不报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/word-search/</span></span><br><span class="line"><span class="comment"> * Runtime: 288 ms, faster than 87.77%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 39.8 MB, less than 57.18%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;character[][]&#125;</span> <span class="variable">board</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">word</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> exist = <span class="function"><span class="keyword">function</span>(<span class="params">board, word</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> m = board.length, n = board[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">const</span> visit = [...Array(m)].map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">Array</span>(n).fill(<span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">let</span> res = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> direct = [[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">-1</span>],[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">-1</span>,<span class="number">0</span>]];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">level,x,y</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(level === word.length<span class="number">-1</span>)&#123;</span><br><span class="line">            res = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">const</span> tx = x + direct[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">const</span> ty = y + direct[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(tx&gt;=<span class="number">0</span> &amp;&amp; tx &lt; m &amp;&amp; ty&gt;=<span class="number">0</span> &amp;&amp; ty &lt;n &amp;&amp; !visit[tx][ty]&amp;&amp; board[tx][ty]===word[level+<span class="number">1</span>] )&#123;</span><br><span class="line">                visit[tx][ty] = <span class="literal">true</span>;</span><br><span class="line">                dfs(level+<span class="number">1</span>,tx,ty);</span><br><span class="line">                visit[tx][ty] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(board[i][j]===word[<span class="number">0</span>])&#123;</span><br><span class="line">                visit[i][j] = <span class="literal">true</span>;</span><br><span class="line">                dfs(<span class="number">0</span>,i,j);</span><br><span class="line">                visit[i][j] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -432,7 +446,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2021/09/20/temp/78-Subsets/" title="78. Subsets">https://war3cdota.github.io/2021/09/20/temp/78-Subsets/</a>
+    <a href="https://war3cdota.github.io/2021/09/20/79-Word-Search/" title="79. Word Search">https://war3cdota.github.io/2021/09/20/79-Word-Search/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -446,9 +460,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
-          
             <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
+          
+            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
           
             <a href="/tags/DFS-深度优先遍历/" <i class="fa fa-tag"> DFS(深度优先遍历)</a>
           
@@ -463,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/20/temp/77-Combinations/" rel="next" title="77. Combinations">
-                <i class="fa fa-chevron-left"></i> 77. Combinations
+              <a href="/2021/09/20/78-Subsets/" rel="next" title="78. Subsets">
+                <i class="fa fa-chevron-left"></i> 78. Subsets
               </a>
             
           </div>
@@ -473,8 +487,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/09/20/temp/79-Word-Search/" rel="prev" title="79. Word Search">
-                79. Word Search <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/" rel="prev" title="80. Remove Duplicates from Sorted Array II">
+                80. Remove Duplicates from Sorted Array II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -691,7 +705,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.6k</span>
+    <span title="Site words total count">100.7k</span>
   
 </div>
 
