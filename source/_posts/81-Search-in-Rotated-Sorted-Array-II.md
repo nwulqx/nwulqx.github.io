@@ -48,43 +48,39 @@ Output: false
 
 参考：https://leetcode.com/problems/search-in-rotated-sorted-array-ii/discuss/28218/My-8ms-C%2B%2B-solution-(o(logn)-on-average-o(n)-worst-case)
 
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+ * Runtime: 4 ms, faster than 89.28%
+ * Memory Usage: 14.1 MB, less than 29.93%
  */
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int low = 0, high = nums.size() - 1;
+        int low = 0 , high = nums.size() - 1;
         while(low <= high){
+            while(low < high && nums[low] == nums[low+1]) low++;
+            while(low < high && nums[high-1] == nums[high]) high--;
             int mid = low + (high - low)/2;
             if(nums[mid] == target) return true;
-            if(nums[mid] == nums[low] && nums[mid] == nums[high]){
-                low++;
-                high--;
-            }
             else if(nums[mid] < nums[low]){
-                if(target > nums[mid] && target <= nums[high]){
+                if(nums[mid] < target && target <= nums[high]){
                     low = mid + 1;
-                }
-                else{
+                }else {
                     high = mid - 1;
                 }
-            }
-            else if(nums[mid] > nums[high]){
-                if(target >= nums[low] && target < nums[mid]){
-                    high = mid - 1;
-                }
-                else{
-                    low = mid + 1;
-                }
-            }else {
-                if(target < nums[mid]){
+            }else if(nums[mid] > nums[high]){
+                if(nums[low] <= target && target < nums[mid]){
                     high = mid - 1;
                 }else{
                     low = mid + 1;
                 }
+            }else{
+                if(nums[mid] < target) low = mid + 1;
+                else high = mid - 1;
             }
         }
         return false;
@@ -92,9 +88,15 @@ public:
 };
 ```
 
-
+**javascript**
 
 ```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+ * Runtime: 72 ms, faster than 93.93%
+ * Memory Usage: 40.5 MB, less than 17.63%
+ */
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -103,31 +105,27 @@ public:
 var search = function(nums, target) {
     let low = 0, high = nums.length - 1;
     while(low <= high){
-        let mid = Math.floor(low + (high - low)/2);
-        if(nums[mid] === target) return true;
-        if(nums[mid] === nums[low] && nums[mid] === nums[high]){
-            low++;
-            high--;
+        while(low < high && nums[low] === nums[low+1]) low++;
+        while(low < high && nums[high] === nums[high-1]) high--;
+        const mid = Math.trunc(low + (high - low)/2);
+        if(target === nums[mid]) return true;
+        if(nums[mid] < nums[low]){
+            if(nums[mid] < target && target <= nums[high]){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
         }
         else if(nums[mid] > nums[high]){
-            if(target >= nums[low] && target < nums[mid]){
+            if(nums[low] <= target && target < nums[mid]){
                 high = mid - 1;
             }else{
                 low = mid + 1;
             }
         }
-        else if(nums[mid] < nums[low]){
-            if(target > nums[mid] && target <= nums[high]){
-                low = mid + 1;
-            }else{
-                high = mid - 1;
-            }
-        }else {
-            if(target < nums[mid]){
-                high = mid - 1;
-            }else{
-                low = mid + 1;
-            }
+        else{
+            if(target < nums[mid]) high = mid - 1;
+            else low = mid + 1;
         }
     }
     return false;

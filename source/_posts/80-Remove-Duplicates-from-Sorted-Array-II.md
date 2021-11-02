@@ -64,40 +64,52 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 # 分析
 
+参考：https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+ * Runtime: 0 ms, faster than 100.00 %
+ * Memory Usage: 10.9 MB, less than 37.57 %
  */
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        int i = 0;
-        for(int n : nums) {
-            if(i < 2 || n > nums[i-2]) {
-                nums[i++] = n;
+        int index = 0;
+        for(int i = 0; i < nums.size(); i++){
+            if(index < 2 || nums[i] != nums[index-2]){
+                nums[index++] = nums[i];
             }
         }
-        return i;
+        return index;
     }
 };
 ```
 
-
+**javascript**
 
 ```javascript
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+ * Runtime: 88 ms, faster than 63.47%
+ * Memory Usage: 40.8 MB, less than 38.86%
+ */
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    let res = 0;
-    for(let n of nums){
-        if(res < 2 || nums[res-2] < n){
-            nums[res++] = n;
+    let index = 0;
+    for(let i = 0; i < nums.length; i++){
+        if(index < 2 || nums[index-2] !== nums[i]){
+            nums[index++] = nums[i];
         }
     }
-    return res;
+    return index;
 };
 ```
 

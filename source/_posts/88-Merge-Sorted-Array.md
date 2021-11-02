@@ -64,6 +64,60 @@ public class Solution {
 
 [1,2]和[5,6]可以排下，并且由于题设nums1的大小是一定大于m+n的。所以倒序是可行的，并且节省了**空间复杂度**。
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/merge-sorted-array/
+ * Runtime: 0 ms, faster than 100.00%
+ * Memory Usage: 9.1 MB, less than 72.64%
+ */
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int index = nums1.size() - 1, i = m - 1, j = n - 1;
+        while(index >= 0){
+            if(i < 0) nums1[index--] = nums2[j--];
+            else if(j < 0) nums1[index--] = nums1[i--];
+            else if(nums1[i] > nums2[j]) nums1[index--] = nums1[i--];
+            else  nums1[index--] = nums2[j--];
+        }
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/merge-sorted-array/
+ * Runtime: 72 ms, faster than 81.98%
+ * Memory Usage: 39.2 MB, less than 17.34%
+ */
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function(nums1, m, nums2, n) {
+    let index = nums1.length - 1, i = m - 1, j = n - 1;
+    while(index >= 0){
+        if(i < 0) nums1[index--] = nums2[j--];
+        else if(j < 0) nums1[index--] = nums1[i--];
+        else if(nums1[i] > nums2[j]) nums1[index--] = nums1[i--];
+        else nums1[index--] = nums2[j--];
+    }
+};
+```
+
+
+
+**java**
+
 ```java
 /*
  * app:leetcode lang:Java
@@ -88,39 +142,6 @@ class Solution {
         }
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/merge-sorted-array
- * Beats : 11.97%;
- */
-class Solution {
-public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-		int i = nums1.size() - 1;
-		m--, n--;
-		while (i >= 0){
-			while (m >= 0 || n >= 0){
-				if (m < 0){
-					nums1[i--] = nums2[n--];
-				}
-				else if (n < 0){
-					nums1[i--] = nums1[m--];
-				}
-				else if (nums1[m] > nums2[n]){
-					nums1[i--] = nums1[m--];
-				}
-				else{
-					nums1[i--] = nums2[n--];
-				}
-			}
-		}
-    }
-};
 ```
 
 **python实现**
