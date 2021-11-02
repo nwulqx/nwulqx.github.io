@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Array,LeetCode-medium,">
+  <meta name="keywords" content="LeetCode-easy,Array,Optimize(优化),">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the s">
-<meta name="keywords" content="Array,LeetCode-medium">
+<meta name="description" content="Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additiona">
+<meta name="keywords" content="LeetCode-easy,Array,Optimize(优化)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="80. Remove Duplicates from Sorted Array II">
-<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/index.html">
+<meta property="og:title" content="88. Merge Sorted Array">
+<meta property="og:url" content="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the s">
+<meta property="og:description" content="Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additiona">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-09-20T09:44:15.346Z">
+<meta property="og:updated_time" content="2021-11-02T14:45:08.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="80. Remove Duplicates from Sorted Array II">
-<meta name="twitter:description" content="Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the s">
+<meta name="twitter:title" content="88. Merge Sorted Array">
+<meta name="twitter:description" content="Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additiona">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/">
+  <link rel="canonical" href="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/">
 
 
 
 
 
-  <title>80. Remove Duplicates from Sorted Array II | War3cdota's Blog</title>
+  <title>88. Merge Sorted Array | War3cdota's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">80. Remove Duplicates from Sorted Array II</h1>
+          <h1 class="post-title" itemprop="name headline">88. Merge Sorted Array</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T17:43:08+08:00">
-                2021-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T18:30:46+08:00">
+                2017-04-27
               </time>
             
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-09-20T17:44:15+08:00">
-                2021-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2021-11-02T22:45:08+08:00">
+                2021-11-02
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  435 字
+                  988 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -396,27 +396,34 @@
       
 
       
-        <p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing order</strong>, remove some duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that each unique element appears <strong>at most twice</strong>. The <strong>relative order</strong> of the elements should be kept the <strong>same</strong>.</p>
-<p>Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the <strong>first part</strong> of the array <code>nums</code>. More formally, if there are <code>k</code> elements after removing the duplicates, then the first <code>k</code> elements of <code>nums</code> should hold the final result. It does not matter what you leave beyond the first <code>k</code> elements.</p>
-<p>Return <code>k</code> <em>after placing the final result in the first</em> <code>k</code> <em>slots of</em> <code>nums</code>.</p>
-<p>Do <strong>not</strong> allocate extra space for another array. You must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-<p>​      <a id="more"></a></p>
-<p><strong>Custom Judge:</strong></p>
-<p>The judge will test your solution with the following code:</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int[] nums = [...]; // Input array</span><br><span class="line">int[] expectedNums = [...]; // The expected answer with correct length</span><br><span class="line"></span><br><span class="line">int k = removeDuplicates(nums); // Calls your implementation</span><br><span class="line"></span><br><span class="line">assert k == expectedNums.length;</span><br><span class="line">for (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">    assert nums[i] == expectedNums[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>If all assertions pass, then your solution will be <strong>accepted</strong>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[1,1,1,2,2,3]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">5</span><span class="string">,</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[1,1,2,2,3,_]</span></span><br><span class="line"><span class="attr">Explanation:</span> <span class="string">Your</span> <span class="string">function</span> <span class="string">should</span> <span class="string">return</span> <span class="string">k</span> <span class="string">=</span> <span class="number">5</span><span class="string">,</span> <span class="string">with</span> <span class="string">the</span> <span class="string">first</span> <span class="string">five</span> <span class="string">elements</span> <span class="string">of</span> <span class="string">nums</span> <span class="string">being</span> <span class="number">1</span><span class="string">,</span> <span class="number">1</span><span class="string">,</span> <span class="number">2</span><span class="string">,</span> <span class="number">2</span> <span class="string">and</span> <span class="number">3</span> <span class="string">respectively.</span></span><br><span class="line"><span class="string">It</span> <span class="string">does</span> <span class="string">not</span> <span class="string">matter</span> <span class="string">what</span> <span class="string">you</span> <span class="string">leave</span> <span class="string">beyond</span> <span class="string">the</span> <span class="string">returned</span> <span class="string">k</span> <span class="string">(hence</span> <span class="string">they</span> <span class="string">are</span> <span class="string">underscores).</span></span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[0,0,1,1,1,1,2,3,3]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">7</span><span class="string">,</span> <span class="string">nums</span> <span class="string">=</span> <span class="string">[0,0,1,1,2,3,3,_,_]</span></span><br><span class="line"><span class="attr">Explanation:</span> <span class="string">Your</span> <span class="string">function</span> <span class="string">should</span> <span class="string">return</span> <span class="string">k</span> <span class="string">=</span> <span class="number">7</span><span class="string">,</span> <span class="string">with</span> <span class="string">the</span> <span class="string">first</span> <span class="string">seven</span> <span class="string">elements</span> <span class="string">of</span> <span class="string">nums</span> <span class="string">being</span> <span class="number">0</span><span class="string">,</span> <span class="number">0</span><span class="string">,</span> <span class="number">1</span><span class="string">,</span> <span class="number">1</span><span class="string">,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span> <span class="string">and</span> <span class="number">3</span> <span class="string">respectively.</span></span><br><span class="line"><span class="string">It</span> <span class="string">does</span> <span class="string">not</span> <span class="string">matter</span> <span class="string">what</span> <span class="string">you</span> <span class="string">leave</span> <span class="string">beyond</span> <span class="string">the</span> <span class="string">returned</span> <span class="string">k</span> <span class="string">(hence</span> <span class="string">they</span> <span class="string">are</span> <span class="string">underscores).</span></span><br></pre></td></tr></table></figure>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 3 * 104</code></li>
-<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
-<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
-</ul>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> n : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; <span class="number">2</span> || n &gt; nums[i<span class="number">-2</span>]) &#123;</span><br><span class="line">                nums[i++] = n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> n <span class="keyword">of</span> nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(res &lt; <span class="number">2</span> || nums[res<span class="number">-2</span>] &lt; n)&#123;</span><br><span class="line">            nums[res++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>Given two sorted integer arrays <em>nums1</em> and <em>nums2</em>, merge <em>nums2</em> into <em>nums1</em> as one sorted array.</p>
+<p><strong>Note:</strong></p>
+<p>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
+<a id="more"></a>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><blockquote>
+<p>第一个想法，借助归并排序的思路。做一个中规中矩的做法。是可以通过的。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/merge-sorted-array</span></span><br><span class="line"><span class="comment"> * Beats : 11.97%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> tmp[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+m];</span><br><span class="line">    	<span class="keyword">int</span> i=<span class="number">0</span> , j=<span class="number">0</span> , k=<span class="number">0</span>;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>;index&lt;m+n;index++)&#123;</span><br><span class="line">    		<span class="keyword">if</span>(i==m) tmp[k++] = nums2[j++];</span><br><span class="line">    		<span class="keyword">else</span> <span class="keyword">if</span>(j==n) tmp[k++] = nums1[i++];</span><br><span class="line">    		<span class="keyword">else</span> <span class="keyword">if</span>(nums1[i]&lt;nums2[j])&#123;</span><br><span class="line">    			tmp[k++] = nums1[i++];</span><br><span class="line">    		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    			tmp[k++] = nums2[j++];</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> num : tmp)&#123;</span><br><span class="line">    		nums1[index++] = num;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，借助另一个空间，空间复杂度O(n)</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>其实这道题条件就已经指出了结果，m指前m个nums1元素，n指前n个nums2元素。也就是已经给出了带合并的两个数组长度，且第一个数组空出了合并第二个数组的位置，那么其实就是让你把两个数组合并到nums1上。<br>那之前为什么借助了一个数组作为临时数组，其实是为了解决最坏情况。<br>考虑一个情景：</p>
+<blockquote>
+<p>nums1 = [1,2,3,4] m=2;<br>nums2 = [5,6,7,8] n=2;</p>
+</blockquote>
+<p>按照要求，是[1,2]和[5,6]的排序，那如果不借助临时数组，在nums1中直接排序，则[5,6]会覆盖[1,2]的位置。</p>
+<p><strong>但是换一个思路，如果用倒序的顺序排序呢？</strong></p>
+<p>那就可以省去这个临时数组了，不需要考虑覆盖的问题了。</p>
+<p>[1,2]和[5,6]可以排下，并且由于题设nums1的大小是一定大于m+n的。所以倒序是可行的，并且节省了<strong>空间复杂度</strong>。</p>
+<p><strong>c++实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/merge-sorted-array/</span></span><br><span class="line"><span class="comment"> * Runtime: 0 ms, faster than 100.00%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 9.1 MB, less than 72.64%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = nums1.<span class="built_in">size</span>() - <span class="number">1</span>, i = m - <span class="number">1</span>, j = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(index &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; <span class="number">0</span>) nums1[index--] = nums2[j--];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j &lt; <span class="number">0</span>) nums1[index--] = nums1[i--];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums1[i] &gt; nums2[j]) nums1[index--] = nums1[i--];</span><br><span class="line">            <span class="keyword">else</span>  nums1[index--] = nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/merge-sorted-array/</span></span><br><span class="line"><span class="comment"> * Runtime: 72 ms, faster than 81.98%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 39.2 MB, less than 17.34%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">m</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify nums1 in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, m, nums2, n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> index = nums1.length - <span class="number">1</span>, i = m - <span class="number">1</span>, j = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(index &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">0</span>) nums1[index--] = nums2[j--];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(j &lt; <span class="number">0</span>) nums1[index--] = nums1[i--];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums1[i] &gt; nums2[j]) nums1[index--] = nums1[i--];</span><br><span class="line">        <span class="keyword">else</span> nums1[index--] = nums2[j--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/merge-sorted-array</span></span><br><span class="line"><span class="comment"> * Beats : 100 %;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        m--;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="keyword">int</span> i = nums1.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(m&gt;=<span class="number">0</span> || n&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                nums1[i--] = nums2[n--];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                nums1[i--] = nums1[m--];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[m]&gt;nums2[n])&#123;</span><br><span class="line">                nums1[i--] = nums1[m--];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                nums1[i--] = nums2[n--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>python实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: None Do not return anything, modify nums1 in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        m -= <span class="number">1</span></span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">        i = len(nums1) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> m&gt;=<span class="number">0</span> <span class="keyword">or</span> n &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> m &lt; <span class="number">0</span>:</span><br><span class="line">                nums1[i] = nums2[n]</span><br><span class="line">                n -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> n &lt; <span class="number">0</span>:</span><br><span class="line">                nums1[i] = nums1[m]</span><br><span class="line">                m -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums1[m] &gt; nums2[n]:</span><br><span class="line">                nums1[i] = nums1[m]</span><br><span class="line">                m -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums1[i] = nums2[n]</span><br><span class="line">                n -= <span class="number">1</span></span><br><span class="line">            i -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这题其实考察了归并排序中的一个知识点：合并两个数组，在这个基础上对其进行了一个小优化，由于之前学过归并排序，思路是有的，但是这个问题其实是可以不借助临时数组的。由于他的特殊性，倒序排序不会导致它的所需排序的元素被覆盖，这是应该注意的。</p>
+</blockquote>
 
       
     </div>
@@ -437,7 +444,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/" title="80. Remove Duplicates from Sorted Array II">https://war3cdota.github.io/2021/09/20/temp/80-Remove-Duplicates-from-Sorted-Array-II/</a>
+    <a href="https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/" title="88. Merge Sorted Array">https://war3cdota.github.io/2017/04/27/88-Merge-Sorted-Array/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -451,9 +458,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/LeetCode-easy/" <i class="fa fa-tag"> LeetCode-easy</a>
+          
             <a href="/tags/Array/" <i class="fa fa-tag"> Array</a>
           
-            <a href="/tags/LeetCode-medium/" <i class="fa fa-tag"> LeetCode-medium</a>
+            <a href="/tags/Optimize-优化/" <i class="fa fa-tag"> Optimize(优化)</a>
           
         </div>
       
@@ -466,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/20/79-Word-Search/" rel="next" title="79. Word Search">
-                <i class="fa fa-chevron-left"></i> 79. Word Search
+              <a href="/2017/04/27/temp/83-Remove-Duplicates-from-Sorted-List/" rel="next" title="83. Remove Duplicates from Sorted List">
+                <i class="fa fa-chevron-left"></i> 83. Remove Duplicates from Sorted List
               </a>
             
           </div>
@@ -476,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/09/20/33-Search-in-Rotated-Sorted-Array/" rel="prev" title="33. Search in Rotated Sorted Array">
-                33. Search in Rotated Sorted Array <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/Tree/100-Same-Tree/" rel="prev" title="100. Same Tree">
+                100. Same Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -660,7 +669,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">1.1.</span> <span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -694,7 +703,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.7k</span>
+    <span title="Site words total count">101k</span>
   
 </div>
 
