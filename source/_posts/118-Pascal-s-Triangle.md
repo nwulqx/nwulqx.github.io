@@ -26,9 +26,61 @@ Return
 <!-- more -->
 # 分析
 
-## 暴力法
+**javascript**
 
->暴力法，不需要知道规律，只要根据输入，得出输出即可。
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/pascals-triangle
+ * Runtime: 76 ms, faster than 57.75%
+ * Memory Usage: 38.7 MB, less than 32.56%
+ */
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    const res = [], level = [1];
+    res.push([...level]);
+    for(let i = 1; i < numRows; i++){
+        level.push(1);
+        for(let j = level.length-2; j > 0; j--){
+            level[j] += level[j-1];
+        }
+        res.push([...level]);
+    }
+    return res;
+};
+```
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/pascals-triangle
+ * Runtime: 0 ms, faster than 100.00%
+ * Memory Usage: 6.3 MB, less than 92.24%
+ */
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> res;
+        vector<int> level(1,1);
+        res.push_back(level);
+        for(int i = 1; i < numRows; i++){
+            level.push_back(1);
+            for(int j = level.size()-2; j > 0; j--){
+                level[j] += level[j-1];
+            }
+            res.push_back(level);
+        }
+        return res;
+    }
+};
+```
+
+
 
 ```java
 /*

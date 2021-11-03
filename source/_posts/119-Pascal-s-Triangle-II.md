@@ -22,6 +22,57 @@ Could you optimize your algorithm to use only O(k) extra space?
 
 **通过上层来计算当前行**，这个解法就是118. Pascal's Triangle的解法。
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/pascals-triangle-ii
+ * Runtime: 64 ms, faster than 96.55%
+ * Memory Usage: 38.7 MB, less than 56.63%
+ */
+/**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+var getRow = function(rowIndex) {
+    const level = [1];
+    for(let i = 1; i <= rowIndex; i++){
+        level.push(1);
+        for(let j = level.length-2; j > 0; j--){
+            level[j] += level[j-1];
+        }
+    }
+    return level;
+};
+```
+
+**c++**
+
+```c++
+/*
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/pascals-triangle-ii
+ * Runtime: 0 ms, faster than 100.00%
+ * Memory Usage: 6.2 MB, less than 99.24%
+ */
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> level(1,1);
+        for(int i = 1; i <= rowIndex; i++){
+            level.push_back(1);
+            for(int j = level.size()-2; j > 0; j--){
+                level[j] += level[j-1];
+            }
+        }
+        return level;
+    }
+};
+```
+
+
+
 **Java实现**
 
 ```java
