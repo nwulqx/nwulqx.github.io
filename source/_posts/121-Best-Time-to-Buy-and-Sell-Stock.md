@@ -18,12 +18,13 @@ If you were only permitted to complete at most one transaction (ie, buy one and 
 	Output: 5
 	max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)
 
+<!-- more -->
+
 **Example 2:**
 
 	Input: [7, 6, 4, 3, 1]
 	Output: 0
 	In this case, no transaction is done, i.e. max profit = 0.
-<!-- more -->
 # Solution
 
 ## Brute Force
@@ -81,6 +82,55 @@ public class Solution {
 1. 设置一个数组，用作动态规划数组，这个数组优化后可以不要，但易于理解，脑子里要有他。
 2. 这个数组的意义：用于存放当前节点所能获取的最大利润，每次到当前节点都要计算他与买时的差值，如果是正数，则计入动态规划数组；如果是负值，则置为0，此外还应，看看是否比买入低，重置买入值。
 
+**c++实现**
+
+```c++
+/*
+ * app:leetcode lang: c++
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ * Runtime: 116 ms, faster than 73.65%
+ * Memory Usage: 93.3 MB, less than 90.75%
+ */
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int res = 0;
+        int buy = prices[0];
+        for(int i = 1; i < prices.size(); i++){
+            buy = min(buy, prices[i]);
+            res = max(res, prices[i]-buy);
+        }
+        return res;
+    }
+};
+```
+
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ * Runtime: 96 ms, faster than 77.95%
+ * Memory Usage: 48.7 MB, less than 70.14%
+ */
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let buy = prices[0];
+    let res = 0;
+    for(let i = 1; i < prices.length; i++){
+        res = Math.max(prices[i]-buy,res);
+        buy = Math.min(buy,prices[i]);
+    }
+    return res;
+};
+```
+
+
+
 **Java实现**
 
 ```java
@@ -104,29 +154,6 @@ public class Solution {
         return max;
     }
 }
-```
-
-**c++实现**
-
-```c++
-/*
- * app:leetcode lang:c++
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
- * Beats : 100%;
- */
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-		if (prices.size() == 0) return 0;
-		int buy = prices[0];
-		int profit = 0;
-		for (int i = 1; i < prices.size(); i++){
-			profit = prices[i] - buy>profit ? prices[i] - buy : profit;
-			buy = prices[i] < buy?prices[i]:buy;
-		}
-		return profit;
-    }
-};
 ```
 
 **python实现**

@@ -11,8 +11,6 @@ Given a `triangle` array, return *the minimum path sum from top to bottom*.
 
 For each step, you may move to an adjacent number of the row below. More formally, if you are on index `i` on the current row, you may move to either index `i` or index `i + 1` on the next row.
 
- <!-- more -->
-
 **Example 1:**
 
 ```
@@ -25,6 +23,8 @@ Explanation: The triangle looks like:
 4 1 8 3
 The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
 ```
+
+ <!-- more -->
 
 **Example 2:**
 
@@ -50,16 +50,20 @@ Output: -10
 
 dp问题：https://leetcode.com/problems/triangle/discuss/38730/DP-Solution-for-Triangle
 
+**c++**
+
 ```c++
 /*
- * app:leetcode lang:c++
+ * app:leetcode lang: c++
  * https://leetcode.com/problems/triangle/
+ * Runtime: 8 ms, faster than 57.30%
+ * Memory Usage: 8.5 MB, less than 82.18%
  */
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
         for(int i = triangle.size()-2; i >= 0; i--){
-            for(int j = 0; j <= i; j++){
+            for(int j = 0; j < triangle[i].size(); j++){
                 triangle[i][j] += min(triangle[i+1][j],triangle[i+1][j+1]);
             }
         }
@@ -68,15 +72,22 @@ public:
 };
 ```
 
+**javascript**
+
 ```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/triangle/
+ * Runtime: 68 ms, faster than 97.92%
+ * Memory Usage: 40 MB, less than 59.94%
+ */
 /**
  * @param {number[][]} triangle
  * @return {number}
  */
 var minimumTotal = function(triangle) {
-    let m = triangle.length;
-    for(let i = m-2; i >= 0; i--){
-        for(let j = 0; j <= i; j++){
+    for(let i = triangle.length-2; i >= 0; i--){
+        for(let j = 0;j < triangle[i].length; j++){
             triangle[i][j] += Math.min(triangle[i+1][j],triangle[i+1][j+1]);
         }
     }

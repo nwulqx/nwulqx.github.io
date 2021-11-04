@@ -12,8 +12,6 @@ Design an algorithm to find the maximum profit. You may complete as many transac
 
 **Note:** You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
 
-<!-- more -->
-
 **Example 1:**
 
 ```java
@@ -22,6 +20,8 @@ Output: 7
 Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
              Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
 ```
+
+<!-- more -->
 
 **Example 2:**
 
@@ -130,31 +130,56 @@ class Solution {
 
 
 
-## 解法三-贪心
+## 解法三-贪心（推荐）
 
 这个贪心其实是在上面谷峰法的基础上改进的，因为谷峰法是把每一段增长段都不能丢弃的全部计算到一起；而贪心则是这些增长段分割为最小段计算总和，虽然题目是不允许同日买进卖出，但其实我们只是在数学意义上进行转换，而不涉及实际操作。
 
+**c++**
+
 ```java
 /*
- * app:leetcode lang:Java
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii
- * Beats : 93.55%;
+ * app:leetcode lang:c++
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+ * Runtime: 4 ms, faster than 90.92%
+ * Memory Usage: 13.1 MB, less than 46.92%
  */
-public class Solution {
-    public int maxProfit(int[] prices) {
-        if(prices.length==0){
-            return 0;
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int res = 0;
+        int buy = prices[0];
+        for(int i = 1; i < prices.size(); i++){
+            res += max(prices[i]-prices[i-1],0);
         }
-        int profit = 0;
-        for(int i=1;i<prices.length;i++){
-            if(prices[i]>prices[i-1]){
-                profit += (prices[i]-prices[i-1]);
-            }
-        }
-        return profit;
+        return res;
     }
-}
+};
 ```
 
+**javascript**
+
+```js
+/*
+ * app:leetcode lang: javascript
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+ * Runtime: 80 ms, faster than 61.41%
+ * Memory Usage: 40.4 MB, less than 37.96% 
+ */
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let res = 0;
+    for(let i = 1; i < prices.length; i++){
+        res += Math.max(prices[i]-prices[i-1], 0);
+    }
+    return res;
+};
+```
+
+
+
 # 总结
+
 这个题目关键是谷峰法，而贪心只是谷峰法的一个变化。
