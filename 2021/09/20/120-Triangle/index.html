@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode-easy,Array,DP(动态规划),最长公共子序列（LCS）,">
+  <meta name="keywords" content="LeetCode-easy,Array,DP(动态规划),">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
-<meta name="keywords" content="LeetCode-easy,Array,DP(动态规划),最长公共子序列（LCS）">
+<meta name="description" content="Given a triangle array, return the minimum path sum from top to bottom. For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you">
+<meta name="keywords" content="LeetCode-easy,Array,DP(动态规划)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="121. Best Time to Buy and Sell Stock">
-<meta property="og:url" content="https://war3cdota.github.io/2017/06/16/temp/121-Best-Time-to-Buy-and-Sell-Stock/index.html">
+<meta property="og:title" content="120. Triangle">
+<meta property="og:url" content="https://war3cdota.github.io/2021/09/20/120-Triangle/index.html">
 <meta property="og:site_name" content="War3cdota&#39;s Blog">
-<meta property="og:description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
+<meta property="og:description" content="Given a triangle array, return the minimum path sum from top to bottom. For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-28T11:28:08.945Z">
+<meta property="og:updated_time" content="2021-11-04T15:33:19.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="121. Best Time to Buy and Sell Stock">
-<meta name="twitter:description" content="Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), de">
+<meta name="twitter:title" content="120. Triangle">
+<meta name="twitter:description" content="Given a triangle array, return the minimum path sum from top to bottom. For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://war3cdota.github.io/2017/06/16/temp/121-Best-Time-to-Buy-and-Sell-Stock/">
+  <link rel="canonical" href="https://war3cdota.github.io/2021/09/20/120-Triangle/">
 
 
 
 
 
-  <title>121. Best Time to Buy and Sell Stock | War3cdota's Blog</title>
+  <title>120. Triangle | War3cdota's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2017/06/16/temp/121-Best-Time-to-Buy-and-Sell-Stock/">
+    <link itemprop="mainEntityOfPage" href="https://war3cdota.github.io/2021/09/20/120-Triangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LQX">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">121. Best Time to Buy and Sell Stock</h1>
+          <h1 class="post-title" itemprop="name headline">120. Triangle</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T17:19:11+08:00">
-                2017-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-20T18:29:29+08:00">
+                2021-09-20
               </time>
             
 
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-28T19:28:08+08:00">
-                2020-04-28
+              <time title="更新于" itemprop="dateModified" datetime="2021-11-04T23:33:19+08:00">
+                2021-11-04
               </time>
             
           </span>
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  841 字
+                  339 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -396,49 +396,26 @@
       
 
       
-        <p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+        <p>Given a <code>triangle</code> array, return <em>the minimum path sum from top to bottom</em>.</p>
+<p>For each step, you may move to an adjacent number of the row below. More formally, if you are on index <code>i</code> on the current row, you may move to either index <code>i</code> or index <code>i + 1</code> on the next row.</p>
 <p><strong>Example 1:</strong></p>
-<pre><code>Input: [7, 1, 5, 3, 6, 4]
-Output: 5
-max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)
-</code></pre><p><strong>Example 2:</strong></p>
-<pre><code>Input: [7, 6, 4, 3, 1]
-Output: 0
-In this case, no transaction is done, i.e. max profit = 0.
-</code></pre><a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h2><blockquote>
-<p>使用暴力方法解，怎么想怎么写，双层循环解决。<br>LeetCode: Time Limit Exceeded</p>
-</blockquote>
-<h2 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h2><p>这道题，为什么会感觉很难做，因为逻辑没有搞清楚：</p>
-<ol>
-<li>什么时候卖出？只要当前利益比它最大收益大，就卖出（可惜不是预测。）</li>
-</ol>
-<p>什么时候买进？当前值小于上一次买进的值，就应该买进。</p>
-<ol>
-<li>什么时候买进？当前值小于上一次买进的值，就应该买进。</li>
-</ol>
-<p>总结：买进和卖出没有联系，卖出是买进前的最大利益，所以当输入[7, 6, 8, 3, 1]，虽然买进是1，但是获利最大是8-6=2，利润是2。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/</span></span><br><span class="line"><span class="comment"> * Beats : 90 %;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i]-buy&gt;profit)&#123;</span><br><span class="line">                profit = prices[i] - buy;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(prices[i]&lt;buy)&#123;</span><br><span class="line">                    buy = prices[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h2><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97" target="_blank" rel="noopener">最长公共子序列</a></h3><p>其实这类问题就是动态规划问题，动态规划问题，需要想清楚：</p>
-<ol>
-<li>如果设置一个数组，这个数组存储的是动态规划时的什么数据？这个数据决定当前节点，所得到的结果。</li>
-<li>结果一定是通过之前创建的动态规划数组得到的。</li>
-</ol>
-<p>具体思路：</p>
-<ol>
-<li>设置一个数组，用作动态规划数组，这个数组优化后可以不要，但易于理解，脑子里要有他。</li>
-<li>这个数组的意义：用于存放当前节点所能获取的最大利润，每次到当前节点都要计算他与买时的差值，如果是正数，则计入动态规划数组；如果是负值，则置为0，此外还应，看看是否比买入低，重置买入值。</li>
-</ol>
-<p><strong>Java实现</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:Java</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            profit += (prices[i] - prices[i-<span class="number">1</span>]);</span><br><span class="line">            profit = Math.max(<span class="number">0</span>,profit);</span><br><span class="line">            max = Math.max(max,profit);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>c++实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang:c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/</span></span><br><span class="line"><span class="comment"> * Beats : 100%;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (prices.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">			profit = prices[i] - buy&gt;profit ? prices[i] - buy : profit;</span><br><span class="line">			buy = prices[i] &lt; buy?prices[i]:buy;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>python实现</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type prices: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(prices) &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        buy = prices[<span class="number">0</span>]</span><br><span class="line">        profit = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(prices)):</span><br><span class="line">            <span class="keyword">if</span> prices[i]-buy&gt;profit:</span><br><span class="line">                profit = prices[i]-buy</span><br><span class="line">            <span class="keyword">elif</span> prices[i]&lt;buy:</span><br><span class="line">                buy = prices[i]</span><br><span class="line">        <span class="keyword">return</span> profit</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这个是比较简单的动态规划问题了，动态规划在于动态规划数组的设置意义，它是用来存储什么意义的值的，这个一定要想清楚。</p>
-</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">triangle</span> <span class="string">=</span> <span class="string">[[2],[3,4],[6,5,7],[4,1,8,3]]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">11</span></span><br><span class="line"><span class="attr">Explanation: The triangle looks like:</span></span><br><span class="line">   <span class="number">2</span></span><br><span class="line">  <span class="number">3</span> <span class="number">4</span></span><br><span class="line"> <span class="number">6</span> <span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">4</span> <span class="number">1</span> <span class="number">8</span> <span class="number">3</span></span><br><span class="line"><span class="string">The</span> <span class="string">minimum</span> <span class="string">path</span> <span class="string">sum</span> <span class="string">from</span> <span class="string">top</span> <span class="string">to</span> <span class="string">bottom</span> <span class="string">is</span> <span class="number">2</span> <span class="string">+</span> <span class="number">3</span> <span class="string">+</span> <span class="number">5</span> <span class="string">+</span> <span class="number">1</span> <span class="string">=</span> <span class="number">11</span> <span class="string">(underlined</span> <span class="string">above).</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: triangle = <span class="string">[[-10]]</span></span><br><span class="line">Output: <span class="number">-10</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= triangle.length &lt;= 200</code></li>
+<li><code>triangle[0].length == 1</code></li>
+<li><code>triangle[i].length == triangle[i - 1].length + 1</code></li>
+<li><code>-104 &lt;= triangle[i][j] &lt;= 104</code></li>
+</ul>
+<p><strong>Follow up:</strong> Could you do this using only <code>O(n)</code> extra space, where <code>n</code> is the total number of rows in the triangle?</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>dp问题：<a href="https://leetcode.com/problems/triangle/discuss/38730/DP-Solution-for-Triangle" target="_blank" rel="noopener">https://leetcode.com/problems/triangle/discuss/38730/DP-Solution-for-Triangle</a></p>
+<p><strong>c++</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: c++</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/triangle/</span></span><br><span class="line"><span class="comment"> * Runtime: 8 ms, faster than 57.30%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 8.5 MB, less than 82.18%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = triangle.<span class="built_in">size</span>()<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; triangle[i].<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                triangle[i][j] += <span class="built_in">min</span>(triangle[i+<span class="number">1</span>][j],triangle[i+<span class="number">1</span>][j+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>javascript</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * app:leetcode lang: javascript</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/triangle/</span></span><br><span class="line"><span class="comment"> * Runtime: 68 ms, faster than 97.92%</span></span><br><span class="line"><span class="comment"> * Memory Usage: 40 MB, less than 59.94%</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">triangle</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minimumTotal = <span class="function"><span class="keyword">function</span>(<span class="params">triangle</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = triangle.length<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>;j &lt; triangle[i].length; j++)&#123;</span><br><span class="line">            triangle[i][j] += <span class="built_in">Math</span>.min(triangle[i+<span class="number">1</span>][j],triangle[i+<span class="number">1</span>][j+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -459,7 +436,7 @@ In this case, no transaction is done, i.e. max profit = 0.
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://war3cdota.github.io/2017/06/16/temp/121-Best-Time-to-Buy-and-Sell-Stock/" title="121. Best Time to Buy and Sell Stock">https://war3cdota.github.io/2017/06/16/temp/121-Best-Time-to-Buy-and-Sell-Stock/</a>
+    <a href="https://war3cdota.github.io/2021/09/20/120-Triangle/" title="120. Triangle">https://war3cdota.github.io/2021/09/20/120-Triangle/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -479,8 +456,6 @@ In this case, no transaction is done, i.e. max profit = 0.
           
             <a href="/tags/DP-动态规划/" <i class="fa fa-tag"> DP(动态规划)</a>
           
-            <a href="/tags/最长公共子序列（LCS）/" <i class="fa fa-tag"> 最长公共子序列（LCS）</a>
-          
         </div>
       
 
@@ -492,8 +467,8 @@ In this case, no transaction is done, i.e. max profit = 0.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/01/119-Pascal-s-Triangle-II/" rel="next" title="119. Pascal's Triangle II">
-                <i class="fa fa-chevron-left"></i> 119. Pascal's Triangle II
+              <a href="/2021/09/20/90-Subsets-II/" rel="next" title="90. Subsets II">
+                <i class="fa fa-chevron-left"></i> 90. Subsets II
               </a>
             
           </div>
@@ -502,8 +477,8 @@ In this case, no transaction is done, i.e. max profit = 0.
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/16/temp/122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="prev" title="122. Best Time to Buy and Sell Stock II">
-                122. Best Time to Buy and Sell Stock II <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/20/temp/128-Longest-Consecutive-Sequence/" rel="prev" title="128. Longest Consecutive Sequence">
+                128. Longest Consecutive Sequence <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -686,7 +661,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Brute-Force"><span class="nav-number">1.1.</span> <span class="nav-text">Brute Force</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution1"><span class="nav-number">1.2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution2"><span class="nav-number">1.3.</span> <span class="nav-text">Solution2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最长公共子序列"><span class="nav-number">1.3.1.</span> <span class="nav-text">最长公共子序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li></ol></div>
             
 
           </div>
@@ -720,7 +695,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">101.4k</span>
+    <span title="Site words total count">101.7k</span>
   
 </div>
 
